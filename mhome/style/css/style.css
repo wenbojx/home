@@ -1,8 +1,14 @@
 @CHARSET "UTF-8";
+.clear{
+	clear:both;
+}
 .ui-li-thumb{
 	max-height:80px;
 	max-width:160px;
 }
 .ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb{
 	padding:12px 10px 12px 170px;
+}
+.next_page{
+	margin:20px 0;
 }

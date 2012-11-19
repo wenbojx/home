@@ -2,9 +2,9 @@
 <div data-role="page">
 
 	<div data-role="header">
-		<a href="#" data-role="button" data-mini="true">上一页</a>
+		<a href="#" data-role="button" data-mini="true">返回</a>
 		<h2>全景视界</h2>
-		<a href="#" data-role="button" data-mini="true">下一页</a>
+		
 	</div><!-- /header -->
 
 	<div data-role="content">	
@@ -45,7 +45,10 @@
 	            </a>
 	        </li>
 	    </ul>
-		
+	    <div class="clear"></div>
+	    <div class="next_page">
+	    <a href="index.html" data-role="button" data-mini="true">下一页</a>
+	    </div>
 	</div><!-- /content -->
 
 </div>
