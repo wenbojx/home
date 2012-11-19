@@ -3,9 +3,10 @@
 <head> 
 	<title>My Page</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-	<link rel="stylesheet" href="/plugins/jqm/jquery.mobile-1.2.0.min.css" />
-	<script src="/style/js/jquery.min.js"></script>
-	<script src="/plugins/jqm/jquery.mobile-1.2.0.min.js"></script>
+	<?php Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl . "plugins/jqm/jquery.mobile-1.2.0.min.css"); ?>
+	<?php Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl . "/style/css/style.css"); ?>
+	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/style/js/jquery.min.js");?>
+	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/plugins/jqm/jquery.mobile-1.2.0.min.js");?>
 </head> 
 <body> 
 <?php echo $content;?>
