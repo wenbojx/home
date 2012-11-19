@@ -42,10 +42,19 @@ function init(container) {
 	for ( var i = 0; i < sides.length; i ++ ) {
 
 		var side = sides[ i ];
-		
-		var element = document.createElement( 'img' );
-		element.width = 1026; // 2 pixels extra to close the gap.
-		element.src = side.url;
+		if(i==0){
+			var element = new Image(); 
+			element.width = 1026; // 2 pixels extra to close the gap.
+			element.src = side.url;
+			element.onload = function (){
+				$("#loading").hide();
+			} 
+		}
+		else{
+			var element = document.createElement( 'img' );
+			element.width = 1026; // 2 pixels extra to close the gap.
+			element.src = side.url;
+		}
 
 		var object = new THREE.CSS3DObject( element );
 		object.position = side.position;
