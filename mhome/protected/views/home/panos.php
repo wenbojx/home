@@ -8,38 +8,38 @@
 	</div><!-- /header -->
 
 	<div data-role="content">	
-		<ul data-role="listview" >
+		<ul data-role="listview" class="panos" >
 	        <li>
 	        	<a href="index.html" class="ui-link-inherit">
-		            <img src="style/img/1.jpg" />
+		            <img src="/style/img/1.jpg" />
 		            <h3>Item A</h3>
 		            <p>xd</p>
 	            </a>
 	        </li>
 	        <li>
 	        	<a href="index.html" class="ui-link-inherit">
-		            <img src="style/img/1.jpg" />
+		            <img src="/style/img/1.jpg" />
 		            <h3>Item A</h3>
 		            <p>xd</p>
 	            </a>
 	        </li>
 	        <li>
 	        	<a href="index.html" class="ui-link-inherit">
-		            <img src="style/img/1.jpg" />
+		            <img src="/style/img/1.jpg" />
 		            <h3>Item A</h3>
 		            <p>xd</p>
 	            </a>
 	        </li>  
 	        <li>
 	        	<a href="index.html" class="ui-link-inherit">
-		            <img src="style/img/1.jpg" />
+		            <img src="/style/img/1.jpg" />
 		            <h3>Item A</h3>
 		            <p>xd</p>
 	            </a>
 	        </li>
 	        <li>
 	        	<a href="index.html" class="ui-link-inherit">
-		            <img src="style/img/1.jpg" />
+		            <img src="/style/img/1.jpg" />
 		            <h3>Item A</h3>
 		            <p>xd</p>
 	            </a>
@@ -47,7 +47,7 @@
 	    </ul>
 	    <div class="clear"></div>
 	    <div class="next_page">
-	    <a href="index.html" data-role="button" data-mini="true">下一页</a>
+	    <a href="index.html" data-role="button" >下一页</a>
 	    </div>
 	</div><!-- /content -->
 

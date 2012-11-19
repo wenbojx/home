@@ -1,6 +1,6 @@
 <?php
-class IndexController extends FController{
-    public $defaultAction = 'index';
+class ProjectsController extends FController{
+    public $defaultAction = 'list';
     public $layout = 'home';
     private $page_size = 10;
 
@@ -12,10 +12,10 @@ class IndexController extends FController{
         $this->language = Yii::app()->session['userinfo']['language'];
     } */
 
-    public function actionIndex(){
+    public function actionList(){
         $datas = array();
         $datas['list'] = $this->get_pano_list();
-        $this->render('/home/index', array('datas'=>$datas));
+        $this->render('/home/projects', array('datas'=>$datas));
     }
 
     private function get_pano_list(){
