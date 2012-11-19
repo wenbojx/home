@@ -7,9 +7,19 @@ function init(container) {
 
 	var sides = [
 		{
+			url: pano_front,
+			position: new THREE.Vector3( 0, 0,  512 ),
+			rotation: new THREE.Vector3( 0, Math.PI, 0 )
+		},
+		{
 			url: pano_right,
 			position: new THREE.Vector3( -512, 0, 0 ),
 			rotation: new THREE.Vector3( 0, Math.PI / 2, 0 )
+		},
+		{
+			url: pano_back,
+			position: new THREE.Vector3( 0, 0, -512 ),
+			rotation: new THREE.Vector3( 0, 0, 0 )
 		},
 		{
 			url: pano_left,
@@ -25,26 +35,26 @@ function init(container) {
 			url: pano_bottom,
 			position: new THREE.Vector3( 0, -512, 0 ),
 			rotation: new THREE.Vector3( - Math.PI / 2, 0, Math.PI )
-		},
-		{
-			url: pano_front,
-			position: new THREE.Vector3( 0, 0,  512 ),
-			rotation: new THREE.Vector3( 0, Math.PI, 0 )
-		},
-		{
-			url: pano_back,
-			position: new THREE.Vector3( 0, 0, -512 ),
-			rotation: new THREE.Vector3( 0, 0, 0 )
 		}
+		
 	];
 
 	for ( var i = 0; i < sides.length; i ++ ) {
 
 		var side = sides[ i ];
-
-		var element = document.createElement( 'img' );
-		element.width = 1026; // 2 pixels extra to close the gap.
-		element.src = side.url;
+		if(i==5){
+			var element = new Image(); 
+			element.width = 1026; // 2 pixels extra to close the gap.
+			element.src = side.url;
+			element.onload = function (){
+				alert(11);
+			} 
+		}
+		else{
+			var element = document.createElement( 'img' );
+			element.width = 1026; // 2 pixels extra to close the gap.
+			element.src = side.url;
+		}
 
 		var object = new THREE.CSS3DObject( element );
 		object.position = side.position;
