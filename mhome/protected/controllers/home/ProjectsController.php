@@ -3,7 +3,7 @@ class ProjectsController extends FController{
     public $defaultAction = 'list';
     public $layout = 'home';
     private $project_db = null;
-    private $page_size = 10;
+    private $page_size = 5;
     //public $page_obj = null;
     public $page_next = true; //是否有下页
 
@@ -12,7 +12,8 @@ class ProjectsController extends FController{
     	$page = $request->getParam('page')?$request->getParam('page'):1;
         $datas['projects'] = $this->get_project_list($page);
         $datas['page_next'] = $this->page_next;
-        $datas['page'] = $page++;
+        $datas['page'] = $page+1;
+        $datas['back'] = $page==1?false:true;
         //print_r($datas);
         $this->render('/home/projects', array('datas'=>$datas));
     }

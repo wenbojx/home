@@ -1,10 +1,14 @@
-<?php $this->pageTitle=$datas['project']['name'].'---足不出户，畅游中国';?>
+<?php $this->pageTitle='一路好---足不出户，畅游中国';?>
 <div data-role="page">
 
 	<div data-role="header">
-		<!-- <a href="/" data-role="button" data-icon="home" data-mini="true">首页</a> -->
-		<h1>全景视界(yiluhao.com)</h1>
-		<!-- <a href="#" data-role="button" data-mini="true">返回</a> -->
+		<?php if($datas['back']){?>
+		<a href="/" data-role="button" data-icon="home" data-mini="true">首页</a>
+		<?php }?>
+		<h1>全景视界</h1>
+		<?php if($datas['back']){?>
+		<a data-rel="back" href="#" data-role="button" data-mini="true">返回</a>
+		<?php }?>
 	</div><!-- /header -->
 
 	<div data-role="content">	
@@ -19,9 +23,11 @@
 	        </li>
 	        <?php }}?>
 	    </ul>
+	    <?php if($datas['page_next']){?>
 	    <div class="next_page">
-	    <a href="index.html" data-role="button" >下一页</a>
+	    <a href="<?=$this->createUrl('/home/projects/list/', array('page'=>$datas['page']));?>" data-role="button" >下一页</a>
 	    </div>
+	    <?php }?>
 	</div><!-- /content -->
 
 </div>
