@@ -2,6 +2,7 @@
 class ViewController extends FController{
     public $defaultAction = 'a';
     public $layout = 'home';
+    public $player = true;
 
     public function actionA(){
         $datas = array();
