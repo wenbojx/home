@@ -9,43 +9,16 @@
 
 	<div data-role="content">	
 		<ul data-role="listview" class="projects" >
+			<?php if($datas['projects']){ foreach($datas['projects'] as $k=>$v){?>
 	        <li>
-	        	<a href="<?=$this->createUrl('/home/panos/list/');?>" class="ui-link-inherit">
-		            <img src="/style/img/2.jpg" />
-		            <h3>Item A</h3>
-		            <p>xd</p>
+	        	<a href="<?=$this->createUrl('/home/panos/list/', array('id'=>$v['project']['id']));?>" class="ui-link-inherit">
+		            <img src="<?=Yii::app()->params['img_domain']?>/panos/thumb/pic/id/<?=$v['scene']['id']?>/size/200x100.jpg"/>
+		            <h3><?=$v['project']['name']?>(含<?=$v['total_num']?>个场景)</h3>
+		            <p><?=$v['project']['desc']?></p>
 	            </a>
 	        </li>
-	        <li>
-	        	<a href="index.html" class="ui-link-inherit">
-		            <img src="/style/img/2.jpg" />
-		            <h3>Item A</h3>
-		            <p>xd</p>
-	            </a>
-	        </li>
-	        <li>
-	        	<a href="index.html" class="ui-link-inherit">
-		            <img src="/style/img/2.jpg" />
-		            <h3>Item A</h3>
-		            <p>xd</p>
-	            </a>
-	        </li>  
-	        <li>
-	        	<a href="index.html" class="ui-link-inherit">
-		            <img src="/style/img/2.jpg" />
-		            <h3>Item A</h3>
-		            <p>xd</p>
-	            </a>
-	        </li>
-	        <li>
-	        	<a href="index.html" class="ui-link-inherit">
-		            <img src="/style/img/2.jpg" />
-		            <h3>Item A</h3>
-		            <p>xd</p>
-	            </a>
-	        </li>
+	        <?php }}?>
 	    </ul>
-	    <div class="clear"></div>
 	    <div class="next_page">
 	    <a href="index.html" data-role="button" >下一页</a>
 	    </div>
