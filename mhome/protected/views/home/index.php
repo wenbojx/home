@@ -10,25 +10,40 @@
 	<div data-role="content">	
 		<ul data-role="listview" >
 	        <li>
-	            <img src="style/img/1.jpg" />
-	            <h3>Item A</h3>
-	            <p>xd
-	            	
-	            </p>
+	        	<a href="index.html" class="ui-link-inherit">
+		            <img src="style/img/1.jpg" />
+		            <h3>Item A</h3>
+		            <p>xd</p>
+	            </a>
 	        </li>
 	        <li>
-	            <img src="style/img/1.jpg" />
-	            <h3>Item B</h3>
-	            <p>xd2</p>
+	        	<a href="index.html" class="ui-link-inherit">
+		            <img src="style/img/1.jpg" />
+		            <h3>Item A</h3>
+		            <p>xd</p>
+	            </a>
 	        </li>
 	        <li>
-	            <img src="style/img/1.jpg" />
-	            <h3>Item C</h3>
+	        	<a href="index.html" class="ui-link-inherit">
+		            <img src="style/img/1.jpg" />
+		            <h3>Item A</h3>
+		            <p>xd</p>
+	            </a>
+	        </li>  
+	        <li>
+	        	<a href="index.html" class="ui-link-inherit">
+		            <img src="style/img/1.jpg" />
+		            <h3>Item A</h3>
+		            <p>xd</p>
+	            </a>
 	        </li>
 	        <li>
-	            <img src="style/img/1.jpg" />
-	            <h3>Item D</h3>
-	        </li>          
+	        	<a href="index.html" class="ui-link-inherit">
+		            <img src="style/img/1.jpg" />
+		            <h3>Item A</h3>
+		            <p>xd</p>
+	            </a>
+	        </li>
 	    </ul>
 		
 	</div><!-- /content -->
