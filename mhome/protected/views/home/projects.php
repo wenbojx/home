@@ -13,8 +13,8 @@
 	        <li>
 	        	<a href="<?=$this->createUrl('/home/panos/list/', array('id'=>$v['project']['id']));?>" class="ui-link-inherit">
 		            <img src="<?=Yii::app()->params['img_domain']?>/panos/thumb/pic/id/<?=$v['scene']['id']?>/size/200x100.jpg"/>
-		            <h3><?=$v['project']['name']?>(含<?=$v['total_num']?>个场景)</h3>
-		            <p><?=$v['project']['desc']?></p>
+		            <h3><?=$v['project']['name']?></h3>
+		            <p>(含<?=$v['total_num']?>个场景)</p>
 	            </a>
 	        </li>
 	        <?php }}?>
