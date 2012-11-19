@@ -7,6 +7,7 @@
 	</div><!-- /header -->
 
 	<div data-role="content" id="pano_container">
+		<img id="loading" src="/style/img/loading_4.gif"/>
 	</div>
 
 </div>

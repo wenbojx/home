@@ -42,12 +42,12 @@ function init(container) {
 	for ( var i = 0; i < sides.length; i ++ ) {
 
 		var side = sides[ i ];
-		if(i==5){
+		if(i==0){
 			var element = new Image(); 
 			element.width = 1026; // 2 pixels extra to close the gap.
 			element.src = side.url;
 			element.onload = function (){
-				alert(11);
+				$("#loading").hide();
 			} 
 		}
 		else{
