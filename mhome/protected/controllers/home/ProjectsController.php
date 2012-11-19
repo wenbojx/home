@@ -3,7 +3,7 @@ class ProjectsController extends FController{
     public $defaultAction = 'list';
     public $layout = 'home';
     private $project_db = null;
-    private $page_size = 5;
+    private $page_size = 10;
     //public $page_obj = null;
     public $page_next = true; //是否有下页
 
