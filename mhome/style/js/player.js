@@ -39,16 +39,17 @@ function init(container) {
 		
 	];
 
-	for ( var i = 0; i < sides.length; i ++ ) {
+	for ( var i = 0; i < sides.length; i++ ) {
 
 		var side = sides[ i ];
 		if(i==0){
 			var element = new Image(); 
 			element.width = 1026; // 2 pixels extra to close the gap.
-			element.src = side.url;
+			
 			element.onload = function (){
 				$("#loading").hide();
 			} 
+			element.src = side.url;
 		}
 		else{
 			var element = document.createElement( 'img' );
