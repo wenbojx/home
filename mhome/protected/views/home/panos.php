@@ -11,7 +11,7 @@
 		<ul data-role="listview" class="panos" >
 			<?php if($datas['scenes']){ foreach ($datas['scenes'] as $v){?>
 	        <li>
-	        	<a href="<?=$this->createUrl('/home/view/a/', array('id'=>$v['id']));?>" class="ui-link-inherit">
+	        	<a rel="external" href="<?=$this->createUrl('/home/view/a/', array('id'=>$v['id']));?>" class="ui-link-inherit">
 		            <img src="<?=Yii::app()->params['img_domain']?>/panos/thumb/pic/id/<?=$v['id']?>/size/200x100.jpg"" />
 		            <h3><?=$v['name']?></h3>
 	            </a>

@@ -3,7 +3,7 @@
 	<div data-role="header" id="header">
 		<a href="<?=$this->createUrl('/home/panos/list/', array('id'=>1));?>" data-role="button" data-icon="home" data-mini="true">返回</a>
 		<h1>全景视界</h1>
-		<a href="<?=$this->createUrl('/home/view/a/', array('id'=>2));?>" data-role="button" data-mini="true">下一个</a>
+		<a href="<?=$this->createUrl('/home/view/a/', array('id'=>2));?>" rel="external" data-role="button" data-mini="true">下一个</a>
 	</div><!-- /header -->
 
 	<div data-role="content" id="pano_container">
