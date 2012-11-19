@@ -7,11 +7,14 @@ class ListController extends FController{
     public $page_obj = null;
 
     public function actionA(){
-        $datas['projects'] = $this->get_project_list();
+    	$request = Yii::app()->request;
+    	$page = $request->getParam('page')?$request->getParam('page'):1;
+        $datas['projects'] = $this->get_project_list($page);
         $datas['pages'] = $this->page_obj;
+        
         $this->render('/web/list', array('datas'=>$datas));
     }
-    private function get_project_list(){
+    private function get_project_list($page){
     	$datas = array();
     	$this->project_db = new Project();
     	
