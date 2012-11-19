@@ -51,19 +51,7 @@
 					scene.add( object );
 
 				}
-				var hotspot = {};
-				hotspot.url = './test/hotspot-10.png';
-				hotspot.position = new THREE.Vector3( -512, 0, 0 );
-				hotspot.rotation = new THREE.Vector3( 0, Math.PI / 2, 0 );
-				
-				var element = document.createElement( 'img' );
-				element.width = 50; // 2 pixels extra to close the gap.
-				element.src = hotspot.url;
-				
-				var object = new THREE.CSS3DObject( element );
-				object.position = hotspot.position;
-				object.rotation = hotspot.rotation;
-				scene.add( object );
+			
 				
 
 				renderer = new THREE.CSS3DRenderer();
