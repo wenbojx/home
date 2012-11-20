@@ -31,10 +31,7 @@ class ImageContent {
     public function show($resource,  $quality=100){
 
     	$this->myimage = new Imagick($resource);
-    	echo 111;
     	$this->myimage->setImageCompression(Imagick::COMPRESSION_JPEG);
-    	echo $resource;
-    	exit();
 		$ext = strtolower( $this->myimage->getImageFormat() );
 		$this->myimage->setImageFormat($ext);
 		$this->water_pic();
@@ -58,6 +55,8 @@ class ImageContent {
         if(!$this->water){
 	        return false;
         }
+        echo 11;
+        exit();
         $rand = rand(0, 8);
 	    $time = substr(time(), $rand, 2);
 	    $rand = rand(0, 5);
