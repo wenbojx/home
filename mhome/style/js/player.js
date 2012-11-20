@@ -44,7 +44,7 @@ function init(container) {
 		var side = sides[ i ];
 		if(i==0){
 			var element = new Image(); 
-			element.width = 1026; // 2 pixels extra to close the gap.
+			element.width = pic_width*2+2; // 2 pixels extra to close the gap.
 			
 			element.onload = function (){
 				$("#loading").hide();
