@@ -12,7 +12,7 @@ class ImageContent {
             return false;
         }
         //header cache
-        $cache_time = '31104000';
+        $cache_time = '2592000';
         header('Cache-Control: max-age='.$cache_time);
         header('Pragma: cache');
         $created = strtotime(date('Y-m-d',time()));
@@ -31,17 +31,16 @@ class ImageContent {
     public function show($resource,  $quality=100){
 
     	$this->myimage = new Imagick($resource);
-    	$this->myimage->setImageCompression(Imagick::COMPRESSION_JPEG);
+    	$this->myimage->setImageCompression(imagick::COMPRESSION_JPEG);
 		$ext = strtolower( $this->myimage->getImageFormat() );
 		$this->myimage->setImageFormat($ext);
 		$this->water_pic();
 		//echo $quality;
-		
 		$this->myimage->setImageCompressionQuality($quality);
 		if($this->sharpen){
 			$this->myimage->sharpenImage($this->sharpen, $this->sharpen);
 		}
-		
+
 		header( 'Content-Type: '.$this->_extensionToMime($ext) );
 
 		echo $this->myimage->getImagesBLOB();
@@ -55,7 +54,6 @@ class ImageContent {
         if(!$this->water){
 	        return false;
         }
-        
         $rand = rand(0, 8);
 	    $time = substr(time(), $rand, 2);
 	    $rand = rand(0, 5);
@@ -64,19 +62,11 @@ class ImageContent {
 	    $oy = $time*$rand;
 	    $water = new Imagick($this->water_pic_path);
 	    $dw = new ImagickDraw();
-	    //echo 11;
-	    echo $ox.'<br>';
-	    echo $oy.'<br>';
-	    $ox=100;
-	    $oy=100;
-	    
 	    $dw -> composite($water->getImageCompose(),$ox,$oy,50,0,$water);
-	    exit();
     	$this->myimage -> drawImage($dw);
 
     	$water->clear();
     	$water->destroy();
-    	
 	    return true;
     }
 
@@ -180,6 +170,7 @@ class ImageContent {
         $pic_datas['created'] = $datas['created'];
         $pic_datas['md5value'] = $datas['md5value'];
         $pic_datas['size'] = $size;
+        //print_r($pic_datas);
         return $pic_datas;
     }
 
