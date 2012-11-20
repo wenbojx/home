@@ -2,7 +2,7 @@
 <div data-role="page">
 	<div data-role="header" id="header">
 		<a rel="external" href="<?=$this->createUrl('/home/panos/list/', array('id'=>$datas['scene']['project_id']));?>" data-role="button" data-icon="home" data-mini="true">返回</a>
-		<h1 id="aw"></h1>
+		<h1><?=$datas['scene']['name']?></h1>
 		<?php if($datas['next_id']){?>
 		<a href="<?=$this->createUrl('/home/view/a/', array('id'=>$datas['next_id']));?>" rel="external" data-role="button" data-mini="true">下一个</a>
 		<?php }?>
@@ -16,7 +16,7 @@
 
 </div>
 <script>
-var pic_width = 400;
+var pic_width = windows_size();
 var pic_full_width = pic_width*2;
 var tilt_size = pic_full_width+'x'+pic_full_width+'.jpg';
 var url = '<?=Yii::app()->params['img_domain']?>home/pictrue/index/';
@@ -37,7 +37,6 @@ var touchX, touchY;
 
 
 init('pano_container');
-windows_size();
 //setTimeout("animate()", 5000);
 //show();
 animate()
