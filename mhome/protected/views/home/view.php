@@ -35,9 +35,6 @@ var lon = 90, lat = 0;
 var phi = 0, theta = 0;
 var touchX, touchY;
 
-
 init('pano_container');
-//setTimeout("animate()", 5000);
-//show();
 animate()
 </script>
