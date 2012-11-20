@@ -30,7 +30,7 @@ var lon = 90, lat = 0;
 var phi = 0, theta = 0;
 
 var touchX, touchY;
-var pic_width = 500;
+var pic_width = 250;
 
 init('pano_container');
 animate();

@@ -53,7 +53,7 @@ function init(container) {
 		}
 		else{*/
 			var element = document.createElement( 'img' );
-			element.width = pic_width+2; // 2 pixels extra to close the gap.
+			element.width = pic_width*2+2; // 2 pixels extra to close the gap.
 			element.src = side.url;
 		//}
 
