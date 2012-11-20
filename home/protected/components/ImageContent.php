@@ -67,8 +67,9 @@ class ImageContent {
 	    echo 11;
 	    echo $ox.'<br>';
 	    echo $oy.'<br>';
-	    exit();
+	    
 	    $dw -> composite($water->getImageCompose(),$ox,$oy,50,0,$water);
+	    exit();
     	$this->myimage -> drawImage($dw);
 
     	$water->clear();
