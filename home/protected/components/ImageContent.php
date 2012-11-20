@@ -29,7 +29,8 @@ class ImageContent {
     }
 	// 输出到浏览器
     public function show($resource,  $quality=100){
-
+echo $resource;
+exit();
     	$this->myimage = new Imagick($resource);
     	$this->myimage->setImageCompression(imagick::COMPRESSION_JPEG);
 		$ext = strtolower( $this->myimage->getImageFormat() );
@@ -170,8 +171,6 @@ class ImageContent {
         $pic_datas['created'] = $datas['created'];
         $pic_datas['md5value'] = $datas['md5value'];
         $pic_datas['size'] = $size;
-        print_r($pic_datas);
-        exit();
         return $pic_datas;
     }
 
