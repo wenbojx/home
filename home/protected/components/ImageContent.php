@@ -36,12 +36,13 @@ class ImageContent {
 		$this->myimage->setImageFormat($ext);
 		$this->water_pic();
 		//echo $quality;
+		echo $resource;
+		exit();
 		$this->myimage->setImageCompressionQuality($quality);
 		if($this->sharpen){
 			$this->myimage->sharpenImage($this->sharpen, $this->sharpen);
 		}
-		echo $resource;
-		exit();
+		
 		header( 'Content-Type: '.$this->_extensionToMime($ext) );
 
 		echo $this->myimage->getImagesBLOB();
