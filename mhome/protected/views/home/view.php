@@ -17,12 +17,12 @@
 </div>
 <script>
 var url = '<?=Yii::app()->params['img_domain']?>home/pictrue/index/';
-var pano_right = url+'id/<?=$datas['pics']['right']?>/size/500x500.jpg';
-var pano_left = url+'id/<?=$datas['pics']['left']?>/size/500x500.jpg';
-var pano_top = url+'id/<?=$datas['pics']['up']?>/size/500x500.jpg';
-var pano_bottom = url+'id/<?=$datas['pics']['down']?>/size/500x500.jpg';
-var pano_front = url+'id/<?=$datas['pics']['front']?>/size/500x500.jpg';
-var pano_back = url+'id/<?=$datas['pics']['back']?>/size/500x500.jpg';
+var pano_right = url+'id/<?=$datas['pics']['right']?>/size/800x800.jpg';
+var pano_left = url+'id/<?=$datas['pics']['left']?>/size/800x800.jpg';
+var pano_top = url+'id/<?=$datas['pics']['up']?>/size/800x800.jpg';
+var pano_bottom = url+'id/<?=$datas['pics']['down']?>/size/800x800.jpg';
+var pano_front = url+'id/<?=$datas['pics']['front']?>/size/800x800.jpg';
+var pano_back = url+'id/<?=$datas['pics']['back']?>/size/800x800.jpg';
 
 var camera, scene, renderer;
 var geometry, material, mesh;
@@ -32,7 +32,7 @@ var lon = 90, lat = 0;
 var phi = 0, theta = 0;
 
 var touchX, touchY;
-var pic_width = 250;
+var pic_width = 400;
 
 init('pano_container');
 animate();
