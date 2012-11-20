@@ -171,6 +171,7 @@ class ImageContent {
         $pic_datas['md5value'] = $datas['md5value'];
         $pic_datas['size'] = $size;
         print_r($pic_datas);
+        exit();
         return $pic_datas;
     }
 
