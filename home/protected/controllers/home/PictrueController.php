@@ -15,7 +15,8 @@ class PictrueController extends FController{
             $img_class = new ImageContent();
             $img_class->water = $from == 'm' ? true :false;
             if($img_class){
-            	$img_class->sharpen = 1;
+            	$img_class->sharpen = 2;
+            	$img_class->quality = 75;
             }
             $size = $request->getParam('size') ? $request->getParam('size') : '';
             $pic_datas = $img_class->get_img_content_by_md5file($no, $size, 'original');

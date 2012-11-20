@@ -1,9 +1,11 @@
-<?php $this->pageTitle=$datas['project']['name'].'---足不出户，畅游中国';?>
+<?php $this->pageTitle=$datas['scene']['name'].'---足不出户，畅游中国';?>
 <div data-role="page">
 	<div data-role="header" id="header">
-		<a href="<?=$this->createUrl('/home/panos/list/', array('id'=>1));?>" data-role="button" data-icon="home" data-mini="true">返回</a>
-		<h1>全景视界</h1>
-		<a href="<?=$this->createUrl('/home/view/a/', array('id'=>2));?>" rel="external" data-role="button" data-mini="true">下一个</a>
+		<a rel="external" href="<?=$this->createUrl('/home/panos/list/', array('id'=>$datas['scene']['project_id']));?>" data-role="button" data-icon="home" data-mini="true">返回</a>
+		<h1><?=$datas['scene']['name']?></h1>
+		<?php if($datas['next_id']){?>
+		<a href="<?=$this->createUrl('/home/view/a/', array('id'=>$datas['next_id']));?>" rel="external" data-role="button" data-mini="true">下一个</a>
+		<?php }?>
 	</div><!-- /header -->
 
 	<div data-role="content" id="pano_container">

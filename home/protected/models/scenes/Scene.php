@@ -169,6 +169,34 @@ class Scene extends Ydao
     	$criteria->addCondition('display=2');
     	return $this->findAll($criteria);
     }
+    /**
+     * 获取下一个场景id
+     */
+    public function get_next_scene_id($scene_id, $project_id=0){
+    	if(!$scene_id){
+    		return false;
+    	}
+    	//获取锚点
+    	$scene_hotspot_db = new ScenesHotspot();
+    	$hotspot = $scene_hotspot_db->find_by_scene_id($scene_id);
+    	if($hotspot && count($hotspot)>0){
+    		return $hotspot[0]['link_scene_id'];
+    	}
+    	$criteria=new CDbCriteria;
+    	$criteria->addCondition('status=1');
+    	$criteria->addCondition('display=2');
+    	$criteria->addCondition("id>{$scene_id}");
+    	if($project_id){
+    		$criteria->addCondition("project_id={$project_id}");
+    	}
+    	$criteria->limit = 1;
+    	$criteria->order = 'id ASC';
+    	$datas = $this->find($criteria);
+    	if(!$datas){
+    		return false;
+    	}
+    	return $datas['id'];
+    }
     /*
      * 获取景点数
     */

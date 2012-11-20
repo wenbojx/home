@@ -3,7 +3,7 @@
 
 	<div data-role="header">
 		<?php if($datas['back']){?>
-		<a href="/" data-role="button" data-icon="home" data-mini="true">首页</a>
+		<a rel="external" href="/" data-role="button" data-icon="home" data-mini="true">首页</a>
 		<?php }?>
 		<h1>全景视界</h1>
 		<?php if($datas['back']){?>

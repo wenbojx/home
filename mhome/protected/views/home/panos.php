@@ -2,7 +2,7 @@
 <div data-role="page">
 
 	<div data-role="header">
-		<a href="/" data-role="button" data-icon="home" data-mini="true">首页</a>
+		<a rel="external" href="/" data-role="button" data-icon="home" data-mini="true">首页</a>
 		<h1><?=$datas['project']['name']?></h1>
 		<a data-rel="back" href="#" data-role="button" data-mini="true">返回</a>
 	</div><!-- /header -->

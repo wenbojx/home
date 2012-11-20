@@ -15,11 +15,17 @@ class ViewController extends FController{
     	$datas = array();
     	$datas['scene'] = $this->get_scene_data($scene_id);
     	$datas['pics'] = $this->get_scene_pics($scene_id);
-    	//print_r($datas['pics']);
+    	if($datas['scene']){
+    		$datas['next_id'] = $this->get_next_scene($scene_id, $datas['scene']['project_id']);
+    	}
+    	//print_r($datas['next_id']);
         
         $this->render('/home/view', array('datas'=>$datas));
     }
-
+    //获取该场景下一个场景
+    private function get_next_scene($scene_id, $project_id){
+    	return $this->scene_db->get_next_scene_id($scene_id, $project_id);
+    }
     //获取场景信息
     private function get_scene_data($scene_id){
     	$data = array();

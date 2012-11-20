@@ -24,18 +24,19 @@ class ImageContent {
         HttpCache::etag($etag);
         HttpCache::expires($cache_time); //默认缓存一年
 
-        $this->show($pic_datas['path'], 80);
+        $this->show($pic_datas['path'], 75);
         exit();
     }
 	// 输出到浏览器
     public function show($resource,  $quality=100){
 
     	$this->myimage = new Imagick($resource);
+    	$this->myimage->setImageCompression(imagick::COMPRESSION_JPEG);
 		$ext = strtolower( $this->myimage->getImageFormat() );
 		$this->myimage->setImageFormat($ext);
 		$this->water_pic();
-
-		$this->myimage->setCompressionQuality($quality);
+		//echo $quality;
+		$this->myimage->setImageCompressionQuality($quality);
 		if($this->sharpen){
 			$this->myimage->sharpenImage($this->sharpen, $this->sharpen);
 		}
@@ -177,17 +178,13 @@ class ImageContent {
      * 缩小图片大小
      */
     private function resize($input, $output, $width, $height){
-        //$image = new Image($input);
-/*        if($this->sharpen){
-        	$image->resize($width, $height)->quality($this->quality)->sharpen($this->sharpen);
-        }
-        else{
-        	$image->resize($width, $height)->quality($this->quality);
-        }*/
-        //$image->resize($width, $height);
-        $myimage = new Imagick($input);
-        $myimage->resizeimage($width, $height, Imagick::FILTER_LANCZOS, 1, true);
 
+        $myimage = new Imagick($input);
+        $ext = strtolower( $myimage->getImageFormat() );
+        $myimage->setImageFormat($ext);
+        
+        $myimage->resizeimage($width, $height, Imagick::FILTER_LANCZOS, 1, true);
+        //$myimage->setCompressionQuality($this->quality);
         $myimage->writeImage($output);
         $myimage->clear();
     	$myimage->destroy();
