@@ -35,7 +35,9 @@ class ImageContent {
 		$ext = strtolower( $this->myimage->getImageFormat() );
 		$this->myimage->setImageFormat($ext);
 		$this->water_pic();
-		//echo $quality;
+		if($this->quality && $this->quality !=100){
+			$quality = $this->quality;
+		}
 		$this->myimage->setImageCompressionQuality($quality);
 		if($this->sharpen){
 			$this->myimage->sharpenImage($this->sharpen, $this->sharpen);

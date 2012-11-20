@@ -2,7 +2,7 @@
 <div data-role="page">
 	<div data-role="header" id="header">
 		<a rel="external" href="<?=$this->createUrl('/home/panos/list/', array('id'=>$datas['scene']['project_id']));?>" data-role="button" data-icon="home" data-mini="true">返回</a>
-		<h1><?=$datas['scene']['name']?></h1>
+		<h1 id="aw"></h1>
 		<?php if($datas['next_id']){?>
 		<a href="<?=$this->createUrl('/home/view/a/', array('id'=>$datas['next_id']));?>" rel="external" data-role="button" data-mini="true">下一个</a>
 		<?php }?>
@@ -16,13 +16,16 @@
 
 </div>
 <script>
+var pic_width = 400;
+var pic_full_width = pic_width*2;
+var tilt_size = pic_full_width+'x'+pic_full_width+'.jpg';
 var url = '<?=Yii::app()->params['img_domain']?>home/pictrue/index/';
-var pano_right = url+'id/<?=$datas['pics']['right']?>/size/800x800.jpg';
-var pano_left = url+'id/<?=$datas['pics']['left']?>/size/800x800.jpg';
-var pano_top = url+'id/<?=$datas['pics']['up']?>/size/800x800.jpg';
-var pano_bottom = url+'id/<?=$datas['pics']['down']?>/size/800x800.jpg';
-var pano_front = url+'id/<?=$datas['pics']['front']?>/size/800x800.jpg';
-var pano_back = url+'id/<?=$datas['pics']['back']?>/size/800x800.jpg';
+var pano_right = url+'id/<?=$datas['pics']['right']?>/size/'+tilt_size;
+var pano_left = url+'id/<?=$datas['pics']['left']?>/size/'+tilt_size;
+var pano_top = url+'id/<?=$datas['pics']['up']?>/size/'+tilt_size;
+var pano_bottom = url+'id/<?=$datas['pics']['down']?>/size/'+tilt_size;
+var pano_front = url+'id/<?=$datas['pics']['front']?>/size/'+tilt_size;
+var pano_back = url+'id/<?=$datas['pics']['back']?>/size/'+tilt_size;
 
 var camera, scene, renderer;
 var geometry, material, mesh;
@@ -30,11 +33,11 @@ var target = new THREE.Vector3();
 
 var lon = 90, lat = 0;
 var phi = 0, theta = 0;
-
 var touchX, touchY;
-var pic_width = 400;
+
 
 init('pano_container');
+windows_size();
 //setTimeout("animate()", 5000);
 //show();
 animate()
