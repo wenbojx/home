@@ -15,11 +15,11 @@
 </div>
 <script>
 var url = '<?=Yii::app()->params['img_domain']?>home/pictrue/index/';
-var pano_right = url+'id/<?=$datas['pics']['right']?>/from/m/size/500x500.jpg';
-var pano_left = url+'id/<?=$datas['pics']['left']?>/from/m/size/500x500.jpg';
+var pano_right = url+'id/<?=$datas['pics']['right']?>/size/500x500.jpg';
+var pano_left = url+'id/<?=$datas['pics']['left']?>/size/500x500.jpg';
 var pano_top = url+'id/<?=$datas['pics']['up']?>/from/m/size/500x500.jpg';
 var pano_bottom = url+'id/<?=$datas['pics']['down']?>/from/m/size/500x500.jpg';
-var pano_front = url+'id/<?=$datas['pics']['front']?>/from/m/size/500x500.jpg';
+var pano_front = url+'id/<?=$datas['pics']['front']?>/size/500x500.jpg';
 var pano_back = url+'id/<?=$datas['pics']['back']?>/from/m/size/500x500.jpg';
 
 var camera, scene, renderer;

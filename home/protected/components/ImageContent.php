@@ -36,6 +36,9 @@ class ImageContent {
 		$this->water_pic();
 
 		$this->myimage->setCompressionQuality($quality);
+		if($this->sharpen){
+			$this->myimage->sharpenImage($this->sharpen, $this->sharpen);
+		}
 
 		header( 'Content-Type: '.$this->_extensionToMime($ext) );
 
@@ -184,6 +187,7 @@ class ImageContent {
         //$image->resize($width, $height);
         $myimage = new Imagick($input);
         $myimage->resizeimage($width, $height, Imagick::FILTER_LANCZOS, 1, true);
+
         $myimage->writeImage($output);
         $myimage->clear();
     	$myimage->destroy();
