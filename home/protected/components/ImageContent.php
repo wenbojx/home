@@ -31,7 +31,7 @@ class ImageContent {
     public function show($resource,  $quality=100){
 
     	$this->myimage = new Imagick($resource);
-    	$this->myimage->setImageCompression(imagick::COMPRESSION_JPEG);
+    	$this->myimage->setImageCompression(Imagick::COMPRESSION_JPEG);
 		$ext = strtolower( $this->myimage->getImageFormat() );
 		$this->myimage->setImageFormat($ext);
 		$this->water_pic();
