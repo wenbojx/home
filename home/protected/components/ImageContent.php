@@ -64,9 +64,11 @@ class ImageContent {
 	    $oy = $time*$rand;
 	    $water = new Imagick($this->water_pic_path);
 	    $dw = new ImagickDraw();
-	    echo 11;
+	    //echo 11;
 	    echo $ox.'<br>';
 	    echo $oy.'<br>';
+	    $ox=100;
+	    $oy=100;
 	    
 	    $dw -> composite($water->getImageCompose(),$ox,$oy,50,0,$water);
 	    exit();
