@@ -35,5 +35,7 @@ var touchX, touchY;
 var pic_width = 400;
 
 init('pano_container');
-animate();
+//setTimeout("animate()", 5000);
+//show();
+animate()
 </script>

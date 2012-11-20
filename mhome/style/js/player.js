@@ -148,10 +148,9 @@ function onDocumentTouchMove( event ) {
 }
 
 function animate() {
-
 	requestAnimationFrame( animate );
 
-	lon +=  0.10;
+	lon +=  0.15;
 	lat = Math.max( - 85, Math.min( 85, lat ) );
 	phi = ( 90 - lat ) * Math.PI / 180;
 	theta = lon * Math.PI / 180;
@@ -163,5 +162,19 @@ function animate() {
 	camera.lookAt( target );
 
 	renderer.render( scene, camera );
-
 }
+
+function show() {
+	lat = Math.max( - 85, Math.min( 85, lat ) );
+	phi = ( lat ) * Math.PI / 180;
+	theta = lon * Math.PI / 180;
+
+	target.x = Math.sin( phi ) * Math.cos( theta );
+	target.y = Math.cos( phi );
+	target.z = Math.sin( phi ) * Math.sin( theta );
+
+	camera.lookAt( target );
+
+	renderer.render( scene, camera );
+}
+
