@@ -9,9 +9,9 @@
 	</div><!-- /header -->
 
 	<div data-role="content" id="pano_container">
-		<!-- <div id="loading" class="loading">
+		<div id="loading" class="loading">
 			<img src="/style/img/loading_4.gif"/>
-		</div> -->
+		</div>
 	</div>
 
 </div>
