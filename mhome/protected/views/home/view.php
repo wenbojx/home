@@ -14,12 +14,13 @@
 
 </div>
 <script>
-var pano_right = '/html/threepano/cube/Bridge2/posx.jpg';
-var pano_left = '/html/threepano/cube/Bridge2/negx.jpg';
-var pano_top = '/html/threepano/cube/Bridge2/posy.jpg';
-var pano_bottom = '/html/threepano/cube/Bridge2/negy.jpg';
-var pano_front = '/html/threepano/cube/Bridge2/posz.jpg';
-var pano_back = '/html/threepano/cube/Bridge2/negz.jpg';
+var url = '<?=Yii::app()->params['img_domain']?>home/pictrue/index/';
+var pano_right = url+'id/<?=$datas['pics']['right']?>/from/m/size/500x500.jpg';
+var pano_left = url+'id/<?=$datas['pics']['left']?>/from/m/size/500x500.jpg';
+var pano_top = url+'id/<?=$datas['pics']['up']?>/from/m/size/500x500.jpg';
+var pano_bottom = url+'id/<?=$datas['pics']['down']?>/from/m/size/500x500.jpg';
+var pano_front = url+'id/<?=$datas['pics']['front']?>/from/m/size/500x500.jpg';
+var pano_back = url+'id/<?=$datas['pics']['back']?>/from/m/size/500x500.jpg';
 
 var camera, scene, renderer;
 var geometry, material, mesh;
@@ -29,6 +30,7 @@ var lon = 90, lat = 0;
 var phi = 0, theta = 0;
 
 var touchX, touchY;
+var pic_width = 500;
 
 init('pano_container');
 animate();

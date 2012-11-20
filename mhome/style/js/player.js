@@ -8,32 +8,32 @@ function init(container) {
 	var sides = [
 		{
 			url: pano_front,
-			position: new THREE.Vector3( 0, 0,  512 ),
+			position: new THREE.Vector3( 0, 0,  pic_width ),
 			rotation: new THREE.Vector3( 0, Math.PI, 0 )
 		},
 		{
 			url: pano_right,
-			position: new THREE.Vector3( -512, 0, 0 ),
+			position: new THREE.Vector3( -pic_width, 0, 0 ),
 			rotation: new THREE.Vector3( 0, Math.PI / 2, 0 )
 		},
 		{
 			url: pano_back,
-			position: new THREE.Vector3( 0, 0, -512 ),
+			position: new THREE.Vector3( 0, 0, -pic_width ),
 			rotation: new THREE.Vector3( 0, 0, 0 )
 		},
 		{
 			url: pano_left,
-			position: new THREE.Vector3( 512, 0, 0 ),
+			position: new THREE.Vector3( pic_width, 0, 0 ),
 			rotation: new THREE.Vector3( 0, -Math.PI / 2, 0 )
 		},
 		{
 			url: pano_top,
-			position: new THREE.Vector3( 0,  512, 0 ),
+			position: new THREE.Vector3( 0,  pic_width, 0 ),
 			rotation: new THREE.Vector3( Math.PI / 2, 0, Math.PI )
 		},
 		{
 			url: pano_bottom,
-			position: new THREE.Vector3( 0, -512, 0 ),
+			position: new THREE.Vector3( 0, -pic_width, 0 ),
 			rotation: new THREE.Vector3( - Math.PI / 2, 0, Math.PI )
 		}
 		
@@ -53,7 +53,7 @@ function init(container) {
 		}
 		else{*/
 			var element = document.createElement( 'img' );
-			element.width = 1026; // 2 pixels extra to close the gap.
+			element.width = pic_width+2; // 2 pixels extra to close the gap.
 			element.src = side.url;
 		//}
 
@@ -151,7 +151,7 @@ function animate() {
 
 	requestAnimationFrame( animate );
 
-	lon +=  0.15;
+	lon +=  0.10;
 	lat = Math.max( - 85, Math.min( 85, lat ) );
 	phi = ( 90 - lat ) * Math.PI / 180;
 	theta = lon * Math.PI / 180;

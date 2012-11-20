@@ -8,9 +8,12 @@ class PictrueController extends FController{
     public function actionIndex(){
         $request = Yii::app()->request;
         $no = $request->getParam('id');
+        $from = $request->getParam('from');
+        
         $pic_datas = array('pic_type'=>'jpg', 'pic_content'=>'');
         if($no){
             $img_class = new ImageContent();
+            $img_class->water = $from == 'm' ? true :false;
             $size = $request->getParam('size') ? $request->getParam('size') : '';
             $pic_datas = $img_class->get_img_content_by_md5file($no, $size, 'original');
         }
