@@ -55,8 +55,7 @@ class ImageContent {
         if(!$this->water){
 	        return false;
         }
-        echo 11;
-        exit();
+        
         $rand = rand(0, 8);
 	    $time = substr(time(), $rand, 2);
 	    $rand = rand(0, 5);
@@ -70,6 +69,8 @@ class ImageContent {
 
     	$water->clear();
     	$water->destroy();
+    	echo 11;
+    	exit();
 	    return true;
     }
 
