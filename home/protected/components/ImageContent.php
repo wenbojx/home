@@ -102,7 +102,7 @@ class ImageContent {
         if(!is_file($path)){
             return false;
         }
-        $pic_datas = $this->get_image_type($type);
+        //$pic_datas = $this->get_image_type($type);
         $pic_datas['path'] = $path;
 
         $this->show_pics($pic_datas);
