@@ -9,7 +9,7 @@
 </style>
 <div class="panel_box_content" >
 <div class="panel_title">
-	<div class="title-bar">上传全景图1</div>
+	<div class="title-bar">上传全景图</div>
 	<div class="panel_close" onclick="hide_edit_panel()">X</div>
 </div>
 <div class="panle_content" style="height:360px;">
