@@ -19,13 +19,19 @@
 var pic_width = windows_size();
 var pic_full_width = pic_width*2;
 var tilt_size = pic_full_width+'x'+pic_full_width+'.jpg';
-var url = '<?=Yii::app()->params['img_domain']?>home/pictrue/index/';
-var pano_right = url+'id/<?=$datas['pics']['right']?>/size/'+tilt_size;
-var pano_left = url+'id/<?=$datas['pics']['left']?>/size/'+tilt_size;
-var pano_top = url+'id/<?=$datas['pics']['up']?>/size/'+tilt_size;
-var pano_bottom = url+'id/<?=$datas['pics']['down']?>/size/'+tilt_size;
-var pano_front = url+'id/<?=$datas['pics']['front']?>/size/'+tilt_size;
-var pano_back = url+'id/<?=$datas['pics']['back']?>/size/'+tilt_size;
+var url1 = '<?=PicTools::get_img_domain(0);?>home/pictrue/index/';
+var url2 = '<?=PicTools::get_img_domain(1);?>home/pictrue/index/';
+var url3 = '<?=PicTools::get_img_domain(0);?>home/pictrue/index/';
+var url4 = '<?=PicTools::get_img_domain(1);?>home/pictrue/index/';
+var url5 = '<?=PicTools::get_img_domain(0);?>home/pictrue/index/';
+var url6 = '<?=PicTools::get_img_domain(1);?>home/pictrue/index/';
+
+var pano_right = url1+'id/<?=$datas['pics']['right']?>/size/'+tilt_size;
+var pano_left = url2+'id/<?=$datas['pics']['left']?>/size/'+tilt_size;
+var pano_top = url3+'id/<?=$datas['pics']['up']?>/size/'+tilt_size;
+var pano_bottom = url4+'id/<?=$datas['pics']['down']?>/size/'+tilt_size;
+var pano_front = url5+'id/<?=$datas['pics']['front']?>/size/'+tilt_size;
+var pano_back = url6+'id/<?=$datas['pics']['back']?>/size/'+tilt_size;
 
 var camera, scene, renderer;
 var geometry, material, mesh;

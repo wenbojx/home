@@ -88,7 +88,8 @@ class PanoramDatas{
      * 场景xml文件地址
      */
     public function panoram_xml_path($id){
-        return Yii::app()->params['img_domain'].'salado/index/b/id/'.$id.'/s_f.xml';
+    	$key = $id%2 == 0? '0':'1';
+        return PicTools::get_img_domain($key).'salado/index/b/id/'.$id.'/s_f.xml';
     }
     /**
      * 获取场景全景数信息

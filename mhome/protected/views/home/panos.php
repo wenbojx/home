@@ -12,7 +12,7 @@
 			<?php if($datas['scenes']){ foreach ($datas['scenes'] as $v){?>
 	        <li>
 	        	<a rel="external" href="<?=$this->createUrl('/home/view/a/', array('id'=>$v['id']));?>" class="ui-link-inherit">
-		            <img src="<?=Yii::app()->params['img_domain']?>/panos/thumb/pic/id/<?=$v['id']?>/size/200x100.jpg"" />
+		            <img src="<?=PicTools::get_img_domain(0);?>/panos/thumb/pic/id/<?=$v['id']?>/size/200x100.jpg"" />
 		            <h3><?=$v['name']?></h3>
 	            </a>
 	        </li>
