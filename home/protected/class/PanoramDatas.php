@@ -89,6 +89,7 @@ class PanoramDatas{
      */
     public function panoram_xml_path($id){
     	$key = $id%2 == 0? '0':'1';
+    	$key = 1;
         return PicTools::get_img_domain($key).'/salado/index/b/id/'.$id.'/s_f.xml';
     }
     /**
