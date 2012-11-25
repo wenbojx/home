@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="/style/js/jquery.min.js"></script> 
+<script type="text/javascript" src="./jquery.mousewheel.js"></script> 
+<script type="text/javascript" src="mapbox.min.js"></script> 
+<style type="text/css"> 
+    #viewport { 
+        width: 469px; 
+        height: 400px; 
+        cursor: move; 
+        margin: 20px auto; 
+        overflow: hidden; /*keep map contents from spilling over if JS is disabled*/ 
+    } 
+</style> 
+</head>
+<body>
+<div id="viewport"> 
+    <div style="background: url(layer1.png) no-repeat; width: 469px; height: 400px;"> 
+        <!--top level map content goes here--> 
+    </div> 
+    <div style="height: 2492px; width: 2922px;"> 
+        <img src="layer4.jpg" alt="" /> 
+         <div class="mapcontent"> 
+            <!--map content goes here--> 
+        </div> 
+    </div> 
+</div> 
+<script type="text/javascript"> 
+    $(document).ready(function() { 
+        $("#viewport").mapbox({mousewheel: true}); 
+    }); 
+</script> 
+</body>
+</html>

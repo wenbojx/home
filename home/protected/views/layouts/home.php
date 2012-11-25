@@ -34,7 +34,8 @@ var check_login_url = '<?=$this->createUrl('/member/login/check');?>';
                 <a href="/" class="brand">一路好</a>
                 <div id="main-menu" class="nav-collapse  bold font-size14">
                     <ul id="main-menu-left" class="nav">
-                        <li><a href="<?=$this->createUrl('/web/list/a');?>">全部景点</a></li>
+                        <li><a href="<?=$this->createUrl('/web/list/a');?>">景点</a></li>
+                        <li><a href="<?=$this->createUrl('/web/photoer/a');?>">摄影师</a></li>
                     </ul>
                     <ul id="main-menu-right" class="nav pull-right">
                         <!-- <li><a href="<?=$this->createUrl('/web/list/a');?>">全部景点</a></li> -->

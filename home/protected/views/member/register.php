@@ -44,6 +44,7 @@
                             <div class="controls">
                                 <input type="text" class="input-xlarge" value="" id="reg_code" name="reg[code]" maxlength="6">
                                 <p class="help-block">输入六位邀请码 <span id="reg_tip_code" class="color_red"></span></p>
+                                <a href="<?=$this->createUrl('/web/photoer/a');?>">索取邀请码</a>
                             </div>
                         </div>
                         <div class="form-actions">
