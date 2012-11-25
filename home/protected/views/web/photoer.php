@@ -15,10 +15,11 @@
                 <div class="span7 offset1">
                 <br>
                 	<strong>加入QQ群，向群主索取注册码</strong>
-                	
                 	<br><br>
                 	群1：280573438 
-                	
+                	<br><br>
+                	<strong>简洁易用的后台界面</strong>
+                	<img src="/style/img/a.jpg"/>
                 <br>
                 <br>
                 </div>
