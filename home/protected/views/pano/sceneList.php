@@ -30,7 +30,11 @@
                     	</div>
                     </div>
                     <div class="clear"></div>
-                <?php }}?>
+                <?php }} else { ?>
+                	<div class="margin-top10">
+					<strong>您还没有场景，点击右侧"新建场景"按钮，建立您的第一个场景</strong>
+					</div>
+				<?php }?>
             	</div>
             	<div class="page-footer">
 					<div class="pagination">

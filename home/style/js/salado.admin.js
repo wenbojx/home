@@ -55,7 +55,7 @@ function thumb_box_upload(){
         'debug':false,
         'width':42,
         'height':19,
-        'fileSizeLimit':'5242880KB',
+        'fileSizeLimit':'5120KB',
         'fileTypeDesc' : 'jpg,png,gif格式',
         'fileTypeExts':'*.jpg;*.png;*.gif;',
         'buttonImage':thumb_button_img,
@@ -72,8 +72,8 @@ function thumb_box_upload(){
                 alert(dataObj.msg);
             }
             else if(response>0){
-                var url = pic_url+'/id/'+dataObj.file+'/size/240x120.jpg';
-                var img_str = '<img width="240" height="120" src="'+url+'"/>';
+                var url = pic_url+'/id/'+dataObj.file+'/size/200x100.jpg';
+                var img_str = '<img width="200" height="100" src="'+url+'"/>';
                 $("#thumb_img").html(img_str);
             }
         }
@@ -95,7 +95,7 @@ function init_box_upload( position){
         'debug':false,
         'width':img_btn_w,
         'height':img_btn_h,
-        'fileSizeLimit':'5242880KB',
+        'fileSizeLimit':'10240KB',
         'fileTypeDesc' : 'jpg,png,gif格式',
         'fileTypeExts':'*.jpg;*.png;*.gif;',
         'buttonImage':button_img,

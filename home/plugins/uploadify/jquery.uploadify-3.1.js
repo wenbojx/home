@@ -279,7 +279,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 						uploadSize         : 0, // The size in bytes of the upload queue
 						queueBytesUploaded : 0, // The size in bytes that have been uploaded for the current upload queue
 						uploadQueue        : [], // The files currently to be uploaded
-						errorMsg           : 'Some files were not added to the queue:'
+						errorMsg           : '图片上传失败:'
 					};
 
 					// Save references to all the objects
@@ -569,7 +569,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 			var settings = this.settings;
 
 			// Reset some queue info
-			this.queueData.errorMsg       = 'Some files were not added to the queue:';
+			this.queueData.errorMsg       = '文件上传失败:';
 			this.queueData.filesReplaced  = 0;
 			this.queueData.filesCancelled = 0;
 
@@ -680,17 +680,17 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 						if (settings.queueSizeLimit > errorMsg) {
 							this.queueData.errorMsg += '\nThe number of files selected exceeds the remaining upload limit (' + errorMsg + ').';
 						} else {
-							this.queueData.errorMsg += '\nThe number of files selected exceeds the queue size limit (' + settings.queueSizeLimit + ').';
+							this.queueData.errorMsg += '\n上传文件不能超过 (' + settings.queueSizeLimit + ').';
 						}
 						break;
 					case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
-						this.queueData.errorMsg += '\nThe file "' + file.name + '" exceeds the size limit (' + settings.fileSizeLimit + ').';
+						this.queueData.errorMsg += '\n文件 "' + file.name + '" 超出了最大上传文件大小 (' + settings.fileSizeLimit + ').';
 						break;
 					case SWFUpload.QUEUE_ERROR.ZERO_BYTE_FILE:
 						this.queueData.errorMsg += '\nThe file "' + file.name + '" is empty.';
 						break;
 					case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
-						this.queueData.errorMsg += '\nThe file "' + file.name + '" is not an accepted file type (' + settings.fileTypeDesc + ').';
+						this.queueData.errorMsg += '\n "' + file.name + '" 这种格式的文件不能上传，支持的文件类型： (' + settings.fileTypeDesc + ').';
 						break;
 				}
 			}

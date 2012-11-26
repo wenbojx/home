@@ -13,13 +13,17 @@
             	<?php if(isset($datas['list'])){ foreach($datas['list'] as $v){?>
             		<div class="project_single">
             			<div class="float_left title">
-                    	<?php echo $v['id'];?> : <?php echo CHtml::link($v['name'],array('pano/scene/list','id'=>$v['id']));?>
+                    	<?php //echo $v['id'];?>  <?php echo CHtml::link($v['name'],array('pano/scene/list','id'=>$v['id']));?>
                     	</div>
                     	<div class="float_right tools">
                     	<?php echo CHtml::link("编辑",array('pano/project/edit','id'=>$v['id']));?>
                     	</div>
                     </div>
-                <?php }}?>
+                <?php }} else { ?>
+                	<div class="margin-top10">
+					<strong>您还没有项目，点击右侧"新建项目"按钮，建立您的第一个项目</strong>
+					</div>
+				<?php }?>
             	</div>
             	<div class="page-footer">
 					<div class="pagination">
