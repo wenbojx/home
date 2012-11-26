@@ -14,6 +14,8 @@
         <div class="span12">
                 <div class="span7 offset1">
                 <br>
+                	<strong>为摄影师提供一个免费的全景图发布平台</strong>
+                	<br><br>
                 	<strong>加入QQ群，向群主索取注册码</strong>
                 	<br><br>
                 	群1：280573438 

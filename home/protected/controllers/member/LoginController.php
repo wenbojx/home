@@ -38,7 +38,8 @@ class LoginController extends FController{
         }
         if($this->check_user($datas)){
             $msg['flag'] = '1';
-            $msg['url'] = Yii::app()->baseUrl;
+            //$msg['url'] = Yii::app()->baseUrl;
+            $msg['url'] = $this->createUrl('/pano/project');
         }
         else{
         	$msg['flag'] = '0';

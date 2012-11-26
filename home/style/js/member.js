@@ -80,7 +80,8 @@ member.check_reg = function(){
         if(datas.flag =='1'){
             $("#reg_tip_flag").html('注册成功');
             jump_url = datas.url;
-            setTimeout("jump_to()",3000);
+            //jump_to(jump_url);
+            setTimeout("jump_to(jump_url)",2000);
         }
         else{
             if(datas.field){
@@ -139,7 +140,7 @@ member.login_clear = function(){
 	$("#"+tip+'passwd').html("");
 }
 member.login = function(){
-	member.login_clear();
+	//member.login_clear();
     var tip = 'login_tip_';
     var email = $("#login_email").val();
     if(!email){
