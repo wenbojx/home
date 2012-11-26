@@ -26,7 +26,7 @@ class IndexController extends FController{
      */
     private function get_last_project($num = 3){
     	$project_db = new Project();
-    	return $project_db->get_last_project($num);
+    	return $project_db->get_last_project($num, 3);
     }
     /**
      * 获取最新的8个全景
@@ -39,7 +39,7 @@ class IndexController extends FController{
     	$scene_db = new Scene();
     	foreach($projects as $v){
     		$criteria=new CDbCriteria;
-    		$criteria->order = 'id DESC';
+    		$criteria->order = 'id ASC';
     		$criteria->addCondition('status=1');
     		$criteria->addCondition('display=2');
     		$criteria->limit = $num;
