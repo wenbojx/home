@@ -18,14 +18,14 @@ class ListController extends FController{
     	$datas = array();
     	$this->project_db = new Project();
     	
-    	$total = $this->project_db->get_project_num();
+    	$total = $this->project_db->get_project_num(3);
     	if($total>0){
     		$route = '/web/list/a';
     		$this->page_obj = $this->page($page, $this->page_size, $total, $route);
     		$offset = ($page-1)*$this->page_size;
     		$order = 'id DESC';
     		//获取场景信息
-    		$project_datas = $this->project_db->get_project_list($this->page_size, $order, $offset);
+    		$project_datas = $this->project_db->get_project_list($this->page_size, $order, $offset, 3);
     	}
     	
     	if(!$project_datas){

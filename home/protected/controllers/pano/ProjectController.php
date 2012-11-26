@@ -58,6 +58,36 @@ class ProjectController extends Controller{
 		}
 		$this->display_msg($msg);
 	}
+	public function actionPublish(){
+		$request = Yii::app()->request;
+		$project_id = $request->getParam('project_id');
+		$this->check_project_owner($project_id);
+		$msg['flag'] = 1;
+		$msg['msg'] = '操作成功';
+		$display = $request->getParam('display');
+		if($display == '2'){
+			if(!$this->check_thumb($project_id)){
+				$msg['flag'] = 0;
+				$msg['msg'] = '该项目没有发布场景，请先发布场景';
+				$this->display_msg($msg);
+			}
+		}
+		$project_db = new Project();
+		$datas = $project_db->update_dispaly($project_id, $display);
+		if(!$datas){
+			$msg['flag'] = 0;
+			$msg['msg'] = '操作失败';
+		}
+		$this->display_msg($msg);
+	}
+	private function check_thumb($project_id){
+		$scene_db = new Scene();
+		$num = $scene_db->get_scene_num($project_id);
+		if($num){
+			return true;
+		}
+		return false;
+	}
 	private function add_project($datas){
 		$project_db = new Project();
 		$datas['member_id'] = $this->member_id;

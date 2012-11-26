@@ -252,6 +252,34 @@ function publish_scene(scene_id, display){
         }
     }
 }
+
+function publish_project(project_id, display){
+	if(!project_id){
+		alert("参数错误");
+		return false;
+	}
+    var msg = {};
+    msg.error = '操作失败';
+    msg.success = '操作成功';
+
+    var data = {};
+    data.project_id = project_id;
+    data.display = display;
+    var url = project_publish_url;
+    save_datas(url, data, '', '', call_back);
+    function call_back(datas){
+        alert(datas.msg);
+        if(display == '2' && datas.flag){
+        	$("#offline_project").show();
+        	$("#online_project").hide();
+        }
+        if(display == '1' && datas.flag){
+        	$("#online_project").show();
+        	$("#offline_project").hide();
+        }
+    }
+}
+
 function change_hotspot_select(){
     var id = $('#hotspot_info_d_link_scene_id').val();
     var url = panos_thumb_url+'/id/'+id+'/size/'+size;

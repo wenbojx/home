@@ -25,6 +25,5 @@ class ThumbController extends FController{
     public function get_pano_thumb($scene_id){
         $thumb_db = new ScenesThumb();
         return $thumb_db->find_by_scene_id($scene_id);
-
     }
 }

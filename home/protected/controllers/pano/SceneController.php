@@ -33,8 +33,21 @@ class SceneController extends Controller{
 
             }
         }
+        $datas['project'] = $this->get_project_data($project_id);
         $datas['page_title'] = '场景列表';
+        //print_r($datas);
         $this->render('/pano/sceneList', array('datas'=>$datas, 'project_id'=>$project_id));
+    }
+    /**
+     * 获取项目信息
+     */
+    private function get_project_data($project_id){
+    	$datas = array();
+    	if(!$project_id){
+    		return $datas;
+    	}
+    	$project_db = new Project();
+    	return $project_db->find_by_project_id($project_id);
     }
     public function actionPublish(){
     	$request = Yii::app()->request;
@@ -43,6 +56,13 @@ class SceneController extends Controller{
     	$msg['flag'] = 1;
     	$msg['msg'] = '操作成功';
     	$display = $request->getParam('display');
+    	if($display == '2'){
+    		if(!$this->check_thumb($scene_id)){
+    			$msg['flag'] = 0;
+    			$msg['msg'] = '请上传场景缩略图';
+    			$this->display_msg($msg);
+    		}
+    	}
     	$scene_db = new Scene();
     	$datas = $scene_db->update_scene_dispaly($scene_id, $display);
     	if(!$datas){
@@ -50,6 +70,13 @@ class SceneController extends Controller{
     		$msg['msg'] = '操作失败';
     	}
     	$this->display_msg($msg);
+    }
+    public function check_thumb($scene_id){
+    	$thumb_db = new ScenesThumb();
+    	if(!$thumb_db->find_by_scene_id($scene_id)){
+    		return false;
+    	}
+    	return true;
     }
     
     public function actionAdd(){

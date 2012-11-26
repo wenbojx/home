@@ -1,4 +1,7 @@
 <?php $this->pageTitle=$datas['page_title'].'---足不出户，畅游中国';?>
+<?php 
+$display = array('1'=>'待发布', '2'=>'待审核', '3'=>'上线中')
+?>
 <div class="detail">
     <div class="hero-unit margin-top55">
         <h2>足不出户  畅游中国</h2>
@@ -16,6 +19,7 @@
                     	<?php //echo $v['id'];?>  <?php echo CHtml::link($v['name'],array('pano/scene/list','id'=>$v['id']));?>
                     	</div>
                     	<div class="float_right tools">
+                    	<?=$display[$v['display']];?>&nbsp;|
                     	<?php echo CHtml::link("编辑",array('pano/project/edit','id'=>$v['id']));?>
                     	</div>
                     </div>

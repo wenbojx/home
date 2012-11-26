@@ -21,6 +21,7 @@ var check_login_url = '<?=$this->createUrl('/member/login/check');?>';
 <?php }?>
 
 <?php if (isset ($this->madmin) && $this->madmin){?>
+<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/style/js/salado.admin.js");?>
 <?php Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl . "/style/css/admin.css"); ?>
 <?php Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/style/js/admin.js");?>
 <?php }?>
