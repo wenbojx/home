@@ -1,6 +1,7 @@
 <?php
 class PanoPicTools{
     public $tile_info = array('11'=>2000, '10'=>1000, '9'=>500);
+    
     /**
      * 将文件处理成1000大小
      */
