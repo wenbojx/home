@@ -8,17 +8,18 @@
 <script type="text/javascript" src="mapbox.min.js"></script> 
 <style type="text/css"> 
     #viewport { 
-        width: 469px; 
-        height: 400px; 
+        width: 709px; 
+        height: 300px; 
         cursor: move; 
         margin: 20px auto; 
+        border:1px solid #999999;
         overflow: hidden; /*keep map contents from spilling over if JS is disabled*/ 
     } 
 </style> 
 </head>
 <body>
-<div id="viewport"> 
-    <div style="background: url(layer1.png) no-repeat; width: 469px; height: 400px;"> 
+<div id="viewport" style="z-index: 1;"> 
+    <div style="background: url(layer1.png) no-repeat; width: 709px; height: 300px;"> 
         <!--top level map content goes here--> 
     </div> 
     <div style="height: 2492px; width: 2922px;"> 
@@ -26,6 +27,9 @@
          <div class="mapcontent"> 
             <!--map content goes here--> 
         </div> 
+        <div class="marker" onclick="alert(11)" style="cursor: pointer; position: absolute; z-index: 2; top: 390px; left: 960px;">
+        	<img src="marker.png"/>
+        </div>
     </div> 
 </div> 
 <script type="text/javascript"> 
