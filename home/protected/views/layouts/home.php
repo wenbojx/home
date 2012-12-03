@@ -18,6 +18,9 @@ var check_login_url = '<?=$this->createUrl('/member/login/check');?>';
 <?php Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl . "/plugins/uploadify/uploadify.css"); ?>
 <?php Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/style/js/salado.admin.js");?>
 <?php Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/plugins/uploadify/jquery.uploadify-3.1.js");?>
+<?php Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl . "/plugins/craftmap/css/map1.css"); ?>
+<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/plugins/craftmap/js/craftmap.js");?>
+<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/plugins/craftmap/js/init.js");?>
 <?php }?>
 
 <?php if (isset ($this->madmin) && $this->madmin){?>

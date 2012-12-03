@@ -4,15 +4,19 @@ class UploadController extends Controller{
     public $defaultAction = 'uploadFile';
     //public $layout = 'page';
     public $position = array('left'=>1,'right'=>2,'down'=>3,'up'=>4,'front'=>5,'back'=>6);
-    private $images = array(
+    private $images_info = array(
         'type'=>array('jpg','png','gif','JPG','PNG','GIF'),
         'size'=>5242880,
     );
+    private $image_width = '';
+    private $image_height = '';
 
     public function actionUploadFile(){
         $request = Yii::app()->request;
         $from_box_pic = false;
         $from_thumb_pic = false;
+        $from_map_pic = false;
+        
         $scene_id = $request->getParam('scene_id');
         if($request->getParam('position')!='' && $request->getParam('from')=='box_pic' && $scene_id>0){
         	$from_box_pic = true;
@@ -20,69 +24,51 @@ class UploadController extends Controller{
         if($request->getParam('from')=='thumb_pic' && $scene_id>0){
         	$from_thumb_pic = true;
         }
-
+        if($request->getParam('from')=='map_pic' && $scene_id>0){
+        	$from_map_pic = true;
+        }
+        
+        $this->check_scene_own($scene_id);
+        
         $file_info = $this->upload($from_box_pic);
-        $response = array();
+        $msg = array('flag'=>0,'msg'=>'文件上传出错');
         $flag = true;
         $flag_scene = false;
-        if($file_info){
-            $path_id = $this->save_file_path($file_info);
-            if($path_id){
-                $file_id = $this->save_file($this->member_id, $file_info['md5value']);
-                if($file_id){
-                    //场景图
-                    if($from_box_pic){
-                        if(!$this->check_admin_scene($request->getParam('scene_id'), $this->member_id)){
-                        	$flag = false;
-                        }
-                        else{
-                            $flag_scene = $this->save_scene_file($file_id, $scene_id, $request->getParam('position'));
-                        }
-                    }
-                    //场景缩略图
-                    if($from_thumb_pic){
-                        if(!$this->check_admin_scene($scene_id, $this->member_id)){
-                            $flag = false;
-                        }
-                        else{
-                            $flag_scene =$this->save_scene_thumb($file_id,$scene_id);
-                        }
-                    }
-                    if(!$flag_scene){
-                        $flag = false;
-                    }
-                }
-                else{
-                    $flag = false;
-                }
-            }
-            else{
-                $flag = false;
-            }
+        if(!$file_info){
+        	$this->display_msg($msg);
         }
-        else{
-            $flag = false;
+        $path_id = $this->save_file_path($file_info);
+        if(!$path_id){
+        	$this->display_msg($msg);
         }
-        if(!$flag){
-            $response = array('status'=>0,'msg'=>'文件上传出错');
+        $file_id = $this->save_file($this->member_id, $file_info['md5value']);
+        if(!$file_id){
+        	$this->display_msg($msg);
         }
-        else{
-            $response = array('status'=>1,'msg'=>'', 'file'=>$file_info['md5value']);
+        //场景图
+        if($from_box_pic){
+        	$flag_scene = $this->save_scene_file($file_id, $scene_id, $request->getParam('position'));
         }
-//print_r($response);
-        $str = json_encode($response);
-        exit($str);
+        //场景缩略图
+        elseif($from_thumb_pic){
+        	$flag_scene =$this->save_scene_thumb($file_id,$scene_id);
+        }
+        //地图
+        elseif($from_map_pic){
+        	$flag_scene =$this->save_scene_map($file_id,$scene_id);
+        }
+        if(!$flag_scene){
+        	$this->display_msg($msg);
+        }
+        $file_info['width'] = $this->image_width;
+        $file_info['height'] = $this->image_height;
+        $msg = array('flag'=>1,'msg'=>'', 'id'=>$flag_scene, 'type'=>$file_info['type'], 'w'=>$file_info['width'], 'h'=>$file_info['height'], 'file'=>$file_info['md5value']);
+        $this->display_msg($msg);
     }
-    private function check_file(){
-
-    }
-    private function check_admin_scene($scene_id, $member_id){
-        if(!$scene_id || !$member_id){
-            return false;
-        }
-        $scene_db = new Scene();
-        $datas = $scene_db->get_by_admin_scene($member_id, $scene_id);
-        return $datas;
+    private function save_scene_map($file_id,$scene_id){
+    	$scene_map_db = new ScenesMap();
+    	$datas = $scene_map_db->save_scene_map($scene_id, $file_id);
+    	return $datas;
     }
 
     private function save_file_path($file_info){
@@ -122,7 +108,6 @@ class UploadController extends Controller{
         if(!$_FILES['Filedata']){
             return false;
         }
-
         $pre = Yii::app()->params['file_pic_folder'].'/';
         $file_info['folder'] = date('Y',time()).date('m',time());
         $folder_pic = $pre.$file_info['folder'].'/';
@@ -149,9 +134,17 @@ class UploadController extends Controller{
         $file_info['name'] = $file->getName();//获取文件名
         $file_info['size'] = $file->getSize();//获取文件大小
         $file_info['type'] = strtolower($file->getExtensionName());//获取文件类型
+        if(!in_array($file_info['type'], $this->images_info['type'])){
+        	return false;
+        }
         //$file_info['name']=iconv("utf-8", "gb2312", $file_info['name']);//这里是处理中文的问题，非中文不需要
         $uploadfile = $folder.$file_info['md5value'].'.'.$file_info['type'];
         $flag = $file->saveAs($uploadfile,true);//上传操作
+        
+        $myimage = new Imagick($uploadfile);
+        $this->image_width = $myimage->getImageWidth();
+        $this->image_height = $myimage->getImageHeight();
+        
         if(!$from_box_pic){
         	return $file_info;
         }

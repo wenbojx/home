@@ -17,6 +17,9 @@ function bind_pano_btn(){
     $('#btn_camera').bind('click',function(){
         load_page(camera_url);
     });
+    $('#btn_map').bind('click',function(){
+        load_page(map_url);
+    });
     $('#btn_hotspot').bind('click',function(){
         load_page(hotspot_url);
         hotspot_click();
@@ -51,7 +54,7 @@ function thumb_box_upload(){
         'uploader': thumb_upload_url,
         'formData': post_datas,
         //'uploadLimit':1,
-        'buttonText':'上传全景图',
+        'buttonText':'上传缩略图',
         'debug':false,
         'width':42,
         'height':19,
@@ -68,13 +71,119 @@ function thumb_box_upload(){
         },
         'onUploadSuccess':function(file, data, response){
             var dataObj = eval("("+data+")");
-            if(dataObj.status == '0'){
+            if(dataObj.flag == '0'){
                 alert(dataObj.msg);
             }
             else if(response>0){
                 var url = pic_url+'/id/'+dataObj.file+'/size/200x100.jpg';
                 var img_str = '<img width="200" height="100" src="'+url+'"/>';
                 $("#thumb_img").html(img_str);
+            }
+        }
+    });
+}
+var marker_obj = null;
+function show_marker_comfirm(){
+	$('#pano_marker').show();
+	$('#marker_confirm').show();
+	$("#marker_delete").hide();
+	$("#marker_save").hide();
+}
+function save_marker(){
+	var top = $(marker_obj).css('top');
+	var left =  $(marker_obj).css('left');
+	
+	var msg = {};
+    msg.error = '操作失败';
+    msg.success = '操作成功';
+    var data = {};
+    data.scene_id = scene_id;
+    data.map_id = map_id;
+    data.top = top.replace('px','');
+    data.left = left.replace('px','');
+
+    if(!data.map_id || !data.scene_id){
+    	alert('参数错误');
+    	return false;
+    }
+    var url = save_map_marker_url+'/save/';
+    save_datas(url, data, '', '', call_back);
+    function call_back(datas){
+        alert(datas.msg);
+    }
+}
+function del_marker(){
+	if(!confirm("确定删除吗")){
+		return false;
+	}
+	var data = {};
+	var marker_id = $(marker_obj).attr('id');
+	var id_split = marker_id.split('_');
+	if(id_split[0] == 'marker'){
+		del_marker_do();
+		return false;
+	}
+	var position_id = id_split[1];
+	if(!position_id){
+		alert('参数错误');
+		return false;
+	}
+	data.id = position_id;
+	data.scene_id = scene_id;
+	var url = save_map_marker_url+'/del/';
+    save_datas(url, data, '', '', call_back);
+    function call_back(datas){
+    	//alert(datas.msg);
+    	if(!datas.flag){
+    		return false;
+    	}
+    	del_marker_do();
+    }
+}
+function del_marker_do(){
+	$(marker_obj).remove();
+	$("#marker_save").hide();
+	$("#marker_delete").hide();
+}
+
+function map_box_upload(){
+    var post_datas = {'scene_id':scene_id,'from':'map_pic','SESSION_ID':session_id};
+    $("#map_box_upload").uploadify({
+        'swf': flash_url,
+        'uploader': map_upload_url,
+        'formData': post_datas,
+        //'uploadLimit':1,
+        'buttonText':'上传地图',
+        'debug':false,
+        'width':74,
+        'height':28,
+        'fileSizeLimit':'5120KB',
+        'fileTypeDesc' : 'jpg,png,gif格式',
+        'fileTypeExts':'*.jpg;*.png;*.gif;',
+        'buttonImage':map_button_img,
+        'multi': false,
+        'removeTimeout':1,
+        'auto': true,
+        'onSelectError':function(file){
+        },
+        'onUploadError':function(file,data){
+        },
+        'onUploadSuccess':function(file, data, response){
+            var dataObj = eval("("+data+")");
+            if(dataObj.flag == '0'){
+                alert(dataObj.msg);
+            }
+            else if(response>0){
+            	map_width = dataObj.w;
+            	map_height = dataObj.h;
+                var url = pic_url+'/id/'+dataObj.file+'/size/'+map_width+'x'+map_height+'.'+dataObj.type;
+                var img_str = '<img src="'+url+'" class="imgMap"/>';
+                $("#map_tips").hide();
+                $("#map_container").html(img_str);
+                bind_map('scene_map');
+                $("#add_marker").show();
+                $("#map_container").show();
+                map_id = dataObj.id;
             }
         }
     });
@@ -113,7 +222,7 @@ function init_box_upload( position){
         },
         'onUploadSuccess':function(file, data, response){
             var dataObj = eval("("+data+")");
-            if(dataObj.status == '0'){
+            if(dataObj.flag == '0'){
                 alert(dataObj.msg);
             }
             else if(response>0){

@@ -173,7 +173,7 @@ class ImageContent {
         $pic_datas['created'] = $datas['created'];
         $pic_datas['md5value'] = $datas['md5value'];
         $pic_datas['size'] = $size;
-        //print_r($pic_datas);
+       	//print_r($pic_datas);
         return $pic_datas;
     }
 

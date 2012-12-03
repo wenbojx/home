@@ -79,6 +79,20 @@ class FilePath extends Ydao
         }
         return $this->findByPk($id);
     }
+    public function get_file_path($id, $add_prx=''){
+    	$file_info = $this->get_by_file_id($id);
+    	if(!$file_info){
+    		return false;
+    	}
+    	$year_month = substr($file_info['folder'], 0, 6);
+    	$day = substr($file_info['folder'], -2);
+    	$path = Yii::app()->params['file_pic_folder'].'/'.$year_month.'/'.$day.'/'.$file_info['md5value'].'/';
+    	if($add_prx){
+    		$path .= $add_prx.'/';
+    	}
+    	$path .= $file_info['md5value'].'.'.$file_info['type'];
+    	return $path;
+    }
     public function get_file_by_no($no){
         if(!$no){
             return false;

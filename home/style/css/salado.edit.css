@@ -54,7 +54,10 @@
 	right:6px;
 	top:4px;
 }
-
+.panel_box_content .tips{
+	text-align:left;
+	margin:0;
+}
 .panle_content{
 	margin:10px;
 }

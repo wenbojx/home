@@ -31,6 +31,12 @@ class ConfigController extends Controller{
         	$datas['camera'] = $this->get_camera_info($scene_id);
         	//print_r($datas['camera']);
         }
+        elseif ($type == 'map'){
+        	$datas['map'] = $this->get_map_info($scene_id);
+        	//print_r($datas['map']['position']);
+        	$datas['scene_list'] = $this->get_link_scenes($scene_id, false);
+        	//print_r($datas['scene_list']);
+        }
         elseif($type == 'hotspotEdit'){
         	$datas['hotspot_id'] = $request->getParam('hotspot_id');
         	$datas['thumb'] = $this->get_thumb_by_hotspot($datas['hotspot_id']);
@@ -40,6 +46,35 @@ class ConfigController extends Controller{
         }
         $this->render('/pano/panel/'.$type, array('datas'=>$datas));
     }
+
+    /**
+     * 获取地图信息
+     */
+    private function get_map_info($scene_id){
+    	$map_db = new ScenesMap();
+    	$map_datas = $map_db->get_map_info($scene_id);
+    	if(!$map_datas){
+    		return false;
+    	}
+    	
+    	//获取图片名
+    	$file_path_db = new FilePath();
+    	$file_path = $file_path_db->get_file_path($map_datas['map']['file_id'], 'original');
+    	if(is_file($file_path)){
+    		$myimage = new Imagick($file_path);
+    		$map_datas['img']['width'] = $myimage->getImageWidth();
+    		$map_datas['img']['height'] = $myimage->getImageHeight();
+    		$file_info = $file_path_db->get_by_file_id($map_datas['map']['file_id']);
+    		$map_datas['img']['md5'] = $file_info['md5value'];
+    	}
+    	else{
+    		$map_datas['img']['width'] = '0';
+    		$map_datas['img']['height'] = '0';
+    	}
+    	
+    	return $map_datas;
+    }
+    
     /**
      * 获取摄像机信息
      */
@@ -104,7 +139,7 @@ class ConfigController extends Controller{
     /**
      * 获取项目中的其他场景列表
      */
-    private function get_link_scenes($scene_id){
+    private function get_link_scenes($scene_id, $self=true){
         $scene_datas = array();
         if(!$scene_id){
             return $scene_datas;
@@ -119,7 +154,9 @@ class ConfigController extends Controller{
         $criteria=new CDbCriteria;
         $criteria->order = 'id ASC';
         $criteria->addCondition("project_id={$project_id}");
-        $criteria->addCondition("id!={$scene_id}");
+        if($self){
+        	$criteria->addCondition("id!={$scene_id}");
+        }
         $criteria->addCondition('status=1');
         $scene_datas = $scene_db->findAll($criteria);
         return $scene_datas;
