@@ -1,4 +1,4 @@
-<div class="panel_box_content" >
+<div class="panel_box_content" id="panel_camera">
     <div class="panel_title">
         <div class="title-bar">
             <span>初始摄像机视角</span>

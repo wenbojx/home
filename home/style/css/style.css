@@ -144,6 +144,63 @@ hr.soften {
 	width:200px;
 	margin:0 0 0 5px;
 }
+.scroll_map{
+	position:absolute; 
+	right:0px; 
+	top:0px; 
+	height:200px;
+	width:350px;
+	border: 1px solid #DDDDDD;
+	display:none;
+}
+.marker_map_close{
+	position:absolute; 
+	right:-5px; 
+	top:-8px; 
+	z-index:11;
+	display:none;
+}
+.marker_map {
+	filter: alpha(opacity=10); 
+	opacity: 0.9;
+	float:left;
+	width:350px;
+	height:200px;
+	-moz-box-shadow:0 0 5px #ddd;
+	-webkit-box-shadow:0 0 5px #ddd;
+	box-shadow:0 0 5px #ddd;
+}
+.marker {
+display:block;
+text-indent:-9999px;
+width:15px;
+height:23px;
+outline:none;
+background:url(../../plugins/craftmap/images/marker_green.png) no-repeat;
+cursor:pointer;
+}
+
+.marker_red {
+display:block;
+text-indent:-9999px;
+width:15px;
+height:23px;
+outline:none;
+background:url(../../plugins/craftmap/images/marker_red.png) no-repeat;
+cursor:pointer;
+}
+.marker_yellow {
+display:block;
+text-indent:-9999px;
+width:15px;
+height:23px;
+outline:none;
+background:url(../../plugins/craftmap/images/marker_yellow.png) no-repeat;
+cursor:pointer;
+}
+
+
+
 .jCarouselLite{
 	visibility: visible; 
 	overflow: hidden; 

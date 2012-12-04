@@ -1,4 +1,4 @@
-<div class="panel_box_content" >
+<div class="panel_box_content" id="panel_hotspot">
 	<div class="panel_title">
 		<div class="title-bar">
 			<span>热点</span>
@@ -59,7 +59,7 @@
 			      </tr>
 		      </table>
           </div>
-	    <img src="" id="hotspot_pano_thumb" width="200" height="100">
+	    	<img src="<?=Yii::app()->baseUrl . '/style/img/thumb_default.jpg'?>" id="hotspot_pano_thumb" width="200" height="100">
 		</form>
 		</div>
 	</div>

@@ -2,7 +2,7 @@
   @import url("http://www.google.com/uds/css/gsearch.css");
   @import url("http://www.google.com/uds/solutions/localsearch/gmlocalsearch.css");
 </style>
-<div class="panel_box_content" >
+<div class="panel_box_content" id="panel_position">
 	<div class="panel_title">
 		<div class="title-bar">
 			<span>地理位置</span>

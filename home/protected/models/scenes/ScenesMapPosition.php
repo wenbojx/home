@@ -19,10 +19,11 @@ class ScenesMapPosition extends Ydao
         return '{{scene_map_position}}';
     }
     public function save_map_position($datas){
-        if(!$datas['map_id']){
+        if(!$datas['map_id'] || !$datas['scene_id']){
             return false;
         }
         $this->map_id = $datas['map_id'];
+        $this->scene_id = $datas['scene_id'];
         $this->left = $datas['left'];
         $this->top = $datas['top'];
         if(!$this->save()){

@@ -10,10 +10,13 @@ var map_container = "imgContent";
 		var con_left = 0-parseInt($("#"+map_container).css('left'));
 		var top = half_h+con_top;
 		var left = half_w+con_left;
-		var marker = $('<div />').attr('id','marker_'+scene_id).addClass('marker_green').attr('data-coords', top+", "+left);
+		var title = $("#scenes_list").find("option:selected").text();
+		var marker = $('<div />').attr('title', title).attr('id','marker_'+scene_id).addClass('marker_green').attr('data-coords', top+", "+left);
 		$(marker).css('position','absolute').css('z-index', 2).css('top', top).css('left', left);
 		$("#"+map_container).prepend(marker);
-		marker_obj = marker;
+		marker_obj = marker;	
+		marker_del_save_display();
+		
 		$(marker).bind({
 			mousedown: function(e){
 				currentElement = this;
@@ -30,8 +33,6 @@ var map_container = "imgContent";
 			mouseup: function(e){
 				var pos = xmouseup(e);
 				var marker_obj = $(this);
-				//S.marker.mouseUp.call(this, marker_obj, pos);
-				marker_mouseup(marker);
 				return false;
 			}
 		});
@@ -41,16 +42,19 @@ function marker_mousedown(marker){
 	$(marker).addClass('marker_green');
 	$(marker).removeClass('marker');
 	var id = $(marker).attr('id');
-	
-	$("#pano_marker").hide();
-	$("#marker_confirm").hide();
-	$("#marker_delete").show();
-	$("#marker_save").show();
+	if(marker_obj && $(marker_obj).attr('id')!=$(marker).attr('id')){
+		$(marker_obj).addClass('marker');
+		$(marker_obj).removeClass('marker_green');
+	}
+	//$(marker).css('cursor','move');
 	marker_obj = marker;
+	marker_del_save_display();
+	return true;
 }
 function marker_mouseup(marker){
-	$(marker).addClass('marker');
-	$(marker).removeClass('marker_green');
+	//$(marker).addClass('marker');
+	//$(marker).removeClass('marker_green');
+	//$(marker).css('cursor','pointer');
 }
 
 
@@ -62,7 +66,7 @@ function bind_map(class_name){
 		},
 		container: {
 			name: map_container,
-			id: map_container,
+			id: map_container
 		},
 		marker: {
 			name: 'marker',
@@ -76,7 +80,7 @@ function bind_map(class_name){
 				marker_mousedown(marker);
 			},
 			mouseUp: function(marker, pos){
-				marker_mouseup(marker);
+				//marker_mouseup(marker);
 			}
 		}
 	});

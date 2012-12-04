@@ -6,7 +6,7 @@
     float:left;
 }
 </style>
-<div class="panel_box_content" >
+<div class="panel_box_content" id="panel_thumb">
     <div class="panel_title">
         <div class="title-bar">
             <span>缩略图</span>

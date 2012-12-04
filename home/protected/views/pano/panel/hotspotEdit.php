@@ -6,7 +6,7 @@
     float:left;
 }
 </style>
-<div class="panel_box_content" >
+<div class="panel_box_content" id="panel_hotspotEdit">
 <form method="post" class="form-horizontal" id="del_hotspot" action="<?=$this->createUrl('/salado/modules/hotspot/del/')?>">
     <div class="panel_title">
         <div class="title-bar">

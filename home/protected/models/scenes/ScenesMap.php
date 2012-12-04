@@ -60,6 +60,22 @@ class ScenesMap extends Ydao
     	}
     	//获取地图锚点信息
     	$map_datas['position'] = $this->get_map_position($map_datas['map']['id']);
+    	$map_datas['link_scenes'] = array();
+    	if($map_datas['position']){
+    		$ids = array();
+    		foreach($map_datas['position'] as $v){
+    			$ids[$v['scene_id']] = $v['scene_id'];
+    		}
+    		if($ids){
+    			$scene_db = new Scene();
+    			$scene_datas = $scene_db->get_by_scene_ids($ids);
+    			if($scene_datas){
+    				foreach($scene_datas as $v){
+    					$map_datas['link_scenes'][$v['id']] = $v;
+    				}
+    			}
+    		}
+    	}
     	return $map_datas;
     }
     private function get_map_position($map_id){

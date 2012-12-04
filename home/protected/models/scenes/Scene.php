@@ -91,6 +91,18 @@ class Scene extends Ydao
     public function get_by_scene_id($scene_id){
         return $this->findByPk($scene_id);
     }
+    public function get_by_scene_ids($scene_ids){
+    	if(!$scene_ids){
+    		return false;
+    	}
+    	$scene_ids_str = implode(',',$scene_ids);
+    	$criteria=new CDbCriteria;
+    	if(!$scene_ids_str){
+    		return false;
+    	}
+    	$criteria->addCondition("id in ({$scene_ids_str})");
+    	return $this->findAll($criteria);
+    }
     public function update_scene_dispaly($scene_id, $display){
         return $this->updateByPk($scene_id, array('display'=>$display));
     }

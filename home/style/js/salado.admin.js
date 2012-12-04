@@ -1,27 +1,28 @@
 $(document).ready(function() {
     bind_pano_btn();
 })
+var load_page_name = null;
 function bind_pano_btn(){
     $('#btn_review').bind('click',function(){
         clean_pano_cache();
     });
     $('#btn_upload').bind('click',function(){
-        load_page(upload_pano_url);
+        load_page(upload_pano_url, 'face');
     });
     $('#btn_position').bind('click',function(){
-        load_page(position_url);
+        load_page(position_url, 'position');
     });
     $('#btn_thumb').bind('click',function(){
-        load_page(thumb_url);
+        load_page(thumb_url, 'thumb');
     });
     $('#btn_camera').bind('click',function(){
-        load_page(camera_url);
+        load_page(camera_url, 'camera');
     });
     $('#btn_map').bind('click',function(){
-        load_page(map_url);
+        load_page(map_url, 'map');
     });
     $('#btn_hotspot').bind('click',function(){
-        load_page(hotspot_url);
+        load_page(hotspot_url, 'hotspot');
         hotspot_click();
     });
     $('#btn_preview').bind('click',function(){
@@ -31,10 +32,20 @@ function bind_pano_btn(){
 function clean_pano_cache(){
      window.location.href= clean_url;
 }
-function load_page(url){
+function load_page(url, load_page){
     var ajax = {url: url, type: 'GET', dataType: 'html', cache: false, success: function(html) {
-                $("#panel_box").html(html);
+		    	if(load_page_name != load_page){
+					$("#panel_"+load_page_name).hide();
+				}
+    			if($("#panel_"+load_page).attr('id')){
+    				$("#panel_"+load_page).show();
+    			}
+    			else{
+    				$("#panel_box").append(html);
+    			}
+    			
                 show_edit_panel();
+                load_page_name = load_page;
                 return true;
             }
         };
@@ -97,6 +108,14 @@ function save_marker(){
     msg.error = '操作失败';
     msg.success = '操作成功';
     var data = {};
+    
+    var marker_id = $(marker_obj).attr('id');
+	var id_split = marker_id.split('_');
+	if(id_split[0] != 'marker'){
+		return false;
+	}
+	data.link_scene_id = id_split[1];
+	
     data.scene_id = scene_id;
     data.map_id = map_id;
     data.top = top.replace('px','');
@@ -110,6 +129,10 @@ function save_marker(){
     save_datas(url, data, '', '', call_back);
     function call_back(datas){
         alert(datas.msg);
+        show_marker_comfirm();
+        if(datas.flag == '1'){
+        	$(marker_obj).attr('id', 'markers_'+datas.id);
+        }
     }
 }
 function del_marker(){
@@ -145,6 +168,21 @@ function del_marker_do(){
 	$("#marker_save").hide();
 	$("#marker_delete").hide();
 }
+function marker_del_save_display(){
+	$("#pano_marker").hide();
+	$("#marker_confirm").hide();
+	$("#marker_delete").show();
+	
+	var marker_id = $(marker_obj).attr('id');
+	var id_split = marker_id.split('_');
+	if(id_split[0] == 'marker'){
+		$("#marker_save").show();
+	}
+	else{
+		$("#marker_save").hide();
+	}
+}
+
 
 function map_box_upload(){
     var post_datas = {'scene_id':scene_id,'from':'map_pic','SESSION_ID':session_id};
@@ -247,6 +285,14 @@ function hotspot_click(){
         var img_height = $("#hotspot_icon").css("height");
         var box_width = $("#pano-detail").css("width");
         var box_height = $("#pano-detail").css("height");
+        img_width = img_width.replace('px','');
+        img_height = img_height.replace('px','');
+        img_width = 30;
+        img_height = 30;
+
+        box_width = box_width.replace('px','');
+        box_height = box_height.replace('px','');
+        
         var top = (parseInt(box_height)-parseInt(img_height) )/2;
         var left = (parseInt(box_width)-parseInt(img_width) )/2;
         $("#hotspot_icon").css("top",top+"px");

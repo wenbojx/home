@@ -7,7 +7,7 @@
     float:left;
 }
 </style>
-<div class="panel_box_content" >
+<div class="panel_box_content" id="panel_map">
 	<div class="panel_title">
 		<div class="title-bar">
 			<span>地图</span>
@@ -51,8 +51,8 @@
         		<img src="<?=$this->createUrl('/panos/imgOut/index/', array('id'=>$datas['map']['img']['md5'], 'size'=>$datas['map']['img']['width'].'x'.$datas['map']['img']['height'].'.jpg'))?>" class="imgMap"/>
         		<?php }?>
         		<?php if($datas['map']['position']){foreach($datas['map']['position'] as $v){?>
-        		<div class="marker" id="markers_<?=$v['id']?>" data-coords="<?=$v['left']?>, <?=$v['top']?>">
-					<h3>France</h3>
+        		<div title="<?=$datas['map']['link_scenes'][$v['scene_id']]['name']?>" class="marker" id="markers_<?=$v['id']?>" data-coords="<?=$v['left']?>, <?=$v['top']?>">
+					<h3><?=$datas['map']['link_scenes'][$v['scene_id']]['name']?></h3>
 				</div>
         		<?php }}?>
         	</div>
@@ -68,6 +68,8 @@ var save_map_marker_url = '<?=$this->createUrl('/salado/modules/map/')?>';
 map_box_upload();
 var map_id = '<?=$flag?$datas['map']['map']['id']:''?>';
 <?php if($flag){?>
+map_width = '<?=$datas['map']['img']['width']?>';
+map_height = '<?=$datas['map']['img']['height']?>';
 bind_map('scene_map');
 <?php }?>
 </script>

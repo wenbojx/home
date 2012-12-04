@@ -5,78 +5,14 @@
  * email: info@jscraft.net
  * license: http://www.jscraft.net/licensing.html
  */
-	var isMouseDown = false;
-	var currentElement = null;
-	var lastMouseX;
-	var lastMouseY;
-	var lastElemTop;
-	var lastElemLeft;
-	var dragStatus = {};
-	function getMousePosition (e){
-		var posx = 0;
-		var posy = 0;
-
-		if (!e) var e = window.event;
-
-		if (e.pageX || e.pageY) {
-			posx = e.pageX;
-			posy = e.pageY;
-		}
-		else if (e.clientX || e.clientY) {
-			posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-			posy = e.clientY + document.body.scrollTop  + document.documentElement.scrollTop;
-		}
-
-		return { 'x': posx, 'y': posy };
-	}
-	// updates the position of the current element being dragged
-	function updatePosition(e) {
-		var pos = getMousePosition(e);
-
-		var spanX = (pos.x - lastMouseX);
-		var spanY = (pos.y - lastMouseY);
-		
-		var posx = lastElemTop + spanY;
-		var posy = lastElemLeft + spanX;
-		$(currentElement).css("top",  posx);
-		$(currentElement).css("left", posy);
-		return { 'x': posx, 'y': posy };
-	}
-	function xmousedown(e){
-		dragStatus[currentElement.id] = "on",
-		isMouseDown    = true;
-		
-		var pos    = getMousePosition(e);
-		lastMouseX = pos.x;
-		lastMouseY = pos.y;
-
-		lastElemTop  = currentElement.offsetTop;
-		lastElemLeft = currentElement.offsetLeft;
-		updatePosition(e);
-	}
-	function xmousemove(e){
-		if(isMouseDown && dragStatus[currentElement.id] == 'on'){
-			updatePosition(e);
-		}
-	}
-	function xmouseup(e){
-		var pos = {'x':0, 'y':0};
-		if(isMouseDown && dragStatus[currentElement.id] == 'on'){
-			pos = updatePosition(e);
-			isMouseDown = false;
-		}
-		return pos;
-	}
 
 (function($){
-
     $.fn.craftmap = function(options) {
 		var D = {
 			cookies: false,
 			fullscreen: false,
 			container: {
-				name: 'imgContent',
-				id: 'imgContent'
+				name: 'imgContent'
 			},
 			image: {
 				width: 1475,
@@ -90,12 +26,9 @@
 				name: 'marker',
 				center: true,
 				popup: true,
-				move: false,
 				popup_name: 'popup',
 				onClick: function(marker, popup){},
-				onClose: function(marker, popup){},
-				mouseUp: function(marker, pos){},
-				mouseDown: function(marker){}
+				onClose: function(marker, popup){}
 			},
 			controls: {
 				init: true,
@@ -147,12 +80,12 @@
 						},
 						wrap: function(){
 							var css = {
-								zIndex: '5', 
+								zIndex: '1', 
 								position: 'absolute',
 								width: S.image.width,
 								height: S.image.height
 							}
-							M.wrapInner($('<div />').attr('id', S.container.id).addClass(S.container.name).css(css));
+							M.wrapInner($('<div />').addClass(S.container.name).css(css));
 						}
 					},
 					_globals: {
@@ -200,7 +133,7 @@
 						decelerate: function(e){
 							var l = mv.length, timer = 0;
 							if (l){
-								var tc = 10;
+								var tc = 20;
 								interval = setInterval(function(){
 									var	position = C.position(), left = position.left, top = position.top,
 										remain = (tc-timer)/tc,
@@ -302,10 +235,10 @@
 					},
 					preloader: {
 						init: function(){
-							//var img = new Image(),
+							var img = new Image(),
 								src = IMG.attr('src');
-							//P.preloader.create();
-							/*$(img).addClass(S.image.name).attr('src', src).load(function(){
+							P.preloader.create();
+							$(img).addClass(S.image.name).attr('src', src).load(function(){
 								var t = $(this),
 									css = {
 										width: this.width,
@@ -315,8 +248,7 @@
 								IMG.remove();
 								P.preloader.remove();
 								S.preloader.onLoad.call(this, t, css);
-							}).appendTo(C);*/
-							$('<img />').addClass(S.image.name).attr('src', src).appendTo(C);
+							}).appendTo(C);
 						},
 						create: function(){
 							var css = {
@@ -460,32 +392,6 @@
 							P.marker.set();
 							P.marker.open();
 							P.marker.close();
-							if(S.marker.move){
-								P.marker.move();
-							}
-						},
-						move: function(){
-							MARKER.each(function(){
-								marker = S.marker;
-								$(this).bind({
-									mousedown: function(e){
-										currentElement = this;
-										xmousedown(e);
-										var marker_obj = $(this);
-										S.marker.mouseDown.call(this, marker_obj);
-									},
-									mousemove: function(e){
-										xmousemove(e);
-										return false;
-									},
-									mouseup: function(e){
-										var pos = xmouseup(e);
-										var marker_obj = $(this);
-										S.marker.mouseUp.call(this, marker_obj, pos);
-										return false;
-									}
-								});
-							});
 						},
 						set: function(){
 							MARKER.each(function(){
@@ -493,7 +399,7 @@
 									x = parseInt(position[0]), y = parseInt(position[1]),
 									css = {
 										position: 'absolute',
-										zIndex: '6',
+										zIndex: '2',
 										top: y,
 										left: x
 									}
@@ -521,7 +427,7 @@
 									$('.'+marker.popup_name).remove();
 									var css = {
 										position:'absolute', 
-										zIndex:'7'
+										zIndex:'3'
 									}
 									t.after(
 										$('<div />').addClass(marker.popup_name+' '+id).css(css).html(html).append(

@@ -6,13 +6,32 @@ $(document).ready(function() {
 	$('#scroll_close').bind('click',function(){
 		bind_scroller();
     });
+	$('#menu_map').bind('click', function(){
+		bind_marker_map();
+	})
 	pano_loading();
 })
+
+function bind_marker_map(){
+	if ($("#scroll_map").is(":hidden")){
+		$("#scroll_map").show();
+		$("#marker_map_close").show();
+	}
+	else{
+		$("#scroll_map").hide();
+		$("#marker_map_close").hide();
+	}
+}
 function pano_loading(){
 	var img_width = $("#pano_loading").css("width");
     var img_height = $("#pano_loading").css("height");
     var box_width = $("#pano-detail").css("width");
     var box_height = $("#pano-detail").css("height");
+    img_width = img_width.replace('px','');
+    img_height = img_height.replace('px','');
+    box_width = box_width.replace('px','');
+    box_height = box_height.replace('px','');
+
     var top = (parseInt(box_height)-parseInt(img_height) )/2;
     var left = (parseInt(box_width)-parseInt(img_width) )/2;
     $("#pano_loading").css("top",top+"px");
@@ -25,6 +44,8 @@ function pano_loaded(){
 
 function onEnter(panoramaId){
 	pano_loaded();
+	panoramaId = panoramaId.replace('pano_', '');
+	move_to_marker(panoramaId);
 }
 function onTransitionEnd(panoramaId){
 	//pano_loaded();
@@ -35,6 +56,13 @@ function hotspot_loading(msg){
     var img_height = $("#hotspot_loading").css("height");
     var box_width = $("#pano-detail").css("width");
     var box_height = $("#pano-detail").css("height");
+    img_width = img_width.replace('px','');
+    img_height = img_height.replace('px','');
+    img_width = 30;
+    img_height = 30;
+    box_width = box_width.replace('px','');
+    box_height = box_height.replace('px','');
+    
     var top = (parseInt(box_height)-parseInt(img_height) )/2;
     var left = (parseInt(box_width)-parseInt(img_width) )/2;
     $("#hotspot_loading").css("top",top+"px");

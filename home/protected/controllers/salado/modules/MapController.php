@@ -7,17 +7,22 @@ class MapController extends Controller{
         $request = Yii::app()->request;
         $scene_id = $request->getParam('scene_id');
         $datas['map_id'] = $request->getParam('map_id');
+        $datas['scene_id'] = $request->getParam('link_scene_id');
         $datas['left'] = $request->getParam('left');
         $datas['top'] = $request->getParam('top');
         $this->check_scene_own($scene_id);
         $msg['flag'] = 0;
         $msg['msg'] = '操作失败';
+        if(!$datas['map_id'] || !$datas['scene_id']){
+        	$this->display_msg($msg);
+        }
         $id = $this->add_marker($datas);
         if(!$id){
         	$this->display_msg($msg);
         }
         $msg['flag'] = 1;
         $msg['msg'] = '操作成功';
+        $msg['id'] = $id;
         $this->display_msg($msg);
     }
     private function add_marker($datas){

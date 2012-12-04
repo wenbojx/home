@@ -33,9 +33,8 @@ class ConfigController extends Controller{
         }
         elseif ($type == 'map'){
         	$datas['map'] = $this->get_map_info($scene_id);
-        	//print_r($datas['map']['position']);
+        	//print_r($datas['map']['link_scenes']);
         	$datas['scene_list'] = $this->get_link_scenes($scene_id, false);
-        	//print_r($datas['scene_list']);
         }
         elseif($type == 'hotspotEdit'){
         	$datas['hotspot_id'] = $request->getParam('hotspot_id');
@@ -46,7 +45,6 @@ class ConfigController extends Controller{
         }
         $this->render('/pano/panel/'.$type, array('datas'=>$datas));
     }
-
     /**
      * 获取地图信息
      */
