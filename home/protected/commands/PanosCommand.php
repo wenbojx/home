@@ -1,7 +1,7 @@
 <?php
 class PanosCommand extends CConsoleCommand {
     //public $defaultAction = 'index'; //默认动作
-    public $find_path = '/mnt/hgfs/pics/xihu'; //搜索全景图的目录
+    public $find_path = '/mnt/hgfs/pics/suzhou/zzy'; //搜索全景图的目录
     public $panos_path = array();
     public $default_new_folder = 'panos';  //新的全景图目录
     public $default_pano_name = 'Panorama.jpg'; //默认的搜索的全景图名称
@@ -247,6 +247,7 @@ o f0 y0 r0 p-90 v90";
     	}
 
     	copy($file, $new_file);
+    	unlink($file);
     	echo "....moving to {$new_file}\n";
     }
     public function tifToJpg($old, $new){
