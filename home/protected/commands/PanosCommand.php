@@ -1,14 +1,17 @@
 <?php
 class PanosCommand extends CConsoleCommand {
-    //public $defaultAction = 'index'; //é»˜è®¤åŠ¨ä½œ
-    public $find_path = '/mnt/hgfs/pics/suzhou/zzy'; //æœç´¢å…¨æ™¯å›¾çš„ç›®å½•
+    //public $defaultAction = 'index'; //Ä¬ÈÏ¶¯×÷
+    //public $find_path = '/mnt/hgfs/pics/suzhou/zzy'; //ËÑË÷È«¾°Í¼µÄÄ¿Â¼
+    public $find_path = "C:/Users/faashi/Desktop/pics/ËÕÖÝ/ÁôÔ°";
+	//public $find_path = "C:/Users/faashi/Desktop/pics/ËÕÖÝ/ÁôÔ°";
     public $panos_path = array();
-    public $default_new_folder = 'panos';  //æ–°çš„å…¨æ™¯å›¾ç›®å½•
-    public $default_pano_name = 'Panorama.jpg'; //é»˜è®¤çš„æœç´¢çš„å…¨æ™¯å›¾åç§°
+    public $default_new_folder = 'panos';  //ÐÂµÄÈ«¾°Í¼Ä¿Â¼
+	public $default_lightroom = 'ligthroom';
+    public $default_pano_name = 'Panorama.jpg'; //Ä¬ÈÏµÄËÑË÷µÄÈ«¾°Í¼Ãû³Æ
     public $new_pano_name = 'Panorama-2.jpg';
-    public $width = '2000';  //cubeå›¾çš„å®½åº¦
-    public $swidth = '6284'; //sphereçš„å®½åº¦
-    public $sheight = '3142'; //sphereçš„å®½åº¦
+    public $width = '3724';  //cubeÍ¼µÄ¿í¶È
+    public $swidth = '11700'; //sphereµÄ¿í¶È
+    public $sheight = '5850'; //sphereµÄ¿í¶È
     public $error = array();
     public $split_file = '';
     public $cube_path = '';
@@ -16,24 +19,34 @@ class PanosCommand extends CConsoleCommand {
     public $thumb_size = 'thumbx200.jpg';
     public $thumb_name = 'thumb.jpg';
     public $thumb_size800 = 'thumbx800.jpg';
-    public $reduce_path = 'upload/201211/11';
+    public $reduce_path = 'upload/201211/11';  //Ìå»ý½ÏÉÙ
     public $reduce_files = array();
+	public $windows = true;
+	public $win_shpere_path = 'c:/tmp/script-s.txt';
+	public $cube_side = array('front'=>'o f4 y0 r0 p0 v360', 
+							'left'=>'o f4 y90 r0 p0 v360',
+							'back'=>'o f4 y-180 r0 p0 v360',
+							'bottom'=>'o f4 y0 r0 p90 v360',
+							'right'=>'o f4 y-90 r0 p0 v360',
+							'top'=>'o f4 y0 r0 p-90 v360'
+							);
 
-    //ä¸€é”®æ‰§è¡Œ
+    //Ò»¼üÖ´ÐÐ
     public function actionRun(){
         $this->cube_path = $this->find_path.'/'.$this->default_new_folder;
         $this->actionFind();
         $this->new_pano_name = $this->default_pano_name;
-        //æ‰‹å·¥å¤„ç†ç”Ÿæˆçš„å…¨æ™¯å›¾
+        //ÊÖ¹¤´¦ÀíÉú³ÉµÄÈ«¾°Í¼
         $this->actionCube();
         $this->actionBottomOut();
-        //æ‰‹å·¥å¤„ç†cubeåº•éƒ¨å›¾
+        //ÊÖ¹¤´¦Àícubeµ×²¿Í¼
         $this->actionBottomIn();
+		
         $this->actionThumb();
         $this->actionUpload();
     }
 
-    //å½’ç±»éœ€è¦ä¸Šä¼ çš„æ–‡ä»¶
+    //¹éÀàÐèÒªÉÏ´«µÄÎÄ¼þ
     public function actionUpload(){
     	$upload_path = $this->find_path.'/'.$this->upload_path.'/';
     	$search_path = $this->find_path.'/'.$this->default_new_folder;
@@ -65,11 +78,12 @@ class PanosCommand extends CConsoleCommand {
     		}
     	}
     }
-    //æŸ¥æ‰¾å…¨æ™¯å›¾
+    //²éÕÒÈ«¾°Í¼
     public function actionFind() {
         $this->panos_path = array();
         $this->myscandir($this->find_path);
         $new_folder = $this->find_path. DIRECTORY_SEPARATOR .$this->default_new_folder;
+        echo $new_folder;
         if(!file_exists($new_folder)){
             mkdir($new_folder);
         }
@@ -77,7 +91,33 @@ class PanosCommand extends CConsoleCommand {
 
         //print_r($this->panos_path);
     }
-    //å…¨æ™¯å›¾è½¬ä¸ºcube
+	//É¾³ýÈ«¾°Í¼
+	public function actionDelpano(){
+		//echo $this->find_path;
+		$this->del_pano($this->find_path);
+	}
+	/**
+     * É¾³ý
+     */
+    public function del_pano($path){
+        foreach(scandir($path) as $file){
+			if($file != '.' && $file != '..'){
+				$path2= $path.'/'.$file;
+				//echo $path2."\r\n";
+                if(is_dir($path2)){
+                    $this->del_pano($path2);
+                }
+                else if($file == $this->default_pano_name){
+                    //echo $path.'/'.$file."\r\n";
+					$path3 = $path.'/'.$file;
+					echo $path3."\r\n";
+					unlink($path3);
+                }
+			}
+            
+        }
+    }
+    //È«¾°Í¼×ªÎªcube
     public function actionCube(){
     	//$this->default_pano_name = $this->new_pano_name;
     	$this->cube_path = $this->find_path.'/'.$this->default_new_folder;
@@ -86,15 +126,61 @@ class PanosCommand extends CConsoleCommand {
     	$this->myscandir($path);
     	//print_r($this->panos_path);
     	foreach ($this->panos_path as $v){
-    		echo "----deal file {$v} ----\n";
-    		$this->cube($v);
-    		$this->split_file = $v;
-    		$this->exec_libpano();
-    		echo "----end deal file {$v} ----\n";
+			$str = substr($v, strlen($v)-15, 2);
+				if($str<89){
+					//continue;
+				}
+    		echo "----deal file {$v} ----\r\n";
+			if(!$this->windows){
+				$this->cube($v);
+				$this->split_file = $v;
+				$this->exec_libpano();
+			}
+			else{
+				
+				$this->cube_win($v);
+			}
+    		echo "----end deal file {$v} ----\r\n";
     	}
     	print_r($this->error);
     }
-    //å½’ç±»cubeä¸­çš„bottomå›¾
+	//windowsÏÂ´¦Àí
+	public function cube_win($path){
+		$path = str_replace('\\', "/", $path);
+		$str = "p w{$this->width} h{$this->width} f0 v90 u20 n\"JPEG q100\"\r\n";
+		$str .= "i n\"{$path}\"\r\n";
+		foreach($this->cube_side as $k=>$v){
+			$content = $str.$v;
+			$file_txt = "c:/tmp/{$k}.txt";
+			file_put_contents($file_txt, $content);
+			$explod_a = explode('/', $path);
+			
+			$floder = '';
+			for($i=0; $i<(count($explod_a)-1); $i++){
+				$floder .= $explod_a[$i].'/';
+			}
+			$new_path = $floder.'cube/';
+			if(!file_exists($new_path)){
+				mkdir($new_path);
+			}
+			$to = $new_path.$k.'.jpg';
+			$this->exec_to_cube_win($file_txt, $to);
+		}
+	}
+	public function exec_to_cube_win($file, $to){
+		$to = $to.'.jpg';
+		$str = "c:\mydatas\soft\PTStitcherNG\PTStitcher.exe {$file} -o {$to}";
+        echo "----sphere pano {$file}----\n";
+		echo $str."\r\n";
+        system($str);
+		$file = substr($to, 0, strlen($to)-7).'jpg';
+		copy($to, $file);
+		unlink($to);
+		//exit();
+        echo "----sphere pano down {$file}----\n";
+		
+	}
+    //¹éÀàcubeÖÐµÄbottomÍ¼
     public function actionBottomOut(){
         $this->cube_path = $this->find_path.'/'.$this->default_new_folder;
         $path = $this->cube_path.'/bottom';
@@ -106,6 +192,9 @@ class PanosCommand extends CConsoleCommand {
         $this->default_pano_name = 'bottom.jpg';
         $this->myscandir($this->cube_path);
         foreach($this->panos_path as $v){
+			if($this->windows){
+				$v = str_replace('\\', "/", $v);
+			}
             $explode = explode('/', $v);
             $num = count($explode)-3;
             $new_path = $path.'/'.$explode[$num];
@@ -115,7 +204,7 @@ class PanosCommand extends CConsoleCommand {
         }
         //print_r($this->panos_path);
     }
-    //å°†å¤„ç†è¿‡çš„bottomå›¾å½’å›ž
+    //½«´¦Àí¹ýµÄbottomÍ¼¹é»Ø
     public function actionBottomIn(){
         $this->cube_path = $this->find_path.'/'.$this->default_new_folder;
         $path = $this->cube_path.'/bottom';
@@ -126,11 +215,17 @@ class PanosCommand extends CConsoleCommand {
         //$this->default_pano_name = 'bottom.jpg';
         $this->myscandir($path, true);
         foreach($this->panos_path as $v){
+			if($this->windows){
+				$v = str_replace('\\', "/", $v);
+			}
             $explode = explode('/', $v);
+			echo $v;
             $num = count($explode)-1;
             $file = $explode[$num];
             $explode_file = explode('-', $file);
+			
             $new_path = $this->cube_path.'/'.$explode_file[0].'/cube';
+			
             if(!file_exists($new_path)){
                 $this->error[] = $new_path;
             }
@@ -142,7 +237,7 @@ class PanosCommand extends CConsoleCommand {
         }
         print_r($this->error);
     }
-    //ç”Ÿæˆç¼©ç•¥å›¾
+    //Éú³ÉËõÂÔÍ¼
     public function actionThumb(){
     	$this->cube_path = $this->find_path.'/'.$this->default_new_folder;
     	//$this->default_pano_name = $this->new_pano_name;
@@ -176,37 +271,57 @@ class PanosCommand extends CConsoleCommand {
     	print_r($this->error);
     }
     //cube to sphere
+	
     public function actionSphere(){
         $this->cube_path = $this->find_path.'/'.$this->default_new_folder;
         $this->panos_path = array();
         $path = $this->cube_path;
         $this->myScanCubeDir($path);
-        print_r($this->panos_path);
-        $this->sphere($this->panos_path[0]);
-        $this->exec_sphere();
+		foreach($this->panos_path as $v){
+        	$this->sphere($v);
+		}
     }
     public function sphere($path){
+		if($this->windows){
+				$path = str_replace('\\', "/", $path);
+		}
         $front = $path.'/cube/front.jpg';
         $left = $path.'/cube/left.jpg';
         $back = $path.'/cube/back.jpg';
         $right = $path.'/cube/right.jpg';
         $top = $path.'/cube/top.jpg';
         $bottom = $path.'/cube/bottom.jpg';
-        $script = "p w{$this->swidth} h{$this->sheight} f2 v360 u0 n\"JPEG\"
+        $script = "p w{$this->swidth} h{$this->sheight} f2 v360 u0 n\"JPEG q100\"
 i n\"{$front}\"
 o f0 y0 r0 p0 v90
-i n\"{$left}\"
+i n\"{$right}\"
 o f0 y90 r0 p0 v90
 i n\"{$back}\"
 o f0 y-180 r0 p0 v90
-i n\"{$right}\"
+i n\"{$left}\"
 o f0 y-90 r0 p0 v90
 i n\"{$top}\"
 o f0 y0 r0 p90 v90
 i n\"{$bottom}\"
 o f0 y0 r0 p-90 v90";
-        return file_put_contents('script-s.txt', $script);
+        file_put_contents($this->win_shpere_path, $script);
+		if($this->windows){
+			$to = $path.'/Panorama.jpg';
+			$this->exec_sphere_win($to);
+		}
+		else{
+			$this->exec_sphere();
+		}
+		return  true;
     }
+	
+	public function exec_sphere_win($to){
+        $str = "c:\mydatas\soft\PTStitcherNG\PTStitcher.exe {$this->win_shpere_path} -o {$to}";
+		echo $str."\r\n";
+        system($str);
+		echo "-----end {$str}----\r\n";
+    }
+	
     public function exec_sphere(){
         $str = "/usr/local/libpano13/bin/PTmender script-s.txt";
         echo "----sphere pano {$this->split_file}----\n";
@@ -309,7 +424,7 @@ o f4 y0 r0 p90 v360";
         }
     }
     /**
-     * æ‰«æç›®å½•
+     * É¨ÃèÄ¿Â¼
      */
     public function myscandir($path, $scan_default=false){
         if(!is_dir($path))  return;
@@ -331,7 +446,7 @@ o f4 y0 r0 p90 v360";
     }
 
     /**
-     * æ‰«æç›®å½•ä¸‹çš„cube
+     * É¨ÃèÄ¿Â¼ÏÂµÄcube
      */
     public function myScanCubeDir($path){
     	if(!is_dir($path))  return;
@@ -344,24 +459,53 @@ o f4 y0 r0 p90 v360";
     		}
     	}
     }
-    public function get_reduce_file($path){
-    	if(!is_dir($path))  return;
-        foreach(scandir($path) as $file){
-            if($file!='.'  && $file!='..'){
-                $path2= $path.DIRECTORY_SEPARATOR.$file;
-
+	
+	/**
+	¹éÀàÐèlightroom´¦ÀíµÄÍ¼Æ¬
+	*/
+	public function actionLight(){
+		$path = $this->find_path.'/'.$this->default_new_folder;
+		$this->scan_light($path);
+		if(!$this->panos_path){
+			echo "no panoramas\r\n";
+		}
+		$new_path =  $path.'/'.$this->default_lightroom;
+		if(!is_dir($new_path)){
+			mkdir($new_path);
+		}
+		foreach($this->panos_path as $v){
+			if($this->windows){
+				$v = str_replace('\\', "/", $v);
+			}
+			$explodes = explode('/', $v);
+			$count = count($explodes);
+			$num = $explodes[$count-2];
+			echo "/{$this->default_new_folder}/{$num}/\r\n";
+			$new_file = str_replace("/{$this->default_new_folder}/{$num}/", "/{$this->default_new_folder}/{$this->default_lightroom}/{$num}_", $v);
+			echo $new_file."\r\n";
+			copy($v, $new_file);
+			echo "-----copy {$new_file}-----\r\n ";
+		}
+		
+	}
+	/**
+	lightroom´¦ÀíµÄÍ¼Æ¬¹éÀà
+	*/
+	private function scan_light($path){
+		if(!is_dir($path))  return;
+    	if($file!='.'  && $file!='..' ){
+                $path2= $path.$file;
                 if(is_dir($path2)){
-                    $this->get_reduce_file($path2);
+                    $this->myscandir($path2);
                 }
-                else if($file == '1000x1000.jpg'){
-                    $this->reduce_files[] = $path2;
+                else if($file == $this->default_pano_name){
+                    $this->panos_path[] = $path.$file;
                 }
             }
-        }
-        return $this->reduce_files;
-    }
+	}
+    
     /**
-     * èŽ·å–è¦å‡å°çš„æ–‡ä»¶
+     * »ñÈ¡Òª¼õÐ¡µÄÎÄ¼þ
      */
     public function actionReduce(){
     	$path = $this->reduce_path;
@@ -416,5 +560,21 @@ o f4 y0 r0 p90 v360";
     		//continue;
 
     	}
+    }
+	public function get_reduce_file($path){
+    	if(!is_dir($path))  return;
+        foreach(scandir($path) as $file){
+            if($file!='.'  && $file!='..'){
+                $path2= $path.DIRECTORY_SEPARATOR.$file;
+
+                if(is_dir($path2)){
+                    $this->get_reduce_file($path2);
+                }
+                else if($file == '1000x1000.jpg'){
+                    $this->reduce_files[] = $path2;
+                }
+            }
+        }
+        return $this->reduce_files;
     }
 }
