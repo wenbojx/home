@@ -5,7 +5,7 @@ $project = array('project' => array(
 			'title'=>'西湖',
 			'info' =>'西湖简介',
 			'count'=>'6',
-			'thumb'=>'http://192.168.2.102/panos/thumb/pic/id/370/size/200x100.jpg',
+			'thumb'=>'http://42.121.52.5/panos/thumb/pic/id/370/size/200x100.jpg',
 			'state'=>'1',
 		),
 		array(
@@ -13,7 +13,7 @@ $project = array('project' => array(
 				'title'=>'胡雪岩故居',
 				'info' =>'胡雪岩故居简介',
 				'count'=>'8',
-				'thumb'=>'http://192.168.2.102/panos/thumb/pic/id/312/size/200x100.jpg',
+				'thumb'=>'http://42.121.52.5/panos/thumb/pic/id/312/size/200x100.jpg',
 				'state'=>'1',
 		),
 		array(
@@ -21,7 +21,7 @@ $project = array('project' => array(
 				'title'=>'西溪湿地',
 				'info' =>'西溪湿地简介',
 				'count'=>'9',
-				'thumb'=>'http://192.168.2.102/panos/thumb/pic/id/496/size/200x100.jpg',
+				'thumb'=>'http://42.121.52.5/panos/thumb/pic/id/496/size/200x100.jpg',
 				'state'=>'1',
 		),
 		array(
@@ -29,7 +29,7 @@ $project = array('project' => array(
 				'title'=>'西溪湿地',
 				'info' =>'西溪湿地简介',
 				'count'=>'9',
-				'thumb'=>'http://192.168.2.102/panos/thumb/pic/id/496/size/200x100.jpg',
+				'thumb'=>'http://42.121.52.5/panos/thumb/pic/id/496/size/200x100.jpg',
 				'state'=>'1',
 		),
 		array(
@@ -37,7 +37,7 @@ $project = array('project' => array(
 				'title'=>'西溪湿地',
 				'info' =>'西溪湿地简介',
 				'count'=>'9',
-				'thumb'=>'http://192.168.2.102/panos/thumb/pic/id/496/size/200x100.jpg',
+				'thumb'=>'http://42.121.52.5/panos/thumb/pic/id/496/size/200x100.jpg',
 				'state'=>'1',
 		),
 		array(
@@ -45,7 +45,7 @@ $project = array('project' => array(
 				'title'=>'西溪湿地',
 				'info' =>'西溪湿地简介',
 				'count'=>'9',
-				'thumb'=>'http://192.168.2.102/panos/thumb/pic/id/496/size/200x100.jpg',
+				'thumb'=>'http://42.121.52.5/panos/thumb/pic/id/496/size/200x100.jpg',
 				'state'=>'1',
 		),
 		array(
@@ -53,7 +53,7 @@ $project = array('project' => array(
 				'title'=>'西溪湿地',
 				'info' =>'西溪湿地简介',
 				'count'=>'9',
-				'thumb'=>'http://192.168.2.102/panos/thumb/pic/id/496/size/200x100.jpg',
+				'thumb'=>'http://42.121.52.5/panos/thumb/pic/id/496/size/200x100.jpg',
 				'state'=>'1',
 		)
 		
@@ -63,49 +63,49 @@ $panos = array('panos' => array(
 				'id'=>'1',
 				'title'=>'景点一',
 				'info' =>'景点一简介',
-				'thumb'=>'http://192.168.2.102/panos/thumb/pic/id/496/size/200x100.jpg',
+				'thumb'=>'http://42.121.52.5/panos/thumb/pic/id/496/size/200x100.jpg',
 				'state'=>'1',
 		),
 		array(
 				'id'=>'2',
 				'title'=>'景点一',
 				'info' =>'景点二简介',
-				'thumb'=>'http://192.168.2.102/panos/thumb/pic/id/497/size/200x100.jpg',
+				'thumb'=>'http://42.121.52.5/panos/thumb/pic/id/497/size/200x100.jpg',
 				'state'=>'1',
 		),
 		array(
 				'id'=>'3',
 				'title'=>'景点三',
 				'info' =>'景点三简介',
-				'thumb'=>'http://192.168.2.102/panos/thumb/pic/id/498/size/200x100.jpg',
+				'thumb'=>'http://42.121.52.5/panos/thumb/pic/id/498/size/200x100.jpg',
 				'state'=>'1',
 		),
 		array(
 				'id'=>'2',
 				'title'=>'景点一',
 				'info' =>'景点二简介',
-				'thumb'=>'http://192.168.2.102/panos/thumb/pic/id/497/size/200x100.jpg',
+				'thumb'=>'http://42.121.52.5/panos/thumb/pic/id/497/size/200x100.jpg',
 				'state'=>'1',
 		),
 		array(
 				'id'=>'2',
 				'title'=>'景点一',
 				'info' =>'景点二简介',
-				'thumb'=>'http://192.168.2.102/panos/thumb/pic/id/497/size/200x100.jpg',
+				'thumb'=>'http://42.121.52.5/panos/thumb/pic/id/497/size/200x100.jpg',
 				'state'=>'1',
 		),
 		array(
 				'id'=>'2',
 				'title'=>'景点一',
 				'info' =>'景点二简介',
-				'thumb'=>'http://192.168.2.102/panos/thumb/pic/id/497/size/200x100.jpg',
+				'thumb'=>'http://42.121.52.5/panos/thumb/pic/id/497/size/200x100.jpg',
 				'state'=>'1',
 		),
 		array(
 				'id'=>'2',
 				'title'=>'景点一',
 				'info' =>'景点二简介',
-				'thumb'=>'http://192.168.2.102/panos/thumb/pic/id/497/size/200x100.jpg',
+				'thumb'=>'http://42.121.52.5/panos/thumb/pic/id/497/size/200x100.jpg',
 				'state'=>'1',
 		)
 		
@@ -116,12 +116,12 @@ $pano = array('pano' =>
 						'id'=>'1',
 						'title'=>'景点一',
 						'info' =>'景点一简介',
-						's_f'=>'http://192.168.2.102/salado/index/b/id/498/s_f/10/front.jpg',
-							's_r'=>'http://192.168.2.102/salado/index/b/id/498/s_r/10/right.jpg',
-							's_b'=>'http://192.168.2.102/salado/index/b/id/498/s_b/10/back.jpg',
-							's_l'=>'http://192.168.2.102/salado/index/b/id/498/s_l/10/left.jpg',
-							's_u'=>'http://192.168.2.102/salado/index/b/id/498/s_u/10/up.jpg',
-							's_d'=>'http://192.168.2.102/salado/index/b/id/498/s_d/10/down.jpg',
+						's_f'=>'http://42.121.52.5/salado/index/b/id/498/s_f/10/front.jpg',
+							's_r'=>'http://42.121.52.5/salado/index/b/id/498/s_r/10/right.jpg',
+							's_b'=>'http://42.121.52.5/salado/index/b/id/498/s_b/10/back.jpg',
+							's_l'=>'http://42.121.52.5/salado/index/b/id/498/s_l/10/left.jpg',
+							's_u'=>'http://42.121.52.5/salado/index/b/id/498/s_u/10/up.jpg',
+							's_d'=>'http://42.121.52.5/salado/index/b/id/498/s_d/10/down.jpg',
 						'state'=>'1',
 							'hotspot'=>array(
 									array(
