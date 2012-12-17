@@ -2,12 +2,12 @@
 class PanosCommand extends CConsoleCommand {
     //public $defaultAction = 'index'; //默认动作
     //public $find_path = '/mnt/hgfs/pics/suzhou/zzy'; //搜索全景图的目录
-    public $find_path = "C:/Users/faashi/Desktop/pics/苏州/留园";
+    public $find_path = "C:/Users/faashi/Desktop/pics/苏州/拙政园";
 	//public $find_path = "C:/Users/faashi/Desktop/pics/苏州/留园";
     public $panos_path = array();
     public $default_new_folder = 'panos';  //新的全景图目录
 	public $default_lightroom = 'ligthroom';
-    public $default_pano_name = 'Panorama.jpg'; //默认的搜索的全景图名称
+    public $default_pano_name = 'Panorama.tif'; //默认的搜索的全景图名称
     public $new_pano_name = 'Panorama-2.jpg';
     public $width = '3724';  //cube图的宽度
     public $swidth = '11700'; //sphere的宽度
