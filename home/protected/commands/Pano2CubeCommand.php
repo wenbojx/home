@@ -31,6 +31,7 @@ class Pano2CubeCommand extends CConsoleCommand {
 		if(!$scene_ids){
 			return false;
 		}
+		
 		$pano_pics = $this->get_pano_pic_path($scene_ids);
 		//print_r($pano_pics);
 		if(!$pano_pics){
@@ -42,9 +43,12 @@ class Pano2CubeCommand extends CConsoleCommand {
 			return false;
 		}
 		$this->script_num = $num;
+		foreach($scene_ids as $v){
+			$pano_queue = new PanoQueue();
+			$pano_queue->update_lock($v['scene_id'], 1);    //---------------------------------
+		}
 		
 		foreach($pano_pics as $k=>$v){
-			
 			$this->turn_to_cube($v);
 			$this->update_item_state_lock($k);
 		}
@@ -89,13 +93,7 @@ class Pano2CubeCommand extends CConsoleCommand {
 	/**
 	 * 系统处理图片
 	 */
-	private function turn_to_cube($path){
-		if($this->windows){
-			$this->cube_win($path);
-		}
-	}
-	
-	public function cube_win($path){
+	public function turn_to_cube($path){
 		$path = $this->win_path_prefix . "/". $path;
 		$str = "p w{$this->width} h{$this->width} f0 v90 u20 n\"JPEG q70\"\r\n";
 		$str .= "i n\"{$path}\"\r\n";
@@ -147,7 +145,6 @@ class Pano2CubeCommand extends CConsoleCommand {
 		$scene_ids = array();
 		foreach ($queue_list as $v){
 			$scene_ids[] = $v['scene_id'];
-			$pano_queue->update_lock($v['scene_id'], 1);    //---------------------------------
 		}
 		return $scene_ids;
 	}
