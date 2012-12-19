@@ -111,6 +111,7 @@ class Pano2CubeCommand extends CConsoleCommand {
 				$floder .= $explod_a[$i].'/';
 			}
 			$new_path = $floder.'cube/';
+			echo $new_path."\r\n";
 			if(!file_exists($new_path)){
 				mkdir($new_path);
 			}
