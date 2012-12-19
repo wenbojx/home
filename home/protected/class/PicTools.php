@@ -17,6 +17,14 @@ class PicTools{
 		return Yii::app()->params[$key];
 	}
 	/**
+	 * 获取全景图静态地址
+	 */
+	public function get_pano_static_path($scene_id){
+		if(!$scene_id){
+			return false;
+		}
+	}
+	/**
 	 * 获取场景对应文件信息
 	 */
 	public function get_scene_file_tag($scene_id){
