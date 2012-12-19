@@ -5,7 +5,7 @@ class Pano2CubeCommand extends CConsoleCommand {
 	public $width = '3724';  //cube
 	public $swidth = '11700'; //sphere
 	public $sheight = '5850'; //sphere
-	public $windows = true;
+	public $windows = false;
 	private $win_path_prefix = 'C:/mydatas/APMServ5.2.6/www/htdocs/www/home';
 	private $win_pttool_path = 'c:\mydatas\soft\PTStitcherNG\PTStitcher.exe';
 	//public $win_shpere_prefix = 'c:/tmp';
