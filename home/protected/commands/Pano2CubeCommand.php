@@ -136,9 +136,20 @@ class Pano2CubeCommand extends CConsoleCommand {
 		}
 		echo "----sphere pano {$file}----\n";
 		echo $str."\r\n";
+		
 	    system($str);
-	    $move_to = strtolower($to);
-	    rename($to, $move_to);
+	    if($this->windows){
+		    $move_to = strtolower($to);
+		    rename($to, $move_to);
+	    }
+	    else{
+	    	$myimage = new Imagick($to);
+	    	//$myimage->cropimage(4000, 2000, 926, 300);
+	    	$myimage->writeImage($move_to);
+	    	unlink($to);
+	    	$myimage->clear();
+	    	$myimage->destroy();
+	    }
 
 		echo "----sphere pano down {$file}----\n";
 	}
