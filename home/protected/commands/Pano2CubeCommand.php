@@ -104,7 +104,7 @@ class Pano2CubeCommand extends CConsoleCommand {
 			$str = "p w{$this->width} h{$this->width} f0 v90 u20 n\"JPEG q70\"\r\n";
 		}
 		else{
-			$str = "p w{$this->width} h{$this->width} f0 v90 u20 n\"TIFF q70\"\r\n";
+			$str = "p w{$this->width} h{$this->width} f0 v90 u20 n\"TIFF_m q70\"\r\n";
 		}
 		$str .= "i n\"{$path}\"\r\n";
 		$script_path_prefix = $this->windows ? $this->win_path_prefix : $this->linux_path_prefix;
