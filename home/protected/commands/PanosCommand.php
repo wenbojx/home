@@ -147,7 +147,7 @@ class PanosCommand extends CConsoleCommand {
 	//windowsÏÂ´¦Àí
 	public function cube_win($path){
 		$path = str_replace('\\', "/", $path);
-		$str = "p w{$this->width} h{$this->width} f0 v90 u20 n\"JPEG q100\"\r\n";
+		$str = "p w{$this->width} h{$this->width} f0 v90 u20 n\"TIFF q100\"\r\n";
 		$str .= "i n\"{$path}\"\r\n";
 		foreach($this->cube_side as $k=>$v){
 			$content = $str.$v;
@@ -163,19 +163,24 @@ class PanosCommand extends CConsoleCommand {
 			if(!file_exists($new_path)){
 				mkdir($new_path);
 			}
-			$to = $new_path.$k.'.jpg';
+			$to = $new_path.$k;
 			$this->exec_to_cube_win($file_txt, $to);
 		}
 	}
 	public function exec_to_cube_win($file, $to){
-		$to = $to.'.jpg';
+		$to = $to.'.tif';
 		$str = "c:\mydatas\soft\PTStitcherNG\PTStitcher.exe {$file} -o {$to}";
         echo "----sphere pano {$file}----\n";
 		echo $str."\r\n";
+		
         system($str);
-		$file = substr($to, 0, strlen($to)-7).'jpg';
-		copy($to, $file);
-		unlink($to);
+		/*$file = substr($to, 0, strlen($to)-2).'tif';
+		echo "\r\n";
+		echo "\r\n";
+		echo $file."\r\n";*/
+		//echo $to;
+		//copy($to, $file);
+		//unlink($to);
 		//exit();
         echo "----sphere pano down {$file}----\n";
 		
@@ -189,7 +194,7 @@ class PanosCommand extends CConsoleCommand {
         }
         $this->panos_path = array();
         $this->default_new_folder = 'bottom';
-        $this->default_pano_name = 'bottom.jpg';
+        $this->default_pano_name = 'bottom.tif';
         $this->myscandir($this->cube_path);
         foreach($this->panos_path as $v){
 			if($this->windows){
@@ -198,7 +203,7 @@ class PanosCommand extends CConsoleCommand {
             $explode = explode('/', $v);
             $num = count($explode)-3;
             $new_path = $path.'/'.$explode[$num];
-            $new_file = $new_path.'-bottom.jpg';
+            $new_file = $new_path.'-bottom.tif';
             echo "---- copying {$v} to {$new_file}----\n";
             copy($v, $new_file);
         }
@@ -229,7 +234,7 @@ class PanosCommand extends CConsoleCommand {
             if(!file_exists($new_path)){
                 $this->error[] = $new_path;
             }
-            $new_file = $new_path.'/bottom.jpg';
+            $new_file = $new_path.'/bottom.tif';
             echo "---- copying {$v} to {$new_file}----\n";
             //$back_file = $new_path .'/bottom_back.jpg';
             //copy($new_file, $back_file);

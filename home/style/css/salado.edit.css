@@ -8,7 +8,9 @@
 .edit_relative{
     position:relative; width:50px;
 }
-
+.color_green{
+	color:green;
+}
 .edit_box .edit_buttons{
     position:absolute; right:0px ;top:0px;
 }
@@ -88,12 +90,33 @@
 	color:#FFFFFF;
 }
 
+.cube_upload_box{
+	display:none;
+}
+.pano_upload{
+
+}
 .box_open{
     position:relative;
-    width:485px;
-    heigth:365px;
     margin:0;
     display:block;
+}
+.nav{
+	margin-bottom:5px;
+	z-index:50;
+}
+.pano_upload_box{
+	position:relative;
+	height:80px;
+	text-align:center;
+	margin: 10px 0 10px 40px;
+}
+.pano_show{
+	width:400px;
+	height:200px;
+	background-color:#F3F3F3;
+	border:1px solid #F5F5F5;
+	
 }
 .box_open .box_side{
     width:120px;

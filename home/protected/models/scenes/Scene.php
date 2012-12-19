@@ -106,6 +106,12 @@ class Scene extends Ydao
     public function update_scene_dispaly($scene_id, $display){
         return $this->updateByPk($scene_id, array('display'=>$display));
     }
+    public function update_scene_pano($file_id,$scene_id){
+    	if (!$file_id || !$scene_id){
+    		return false;
+    	}
+    	return $this->updateByPk($scene_id, array('file_id'=>$file_id));
+    }
     public function find_scene_by_project_id($project_id, $limit=12, $order='', $offset=0){
     	$datas = array();
     	if(!$project_id){

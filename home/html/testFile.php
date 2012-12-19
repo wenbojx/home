@@ -36,5 +36,15 @@
 <input type="submit" name="submit" value="Submit" />
 </form>
 
+<form action="http://www.dev.yiluhao.com/pano/upload" method="post" enctype="multipart/form-data">
+<label for="file">Filename:</label>
+<input type="file" name="Filedata" id="file" />
+<input type="hidden" name="scene_id" value="571">
+<input type="hidden" name="from" value="pano_pic">
+
+<br />
+<input type="submit" name="submit" value="Submit" />
+</form>
+
 </body>
 </html>

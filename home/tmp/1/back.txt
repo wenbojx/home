@@ -1,0 +1,3 @@
+p w3724 h3724 f0 v90 u20 n"JPEG q70"
+i n"C:/mydatas/APMServ5.2.6/www/htdocs/www/home/upload/201212/19/fc6cbed9ba3bd85f5c4eb079b5e186ad/original/fc6cbed9ba3bd85f5c4eb079b5e186ad.jpg"
+o f4 y-180 r0 p0 v360

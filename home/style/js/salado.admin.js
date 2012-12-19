@@ -28,6 +28,21 @@ function bind_pano_btn(){
     $('#btn_preview').bind('click',function(){
         jump_to(preview_url, 'blank');
     });
+
+}
+function pano_upload_change(type){
+	if(type==1){
+		$("#pano_upload").show();
+		$("#cube_upload_box").hide();
+		$("#cube_upload_tab").removeClass ("active");
+		$("#pano_upload_tab").addClass ("active");
+	}
+	else{
+		$("#pano_upload").hide();
+		$("#cube_upload_box").show();
+		$("#pano_upload_tab").removeClass ("active");
+		$("#cube_upload_tab").addClass ("active");
+	}
 }
 function clean_pano_cache(){
      window.location.href= clean_url;
@@ -56,6 +71,45 @@ function hide_edit_panel(){
 }
 function show_edit_panel(){
     $('#edit_panel').show();
+}
+
+function pano_box_upload(){
+    var post_datas = {'scene_id':scene_id,'from':'pano_pic','SESSION_ID':session_id};
+    $("#pano_upload_bt").uploadify({
+        'swf': flash_url,
+        'uploader': script_url,
+        'formData': post_datas,
+        //'uploadLimit':1,
+        'buttonText':'上传全景图',
+        'debug':false,
+        'width':76,
+        'height':30,
+        'fileSizeLimit':'51200KB',
+        'fileTypeDesc' : 'jpg,png,gif格式',
+        'fileTypeExts':'*.jpg;*.png;*.gif;',
+        'buttonImage':pano_button_img,
+        'multi': false,
+        'removeTimeout':1,
+        'auto': true,
+        'onSelectError':function(file){
+        },
+        'onUploadError':function(file){
+        	//alert(file.id);
+        },
+        'onUploadSuccess':function(file, data, response){
+            var dataObj = eval("("+data+")");
+            if(dataObj.flag == '0'){
+                alert(dataObj.msg);
+            }
+            else if(response>0){
+            	var url = pic_url+'/id/'+dataObj.file+'/size/400x200.jpg';
+            	var img_str = '<img width="400" height="200" src="'+url+'"/>';
+            	$("#pano_show").html(img_str);
+            	$("#pano_state").show();
+            	$("#cube_upload").hide();
+            }
+        }
+    });
 }
 
 function thumb_box_upload(){
@@ -226,6 +280,33 @@ function map_box_upload(){
         }
     });
 }
+function init_upload_box(){
+	if(box_left != ""){
+		$("#box_left").attr('src', box_left);
+	}
+	if(box_right != ""){
+		$("#box_right").attr('src', box_right);
+	}
+	if(box_down != ""){
+		$("#box_down").attr('src', box_down);
+	}
+	if(box_up != ""){
+		$("#box_up").attr('src', box_up);
+	}
+	if(box_front != ""){
+		$("#box_front").attr('src', box_front);
+	}
+	if(box_back != ""){
+		$("#box_back").attr('src', box_back);
+	}
+	init_box_upload('left');
+	init_box_upload('right');
+	init_box_upload('down');
+	init_box_upload('up');
+	init_box_upload('front');
+	init_box_upload('back');
+}
+
 function init_box_upload( position){
     //var img_w = 800;
     //var img_h = 800;
@@ -242,7 +323,7 @@ function init_box_upload( position){
         'debug':false,
         'width':img_btn_w,
         'height':img_btn_h,
-        'fileSizeLimit':'10240KB',
+        'fileSizeLimit':'2048KB',
         'fileTypeDesc' : 'jpg,png,gif格式',
         'fileTypeExts':'*.jpg;*.png;*.gif;',
         'buttonImage':button_img,

@@ -16,17 +16,21 @@ class UploadController extends Controller{
         $from_box_pic = false;
         $from_thumb_pic = false;
         $from_map_pic = false;
+        $from_pano_pic = false;;
         
         $scene_id = $request->getParam('scene_id');
-        if($request->getParam('position')!='' && $request->getParam('from')=='box_pic' && $scene_id>0){
+        if ($request->getParam('position')!='' && $request->getParam('from')=='box_pic' && $scene_id>0){
         	$from_box_pic = true;
         }
-        if($request->getParam('from')=='thumb_pic' && $scene_id>0){
+        elseif ($request->getParam('from')=='thumb_pic' && $scene_id>0){
         	$from_thumb_pic = true;
         }
-        if($request->getParam('from')=='map_pic' && $scene_id>0){
+        elseif ($request->getParam('from')=='map_pic' && $scene_id>0){
         	$from_map_pic = true;
         }
+       else if ($request->getParam('from')=='pano_pic' && $scene_id>0 ){
+       		$from_pano_pic = true;
+       }
         
         $this->check_scene_own($scene_id);
         
@@ -57,6 +61,9 @@ class UploadController extends Controller{
         elseif($from_map_pic){
         	$flag_scene =$this->save_scene_map($file_id,$scene_id);
         }
+        elseif($from_pano_pic){
+        	$flag_scene =$this->save_scene_pano($file_id,$scene_id);
+        }
         if(!$flag_scene){
         	$this->display_msg($msg);
         }
@@ -64,6 +71,14 @@ class UploadController extends Controller{
         $file_info['height'] = $this->image_height;
         $msg = array('flag'=>1,'msg'=>'', 'id'=>$flag_scene, 'type'=>$file_info['type'], 'w'=>$file_info['width'], 'h'=>$file_info['height'], 'file'=>$file_info['md5value']);
         $this->display_msg($msg);
+    }
+    private function save_scene_pano($file_id,$scene_id){
+    	$scene = new Scene();
+    	$flag = $scene->update_scene_pano ($file_id,$scene_id);
+    	$panoQueue = new PanoQueue();
+    	$data['scene_id'] = $scene_id;
+    	$panoQueue->add_queue ($data);
+    	return $flag;
     }
     private function save_scene_map($file_id,$scene_id){
     	$scene_map_db = new ScenesMap();

@@ -24,8 +24,13 @@ class ConfigController extends Controller{
             $datas['thumb'] = $this->get_thumb($scene_id);
         }
         elseif ($type == 'face'){
-            $scene_files = $this->get_scene_pic($scene_id);
-            $datas['scene_files'] = $this->get_file_url($scene_files);
+        	if(!$this->get_pano_state($scene_id)){
+        		$scene_files = $this->get_scene_pic($scene_id);
+        		$datas['scene_files'] = $this->get_file_url($scene_files);
+        	}
+        	else{
+        		$datas['pano_state'] = true;
+        	}
         }
         elseif ($type == 'camera'){
         	$datas['camera'] = $this->get_camera_info($scene_id);
@@ -44,6 +49,20 @@ class ConfigController extends Controller{
             exit();
         }
         $this->render('/pano/panel/'.$type, array('datas'=>$datas));
+    }
+    /**
+     * 获取全景图状态
+     */
+    private function get_pano_state($scene_id){
+    	if (!$scene_id){
+    		return false;
+    	}
+    	$panoQueue = new PanoQueue();
+    	$datas = $panoQueue->find_by_scene_id($scene_id);
+    	if(!$panoQueue){
+    		return false;
+    	}
+    	return $datas['state'];
     }
     /**
      * 获取地图信息
@@ -108,7 +127,8 @@ class ConfigController extends Controller{
      * 获取默认图片地址
      */
     private function get_default_url($position){
-        return Yii::app()->baseUrl."/pages/images/box_{$position}.gif";
+    	return "";
+        //return Yii::app()->baseUrl."/pages/images/box_{$position}.gif";
     }
     /**
      * 获取热点链接的缩略图
