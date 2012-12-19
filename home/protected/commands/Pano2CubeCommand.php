@@ -127,7 +127,12 @@ class Pano2CubeCommand extends CConsoleCommand {
 	}
 	
 	private function exec_to_cube_win($file, $to){
-		$to = $to.'.jpg';
+		if($this->windows){
+			$to = $to.'.jpg';
+		}
+		else{
+			$to = $to.'.tif';
+		}
 		if($this->windows){
 			$str = "{$this->win_pttool_path} {$file} -o {$to}";
 		}
@@ -143,6 +148,7 @@ class Pano2CubeCommand extends CConsoleCommand {
 		    rename($to, $move_to);
 	    }
 	    else{
+	    	$move_to = substr($to, 0, strlen($to)-3) . '.jpg';
 	    	$myimage = new Imagick($to);
 	    	//$myimage->cropimage(4000, 2000, 926, 300);
 	    	$myimage->writeImage($move_to);
