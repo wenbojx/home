@@ -5,7 +5,7 @@ class Pano2CubeCommand extends CConsoleCommand {
 	public $width = '3724';  //cube
 	public $swidth = '11700'; //sphere
 	public $sheight = '5850'; //sphere
-	public $windows = false;
+	public $windows = true;
 	private $win_path_prefix = 'C:/mydatas/APMServ5.2.6/www/htdocs/www/home';
 	private $win_pttool_path = 'c:\mydatas\soft\PTStitcherNG\PTStitcher.exe';
 	//public $win_shpere_prefix = 'c:/tmp';
@@ -45,7 +45,7 @@ class Pano2CubeCommand extends CConsoleCommand {
 		$this->script_num = $num;
 		foreach($scene_ids as $v){
 			$pano_queue = new PanoQueue();
-			$pano_queue->update_lock($v, 1);    //---------------------------------
+			$pano_queue->update_lock($v, 1);
 		}
 		
 		foreach($pano_pics as $k=>$v){
