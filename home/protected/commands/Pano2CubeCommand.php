@@ -63,7 +63,7 @@ class Pano2CubeCommand extends CConsoleCommand {
 			$prefix = $this->win_path_prefix . '/tmp';
 		}
 		else{
-			$prefix = $this->$linux_path_prefix . '/tmp';
+			$prefix = $this->linux_path_prefix . '/tmp';
 		}
 			$path_1 = $prefix . '/' . 'script-s-1';
 			$path_2 = $prefix . '/' . 'script-s-2';
