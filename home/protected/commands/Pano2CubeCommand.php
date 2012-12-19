@@ -11,7 +11,7 @@ class Pano2CubeCommand extends CConsoleCommand {
 	//public $win_shpere_prefix = 'c:/tmp';
 	
 	private $linux_path_prefix = '/var/www/home/home';
-	private $linux_pttool_path = '';
+	private $linux_pttool_path = '/usr/local/libpano13/bin/PTmender';
 	//public $linux_shpere_prefix = '/tmp';
 	private $script_num = '';
 	private $script_path = '';
