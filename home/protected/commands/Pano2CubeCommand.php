@@ -128,7 +128,12 @@ class Pano2CubeCommand extends CConsoleCommand {
 	
 	private function exec_to_cube_win($file, $to){
 		$to = $to.'.jpg';
-		$str = "{$this->win_pttool_path} {$file} -o {$to}";
+		if($this->windows){
+			$str = "{$this->win_pttool_path} {$file} -o {$to}";
+		}
+		else{
+			$str = "{$this->linux_pttool_path} {$file} -o {$to}";
+		}
 		echo "----sphere pano {$file}----\n";
 		echo $str."\r\n";
 	    system($str);
