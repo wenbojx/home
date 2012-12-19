@@ -94,7 +94,13 @@ class Pano2CubeCommand extends CConsoleCommand {
 	 * 系统处理图片
 	 */
 	public function turn_to_cube($path){
-		$path = $this->win_path_prefix . "/". $path;
+		if($this->windows){
+			$path = $this->win_path_prefix . "/". $path;
+		}
+		else{
+			$path = $this->linux_path_prefix . "/". $path;
+		}
+		
 		$str = "p w{$this->width} h{$this->width} f0 v90 u20 n\"JPEG q70\"\r\n";
 		$str .= "i n\"{$path}\"\r\n";
 		$script_path_prefix = $this->windows ? $this->win_path_prefix : $this->linux_path_prefix;
