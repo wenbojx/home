@@ -1,5 +1,6 @@
 <?php
 class PicTools{
+	//private $;
 	public static function get_img_domain($num=''){
 		$domains = array(
 					0=>'img_domain_1',
@@ -19,10 +20,43 @@ class PicTools{
 	/**
 	 * 获取全景图静态地址
 	 */
-	public function get_pano_static_path($scene_id){
+	public static function get_pano_static_path($scene_id){
 		if(!$scene_id){
 			return false;
 		}
+		$md5 = md5($scene_id . Yii::app()->params['pic_path_prefix']);
+		$lastThreeChar = substr($md5, strlen($md5)-3, 3);
+		$num = substr($scene_id, strlen($scene_id)-1, 1)%2;
+		$str =  Yii::app()->params['pano_static_path'] . '/' ;
+		$str .= substr($lastThreeChar, 0, 1) . '/';
+		$str .= substr($lastThreeChar, 1, 1). '/';
+		$str .= substr($lastThreeChar, 2, 1);
+		return $str. '/' . $scene_id;
+	}
+	/**
+	 * 
+	 * @param unknown $scene_id
+	 * @param unknown $size
+	 * @return boolean|string
+	 */
+	public static function get_pano_path($scene_id){
+		if(!$scene_id){
+			return false;
+		}
+		$num = substr($scene_id, -1);
+		
+		$path = self::get_img_domain($num%2). '/' .self::get_pano_static_path($scene_id);
+		return $path;
+	}
+	/**
+	* 获取缩略图地址
+	 */
+	public static function get_pano_thumb($scene_id, $size){
+		if(!$scene_id){
+			return false;
+		}
+		$path = self::get_img_domain($num). '/' .self::get_pano_static_path($scene_id) . '/thumb/' . $size . '.jpg';
+		return $path;
 	}
 	/**
 	 * 获取场景对应文件信息

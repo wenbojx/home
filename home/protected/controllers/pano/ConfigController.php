@@ -148,10 +148,7 @@ class ConfigController extends Controller{
      * 获取场景缩略图
      */
     private function get_thumb($scene_id){
-        //$thumb_db = new ScenesThumb();
-        //if($thumb_db->find_by_scene_id($scene_id)){
-        return $this->createUrl('/panos/thumb/pic/', array('id'=>$scene_id, 'size'=>$this->pano_thumb_size.'.jpg'));
-        //}
+        return PicTools::get_pano_thumb($scene_id, '200x100');
         return false;
     }
     /**

@@ -81,10 +81,11 @@ class PanoramAdminDatas{
      */
     public function panoram_xml_path($id){
     	$key = $id%2 == 0? '0':'1';
-    	$key = 0;
-    	$pic_tools_obj = new PicTools();
-    	$tag = $pic_tools_obj->get_scene_file_tag($id);
-    	return PicTools::get_img_domain($key).'/salado/index/b/id/'.$id.'/tag/'.$tag.'/s_f.xml';
+    	//$key = 0;
+    	//$pic_tools_obj = new PicTools();
+    	//$tag = $pic_tools_obj->get_scene_file_tag($id);
+        return PicTools::get_pano_path($id) . '/s_f.xml';
+    	//return PicTools::get_img_domain($key).'/salado/index/b/id/'.$id.'/tag/'.$tag.'/s_f.xml';
     }
     /**
      * 获取场景全景数信息

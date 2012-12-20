@@ -38,7 +38,7 @@ class IndexController extends FController{
         	if($suffix == '10'){
         		$file = $this->get_tilt_folder();
         	}
-            $this->actionImage($id, 'front', $suffix, $file);
+            //$this->actionImage($id, 'front', $suffix, $file);
         }
         elseif($this->request->getParam('s_r')){
         	$suffix = $this->request->getParam('s_r');
@@ -89,22 +89,6 @@ class IndexController extends FController{
         else{
             $this->actionXmlb($id);
         }
-    }
-    private function get_tilt_folder(){
-    	return '1000x1000.jpg';
-    	$file = array('0x0.jpg', '0x1.jpg', '1x0.jpg', '1x1.jpg');
-    	if($this->request->getParam('0_0.jpg') !== NULL){
-    		return $file[0];
-    	}
-    	if($this->request->getParam('0_1.jpg') !== NULL){
-    		return $file[2];
-    	}
-    	if($this->request->getParam('1_0.jpg') !== NULL){
-    		return $file[1];
-    	}
-    	if($this->request->getParam('1_1.jpg') !== NULL){
-    		return $file[3];
-    	}
     }
     private function actionXmla($id, $from, $config){
         //获取全景信息

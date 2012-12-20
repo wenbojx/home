@@ -1,35 +1,107 @@
 <?php
 class PanoPicTools{
-    public $tile_info = array('11'=>2000, '10'=>1000, '9'=>500);
+    public $tile_info = array('11'=>2048, '10'=>1024, '9'=>512);
+    private $myimage = null;
+    public $water_pic_path = 'style/img/water.png';
+    private $default_thumb_img = 'style/img/thumb_default.jpg';
+    private $default_face_img = 'style/img/default_face.jpg';
     
+    private function _extensionToMime($ext){
+		static $mime = array(
+			'png' => 'image/png',
+            'jpe' => 'image/jpeg',
+            'jpeg' => 'image/jpeg',
+            'jpg' => 'image/jpeg',
+            'gif' => 'image/gif',
+            'bmp' => 'image/bmp',
+            'ico' => 'image/vnd.microsoft.icon',
+            'tiff' => 'image/tiff',
+            'tif' => 'image/tiff',
+            'svg' => 'image/svg+xml',
+            'svgz' => 'image/svg+xml',
+		);
+		if( !array_key_exists( $ext, $mime ) ){
+			exit('error');
+		}
+		return $mime[$ext];
+	}
+	/**
+	 * 输出默认图片
+	 */
+	public function show_default_pic($type = 1){
+		$path = $this->default_thumb_img;
+		if($type == '2'){
+			$path = $this->default_face_img;
+		}
+		//echo $path;
+		$myimage = new Imagick($path);
+		$ext = strtolower( $myimage->getImageFormat() );
+		$myimage->setImageFormat($ext);
+		
+		header( 'Content-Type: '.$this->_extensionToMime($ext) );
+		echo $myimage->getImagesBLOB();
+		
+		$myimage->clear();
+		$myimage->destroy();
+		exit();
+	}
     /**
-     * 将文件处理成1000大小
+     * 添加水印
+     * @return boolean
      */
-    public function resize_pano($file_path, $folder, $file_type){
-        $folder_pano = $folder.'9/';
-        if(!is_dir($folder_pano)){
-            mkdir($folder_pano);
-        }
-        $folder_10 = $folder.'10/';
-        if(!is_dir($folder_10)){
-            mkdir($folder_10);
-        }
-        $image = Yii::app()->image->load($file_path);
-        $width = $this->tile_info[9];
-        $image->resize($width, $width)->quality(10);
-        $file_path_9 = $folder_pano.$width.'x'.$width.'.'.$file_type;
-        $image->save($file_path_9);
-
-        $image = Yii::app()->image->load($file_path);
-        $width = $this->tile_info[10];
-        //$image->resize($width, $width)->quality(85)->sharpen(5);
-        $image->resize($width, $width)->quality(100);
-        //$image->resize($width, $width)->quality(90);
-        $file_path_10 = $folder_10.$width.'x'.$width.'.'.$file_type;
-        $image->save($file_path_10);
-        //切割图片
-        $this->split_img($file_path_10, $folder,$file_type);
+    public function water_pic(){
+    	$rand = rand(0, 8);
+    	$time = substr(time(), $rand, 2);
+    	$rand = rand(0, 5);
+    	$ox = $time*$rand;
+    	$rand = rand(0, 5);
+    	$oy = $time*$rand;
+    	$water = new Imagick($this->water_pic_path);
+    	$dw = new ImagickDraw();
+    	$dw -> composite($water->getImageCompose(),$ox,$oy,50,0,$water);
+    	$this->myimage -> drawImage($dw);
+    	$water->clear();
+    	$water->destroy();
+    	return true;
     }
+    
+    public function turnToStatic ($from, $to, $size, $quality=100, $water=1, $sharpen=0){
+    	if(!file_exists($from) || !$to || !$size){
+    		return false;
+    	}
+    	$size_explode = explode ('x', $size);
+    	$width = (int) $size_explode[0];
+    	$height = (int) $size_explode[0];
+    	if(!$width || !$height){
+    		return false;
+    	}
+    	
+    	$this->myimage = new Imagick($from);
+    	$ext = strtolower( $this->myimage->getImageFormat() );
+    	$this->myimage->setImageFormat($ext);
+    	//重置尺寸
+    	$this->myimage->resizeimage($width, $height, Imagick::FILTER_LANCZOS, 1, true);
+    	//图片质量
+    	if( $quality && $quality != 100){
+    		$this->myimage->setImageCompression(imagick::COMPRESSION_JPEG);
+    		$this->myimage->setImageCompressionQuality($quality);
+    	}
+    	if($water){
+    		$this->water_pic();
+    	}
+    	if($sharpen){
+    		$this->myimage->sharpenImage($sharpen, $sharpen);
+    	}
+    	$this->myimage->writeImage($to);
+    	
+    	header( 'Content-Type: '.$this->_extensionToMime($ext) );
+		echo $this->myimage->getImagesBLOB();
+		
+    	$this->myimage->clear();
+    	$this->myimage->destroy();
+    	exit();
+    }
+
     public function get_exif_imagetype($file_path){
         if ( ( list($width, $height, $type, $attr) = getimagesize( $file_path ) ) !== false ) {
             return $type;
@@ -39,55 +111,36 @@ class PanoPicTools{
     /**
      * 切割图片
      */
-    public function split_img($src_file, $folder,$file_type){
+    public function split_img_ten($src_file, $file_name, $file_type='jpg'){
+    	
         $maxW = $maxH = $this->tile_info[10]/2;
-        if ( !function_exists( 'exif_imagetype' ) ) {
-            $type = $this->get_exif_imagetype($src_file);
+        $folder = substr($src_file, 0, strlen($src_file)-4);
+        $file = $folder . '/'. $file_name;
+        if(!is_dir($folder)){
+        	mkdir($folder);
         }
-        else{
-            $type = exif_imagetype($src_file);
+        $myimage = new Imagick($src_file);
+        $ext = strtolower( $myimage->getImageFormat() );
+        $myimage->setImageFormat($ext);
+        //重置尺寸
+        $myimage->resizeimage($this->tile_info[10], $this->tile_info[10], Imagick::FILTER_LANCZOS, 1, true);
+        $x = 0 ;
+        $y = 0;
+        if(strstr($file_name, '1_0')){
+        	$x = $maxW;
         }
-
-        $support_type=array(IMAGETYPE_JPEG , IMAGETYPE_PNG , IMAGETYPE_GIF);
-        //Load image
-        switch($type) {
-            case IMAGETYPE_JPEG :
-                $src_img = imagecreatefromjpeg($src_file);
-            break;
-            case IMAGETYPE_PNG :
-                $src_img = imagecreatefrompng($src_file);
-            break;
-            case IMAGETYPE_GIF :
-                $src_img = imagecreatefromgif($src_file);
-            break;
+        else if(strstr($file_name, '0_1')){
+        	$y = $maxW;
         }
-        list($width, $height, $type, $attr) = getimagesize($src_file);
-        $widthnum=ceil($width/$maxW);
-        $heightnum=ceil($height/$maxH);
-        $iOut = imagecreatetruecolor ($maxW,$maxH);
-        for ($i=0;$i < $heightnum;$i++) {
-            for ($j=0;$j < $widthnum;$j++) {
-                imagecopy($iOut,$src_img,0,0,($j*$maxW),($i*$maxH),$maxW,$maxH);//复制图片的一部分
-                //imagejpeg($iOut,"images/".$i."_".$j.".jpg"); //输出成0_0.jpg,0_1.jpg这样的格式
-                $file_path = $folder.'10/'.$i.'x'.$j.'.'.$file_type;
-                //echo $file_path.'<br>';
-                $quality = 100;
-                switch($type) {
-                    case IMAGETYPE_JPEG :
-                        imagejpeg($iOut, $file_path,$quality); // 存储图像
-                    break;
-                    case IMAGETYPE_PNG :
-                        imagepng($iOut,$file_path,$quality);
-                    break;
-                    case IMAGETYPE_GIF :
-                        imagegif($iOut,$file_path,$quality);
-                    break;
-                }
-                //$image = Yii::app()->image->load($file_path);
-                //$image->quality(85);
-                //$image->save($file_path);
-            }
+        else if(strstr($file_name, '1_1')){
+        	$x = $maxW;
+        	$y = $maxW;
         }
-        imagedestroy($iOut);
+		
+		$myimage->cropimage($maxW, $maxW, $x, $y);
+		$myimage->writeImage($file);
+		$myimage->clear();
+		$myimage->destroy();
+		
     }
 }

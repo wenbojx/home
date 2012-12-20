@@ -31,7 +31,7 @@
 				<div class="span3">
 					<div class="thumbnail">
 					<a href="<?=$this->createUrl('/web/detail/a/', array('id'=>$v1['id']));?>">
-						<img src="<?=$this->createUrl('/panos/thumb/pic/', array('id'=>$v1['id'], 'size'=>'200x100.jpg'));?>"/>
+						<img src="<?=PicTools::get_pano_thumb($v1['id'], '200x100')?>"/>
 					</a>
 					</div>
 				</div>

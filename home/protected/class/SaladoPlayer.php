@@ -52,6 +52,9 @@ class SaladoPlayer{
     }
 
     public function get_config_content($id, $admin=false){
+    	if(!$id){
+    		return false;
+    	}
     	$content = $admin ? $this->get_admin_content($id) : $this->get_user_content($id);
         return $content;
     }

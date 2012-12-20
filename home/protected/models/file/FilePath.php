@@ -7,6 +7,7 @@
  */
 class FilePath extends Ydao
 {
+	private $file_info = null;
     /**
      * Returns the static model of the specified AR class.
      * @param string $className active record class name.
@@ -79,18 +80,26 @@ class FilePath extends Ydao
         }
         return $this->findByPk($id);
     }
-    public function get_file_path($id, $add_prx=''){
-    	$file_info = $this->get_by_file_id($id);
-    	if(!$file_info){
+    public function get_file_path($id, $add_prx='original'){
+    	$path = $this->get_file_folder($id, $add_prx);
+    	$path .= '/' . $this->file_info['md5value'].'.'.$this->file_info['type'];
+    	//echo $path;
+    	return $path;
+    }
+    /**
+     * 获取文件的目录
+     */
+    public function get_file_folder($id, $add_prx='original'){
+    	$this->file_info = $this->get_by_file_id($id);
+    	if(!$this->file_info){
     		return false;
     	}
-    	$year_month = substr($file_info['folder'], 0, 6);
-    	$day = substr($file_info['folder'], -2);
-    	$path = Yii::app()->params['file_pic_folder'].'/'.$year_month.'/'.$day.'/'.$file_info['md5value'].'/';
+    	$year_month = substr($this->file_info['folder'], 0, 6);
+    	$day = substr($this->file_info['folder'], -2);
+    	$path = Yii::app()->params['file_pic_folder'].'/'.$year_month.'/'.$day.'/'.$this->file_info['md5value'].'/';
     	if($add_prx){
-    		$path .= $add_prx.'/';
+    		$path .= $add_prx;
     	}
-    	$path .= $file_info['md5value'].'.'.$file_info['type'];
     	return $path;
     }
     public function get_file_by_no($no){

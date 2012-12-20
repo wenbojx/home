@@ -65,7 +65,10 @@ var check_login_url = '<?=$this->createUrl('/member/login/check');?>';
     <?php echo $content;?>
     <hr class="soften">
     <div id="footer">
-    	Copyright © 2012 www.yiluhao.com All Rights Reserved <br>
+    	Copyright © 2012 www.yiluhao.com All Rights Reserved 
+    	<a target="_blank" href="http://www.miibeian.gov.cn">沪ICP备12048111号</a>
+    	<img src="/style/img/gs.gif">
+    	<br>
     	QQ群：280573438 Email:yiluhao@gmail.com 微博：<a href="http://weibo.com/yiluhao" target="_blank">http://weibo.com/yiluhao</a>
     	<br><br><br>
     </div>
