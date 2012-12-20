@@ -94,6 +94,7 @@ class Pano2CubesCommand extends CConsoleCommand {
 		o f4 y0 r0 p-90 v360\n
 		i n\"{$path}\"\n
 		o f4 y0 r0 p90 v360";
+		echo $this->script_path;
 	        return file_put_contents($this->script_path, $script);
 	    }
 	    public function exec_libpano($path){
