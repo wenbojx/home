@@ -27,6 +27,7 @@ class ConfigController extends Controller{
         	if(!$this->get_pano_state($scene_id)){
         		$scene_files = $this->get_scene_pic($scene_id);
         		$datas['scene_files'] = $this->get_file_url($scene_files);
+        		$datas['pano_state'] = false;
         	}
         	else{
         		$datas['pano_state'] = true;
