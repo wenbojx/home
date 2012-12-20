@@ -101,7 +101,7 @@ class Pano2CubesCommand extends CConsoleCommand {
 		$str = "/usr/local/libpano13/bin/PTmender {$this->script_path}";
 		echo "----cube pano {$path}----\r\n";
 		echo $str;
-		//system($str);
+		system($str);
 		echo "----cube pano down {$path}----\r\n";
 		$this->covert($path);
 	}
@@ -117,12 +117,14 @@ class Pano2CubesCommand extends CConsoleCommand {
 			$new = $v.'.jpg';
 			$path_explode = explode('/', $path);
 			$prefix = '/';
-			for($i = 0; $i<count($path_explode)-2; $i++){
+			for($i = 1; $i<count($path_explode)-2; $i++){
 				$prefix .= $path_explode[$i] . '/';
 			}
 			echo $prefix;
+			$new = $prefix.$new;
 			echo "----covering tifToJpg {$old}----\n";
-			//$this->tifToJpg($old, $new);
+			
+			$this->tifToJpg($old, $new);
 			echo "----covering tifToJpg success {$old}----\n";
 			//$this->move_cube_file($new);
 		}
