@@ -38,10 +38,10 @@ class Pano2CubesCommand extends CConsoleCommand {
 		
 		foreach($pano_pics as $k=>$v){
 			$this->turn_to_cube($v);
-			$this->update_item_state_lock($k);
+			//$this->update_item_state_lock($k);
 		}
 		if (file_exists($this->script_path)) {
-			unlink ($this->script_path);
+			//unlink ($this->script_path);
 		}
 	}
 	/**
@@ -98,10 +98,10 @@ class Pano2CubesCommand extends CConsoleCommand {
 	    }
 	    public function exec_libpano($path){
 	    	$str = "/usr/local/libpano13/bin/PTmender {$this->script_path}";
-	    	echo "----cube pano {$path}----\n";
+	    	echo "----cube pano {$path}----\r\n";
 	    	echo $str;
 	    	//system($str);
-	    	echo "----cube pano down {$path}----\n";
+	    	echo "----cube pano down {$path}----\r\n";
 	    	//$this->covert();
 	    }
 	    public function covert(){
