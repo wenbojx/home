@@ -98,10 +98,10 @@ class Pano2CubesCommand extends CConsoleCommand {
 	    }
 	    public function exec_libpano($path){
 	    	$str = "/usr/local/libpano13/bin/PTmender {$this->script_path}";
-	    	echo "----cube pano {$this->split_file}----\n";
+	    	echo "----cube pano {$path}----\n";
 	    	echo $str;
 	    	//system($str);
-	    	echo "----cube pano down {$this->split_file}----\n";
+	    	echo "----cube pano down {$path}----\n";
 	    	//$this->covert();
 	    }
 	    public function covert(){
