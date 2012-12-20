@@ -204,7 +204,7 @@ class Pano2CubesCommand extends CConsoleCommand {
 			return false;
 		}
 		$file_path = $this->get_path_by_file_ids($scene_file);
-		return $this->linux_path_prefix. '/' . $file_path;
+		return $file_path;
 	}
 	/**
 	 * 获取图片地址
@@ -213,7 +213,7 @@ class Pano2CubesCommand extends CConsoleCommand {
 		$file_path_db = new FilePath();
 		$file_path = array();
 		foreach($file_ids as $k=>$v){
-			$file_path[$k] = $file_path_db->get_file_path($v, 'original');
+			$file_path[$k] = $this->linux_path_prefix. '/' . $file_path_db->get_file_path($v, 'original');
 		}
 		return $file_path;
 	}
