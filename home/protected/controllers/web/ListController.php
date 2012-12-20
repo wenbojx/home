@@ -19,6 +19,7 @@ class ListController extends FController{
     	$this->project_db = new Project();
     	
     	$total = $this->project_db->get_project_num(3);
+    	$project_datas = array();
     	if($total>0){
     		$route = '/web/list/a';
     		$this->page_obj = $this->page($page, $this->page_size, $total, $route);
