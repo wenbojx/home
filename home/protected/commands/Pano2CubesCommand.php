@@ -40,6 +40,7 @@ class Pano2CubesCommand extends CConsoleCommand {
 			$this->turn_to_cube($v);
 			$this->update_item_state_lock($k);
 		}
+		echo $this->script_path;
 		if (file_exists($this->script_path)) {
 			unlink ($this->script_path);
 		}
@@ -119,6 +120,10 @@ o f4 y0 r0 p90 v360";
 			$prefix = '/';
 			for($i = 1; $i<count($path_explode)-2; $i++){
 				$prefix .= $path_explode[$i] . '/';
+			}
+			$prefix .= 'cube/';
+			if(!file_exists($prefix)){
+				mkdir($prefix);
 			}
 			echo $prefix;
 			$new = $prefix.$new;
