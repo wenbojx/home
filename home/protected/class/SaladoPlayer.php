@@ -88,7 +88,7 @@ class SaladoPlayer{
     	else{
     		$panodatas_obj = new PanoramAdminDatas();
     		$panodatas = $panodatas_obj->get_panoram_datas($id);
-    		$this->admin = $admin;
+    		//$this->admin = $admin;
     		$content = $this->config_start();
     		$content .= $this->config_global($panodatas['global']);
     		$content .= $this->config_panoramas($panodatas['panorams']);
