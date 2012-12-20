@@ -204,7 +204,7 @@ class Pano2CubesCommand extends CConsoleCommand {
 			return false;
 		}
 		$file_path = $this->get_path_by_file_ids($scene_file);
-		return $file_path;
+		return $this->linux_path_prefix. '/' . $file_path;
 	}
 	/**
 	 * 获取图片地址
