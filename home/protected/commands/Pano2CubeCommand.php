@@ -153,12 +153,18 @@ class Pano2CubeCommand extends CConsoleCommand {
 	    }
 	    else{
 	    	$move_to = substr($to, 0, strlen($to)-3) . '.jpg';
-	    	$myimage = new Imagick($to);
-	    	//$myimage->cropimage(4000, 2000, 926, 300);
-	    	$myimage->writeImage($move_to);
-	    	unlink($to);
-	    	$myimage->clear();
-	    	$myimage->destroy();
+	    	if(!file_exists($to)){
+	    		echo 'can not find file'. $to;
+	    	}
+	    	else{
+	    		echo "find file" . $to;
+		    	$myimage = new Imagick($to);
+		    	//$myimage->cropimage(4000, 2000, 926, 300);
+		    	$myimage->writeImage($move_to);
+		    	unlink($to);
+		    	$myimage->clear();
+		    	$myimage->destroy();
+	    	}
 	    }
 
 		echo "----sphere pano down {$file}----\n";
