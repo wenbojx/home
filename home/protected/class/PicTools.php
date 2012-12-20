@@ -55,6 +55,7 @@ class PicTools{
 		if(!$scene_id){
 			return false;
 		}
+		$num = 0;
 		$path = self::get_img_domain($num). '/' .self::get_pano_static_path($scene_id) . '/thumb/' . $size . '.jpg';
 		return $path;
 	}
