@@ -152,7 +152,7 @@ o f4 y0 r0 p90 v360";
 		//system($str);
 		$str = "/usr/local/libpano13/bin/PTmender {$this->script_path}";
 		echo "----cube pano {$path}----\r\n";
-		echo $str;
+		//echo $str;
 		exec($str);
 		if (file_exists($this->script_path)) {
 			unlink ($this->script_path);
@@ -184,10 +184,7 @@ o f4 y0 r0 p90 v360";
 				$prefix .= $path_explode[$i] . '/';
 			}
 			$prefix .= 'cube/';
-			
-			file_put_contents("a{$this->g_num}.txt", $prefix);
-			$this->g_num++;
-			
+
 			if(!file_exists($prefix)){
 				mkdir($prefix);
 			}
@@ -214,10 +211,7 @@ o f4 y0 r0 p90 v360";
 		$myimage->setImageFormat("jpeg");
 		$myimage->setCompressionQuality( 100 );
 		$myimage->writeImage($new);
-		
-		file_put_contents("a{$this->g_num}.txt", $new);
-		$this->g_num++;
-		
+
 		$myimage->clear();
 		$myimage->destroy();
 	}
