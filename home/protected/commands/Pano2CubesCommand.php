@@ -166,7 +166,7 @@ o f4 y0 r0 p90 v360";
 				'pano0003'=>'left',
 				'pano0004'=>'top', );
 		foreach($panos as $k=>$v){
-			$folder_pre  =$this->linux_path_prefix . '/tm/' . $this->script_num. '/' ;
+			$folder_pre  =$this->linux_path_prefix . '/tmp/' . $this->script_num. '/' ;
 			$old = $folder_pre . $k.'.tif';
 			//$old_1 = $this->linux_path_prefix. '/'. 'tmp/'.$old;
 			//$cmd = "mv {$old} {$old_1}";
