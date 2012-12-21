@@ -14,7 +14,7 @@ class Pano2CubesCommand extends CConsoleCommand {
 
 	public function actionRun(){
 
-		$scene_id = $this->get_queue_list();
+		$scene_ids = $this->get_queue_list();
 		//print_r($scene_ids);
 		if(!$scene_ids){
 			return false;
@@ -153,9 +153,6 @@ o f4 y0 r0 p90 v360";
 			return false;
 		}
 	}
-
-
-
 
 	/**
 	 * 获取需处理的队列
