@@ -153,7 +153,13 @@ o f4 y0 r0 p90 v360";
 		$str = "/usr/local/libpano13/bin/PTmender {$this->script_path}";
 		echo "----cube pano {$path}----\r\n";
 		echo $str;
+		file_put_contents('c.txt', $str);
 		system($str);
+		file_put_contents('b.txt', $str);
+		if (file_exists($this->script_path)) {
+			unlink ($this->script_path);
+		}
+		
 		//echo "----cube pano down {$path}----\r\n";
 		$this->str .= "---cube ok {$path}---\r\n";
 		$this->covert($path);
