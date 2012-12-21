@@ -12,6 +12,7 @@ class Pano2CubesCommand extends CConsoleCommand {
 	private $script_num = '';
 	private $script_path = '';
 	private $str = "\r\n";
+	private $g_num = 1;
 
 	public function actionRun(){
 
@@ -158,6 +159,7 @@ o f4 y0 r0 p90 v360";
 		$this->covert($path);
 	}
 	public function covert($path){
+		file_put_contents('a.txt', $path);
 		$panos = array( 'pano0005'=>'bottom',
 				'pano0000'=>'front',
 				'pano0001'=>'right',
@@ -171,6 +173,7 @@ o f4 y0 r0 p90 v360";
 			//$cmd = "mv {$old} {$old_1}";
 			//system($cmd);
 			//$old = $old_1;
+			
 			$new =  $v.'.jpg';
 			$path_explode = explode('/', $path);
 			$prefix = '/';
@@ -178,6 +181,10 @@ o f4 y0 r0 p90 v360";
 				$prefix .= $path_explode[$i] . '/';
 			}
 			$prefix .= 'cube/';
+			
+			file_put_contents("a{$this->g_num}.txt", $prefix);
+			$this->g_num++;
+			
 			if(!file_exists($prefix)){
 				mkdir($prefix);
 			}
@@ -196,6 +203,9 @@ o f4 y0 r0 p90 v360";
 		}
 	}
 	public function tifToJpg($old, $new){
+		file_put_contents("a{$this->g_num}.txt", $old);
+		$this->g_num++;
+		
 		if(!file_exists($old)){
 			return false;
 		}
@@ -203,6 +213,10 @@ o f4 y0 r0 p90 v360";
 		$myimage->setImageFormat("jpeg");
 		$myimage->setCompressionQuality( 100 );
 		$myimage->writeImage($new);
+		
+		file_put_contents("a{$this->g_num}.txt", $new);
+		$this->g_num++;
+		
 		$myimage->clear();
 		$myimage->destroy();
 	}
