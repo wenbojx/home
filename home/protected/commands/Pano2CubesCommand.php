@@ -37,12 +37,19 @@ class Pano2CubesCommand extends CConsoleCommand {
 			$this->str .= "pano id {$v}\r\n";
 			$pano_queue = new PanoQueue();
 			$pano_queue->update_lock($v, 1);
+			$static_path = PicTools::get_pano_static_path($v);
+			$static_path = $this->linux_path_prefix . '/' .$static_path;
+			if(is_dir($static_path)){
+				$this->delFileUnderDir($static_path);
+			}
 		}
 
 		foreach($pano_pics as $k=>$v){
 			$this->turn_to_cube($v);
 			$this->update_item_state_lock($k);
 		}
+		//清理web文件
+		
 		//echo $this->script_path;
 		if (file_exists($this->script_path)) {
 			unlink ($this->script_path);
@@ -55,6 +62,33 @@ class Pano2CubesCommand extends CConsoleCommand {
 		$str = $str_old . $this->str . "\r\n\+++++++++++++++++\r\n\r\n";
 		file_put_contents($log_file, $str );
 	}
+	
+	function delFileUnderDir( $dirName='' ){
+		if(!$dirName){
+			return false;
+		}
+		if(!is_dir($dirName)){
+			return false;
+		}
+		if(!strstr($dirName, '/pp/')){
+			return false;
+		}
+		if ( $handle = opendir( "$dirName" ) ) {
+			while ( false !== ( $item = readdir( $handle ) ) ) {
+				if ( $item != "." && $item != ".." ) {
+					if ( is_dir( "$dirName/$item" ) ) {
+						delFileUnderDir( "$dirName/$item" );
+					} else {
+						if( unlink( "$dirName/$item" ) ){
+							echo "--del： $dirName/$item<br />\n--";
+						}
+					}
+				}
+			}
+			closedir( $handle );
+		}
+	}
+	
 	/**
 	 * 获取script 线程ID
 	 */
