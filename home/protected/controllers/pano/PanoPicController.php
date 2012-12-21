@@ -47,7 +47,6 @@ class PanoPicController extends FController{
     		$this->show_default(2);
     	}
     	$path = $this->get_pano_file_path($scene_id, $face);
-    	echo $path;
     	if(!file_exists($path)){
     		$this->show_default(2);
     	}
@@ -59,8 +58,6 @@ class PanoPicController extends FController{
     	if(!$this->make_unexit_dir($toPath)){
     		$this->show_default(2);
     	}
-    	
-    	echo $path;
     	if($suffix == '9'){
     		$size = '256x256';
     		$quality = 60;
