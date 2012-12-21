@@ -101,19 +101,19 @@ class Pano2CubesCommand extends CConsoleCommand {
 		$prefix = '';
 		$flag = false; //是否有位置
 		$prefix = $this->linux_path_prefix . '/tmp';
-		$path_1 = $prefix . '/' . 'script-1.txt';
-		//$path_2 = $prefix . '/' . 'script-2.txt';
+		$path_1 = $prefix . '/1/' . 'script-1.txt';
+		$path_2 = $prefix . '/2/' . 'script-2.txt';
 
 		if(!file_exists($path_1)){
 			$num = 1;
 			file_put_contents($path_1, 1);
 			$this->script_path = $path_1;
 		}
-		/* elseif(!file_exists($path_2)){
+		elseif(!file_exists($path_2)){
 			$num = 2;
 			file_put_contents($path_2, 1);
 			$this->script_path = $path_2;
-		} */
+		} 
 		/* elseif(!file_exists($path_3)){
 		 $num = 3;
 		file_put_contents($path_3, 1);
@@ -152,9 +152,7 @@ o f4 y0 r0 p90 v360";
 		$str = "/usr/local/libpano13/bin/PTmender {$this->script_path}";
 		echo "----cube pano {$path}----\r\n";
 		echo $str;
-		file_put_contents('f.txt', $str);
 		system($str);
-		file_put_contents('g.txt', $str);
 		//echo "----cube pano down {$path}----\r\n";
 		$this->str .= "---cube ok {$path}---\r\n";
 		$this->covert($path);
@@ -168,25 +166,25 @@ o f4 y0 r0 p90 v360";
 				'pano0003'=>'left',
 				'pano0004'=>'top', );
 		foreach($panos as $k=>$v){
-			$old = $k.'.tif';
+			$folder_pre  =$this->linux_path_prefix . '/tm/' . $this->script_num. '/' ;
+			$old = $folder_pre . $k.'.tif';
 			//$old_1 = $this->linux_path_prefix. '/'. 'tmp/'.$old;
 			//$cmd = "mv {$old} {$old_1}";
 			//system($cmd);
 			//$old = $old_1;
-			$new =  $this->linux_path_prefix. '/'. 'tmp/'.$v.'.jpg';
+			$new =  $v.'.jpg';
 			$path_explode = explode('/', $path);
 			$prefix = '/';
 			for($i = 1; $i<count($path_explode)-2; $i++){
 				$prefix .= $path_explode[$i] . '/';
 			}
 			$prefix .= 'cube/';
-			file_put_contents('d.txt', $prefix);
 			if(!file_exists($prefix)){
 				mkdir($prefix);
 			}
 			//echo $prefix;
 			$new = $prefix.$new;
-			//echo "----covering tifToJpg {$old}----\n";
+			echo "----covering tifToJpg {$new}----\n";
 			
 			$this->tifToJpg($old, $new);
 			
@@ -199,18 +197,15 @@ o f4 y0 r0 p90 v360";
 		}
 	}
 	public function tifToJpg($old, $new){
-		file_put_contents('a.txt', $old.'----'. $new);
 		if(!file_exists($old)){
 			return false;
 		}
-		file_put_contents('b.txt', $old.'----'. $new);
 		$myimage = new Imagick($old);
 		$myimage->setImageFormat("jpeg");
 		$myimage->setCompressionQuality( 100 );
 		$myimage->writeImage($new);
 		$myimage->clear();
 		$myimage->destroy();
-		file_put_contents('c.txt', $old.'----'. $new);
 	}
 
 	/**
