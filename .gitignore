@@ -23,6 +23,8 @@ home/protected/runtime/
 home/protected/runtime/*.*
 home/protected/config/*.php
 home/upload/
+home/pp/
+home/pp
 home/html/phpmyadmin
 home/html/phpmyadmin.tar.gz
 
