@@ -15,6 +15,12 @@ class Pano2CubesCommand extends CConsoleCommand {
 
 	public function actionRun(){
 
+		$num = $this->get_script_path();
+		if(!$num){
+			return false;
+		}
+		$this->script_num = $num;
+		
 		$scene_ids = $this->get_queue_list();
 		//print_r($scene_ids);
 		if(!$scene_ids){
@@ -27,26 +33,24 @@ class Pano2CubesCommand extends CConsoleCommand {
 			return false;
 		}
 
-		$num = $this->get_script_path();
-		if(!$num){
-			return false;
-		}
-		$this->script_num = $num;
+		
 		$this->str = "\r\n-----time: ". date('Y-m-d H:i:s'). "----\r\n";
 		foreach($scene_ids as $v){
 			$this->str .= "pano id {$v}\r\n";
 			$pano_queue = new PanoQueue();
 			$pano_queue->update_lock($v, 1);
-			$static_path = PicTools::get_pano_static_path($v);
-			$static_path = $this->linux_path_prefix . '/' .$static_path;
-			if(is_dir($static_path)){
-				$this->delFileUnderDir($static_path);
-			}
+
 		}
 
 		foreach($pano_pics as $k=>$v){
 			$this->turn_to_cube($v);
 			$this->update_item_state_lock($k);
+			
+			$static_path = PicTools::get_pano_static_path($v);
+			$static_path = $this->linux_path_prefix . '/' .$static_path;
+			if(is_dir($static_path)){
+				$this->delFileUnderDir($static_path);
+			}
 		}
 		//清理web文件
 		
