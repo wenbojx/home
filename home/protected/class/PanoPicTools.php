@@ -124,6 +124,9 @@ class PanoPicTools{
         $myimage->setImageFormat($ext);
         //重置尺寸
         $myimage->resizeimage($this->tile_info[10], $this->tile_info[10], Imagick::FILTER_LANCZOS, 1, true);
+        $sharpen = 0.5;
+        $myimage->sharpenImage($sharpen, $sharpen);
+        
         $x = 0 ;
         $y = 0;
         if(strstr($file_name, '1_0')){
