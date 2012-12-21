@@ -99,6 +99,8 @@ o f4 y0 r0 p90 v360";
 		return file_put_contents($this->script_path, $script);
 	}
 	public function exec_libpano($path){
+		$str = "cd {$this->linux_path_prefix}/tmp/{$this->script_num}";
+		system($str);
 		$str = "/usr/local/libpano13/bin/PTmender {$this->script_path}";
 		echo "----cube pano {$path}----\r\n";
 		echo $str;
