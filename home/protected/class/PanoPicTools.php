@@ -5,7 +5,7 @@ class PanoPicTools{
     public $water_pic_path = 'style/img/water.png';
     private $default_thumb_img = 'style/img/thumb_default.jpg';
     private $default_face_img = 'style/img/default_face.jpg';
-    
+
     private function _extensionToMime($ext){
 		static $mime = array(
 			'png' => 'image/png',
@@ -37,10 +37,10 @@ class PanoPicTools{
 		$myimage = new Imagick($path);
 		$ext = strtolower( $myimage->getImageFormat() );
 		$myimage->setImageFormat($ext);
-		
+
 		header( 'Content-Type: '.$this->_extensionToMime($ext) );
 		echo $myimage->getImagesBLOB();
-		
+
 		$myimage->clear();
 		$myimage->destroy();
 		exit();
@@ -64,7 +64,7 @@ class PanoPicTools{
     	$water->destroy();
     	return true;
     }
-    
+
     public function turnToStatic ($from, $to, $size, $quality=100, $water=1, $sharpen=0){
     	if(!file_exists($from) || !$to || !$size){
     		return false;
@@ -75,7 +75,7 @@ class PanoPicTools{
     	if(!$width || !$height){
     		return false;
     	}
-    	
+
     	$this->myimage = new Imagick($from);
     	$ext = strtolower( $this->myimage->getImageFormat() );
     	$this->myimage->setImageFormat($ext);
@@ -93,10 +93,10 @@ class PanoPicTools{
     		$this->myimage->sharpenImage($sharpen, $sharpen);
     	}
     	$this->myimage->writeImage($to);
-    	
+
     	header( 'Content-Type: '.$this->_extensionToMime($ext) );
 		echo $this->myimage->getImagesBLOB();
-		
+
     	$this->myimage->clear();
     	$this->myimage->destroy();
     	exit();
@@ -112,38 +112,52 @@ class PanoPicTools{
      * 切割图片
      */
     public function split_img_ten($src_file, $file_name, $file_type='jpg'){
-    	
+
         $maxW = $maxH = $this->tile_info[10]/2;
         $folder = substr($src_file, 0, strlen($src_file)-4);
-        $file = $folder . '/'. $file_name;
         if(!is_dir($folder)){
         	mkdir($folder);
         }
+        $folder .= '/10';
+    	if(!is_dir($folder)){
+        	mkdir($folder);
+        }
+        $file = $folder . '/'. $file_name;
+
         $myimage = new Imagick($src_file);
         $ext = strtolower( $myimage->getImageFormat() );
         $myimage->setImageFormat($ext);
+        $p_width = $myimage->getImageWidth();
+        $p_height = $myimage->getImageHeight();
         //重置尺寸
-        $myimage->resizeimage($this->tile_info[10], $this->tile_info[10], Imagick::FILTER_LANCZOS, 1, true);
-        $sharpen = 0.5;
-        $myimage->sharpenImage($sharpen, $sharpen);
-        
+        //$myimage->resizeimage($this->tile_info[10], $this->tile_info[10], Imagick::FILTER_LANCZOS, 1, true);
+        //$sharpen = 0.5;
+        //$myimage->sharpenImage($sharpen, $sharpen);
+
+
         $x = 0 ;
         $y = 0;
+        $half_x = $p_width/2;
+        $half_y = $p_height/2;
         if(strstr($file_name, '1_0')){
-        	$x = $maxW;
+        	$x = $half_x;
         }
         else if(strstr($file_name, '0_1')){
-        	$y = $maxW;
+        	$y = $half_y;
         }
         else if(strstr($file_name, '1_1')){
-        	$x = $maxW;
-        	$y = $maxW;
+        	$x = $half_x;
+        	$y = $half_y;
         }
-		
-		$myimage->cropimage($maxW, $maxW, $x, $y);
+
+		$myimage->cropimage($half_x, $half_y, $x, $y);
+		$myimage->resizeimage($maxW, $maxW, Imagick::FILTER_LANCZOS, 1, true);
+		//$sharpen = 0.5;
+        //$myimage->sharpenImage($sharpen, $sharpen);
+
 		$myimage->writeImage($file);
 		$myimage->clear();
 		$myimage->destroy();
-		
+
     }
 }

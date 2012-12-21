@@ -7,7 +7,7 @@ class PanoPicController extends FController{
     private $request = null;
     public $img_size = 1024;
     public $tile_size = 512;
-    private $face_box = array ('s_f'=>'front', 's_r'=>'right', 's_l'=>'left', 's_b'=>'back', 's_u'=>'top', 's_d'=>'bottom'); 
+    private $face_box = array ('s_f'=>'front', 's_r'=>'right', 's_l'=>'left', 's_b'=>'back', 's_u'=>'top', 's_d'=>'bottom');
 
     /**
      * 获取全景图缩略图
@@ -53,7 +53,7 @@ class PanoPicController extends FController{
     	$water = 0;
     	$sharpen = 0;
     	$quality = 90;
-    	$size = $this->img_size;
+    	$size = $this->img_size/2;
     	$toPath = PicTools::get_pano_static_path($scene_id) . '/'. $face. '/' . $suffix;
     	if(!$this->make_unexit_dir($toPath)){
     		$this->show_default(2);
@@ -66,9 +66,9 @@ class PanoPicController extends FController{
     		//原图分解成4份
     		$panoPicTools = new PanoPicTools();
     		$panoPicTools->split_img_ten($path, $fileName);
-    		$path = substr($path, 0, strlen($path)-4) . '/' . $fileName;
+    		$path = substr($path, 0, strlen($path)-4) . '/10/' . $fileName;
     		$quality = 100;
-    		if(strstr($face, 's_b') || strstr($face, 's_u') || strstr($face, 's_d')){
+    		if(strstr($face, 's_l') || strstr($face, 's_b') || strstr($face, 's_u') || strstr($face, 's_d')){
     			if(strstr($fileName, '1_1')){
     				$water =1;
     			}
@@ -78,6 +78,7 @@ class PanoPicController extends FController{
     	//echo $path."<br>";
     	//echo $toPath."<br>";
     	$panoPicTools = new PanoPicTools();
+
     	$panoPicTools->turnToStatic($path, $toPath, $size, $quality, $water, $sharpen);
     }
     private function put_out_xmlb(){
@@ -160,7 +161,7 @@ class PanoPicController extends FController{
     	$panoPicTools = new PanoPicTools();
     	$panoPicTools->turnToStatic($path, $toPath, $size, '90', 0, 0.5);
     }
-    
+
     /**
      * 获取全景图缩略图文件地址
      */
@@ -202,7 +203,7 @@ class PanoPicController extends FController{
     	if(!$scene_id){
     		$this->show_default(2);
     	}
-    	
+
     	$sceneDB = new Scene();
     	$panoDatas = $sceneDB->get_by_scene_id($scene_id);
     	if(!$panoDatas){

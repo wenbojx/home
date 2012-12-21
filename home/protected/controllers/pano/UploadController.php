@@ -17,7 +17,7 @@ class UploadController extends Controller{
         $from_thumb_pic = false;
         $from_map_pic = false;
         $from_pano_pic = false;;
-        
+
         $scene_id = $request->getParam('scene_id');
         if ($request->getParam('position')!='' && $request->getParam('from')=='box_pic' && $scene_id>0){
         	$from_box_pic = true;
@@ -31,10 +31,10 @@ class UploadController extends Controller{
        else if ($request->getParam('from')=='pano_pic' && $scene_id>0 ){
        		$from_pano_pic = true;
        }
-        
+
         $this->check_scene_own($scene_id);
-        
-        $file_info = $this->upload($from_box_pic);
+
+        $file_info = $this->upload($from_box_pic, $from_pano_pic);
         $msg = array('flag'=>0,'msg'=>'文件上传出错');
         $flag = true;
         $flag_scene = false;
@@ -119,7 +119,7 @@ class UploadController extends Controller{
     /**
      * 上传文件
      */
-    private function upload($from_box_pic = false){
+    private function upload($from_box_pic = false, $from_pano_pic=false){
         if(!$_FILES['Filedata']){
             return false;
         }
@@ -155,11 +155,15 @@ class UploadController extends Controller{
         //$file_info['name']=iconv("utf-8", "gb2312", $file_info['name']);//这里是处理中文的问题，非中文不需要
         $uploadfile = $folder.$file_info['md5value'].'.'.$file_info['type'];
         $flag = $file->saveAs($uploadfile,true);//上传操作
-        
+
         $myimage = new Imagick($uploadfile);
         $this->image_width = $myimage->getImageWidth();
         $this->image_height = $myimage->getImageHeight();
-        
+
+        if($from_pano_pic){
+        	$cube_path = $folder.'cube';
+        	mkdir($cube_path);
+        }
         if(!$from_box_pic){
         	return $file_info;
         }
