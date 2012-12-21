@@ -1,3 +1,0 @@
-p w3724 h3724 f0 v90 u20 n"JPEG q70"
-i n"C:/mydatas/APMServ5.2.6/www/htdocs/www/home/upload/201212/19/d30351d57804796768d1241eea71deb2/original/d30351d57804796768d1241eea71deb2.jpg"
-o f4 y0 r0 p0 v360
