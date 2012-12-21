@@ -70,6 +70,7 @@ class PanoQueue extends Ydao
     	
     	$criteria=new CDbCriteria;
     	$criteria->order = 'update_time ASC';
+    	$criteria->limit = '1';
     	$criteria->addCondition('state=1');
     	$criteria->addCondition('locked=0');
     	$queue_datas = $this->findAll($criteria);

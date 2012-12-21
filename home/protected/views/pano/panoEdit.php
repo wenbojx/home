@@ -29,7 +29,7 @@
                         <div class="edit_buttons">
                             <button class="btn btn-success" id="btn_review">载入</button>
                             <button class="btn" id="btn_upload">上传</button>
-                            <button class="btn" id="btn_position">位置</button>
+                            <!-- <button class="btn" id="btn_position">位置</button> -->
                             <button class="btn" id="btn_thumb">缩略</button>
                             <button class="btn" id="btn_camera">摄像</button>
                             <button class="btn" id="btn_map">地图</button>
@@ -83,7 +83,7 @@ var map_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'map', 'scene_i
 var hotspot_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'hotspot', 'scene_id'=>$datas['pano']['id']))?>';
 var hotspot_edit_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'hotspotEdit', 'scene_id'=>$datas['pano']['id']))?>';
 </script>
-
+<!-- 
 <script>
 var glng = '<?=$datas['position']['glng']?>';
 var glat = '<?=$datas['position']['glat']?>';
@@ -94,4 +94,4 @@ var gzoom = '<?=$datas['position']['gzoom']?>';
 <script type="text/javascript" src="http://www.google.com/uds/solutions/localsearch/gmlocalsearch.js"></script>
 
 <script type="text/javascript" src="<?=Yii::app()->baseUrl . "/style/js/google.map.js"?>"></script>
-
+ -->
