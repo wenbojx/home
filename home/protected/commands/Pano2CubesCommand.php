@@ -52,7 +52,8 @@ class Pano2CubesCommand extends CConsoleCommand {
 		if(file_exists($log_file)){
 			$str_old = file_get_contents($log_file);
 		}
-		file_put_contents($log_file, $str_old.$this->str );
+		$str = $str_old . $this->str . "\r\n+++++++++++++++++\r\n";
+		file_put_contents($log_file, $str );
 	}
 	/**
 	 * 获取script 线程ID
