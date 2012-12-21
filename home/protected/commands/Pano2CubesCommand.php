@@ -153,9 +153,7 @@ o f4 y0 r0 p90 v360";
 		$str = "/usr/local/libpano13/bin/PTmender {$this->script_path}";
 		echo "----cube pano {$path}----\r\n";
 		echo $str;
-		file_put_contents('c.txt', $str);
-		system($str);
-		file_put_contents('b.txt', $str);
+		exec($str);
 		if (file_exists($this->script_path)) {
 			unlink ($this->script_path);
 		}
@@ -165,7 +163,6 @@ o f4 y0 r0 p90 v360";
 		$this->covert($path);
 	}
 	public function covert($path){
-		file_put_contents('a.txt', $path);
 		$panos = array( 'pano0005'=>'bottom',
 				'pano0000'=>'front',
 				'pano0001'=>'right',
@@ -209,9 +206,7 @@ o f4 y0 r0 p90 v360";
 		}
 	}
 	public function tifToJpg($old, $new){
-		file_put_contents("a{$this->g_num}.txt", $old);
-		$this->g_num++;
-		
+
 		if(!file_exists($old)){
 			return false;
 		}
