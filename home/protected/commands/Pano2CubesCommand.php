@@ -102,18 +102,18 @@ class Pano2CubesCommand extends CConsoleCommand {
 		$flag = false; //是否有位置
 		$prefix = $this->linux_path_prefix . '/tmp';
 		$path_1 = $prefix . '/1/' . 'script-1.txt';
-		$path_2 = $prefix . '/2/' . 'script-2.txt';
+		//$path_2 = $prefix . '/2/' . 'script-2.txt';
 
 		if(!file_exists($path_1)){
 			$num = 1;
 			file_put_contents($path_1, 1);
 			$this->script_path = $path_1;
 		}
-		elseif(!file_exists($path_2)){
+		/* elseif(!file_exists($path_2)){
 			$num = 2;
 			file_put_contents($path_2, 1);
 			$this->script_path = $path_2;
-		} 
+		}  */
 		/* elseif(!file_exists($path_3)){
 		 $num = 3;
 		file_put_contents($path_3, 1);
