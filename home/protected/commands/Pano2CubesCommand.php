@@ -11,6 +11,7 @@ class Pano2CubesCommand extends CConsoleCommand {
 	//public $linux_shpere_prefix = '/tmp';
 	private $script_num = '';
 	private $script_path = '';
+	private $str = "\r\n";
 
 	public function actionRun(){
 
@@ -31,7 +32,9 @@ class Pano2CubesCommand extends CConsoleCommand {
 			return false;
 		}
 		$this->script_num = $num;
+		$this->str = "\r\n-----time: ". date('Y-m-d H:i:s'). "----\r\n";
 		foreach($scene_ids as $v){
+			$this->str .= "pano id {$v}\r\n";
 			$pano_queue = new PanoQueue();
 			$pano_queue->update_lock($v, 1);
 		}
@@ -40,10 +43,16 @@ class Pano2CubesCommand extends CConsoleCommand {
 			$this->turn_to_cube($v);
 			$this->update_item_state_lock($k);
 		}
-		echo $this->script_path;
+		//echo $this->script_path;
 		if (file_exists($this->script_path)) {
 			unlink ($this->script_path);
 		}
+		$log_file = $this->linux_path_prefix . '/tmp/log.txt';
+		$str_old = '';
+		if(file_exists($log_file)){
+			$str_old = file_get_contents($log_file);
+		}
+		file_put_contents($log_file, $str_old.$this->str );
 	}
 	/**
 	 * 获取script 线程ID
@@ -95,17 +104,18 @@ i n\"{$path}\"\n
 o f4 y0 r0 p-90 v360\n
 i n\"{$path}\"\n
 o f4 y0 r0 p90 v360";
-		echo $this->script_path;
+		//echo $this->script_path;
 		return file_put_contents($this->script_path, $script);
 	}
 	public function exec_libpano($path){
-		$str = "cd {$this->linux_path_prefix}/tmp/{$this->script_num}";
-		system($str);
+		//$str = "cd {$this->linux_path_prefix}/tmp/{$this->script_num}";
+		//system($str);
 		$str = "/usr/local/libpano13/bin/PTmender {$this->script_path}";
-		echo "----cube pano {$path}----\r\n";
-		echo $str;
+		//echo "----cube pano {$path}----\r\n";
+		//echo $str;
 		system($str);
-		echo "----cube pano down {$path}----\r\n";
+		//echo "----cube pano down {$path}----\r\n";
+		$this->str .= "---cube ok {$path}---\r\n";
 		$this->covert($path);
 	}
 	public function covert($path){
@@ -127,15 +137,16 @@ o f4 y0 r0 p90 v360";
 			if(!file_exists($prefix)){
 				mkdir($prefix);
 			}
-			echo $prefix;
+			//echo $prefix;
 			$new = $prefix.$new;
-			echo "----covering tifToJpg {$old}----\n";
+			//echo "----covering tifToJpg {$old}----\n";
 			
 			$this->tifToJpg($old, $new);
 			if(file_exists($old)){
 				unlink($old);
 			}
-			echo "----covering tifToJpg success {$old}----\n";
+			//echo "----covering tifToJpg success {$old}----\n";
+			$this->str .= "---covering ok {$new}---\r\n";
 			//$this->move_cube_file($new);
 		}
 	}
