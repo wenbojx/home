@@ -146,8 +146,8 @@ o f4 y0 r0 p90 v360";
 		//$str = "cd {$this->linux_path_prefix}/tmp/{$this->script_num}";
 		//system($str);
 		$str = "/usr/local/libpano13/bin/PTmender {$this->script_path}";
-		//echo "----cube pano {$path}----\r\n";
-		//echo $str;
+		echo "----cube pano {$path}----\r\n";
+		echo $str;
 		system($str);
 		//echo "----cube pano down {$path}----\r\n";
 		$this->str .= "---cube ok {$path}---\r\n";
@@ -180,7 +180,7 @@ o f4 y0 r0 p90 v360";
 			if(file_exists($old)){
 				unlink($old);
 			}
-			//echo "----covering tifToJpg success {$old}----\n";
+			echo "----covering tifToJpg success {$old}----\n";
 			$this->str .= "---covering ok {$new}---\r\n";
 			//$this->move_cube_file($new);
 		}
