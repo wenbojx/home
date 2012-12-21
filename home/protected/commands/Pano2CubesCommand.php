@@ -158,7 +158,6 @@ o f4 y0 r0 p90 v360";
 		$this->covert($path);
 	}
 	public function covert($path){
-		file_put_contents('e.txt', $path);
 		$panos = array( 'pano0005'=>'bottom',
 				'pano0000'=>'front',
 				'pano0001'=>'right',
