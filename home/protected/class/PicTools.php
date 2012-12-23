@@ -34,10 +34,7 @@ class PicTools{
 		return $str. '/' . $scene_id;
 	}
 	/**
-	 * 
-	 * @param unknown $scene_id
-	 * @param unknown $size
-	 * @return boolean|string
+	 * 获取全景图目录
 	 */
 	public static function get_pano_path($scene_id){
 		if(!$scene_id){
@@ -46,6 +43,28 @@ class PicTools{
 		$num = substr($scene_id, -1);
 		
 		$path = self::get_img_domain($num%2). '/' .self::get_pano_static_path($scene_id);
+		return $path;
+	}
+	/**
+	 * 获取全景图小图地址
+	 */
+	public static function get_pano_small($scene_id, $size){
+		if(!$scene_id){
+			return false;
+		}
+		$num = 0;
+		$path = self::get_img_domain($num). '/' .self::get_pano_static_path($scene_id) . '/small/' . $size . '.jpg';
+		return $path;
+	}
+	/**
+	 * 获取全景图面缩略图
+	 */
+	public static function get_face_small($scene_id, $face,  $size='120x120'){
+		if(!$scene_id || !$face){
+			return false;
+		}
+		$num = 0;
+		$path = self::get_img_domain($num). '/' .self::get_pano_static_path($scene_id) . '/'.$face.'/fthumb/' . $size . '.jpg';
 		return $path;
 	}
 	/**

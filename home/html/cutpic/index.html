@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="./drag.js" type="text/javascript" language="javascript"></script>
+<script src="./script_setcover.js" type="text/javascript" language="javascript"></script>
+<title>无标题文档</title>
+</head>
+
+<body>
+
+
+<div id="cut_div" style="border:10px solid #F2F2F2; width:554px; height:266px; overflow:hidden; position:relative; top:0px; left:0px; margin:4px 0 0 0px; cursor:pointer;">
+ <table style="border-collapse: collapse; z-index: 10; filter: alpha(opacity=75); position: relative; left: 0px; top: 0px; width: 554px;  height: 266px; opacity: 0.75;" unselectable="on" border="0" cellpadding="0" cellspacing="0">
+ <tbody><tr>
+   <td style="background: #cccccc; height: 73px;" colspan="3"></td>
+ </tr>
+ <tr>
+   <td style="background: #cccccc; width: 202px;"></td>
+   <td style="border: 1px solid #ffffff; width: 150px; height:112px;"></td>
+   <td style="background: #cccccc; width: 202px;"></td>
+ </tr>
+ <tr>
+   <td style="background: #cccccc; height: 73px;" colspan="3"></td>
+ </tr>
+ </tbody></table>
+ <img id="cut_img" style="position: absolute; top: 1px; left: 13px;" src="image/2953_1356250604Jh47.jpg.thumbmid.jpg" height="270" width="540">
+</div>
+
+<div align="center">
+<table cellpadding="0" cellspacing="0">
+  <tbody><tr>
+<td><img style="margin-top: 5px; cursor:pointer;" src="./image/_h.gif" alt="图片缩小" onmouseover="this.src='./image/_c.gif'" onmouseout="this.src='./image/_h.gif'" onclick="imageresize(false)"></td>
+<td><img id="img_track" style="width: 250px; height: 18px; margin-top: 5px" src="./image/track.gif"></td>
+<td><img style="margin-top: 5px; cursor:pointer;" src="./image/h.gif" alt="图片放大" onmouseover="this.src='./image/c.gif'" onmouseout="this.src='./image/h.gif'" onclick="imageresize(true)"></td>
+  </tr>
+</tbody></table>
+</div>
+   
+<div style="padding-top:15px; padding-left:5px;" align="center">
+<img id="img_grip" style="position: absolute; z-index: 100; left: 906.642px; top: 560px; cursor: pointer;" src="./image/grip.gif"> 
+<input name="selectpic" id="selectpic" value="image/2953_1356250604Jh47.jpg.thumbmid.jpg" type="hidden">
+<input name="cut_pos" id="cut_pos" value="" type="hidden">
+<input name="panoPicId" id="panoPicId" value="13234" type="hidden">
+<input name="op" value="add" type="hidden">
+<input name="gotourl" value="" type="hidden">
+<input name="uid" value="2953" type="hidden">
+<input name="getThumbSubmit" id="submit" value=" 确认 " class="up_submit" type="submit">
+                    <span id="thumbnail">正在生成缩略图，请稍后<img src="image/loading2.gif" height="61" width="100"></span>
+</div>
+
+
+</body>
+</html>

@@ -3,7 +3,7 @@ ini_set('memory_limit', '100M');
 class PanoPicController extends FController{
     public $defaultAction = 'index';
     private $url = '';
-    private $size = array('200x100');
+    private $size = array('200x100', '150x110' , '400x200', '1024x512');
     private $request = null;
     public $img_size = 1024;
     public $tile_size = 512;
@@ -15,15 +15,39 @@ class PanoPicController extends FController{
     public function actionIndex(){
         $this->request = Yii::app()->request;
         $this->url = $this->request->requestUri;
+        $this->url = $this->get_url_file_path();
+        
         if(strstr($this->url, '/thumb/')){
         	$this->get_pano_thumb();
         }
-        else if(strstr($this->url, '.xml')){
-        	$this->put_out_xmlb();
+        else if (strstr($this->url, '/small/')){
+        	$this->get_pano_small();
+        }
+        if(strstr($this->url, '/fthumb/')){
+        	$this->get_face_thumb();
         }
     	else if(strstr($this->url, '.jpg')){
         	$this->put_out_pano_face();
         }
+        else if(strstr($this->url, '.xml')){
+        	$this->put_out_xmlb();
+        	 
+        }
+    }
+    /**
+     * 去掉图片后面的参数
+     */
+    private function get_url_file_path(){
+    	if(!$this->url){
+    		return $this->url;
+    	}
+    	$start = strpos($this->url, '?');
+    	if($start){
+	    	$end = 1-(strlen($this->url)-$start+1);
+	    	//$end = substr($this->url, $start)
+	    	return substr($this->url, 0, $end );
+    	}
+    	return $this->url;
     }
     /**
      * 输出默认图片
@@ -33,7 +57,42 @@ class PanoPicController extends FController{
     	return $panoPicTools->show_default_pic($type);
     }
     /**
-     * 输出配置文件信息
+     * 输出全景图面图片缩略图
+     */
+    private function get_face_thumb(){
+    	$explode_url = explode ('/', $this->url);
+    	$count = count($explode_url);
+    	$scene_id = (int) $explode_url[$count-4];
+    	$face = $explode_url[$count-3];
+    	$fileName = $explode_url[$count-1];
+    	$suffix = $explode_url[$count-2];
+    	$faceKeys = array_keys($this->face_box);
+    	if(!$scene_id || !in_array($face, $faceKeys)){
+    		$this->show_default(2);
+    	}
+    	$path = $this->get_pano_file_path($scene_id, $face);
+    	if(!file_exists($path)){
+    		$this->show_default($face);
+    	}
+    	$water = 0;
+    	$sharpen = 1;
+    	$quality = 100;
+    	$size = substr($fileName, 0, -4);
+    	$toPath = PicTools::get_pano_static_path($scene_id) . '/'. $face. '/' . $suffix;
+    	//echo $toPath;
+    	if(!$this->make_unexit_dir($toPath)){
+    		$this->show_default($face);
+    	}
+    	
+    	$toPath .= "/{$fileName}";
+    	//echo $path."<br>";
+    	//echo $toPath."<br>";
+    	//echo $size;
+    	$panoPicTools = new PanoPicTools();
+    	$panoPicTools->turnToStatic($path, $toPath, $size, $quality, $water, $sharpen);
+    }
+    /**
+     * 输出全景图面图片
      */
     private function put_out_pano_face(){
     	$explode_url = explode ('/', $this->url);
@@ -134,9 +193,47 @@ class PanoPicController extends FController{
     	return true;
     }
     /**
+     * 获取全景图小图
+     */
+    private function get_pano_small(){
+    	$explode_url = explode ('/', $this->url);
+    	$count = count($explode_url);
+    	$scene_id = (int) $explode_url[$count-3];
+    	if(!$scene_id){
+    		$this->show_default(1);
+    	}
+    	$file_name = $explode_url[$count-1];
+    	$size = substr($file_name, 0, strlen($file_name)-4);
+    	if(!in_array($size, $this->size)){
+    		$this->show_default(1);
+    	}
+    	if(!$scene_id){
+    		$this->show_default(1);
+    	}
+    	
+    	$file_id = $this->get_pano_file_id($scene_id);
+    	if(!$file_id){
+    		return false;
+    	}
+    	$flePathDB = new FilePath();
+    	//获取文件地址
+    	$path = $flePathDB->get_file_path ($file_id);
+    	
+    	$toPath = PicTools::get_pano_static_path($scene_id) . '/small';
+    	
+    	if(!$this->make_unexit_dir($toPath)){
+    		$this->show_default(1);
+    	}
+    	$toPath .= '/' . $size . '.jpg';
+    	$panoPicTools = new PanoPicTools();
+    	//echo $path.'<br>'. $toPath.'<br>'. $size;
+    	$panoPicTools->turnToStatic($path, $toPath, $size, '90', 0, 0.5);
+    }
+    /**
      * 获取全景图缩略图
      */
     private function get_pano_thumb(){
+    	
     	$explode_url = explode ('/', $this->url);
     	$count = count($explode_url);
     	$scene_id = (int) $explode_url[$count-3];
@@ -197,23 +294,32 @@ class PanoPicController extends FController{
     	return $filePathDB->get_file_folder($file_id, $add_prx);
     }
     /**
-     * 获取全景图对应文件信息
+     * 获取全景图文件ID
      */
-    private function get_pano_file_path($scene_id, $face){
+    private function get_pano_file_id($scene_id){
     	if(!$scene_id){
-    		$this->show_default(2);
+    		return false;
     	}
-
     	$sceneDB = new Scene();
     	$panoDatas = $sceneDB->get_by_scene_id($scene_id);
     	if(!$panoDatas){
-    		$this->show_default(2);
+    		return false;
     	}
     	$fileId = $panoDatas['file_id'];
+    	return $fileId;
+    }
+    /**
+     * 获取全景图对应文件信息
+     */
+    private function get_pano_file_path($scene_id, $face){
+    	$file_id = $this->get_pano_file_id($scene_id);
+    	if(!$file_id){
+    		return false;
+    	}
     	//获取文件地址
-    	$path = $this->get_file_floder ($fileId);
-    	if(!is_dir($path)){
-    		$this->show_default(2);
+    	$path = $this->get_file_floder ($file_id);
+    	if(!$path || !is_dir($path)){
+    		return false;
     	}
     	return $path . '/'. $this->face_box[$face] . '.jpg';
     }

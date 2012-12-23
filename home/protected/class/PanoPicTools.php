@@ -3,8 +3,9 @@ class PanoPicTools{
     public $tile_info = array('11'=>2048, '10'=>1024, '9'=>512);
     private $myimage = null;
     public $water_pic_path = 'style/img/water.png';
-    private $default_thumb_img = 'style/img/thumb_default.jpg';
+    private $default_thumb_img = 'style/img/thumb_default.gif';
     private $default_face_img = 'style/img/default_face.jpg';
+    private $face_box = array ('s_f'=>'style/img/box_front.gif', 's_r'=>'style/img/box_right.gif', 's_l'=>'style/img/box_left.gif', 's_b'=>'style/img/box_back.gif', 's_u'=>'style/img/box_up.gif', 'style/img/'=>'box_down.gif');
 
     private function _extensionToMime($ext){
 		static $mime = array(
@@ -29,9 +30,15 @@ class PanoPicTools{
 	 * 输出默认图片
 	 */
 	public function show_default_pic($type = 1){
-		$path = $this->default_thumb_img;
+		
 		if($type == '2'){
 			$path = $this->default_face_img;
+		}
+		else if($type =='1'){
+			$path = $this->default_thumb_img;
+		}
+		else {
+			$path = $this->face_box($type);
 		}
 		//echo $path;
 		$myimage = new Imagick($path);
@@ -152,8 +159,12 @@ class PanoPicTools{
 
 		$myimage->cropimage($half_x, $half_y, $x, $y);
 		$myimage->resizeimage($maxW, $maxW, Imagick::FILTER_LANCZOS, 1, true);
-		//$sharpen = 0.5;
-        //$myimage->sharpenImage($sharpen, $sharpen);
+		
+		$quality = 80;
+		$sharpen = 0.5;
+		$myimage->setImageCompression(imagick::COMPRESSION_JPEG);
+		$myimage->setImageCompressionQuality($quality);
+       $myimage->sharpenImage($sharpen, $sharpen);
 
 		$myimage->writeImage($file);
 		$myimage->clear();

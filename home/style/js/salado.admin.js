@@ -44,6 +44,7 @@ function pano_upload_change(type){
 		$("#cube_upload_tab").addClass ("active");
 	}
 }
+
 function clean_pano_cache(){
      window.location.href= clean_url;
 }
@@ -72,7 +73,7 @@ function hide_edit_panel(){
 function show_edit_panel(){
     $('#edit_panel').show();
 }
-
+var intervalProcess = null;
 function pano_box_upload(){
     var post_datas = {'scene_id':scene_id,'from':'pano_pic','SESSION_ID':session_id};
     $("#pano_upload_bt").uploadify({
@@ -102,51 +103,36 @@ function pano_box_upload(){
                 alert(dataObj.msg);
             }
             else if(response>0){
-            	var url = pic_url+'/id/'+dataObj.file+'/size/400x200.jpg';
-            	var img_str = '<img width="400" height="200" src="'+url+'"/>';
+            	var url = pano_small_path;
+            	//$("#pano_show").html('');
+            	var timestamp=new Date().getTime();
+            	//alert(url);
+            	var img_str = '<img width="400" height="200" src="'+url+'?'+timestamp+'"/>';
             	$("#pano_show").html(img_str);
             	$("#pano_state").show();
+            	$("#pano_none").hide();
             	$("#cube_upload").hide();
+            	intervalProcess = setInterval("check_pano_turn_state()", 10000);
             }
         }
     });
+}
+function check_pano_turn_state(){
+    var data = {};
+    data.scene_id = scene_id;
+    var url = pano_state_url+'/panoPicState';
+    save_datas(url, data, '', '', call_back);
+    function call_back(datas){
+        if(datas.state == '0'){
+        	alert(datas.msg);
+        }
+        else if (datas.state =='1'){
+        	clearInterval(intervalProcess);
+        	$("#box_left").attr('src', '');
+        }
+    }
 }
 
-function thumb_box_upload(){
-    var post_datas = {'scene_id':scene_id,'from':'thumb_pic','SESSION_ID':session_id};
-    $("#thumb_box_upload").uploadify({
-        'swf': flash_url,
-        'uploader': thumb_upload_url,
-        'formData': post_datas,
-        //'uploadLimit':1,
-        'buttonText':'上传缩略图',
-        'debug':false,
-        'width':42,
-        'height':19,
-        'fileSizeLimit':'5120KB',
-        'fileTypeDesc' : 'jpg,png,gif格式',
-        'fileTypeExts':'*.jpg;*.png;*.gif;',
-        'buttonImage':thumb_button_img,
-        'multi': false,
-        'removeTimeout':1,
-        'auto': true,
-        'onSelectError':function(file){
-        },
-        'onUploadError':function(file){
-        },
-        'onUploadSuccess':function(file, data, response){
-            var dataObj = eval("("+data+")");
-            if(dataObj.flag == '0'){
-                alert(dataObj.msg);
-            }
-            else if(response>0){
-                var url = pic_url+'/id/'+dataObj.file+'/size/200x100.jpg';
-                var img_str = '<img width="200" height="100" src="'+url+'"/>';
-                $("#thumb_img").html(img_str);
-            }
-        }
-    });
-}
 var marker_obj = null;
 function show_marker_comfirm(){
 	$('#pano_marker').show();
@@ -395,6 +381,39 @@ function onViewChange(pan, tilt, fov, direction){
         $("#camera-info-tilt").html(tilt);
         $("#camera-info-fov").html(fov);
     }
+}
+
+function save_thumb_datas(){
+	var pos = getcutpos();
+	if(!pos){
+		alert("数据出错");
+		return false;
+	}
+	 var post_datas = {'scene_id':scene_id,'from':'thumb_pic','pos':pos};
+	 var msg = {};
+	    msg.error = '操作失败';
+	    msg.success = '操作成功';
+	    var element_id = 'position_save_msg';
+	    if(!scene_id){
+	        done_error(element_id, msg.error);
+	    }
+	    var data = {};
+	    data.from = 'thumb_pic';
+	    data.pos = pos;
+	    data.scene_id = scene_id;
+
+	    var url = thumb_upload_url;
+	    save_datas(url, data, '', '', call_back);
+	    function call_back(datas){
+	    	if(datas.flag){
+	    		var timestamp=new Date().getTime();
+	    		$path = thumb_url + "?" +timestamp;
+	    		$("#thumb_pic").attr('src', $path);
+	    	}
+	    	else{
+	    		alert(datas.msg);
+	    	}
+	    }
 }
 function save_position_detail(scene_id){
     var msg = {};

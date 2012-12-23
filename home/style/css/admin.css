@@ -17,19 +17,20 @@
 .scene_single{
 	text-align:left;
 	font-size:14px;
-	height:100px;
+	height:120px;
 	padding: 0 0 0 5px;
 	margin:10px 0 0 20px;
 	border-bottom:1px solid #DDDDDD
 }
 .scene_single .previe_img{
 	float:left;
-	width:200px;
-	height:100px;
+	width:150px;
+	height:110px;
+	text-align:center;
 }
 .scene_single .scene_title{
 	float:left;
-	width:400px;
+	width:480px;
 	margin:0 0 0 10px;
 }
 .scene_single .title_line{

@@ -15,7 +15,7 @@
             		<div class="scene_single">
             			<div class="previe_img">
 	            			<a href="<?=$this->createUrl('/pano/salado/edit/', array('id'=>$v['id']));?>">
-	            			<img width="200" src="<?=PicTools::get_pano_thumb($v['id'], '200x100')?>"/>
+	            			<img width="150" src="<?=PicTools::get_pano_thumb($v['id'], '150x110')?>"/>
 	            			</a>
             			</div>
             			<div class="scene_title">

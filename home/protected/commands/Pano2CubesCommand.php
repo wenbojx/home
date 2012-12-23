@@ -68,7 +68,7 @@ class Pano2CubesCommand extends CConsoleCommand {
 		file_put_contents($log_file, $str );
 	}
 	
-	function delFileUnderDir( $dirName='' ){
+	private function delFileUnderDir( $dirName='' ){
 		if(!$dirName){
 			return false;
 		}
@@ -82,7 +82,7 @@ class Pano2CubesCommand extends CConsoleCommand {
 			while ( false !== ( $item = readdir( $handle ) ) ) {
 				if ( $item != "." && $item != ".." ) {
 					if ( is_dir( "$dirName/$item" ) ) {
-						delFileUnderDir( "$dirName/$item" );
+						$this->delFileUnderDir( "$dirName/$item" );
 					} else {
 						if( unlink( "$dirName/$item" ) ){
 							echo "--del： $dirName/$item<br />\n--";
@@ -209,7 +209,7 @@ o f4 y0 r0 p90 v360";
 		}
 		$myimage = new Imagick($old);
 		$myimage->setImageFormat("jpeg");
-		$myimage->setCompressionQuality( 100 );
+		$myimage->setCompressionQuality( 80 );
 		$myimage->writeImage($new);
 
 		$myimage->clear();

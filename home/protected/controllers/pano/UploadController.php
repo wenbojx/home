@@ -10,6 +10,7 @@ class UploadController extends Controller{
     );
     private $image_width = '';
     private $image_height = '';
+    private $scene_id = ''; 
 
     public function actionUploadFile(){
         $request = Yii::app()->request;
@@ -19,6 +20,11 @@ class UploadController extends Controller{
         $from_pano_pic = false;;
 
         $scene_id = $request->getParam('scene_id');
+        $this->scene_id = $scene_id;
+        $msg = array('flag'=>0,'msg'=>'文件上传出错');
+        if(!$scene_id){
+        	$this->display_msg($msg);
+        }
         if ($request->getParam('position')!='' && $request->getParam('from')=='box_pic' && $scene_id>0){
         	$from_box_pic = true;
         }
@@ -33,9 +39,17 @@ class UploadController extends Controller{
        }
 
         $this->check_scene_own($scene_id);
-
-        $file_info = $this->upload($from_box_pic, $from_pano_pic);
-        $msg = array('flag'=>0,'msg'=>'文件上传出错');
+        if($from_thumb_pic){
+        	$pos = $request->getParam('pos');
+        	if(!$pos){
+        		$this->display_msg($msg);
+        	}
+        	$file_info = $this->get_thumb_pic($scene_id, $pos);
+        }
+        else {
+        	$file_info = $this->upload($from_box_pic, $from_pano_pic);
+        }
+        
         $flag = true;
         $flag_scene = false;
         if(!$file_info){
@@ -71,6 +85,99 @@ class UploadController extends Controller{
         $file_info['height'] = $this->image_height;
         $msg = array('flag'=>1,'msg'=>'', 'id'=>$flag_scene, 'type'=>$file_info['type'], 'w'=>$file_info['width'], 'h'=>$file_info['height'], 'file'=>$file_info['md5value']);
         $this->display_msg($msg);
+    }
+    /**
+     * 获取全景图文件ID
+     */
+    private function get_pano_file_id($scene_id){
+    	if(!$scene_id){
+    		return false;
+    	}
+    	$sceneDB = new Scene();
+    	$panoDatas = $sceneDB->get_by_scene_id($scene_id);
+    	if(!$panoDatas){
+    		return false;
+    	}
+    	$fileId = $panoDatas['file_id'];
+    	return $fileId;
+    }
+    /**
+     * 保存缩略图
+     */
+    private function get_thumb_pic($scene_id, $pos){
+    	$file_id = $this->get_pano_file_id($scene_id);
+    	if(!$file_id){
+    		return false;
+    	}
+    	$flePathDB = new FilePath();
+    	//获取文件地址
+    	$file_path = $flePathDB->get_file_path ($file_id);
+    	
+    	if(!file_exists($file_path)){
+    		return false;
+    	}
+    	$myimage = new Imagick($file_path);
+    	$ext = strtolower( $myimage->getImageFormat() );
+    	$myimage->setImageFormat($ext);
+    	$pic_width = $myimage->getimagewidth();
+    	
+    	$explode = explode(',', $pos);
+    	$x = $explode[0];
+    	$y = $explode[1];
+    	$scale = $explode[2]/540;
+    	$zoom = 1/$scale;
+    	$p_zoom = $pic_width/540;
+    	
+    	$x = $x*$zoom*$p_zoom;
+    	$y = $y*$zoom*$p_zoom;
+    	
+    	$width = 150*(1/$scale)*$p_zoom;
+    	$height = 110*(1/$scale)*$p_zoom;
+
+    	$myimage->cropimage($width, $height, $x, $y);
+    	
+    	$pre = Yii::app()->params['file_pic_folder'].'/';
+    	$file_info['folder'] = date('Y',time()).date('m',time());
+    	$folder_pic = $pre.$file_info['folder'].'/';
+    	if(!is_dir($folder_pic)){
+    		mkdir($folder_pic);
+    	}
+    	$day = date('d',time());
+    	$folder_pic .= $day.'/';
+    	$file_info['folder'] .= $day;
+    	if(!is_dir($folder_pic)){
+    		mkdir($folder_pic);
+    	}
+    	$myimage->resizeimage(250, 155, Imagick::FILTER_LANCZOS, 1, true);
+    	$sharpen = 1;
+    	$myimage->sharpenImage($sharpen, $sharpen);
+    	
+    	$md5 = md5($myimage->getImagesBLOB());
+    	$file_info['md5value'] = $md5;
+    	$folder_pic = $folder_pic . '/'. $md5;
+    	if(!is_dir($folder_pic)){
+    		mkdir($folder_pic);
+    	}
+    	$folder = $folder_pic.'/original/';
+    	if(!is_dir($folder)){
+    		mkdir($folder);
+    	}
+    	$file_name = 'thumb.jpg';
+    	$file_info['name'] = $file_name;//获取文件名
+    	$file_info['size'] = $myimage->getimagelength();//获取文件大小
+    	$file_info['type'] = 'jpg';//获取文件类型
+
+    	$to = $folder.$md5.'.jpg';
+    	$myimage->writeImage($to);
+    	$myimage->clear();
+    	$myimage->destroy();
+    	//清理静态文件
+    	$fileTools = new FileTools();
+    	$add_prefix = 'thumb';
+    	$fileTools->del_pano_static_files($this->scene_id, $add_prefix);
+    	
+    	//print_r($file_info);
+    	return $file_info;
     }
     private function save_scene_pano($file_id,$scene_id){
     	$scene = new Scene();
@@ -161,8 +268,15 @@ class UploadController extends Controller{
         $this->image_height = $myimage->getImageHeight();
 
         if($from_pano_pic){
+        	//创建目录
         	$cube_path = $folder.'cube';
-        	mkdir($cube_path);
+        	if(!is_dir($cube_path)){
+        		mkdir($cube_path);
+        	}
+        	//清理静态文件
+        	$fileTools = new FileTools();
+        	$fileTools->del_pano_static_files($this->scene_id);
+        	//unlink($sc)
         }
         if(!$from_box_pic){
         	return $file_info;

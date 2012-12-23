@@ -22,15 +22,32 @@ class ConfigController extends Controller{
         }
         elseif ($type == 'thumb'){
             $datas['thumb'] = $this->get_thumb($scene_id);
+            $data['pano_info'] = $this->get_pano_info($scene_id);
+            $datas['file_id'] = '';
+            if($data['pano_info'] || $data['pano_info']['file_id']>0){
+            	$datas['file_id'] = $data['pano_info']['file_id'];
+            	unset($data['pano_info']);
+            }
         }
         elseif ($type == 'face'){
-        	if(!$this->get_pano_state($scene_id)){
-        		$scene_files = $this->get_scene_pic($scene_id);
-        		$datas['scene_files'] = $this->get_file_url($scene_files);
-        		$datas['pano_state'] = false;
+        	$data['pano_info'] = $this->get_pano_info($scene_id);
+        	$datas['file_id'] = '';
+        	if($data['pano_info'] || $data['pano_info']['file_id']>0){
+        		$datas['file_id'] = $data['pano_info']['file_id'];
+        		unset($data['pano_info']);
         	}
-        	else{
-        		$datas['pano_state'] = true;
+        	$datas['pano_state'] = $this->get_pano_state($scene_id);
+        	
+        	if( $datas['pano_state'] === '0'  ){
+        		//$scene_files = $this->get_scene_pic($scene_id);
+        		//$datas['scene_files'] = $this->get_file_url($scene_files);
+        		$datas['pano_state'] = '0';
+        	}
+        	else if ( $datas['pano_state'] === '1'  ){
+        		$datas['pano_state'] = '1';
+        	}
+        	else {
+        		$datas['pano_state'] = '2'; //全景图不存在
         	}
         }
         elseif ($type == 'camera'){
@@ -50,6 +67,16 @@ class ConfigController extends Controller{
             exit();
         }
         $this->render('/pano/panel/'.$type, array('datas'=>$datas));
+    }
+    /**
+     * 获取场景文件信息
+     */
+    private function get_pano_info($scene_id){
+    	if (!$scene_id){
+    		return false;
+    	}
+    	$sceneDB = new Scene();
+    	return $sceneDB->get_by_scene_id($scene_id);
     }
     /**
      * 获取全景图状态
@@ -116,14 +143,14 @@ class ConfigController extends Controller{
     /*
      * 获取全景图
     */
-    private function get_scene_pic($scene_id){
+/*     private function get_scene_pic($scene_id){
         $pics = array();
         if(!$scene_id){
             return $pics;
         }
         $scene_file_db = new MpSceneFile();
         return $scene_file_db->get_scene_list($scene_id);
-    }
+    } */
     /**
      * 获取默认图片地址
      */

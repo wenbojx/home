@@ -85,7 +85,37 @@
     width:20px;
     height:20px;
 }
+.pano_small_thumb{
+	position:relative;
+	margin:10px 0 0 0;
+	width:512px;
 
+}
+.img_track{
+	position:absolute; 
+    top:270px;
+    left:140px;
+    width: 250px; 
+    height: 18px;
+}
+.img_track_left{
+	position:absolute; 
+    top:270px;
+    left:120px;
+    cursor:pointer;
+}
+.img_track_right{
+	position:absolute; 
+	top:270px;
+    left:388px;
+    cursor:pointer;
+}
+.thumb_img{
+	position:absolute; 
+	top:155px;
+	left:6px;
+	z-index:200;;
+}
 .scene_detail_save{
 	color:#FFFFFF;
 }
