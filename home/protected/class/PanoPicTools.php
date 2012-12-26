@@ -31,7 +31,7 @@ class PanoPicTools{
 	 * 输出默认图片
 	 */
 	public function show_default_pic($type = 1){
-		
+		echo $type;
 		if($type == '2'){
 			$path = $this->default_face_img;
 		}

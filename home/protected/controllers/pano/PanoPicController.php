@@ -53,6 +53,7 @@ class PanoPicController extends FController{
      * 输出默认图片
      */
     private function show_default($type){
+    	echo $type;
     	$panoPicTools = new PanoPicTools();
     	return $panoPicTools->show_default_pic($type);
     }
