@@ -1,4 +1,4 @@
-<?php 
+<?php
 ini_set('memory_limit', '100M');
 class Pano2CubesCommand extends CConsoleCommand {
 
@@ -21,7 +21,7 @@ class Pano2CubesCommand extends CConsoleCommand {
 			return false;
 		}
 		$this->script_num = $num;
-		
+
 		$scene_ids = $this->get_queue_list();
 		//print_r($scene_ids);
 		if(!$scene_ids){
@@ -33,8 +33,8 @@ class Pano2CubesCommand extends CConsoleCommand {
 		if(!$pano_pics){
 			return false;
 		}
+		file_put_contents($this->script_path, 1);
 
-		
 		$this->str = "\r\n-----time: ". date('Y-m-d H:i:s'). "----\r\n";
 		foreach($scene_ids as $v){
 			$this->str .= "pano id {$v}\r\n";
@@ -46,7 +46,7 @@ class Pano2CubesCommand extends CConsoleCommand {
 		foreach($pano_pics as $k=>$v){
 			$this->turn_to_cube($v);
 			$this->update_item_state_lock($k);
-			
+
 			$static_path = PicTools::get_pano_static_path($v);
 			$static_path = $this->linux_path_prefix . '/' .$static_path;
 			if(is_dir($static_path)){
@@ -54,7 +54,7 @@ class Pano2CubesCommand extends CConsoleCommand {
 			}
 		}
 		//清理web文件
-		
+
 		//echo $this->script_path;
 		if (file_exists($this->script_path)) {
 			if(!unlink ($this->script_path)){
@@ -68,9 +68,9 @@ class Pano2CubesCommand extends CConsoleCommand {
 		}
 		$str = $str_old . $this->str . "\r\n\+++++++++++++++++\r\n\r\n";
 		file_put_contents($log_file, $str );
-		
+
 	}
-	
+
 	private function delFileUnderDir( $dirName='' ){
 		if(!$dirName){
 			return false;
@@ -96,7 +96,7 @@ class Pano2CubesCommand extends CConsoleCommand {
 			closedir( $handle );
 		}
 	}
-	
+
 	/**
 	 * 获取script 线程ID
 	 */
@@ -110,7 +110,6 @@ class Pano2CubesCommand extends CConsoleCommand {
 
 		if(!file_exists($path_1)){
 			$num = 1;
-			file_put_contents($path_1, 1);
 			$this->script_path = $path_1;
 		}
 		/* elseif(!file_exists($path_2)){
@@ -180,7 +179,7 @@ o f4 y0 r0 p90 v360";
 			//$cmd = "mv {$old} {$old_1}";
 			//system($cmd);
 			//$old = $old_1;
-			
+
 			$new =  $v.'.jpg';
 			$path_explode = explode('/', $path);
 			$prefix = '/';
@@ -194,14 +193,14 @@ o f4 y0 r0 p90 v360";
 				$chmod = "chmod -R 777 {$prefix}";
 				exec($chmod);
 				$this->str .= "{$chmod}\r\n";
-				
+
 			}
 			//echo $prefix;
 			$new = $prefix.$new;
 			echo "----covering tifToJpg {$new}----\n";
-			
+
 			$this->tifToJpg($old, $new);
-			
+
 			if(file_exists($old)){
 				unlink($old);
 			}

@@ -16,7 +16,7 @@ class PanoPicController extends FController{
         $this->request = Yii::app()->request;
         $this->url = $this->request->requestUri;
         $this->url = $this->get_url_file_path();
-        
+
         if(strstr($this->url, '/thumb/')){
         	$this->get_pano_thumb();
         }
@@ -31,7 +31,7 @@ class PanoPicController extends FController{
         }
         else if(strstr($this->url, '.xml')){
         	$this->put_out_xmlb();
-        	 
+
         }
     }
     /**
@@ -83,7 +83,7 @@ class PanoPicController extends FController{
     	if(!$this->make_unexit_dir($toPath)){
     		$this->show_default($face);
     	}
-    	
+
     	$toPath .= "/{$fileName}";
     	//echo $path."<br>";
     	//echo $toPath."<br>";
@@ -210,7 +210,7 @@ class PanoPicController extends FController{
     	if(!$scene_id){
     		$this->show_default(3);
     	}
-    	
+
     	$file_id = $this->get_pano_file_id($scene_id);
     	if(!$file_id){
     		$this->show_default(3);
@@ -218,9 +218,9 @@ class PanoPicController extends FController{
     	$flePathDB = new FilePath();
     	//获取文件地址
     	$path = $flePathDB->get_file_path ($file_id);
-    	
+
     	$toPath = PicTools::get_pano_static_path($scene_id) . '/small';
-    	
+
     	if(!$this->make_unexit_dir($toPath)){
     		$this->show_default(3);
     	}
@@ -234,24 +234,27 @@ class PanoPicController extends FController{
      * 获取全景图缩略图
      */
     private function get_pano_thumb(){
-    	
+
     	$explode_url = explode ('/', $this->url);
     	$count = count($explode_url);
     	$scene_id = (int) $explode_url[$count-3];
     	if(!$scene_id){
     		$this->show_default(1);
     	}
+
     	$file_name = $explode_url[$count-1];
     	$size = substr($file_name, 0, strlen($file_name)-4);
     	if(!in_array($size, $this->size)){
     		$this->show_default(1);
     	}
-    	if(!$scene_id){
+
+    	$path = $this->get_pano_thumb_path($scene_id);
+    	if(!$path){
     		$this->show_default(1);
     	}
-    	$path = $this->get_pano_thumb_path($scene_id);
     	$toPath = PicTools::get_pano_static_path($scene_id) . '/thumb';
-    	//echo $toPath;
+
+
     	if(!$this->make_unexit_dir($toPath)){
     		$this->show_default(1);
     	}
@@ -265,18 +268,18 @@ class PanoPicController extends FController{
      */
     private function get_pano_thumb_path($scene_id){
     	if(!$scene_id){
-    		$this->show_default(1);
+    		return false;
     	}
     	$sceneThumbDB = new ScenesThumb();
     	$thumbDatas = $sceneThumbDB->find_by_scene_id($scene_id);
     	if(!$thumbDatas){
-    		$this->show_default(1);
+    		return false;
     	}
     	$fileId = $thumbDatas['file_id'];
     	//获取文件地址
     	$path = $this->get_file_path($fileId);
     	if(!file_exists($path)){
-    		$this->show_default(1);
+    		return false;
     	}
     	return $path;
     }
