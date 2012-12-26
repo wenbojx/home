@@ -185,7 +185,7 @@ o f4 y0 r0 p90 v360";
 			}
 			$prefix .= 'cube/';
 
-			if(!file_exists($prefix)){
+			if(!is_dir($prefix)){
 				mkdir($prefix);
 			}
 			//echo $prefix;

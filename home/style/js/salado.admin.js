@@ -98,7 +98,6 @@ function pano_box_upload(){
         	//alert(file.id);
         },
         'onUploadSuccess':function(file, data, response){
-        	alert(data);
             var dataObj = eval("("+data+")");
             if(dataObj.flag == '0'){
                 alert(dataObj.msg);

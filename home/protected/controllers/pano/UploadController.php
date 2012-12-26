@@ -266,14 +266,11 @@ class UploadController extends Controller{
         $myimage = new Imagick($uploadfile);
         $this->image_width = $myimage->getImageWidth();
         $this->image_height = $myimage->getImageHeight();
-		echo 22222;
         if($from_pano_pic){
-        	echo 1111;
         	//创建目录
         	$cube_path = $folder.'cube';
         	if(!is_dir($cube_path)){
         		mkdir($cube_path);
-        		echo 3333;
         	}
         	//清理静态文件
         	$fileTools = new FileTools();
