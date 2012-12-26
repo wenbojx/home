@@ -210,17 +210,16 @@ class PanoPicController extends FController{
     	if(!$scene_id){
     		$this->show_default(3);
     	}
-    	
     	$file_id = $this->get_pano_file_id($scene_id);
     	if(!$file_id){
     		$this->show_default(3);
     	}
+
     	$flePathDB = new FilePath();
     	//获取文件地址
     	$path = $flePathDB->get_file_path ($file_id);
-    	
+
     	$toPath = PicTools::get_pano_static_path($scene_id) . '/small';
-    	
     	if(!$this->make_unexit_dir($toPath)){
     		$this->show_default(3);
     	}
@@ -228,7 +227,9 @@ class PanoPicController extends FController{
     	$panoPicTools = new PanoPicTools();
     	$sharpen = $size == $this->size[0] ? 0.5 : 0;
     	//echo $path.'<br>'. $toPath.'<br>'. $size;
-    	$panoPicTools->turnToStatic($path, $toPath, $size, '90', 0, 0.5);
+    	if( ! $panoPicTools->turnToStatic($path, $toPath, $size, '90', 0, 0.5)){
+    		$this->show_default(3);
+    	}
     }
     /**
      * 获取全景图缩略图

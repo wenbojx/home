@@ -84,7 +84,6 @@ class PanoPicTools{
     	if(!$width || !$height){
     		return false;
     	}
-
     	$this->myimage = new Imagick($from);
     	$ext = strtolower( $this->myimage->getImageFormat() );
     	$this->myimage->setImageFormat($ext);
