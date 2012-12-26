@@ -9,7 +9,7 @@ public function del_pano_static_files($scene_id, $add_prefix=''){
 		return false;
 	}
 	$path = PicTools::get_pano_static_path($scene_id);
-	if($add_prefix!='' && !strstr($dirName, '../')){
+	if($add_prefix!='' && !strstr($path, '../')){
 		$path .= '/' . $add_prefix;
 	}
 	return $this->delFileUnderDir ($path);
