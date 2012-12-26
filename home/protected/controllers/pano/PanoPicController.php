@@ -71,6 +71,7 @@ class PanoPicController extends FController{
     		$this->show_default(2);
     	}
     	$path = $this->get_pano_file_path($scene_id, $face);
+    	echo $path;
     	if(!file_exists($path)){
     		$this->show_default($face);
     	}
