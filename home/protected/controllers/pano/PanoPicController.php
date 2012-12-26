@@ -75,7 +75,7 @@ class PanoPicController extends FController{
 			$this->show_default($face);
 		}
 		$water = 0;
-		$sharpen = 1;
+		$sharpen = 0;
 		$quality = 100;
 		$size = substr($fileName, 0, -4);
 		$toPath = PicTools::get_pano_static_path($scene_id) . '/'. $face. '/' . $suffix;
