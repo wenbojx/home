@@ -45,6 +45,7 @@ class PanoPicTools{
 			$path = $this->face_box($type);
 		}
 		echo $path;
+		echo $type;
 		$myimage = new Imagick($path);
 		$ext = strtolower( $myimage->getImageFormat() );
 		$myimage->setImageFormat($ext);
