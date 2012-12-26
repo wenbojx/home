@@ -138,9 +138,7 @@ class PanoPicController extends FController{
 			}
 		}
 		$toPath .= "/{$fileName}";
-		echo $path."<br>";
-		echo $toPath."<br>";
-		exit();
+
 		$panoPicTools = new PanoPicTools();
 		if(!$panoPicTools->turnToStatic($path, $toPath, $size, $quality, $water, $sharpen)){
 			$this->show_default(2);
