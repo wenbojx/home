@@ -325,6 +325,7 @@ class PanoPicController extends FController{
     	if(!$path || !is_dir($path)){
     		return false;
     	}
+    	echo $path;
     	return $path . '/'. $this->face_box[$face] . '.jpg';
     }
 
