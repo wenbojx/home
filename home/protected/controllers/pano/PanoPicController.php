@@ -53,7 +53,6 @@ class PanoPicController extends FController{
      * 输出默认图片
      */
     private function show_default($type){
-    	echo $type;
     	$panoPicTools = new PanoPicTools();
     	return $panoPicTools->show_default_pic($type);
     }
@@ -73,7 +72,6 @@ class PanoPicController extends FController{
     	}
     	$path = $this->get_pano_file_path($scene_id, $face);
     	if(!$path || !file_exists($path)){
-    		echo 111;
     		$this->show_default($face);
     	}
     	$water = 0;

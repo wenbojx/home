@@ -31,7 +31,6 @@ class PanoPicTools{
 	 * 输出默认图片
 	 */
 	public function show_default_pic($type = 1){
-		echo $type;
 		if($type == '2'){
 			$path = $this->default_face_img;
 		}
@@ -42,10 +41,8 @@ class PanoPicTools{
 			$path = $this->default_thumb_pano;
 		}
 		else {
-			$path = $this->face_box($type);
+			$path = $this->face_box[$type];
 		}
-		echo $path;
-		echo $type;
 		$myimage = new Imagick($path);
 		$ext = strtolower( $myimage->getImageFormat() );
 		$myimage->setImageFormat($ext);
