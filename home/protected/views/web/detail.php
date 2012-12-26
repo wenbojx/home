@@ -53,7 +53,7 @@
 								?>
 									<li>
 									<a href="javascript:;" onclick="salado_handle_click('load_pano_<?=$v1['link_scene_id']?>')">
-									<img src="<?=PicTools::get_pano_thumb($v1['id'], '200x100')?>">
+									<img src="<?=PicTools::get_pano_small($v1['id'], '200x100')?>">
 									</a>
 									</li>
 								<?php }}
@@ -62,7 +62,7 @@
 								?>
 						            <li>
 										<a href="/web/detail/a/id/<?=$v2['id']?>">
-											<img src="<?=PicTools::get_pano_thumb($v2['id'], '200x100')?>">
+											<img src="<?=PicTools::get_pano_small($v2['id'], '200x100')?>">
 										</a>
 						        	</li>
 						        <?php }}?>

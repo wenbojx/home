@@ -200,20 +200,20 @@ class PanoPicController extends FController{
     	$count = count($explode_url);
     	$scene_id = (int) $explode_url[$count-3];
     	if(!$scene_id){
-    		$this->show_default(1);
+    		$this->show_default(3);
     	}
     	$file_name = $explode_url[$count-1];
     	$size = substr($file_name, 0, strlen($file_name)-4);
     	if(!in_array($size, $this->size)){
-    		$this->show_default(1);
+    		$this->show_default(3);
     	}
     	if(!$scene_id){
-    		$this->show_default(1);
+    		$this->show_default(3);
     	}
     	
     	$file_id = $this->get_pano_file_id($scene_id);
     	if(!$file_id){
-    		return false;
+    		$this->show_default(3);
     	}
     	$flePathDB = new FilePath();
     	//获取文件地址
@@ -222,7 +222,7 @@ class PanoPicController extends FController{
     	$toPath = PicTools::get_pano_static_path($scene_id) . '/small';
     	
     	if(!$this->make_unexit_dir($toPath)){
-    		$this->show_default(1);
+    		$this->show_default(3);
     	}
     	$toPath .= '/' . $size . '.jpg';
     	$panoPicTools = new PanoPicTools();

@@ -4,6 +4,7 @@ class PanoPicTools{
     private $myimage = null;
     public $water_pic_path = 'style/img/water.png';
     private $default_thumb_img = 'style/img/thumb_default.gif';
+    private $default_thumb_pano = 'style/img/thumb_pano.gif';
     private $default_face_img = 'style/img/default_face.jpg';
     private $face_box = array ('s_f'=>'style/img/box_front.gif', 's_r'=>'style/img/box_right.gif', 's_l'=>'style/img/box_left.gif', 's_b'=>'style/img/box_back.gif', 's_u'=>'style/img/box_up.gif', 'style/img/'=>'box_down.gif');
 
@@ -36,6 +37,9 @@ class PanoPicTools{
 		}
 		else if($type =='1'){
 			$path = $this->default_thumb_img;
+		}
+		else if($type == '3'){
+			$path = $this->default_thumb_pano;
 		}
 		else {
 			$path = $this->face_box($type);

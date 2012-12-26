@@ -209,7 +209,7 @@ o f4 y0 r0 p90 v360";
 		}
 		$myimage = new Imagick($old);
 		$myimage->setImageFormat("jpeg");
-		$myimage->setCompressionQuality( 80 );
+		$myimage->setCompressionQuality( 70 );
 		$myimage->writeImage($new);
 
 		$myimage->clear();

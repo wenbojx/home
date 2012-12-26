@@ -16,7 +16,7 @@
 			<?php if($datas['projects']){ foreach($datas['projects'] as $k=>$v){?>
 	        <li>
 	        	<a href="<?=$this->createUrl('/home/panos/list/', array('id'=>$v['project']['id']));?>" class="ui-link-inherit">
-		            <img src="<?=PicTools::get_img_domain(0);?>/panos/thumb/pic/id/<?=$v['scene']['id']?>/size/200x100.jpg"/>
+		            <img src="<?=PicTools::get_pano_thumb($v['scene']['id'], '150x110')?>"/>
 		            <h3><?=$v['project']['name']?></h3>
 		            <p>(含<?=$v['total_num']?>个场景)</p>
 	            </a>

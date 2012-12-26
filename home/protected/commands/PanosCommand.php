@@ -7,7 +7,7 @@ class PanosCommand extends CConsoleCommand {
     public $panos_path = array();
     public $default_new_folder = 'panos';  //新的全景图目录
 	public $default_lightroom = 'ligthroom';
-    public $default_pano_name = 'Panorama.tif'; //默认的搜索的全景图名称
+    public $default_pano_name = 'Panorama.jpg'; //默认的搜索的全景图名称
     public $new_pano_name = 'Panorama-2.jpg';
     public $width = '3724';  //cube图的宽度
     public $swidth = '11700'; //sphere的宽度
@@ -127,7 +127,7 @@ class PanosCommand extends CConsoleCommand {
     	//print_r($this->panos_path);
     	foreach ($this->panos_path as $v){
 			$str = substr($v, strlen($v)-15, 2);
-				if($str<89){
+				if($str!='06'){
 					//continue;
 				}
     		echo "----deal file {$v} ----\r\n";
@@ -144,47 +144,7 @@ class PanosCommand extends CConsoleCommand {
     	}
     	print_r($this->error);
     }
-	//windows下处理
-	public function cube_win($path){
-		$path = str_replace('\\', "/", $path);
-		$str = "p w{$this->width} h{$this->width} f0 v90 u20 n\"TIFF q100\"\r\n";
-		$str .= "i n\"{$path}\"\r\n";
-		foreach($this->cube_side as $k=>$v){
-			$content = $str.$v;
-			$file_txt = "c:/tmp/{$k}.txt";
-			file_put_contents($file_txt, $content);
-			$explod_a = explode('/', $path);
-			
-			$floder = '';
-			for($i=0; $i<(count($explod_a)-1); $i++){
-				$floder .= $explod_a[$i].'/';
-			}
-			$new_path = $floder.'cube/';
-			if(!file_exists($new_path)){
-				mkdir($new_path);
-			}
-			$to = $new_path.$k;
-			$this->exec_to_cube_win($file_txt, $to);
-		}
-	}
-	public function exec_to_cube_win($file, $to){
-		$to = $to.'.tif';
-		$str = "c:\mydatas\soft\PTStitcherNG\PTStitcher.exe {$file} -o {$to}";
-        echo "----sphere pano {$file}----\n";
-		echo $str."\r\n";
-		
-        system($str);
-		/*$file = substr($to, 0, strlen($to)-2).'tif';
-		echo "\r\n";
-		echo "\r\n";
-		echo $file."\r\n";*/
-		//echo $to;
-		//copy($to, $file);
-		//unlink($to);
-		//exit();
-        echo "----sphere pano down {$file}----\n";
-		
-	}
+	
     //归类cube中的bottom图
     public function actionBottomOut(){
         $this->cube_path = $this->find_path.'/'.$this->default_new_folder;
@@ -194,7 +154,7 @@ class PanosCommand extends CConsoleCommand {
         }
         $this->panos_path = array();
         $this->default_new_folder = 'bottom';
-        $this->default_pano_name = 'bottom.tif';
+        $this->default_pano_name = 'bottom.JPG';
         $this->myscandir($this->cube_path);
         foreach($this->panos_path as $v){
 			if($this->windows){
@@ -203,7 +163,7 @@ class PanosCommand extends CConsoleCommand {
             $explode = explode('/', $v);
             $num = count($explode)-3;
             $new_path = $path.'/'.$explode[$num];
-            $new_file = $new_path.'-bottom.tif';
+            $new_file = $new_path.'-bottom.JPG';
             echo "---- copying {$v} to {$new_file}----\n";
             copy($v, $new_file);
         }
@@ -234,7 +194,7 @@ class PanosCommand extends CConsoleCommand {
             if(!file_exists($new_path)){
                 $this->error[] = $new_path;
             }
-            $new_file = $new_path.'/bottom.tif';
+            $new_file = $new_path.'/bottom.jpg';
             echo "---- copying {$v} to {$new_file}----\n";
             //$back_file = $new_path .'/bottom_back.jpg';
             //copy($new_file, $back_file);
@@ -282,7 +242,10 @@ class PanosCommand extends CConsoleCommand {
         $this->panos_path = array();
         $path = $this->cube_path;
         $this->myScanCubeDir($path);
-		foreach($this->panos_path as $v){
+		foreach($this->panos_path as $k=>$v){
+			if($k!="05"){
+				//continue;
+			}
         	$this->sphere($v);
 		}
     }
@@ -290,12 +253,12 @@ class PanosCommand extends CConsoleCommand {
 		if($this->windows){
 				$path = str_replace('\\', "/", $path);
 		}
-        $front = $path.'/cube/front.jpg';
-        $left = $path.'/cube/left.jpg';
-        $back = $path.'/cube/back.jpg';
-        $right = $path.'/cube/right.jpg';
-        $top = $path.'/cube/top.jpg';
-        $bottom = $path.'/cube/bottom.jpg';
+        $front = $path.'/cube/front.JPG';
+        $left = $path.'/cube/left.JPG';
+        $back = $path.'/cube/back.JPG';
+        $right = $path.'/cube/right.JPG';
+        $top = $path.'/cube/top.JPG';
+        $bottom = $path.'/cube/bottom.JPG';
         $script = "p w{$this->swidth} h{$this->sheight} f2 v360 u0 n\"JPEG q100\"
 i n\"{$front}\"
 o f0 y0 r0 p0 v90
@@ -319,7 +282,76 @@ o f0 y0 r0 p-90 v90";
 		}
 		return  true;
     }
+	/**
+	归类需lightroom处理的图片
+	*/
+	public function actionLight(){
+		$path = $this->find_path.'/'.$this->default_new_folder;
+		$this->scan_light($path);
+		if(!$this->panos_path){
+			echo "no panoramas\r\n";
+		}
+		$new_path =  $path.'/'.$this->default_lightroom;
+		if(!is_dir($new_path)){
+			mkdir($new_path);
+		}
+		foreach($this->panos_path as $v){
+			if($this->windows){
+				$v = str_replace('\\', "/", $v);
+			}
+			$explodes = explode('/', $v);
+			$count = count($explodes);
+			$num = $explodes[$count-2];
+			echo "/{$this->default_new_folder}/{$num}/\r\n";
+			$new_file = str_replace("/{$this->default_new_folder}/{$num}/", "/{$this->default_new_folder}/{$this->default_lightroom}/{$num}_", $v);
+			echo $new_file."\r\n";
+			copy($v, $new_file);
+			echo "-----copy {$new_file}-----\r\n ";
+		}
+		
+	}
 	
+	//windows下处理
+	public function cube_win($path){
+		$path = str_replace('\\', "/", $path);
+		$str = "p w{$this->width} h{$this->width} f0 v90 u20 n\"JPEG q100\"\r\n";
+		$str .= "i n\"{$path}\"\r\n";
+		foreach($this->cube_side as $k=>$v){
+			$content = $str.$v;
+			$file_txt = "c:/tmp/{$k}.txt";
+			file_put_contents($file_txt, $content);
+			$explod_a = explode('/', $path);
+			
+			$floder = '';
+			for($i=0; $i<(count($explod_a)-1); $i++){
+				$floder .= $explod_a[$i].'/';
+			}
+			$new_path = $floder.'cube/';
+			if(!file_exists($new_path)){
+				mkdir($new_path);
+			}
+			$to = $new_path.$k;
+			$this->exec_to_cube_win($file_txt, $to);
+		}
+	}
+	public function exec_to_cube_win($file, $to){
+		$to = $to.'.jpg';
+		$str = "c:\mydatas\soft\PTStitcherNG\PTStitcher.exe {$file} -o {$to}";
+        echo "----sphere pano {$file}----\n";
+		echo $str."\r\n";
+		
+        system($str);
+		/*$file = substr($to, 0, strlen($to)-2).'tif';
+		echo "\r\n";
+		echo "\r\n";
+		echo $file."\r\n";*/
+		//echo $to;
+		//copy($to, $file);
+		//unlink($to);
+		//exit();
+        echo "----sphere pano down {$file}----\n";
+		
+	}
 	public function exec_sphere_win($to){
         $str = "c:\mydatas\soft\PTStitcherNG\PTStitcher.exe {$this->win_shpere_path} -o {$to}";
 		echo $str."\r\n";
@@ -349,10 +381,10 @@ o f0 y0 r0 p-90 v90";
                         'pano0003'=>'left',
                         'pano0004'=>'top', );
         foreach($panos as $k=>$v){
-            $old = $k.'.tif';
+            $old = $k.'.JPG';
             $new = $v.'.jpg';
             echo "----covering tifToJpg {$old}----\n";
-            $this->tifToJpg($old, $new);
+            //$this->tifToJpg($old, $new);
             echo "----covering tifToJpg success {$old}----\n";
             $this->move_cube_file($new);
         }
@@ -465,34 +497,7 @@ o f4 y0 r0 p90 v360";
     	}
     }
 	
-	/**
-	归类需lightroom处理的图片
-	*/
-	public function actionLight(){
-		$path = $this->find_path.'/'.$this->default_new_folder;
-		$this->scan_light($path);
-		if(!$this->panos_path){
-			echo "no panoramas\r\n";
-		}
-		$new_path =  $path.'/'.$this->default_lightroom;
-		if(!is_dir($new_path)){
-			mkdir($new_path);
-		}
-		foreach($this->panos_path as $v){
-			if($this->windows){
-				$v = str_replace('\\', "/", $v);
-			}
-			$explodes = explode('/', $v);
-			$count = count($explodes);
-			$num = $explodes[$count-2];
-			echo "/{$this->default_new_folder}/{$num}/\r\n";
-			$new_file = str_replace("/{$this->default_new_folder}/{$num}/", "/{$this->default_new_folder}/{$this->default_lightroom}/{$num}_", $v);
-			echo $new_file."\r\n";
-			copy($v, $new_file);
-			echo "-----copy {$new_file}-----\r\n ";
-		}
-		
-	}
+	
 	/**
 	lightroom处理的图片归类
 	*/
