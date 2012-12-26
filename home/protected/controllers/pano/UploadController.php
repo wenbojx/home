@@ -270,7 +270,7 @@ class UploadController extends Controller{
         	//创建目录
         	$cube_path = $folder.'cube';
         	if(!is_dir($cube_path)){
-        		mkdir($cube_path);
+        		//mkdir($cube_path);
         	}
         	//清理静态文件
         	$fileTools = new FileTools();

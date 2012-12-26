@@ -190,7 +190,11 @@ o f4 y0 r0 p90 v360";
 			$prefix .= 'cube/';
 
 			if(!is_dir($prefix)){
-				//mkdir($prefix);
+				mkdir($prefix);
+				$chmod = "chmod -R 777 {$prefix}";
+				exec($chmod);
+				$this->str .= "{$chmod}\r\n";
+				
 			}
 			//echo $prefix;
 			$new = $prefix.$new;
