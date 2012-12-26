@@ -85,7 +85,7 @@ function pano_box_upload(){
         'debug':false,
         'width':76,
         'height':30,
-        'fileSizeLimit':'51200KB',
+        'fileSizeLimit':'10240KB',
         'fileTypeDesc' : 'jpg,png,gif格式',
         'fileTypeExts':'*.jpg;*.png;*.gif;',
         'buttonImage':pano_button_img,

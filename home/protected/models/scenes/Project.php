@@ -125,6 +125,19 @@ class Project extends Ydao
     	$project_datas = $this->findAll($criteria);
     	return $project_datas;
     }
+    /**
+     * 获取某项目的后N个项目
+     */
+    public function get_next_by_project_id($project_id=''){
+    	$criteria=new CDbCriteria;
+    	$criteria->order = 'id ASC';
+    	$criteria->addCondition('status=1');
+    	if($project_id){
+    		$criteria->addCondition("id={$display}");
+    	}
+    	$criteria->limit = $num;
+    	return $this->findAll($criteria);
+    }
     /*
      * 获取最新的3个项目
     */

@@ -67,12 +67,12 @@ var pano_small_path = '<?=PicTools::get_pano_small($datas['scene_id'], '400x200'
 var width = 120;
 var height = 120;
 <?php if (!$datas['pano_state']){?>
-/* var box_left = "<?=$datas['scene_files']['left']?>";
-var box_right = "<?=$datas['scene_files']['right']?>";
-var box_down = "<?=$datas['scene_files']['down']?>";
-var box_up = "<?=$datas['scene_files']['up']?>";
-var box_front = "<?=$datas['scene_files']['front']?>";
-var box_back = "<?=$datas['scene_files']['back']?>";
+/* var box_left = "<?php //$datas['scene_files']['left'] ?>";
+var box_right = "<?php //$datas['scene_files']['right']?>";
+var box_down = "<?php //$datas['scene_files']['down']?>";
+var box_up = "<?php //$datas['scene_files']['up']?>";
+var box_front = "<?php //$datas['scene_files']['front']?>";
+var box_back = "<?php //$datas['scene_files']['back']?>";
 
 init_box_upload('left');
 init_box_upload('right');
