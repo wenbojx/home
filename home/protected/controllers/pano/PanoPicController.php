@@ -232,8 +232,9 @@ return substr($this->url, 0, $end );
      $panoPicTools = new PanoPicTools();
      $sharpen = $size == $this->size[0] ? 0.5 : 0;
      //echo $path.'<br>'. $toPath.'<br>'. $size;
+     $sharpen = 0;
      
-     if(!$panoPicTools->turnToStatic($path, $toPath, $size, '90', 0, 0.5)){
+     if(!$panoPicTools->turnToStatic($path, $toPath, $size, '90', 0, $sharpen)){
      	$this->show_default(3);
      }
     }
@@ -267,7 +268,8 @@ return substr($this->url, 0, $end );
      }
      $toPath .= '/' . $size . '.jpg';
      $panoPicTools = new PanoPicTools();
-     if(!$panoPicTools->turnToStatic($path, $toPath, $size, '90', 0, 0.5)){
+     $sharpen = 0;
+     if(!$panoPicTools->turnToStatic($path, $toPath, $size, '90', 0, $sharpen)){
      	$this->show_default(1);
      }
     }
