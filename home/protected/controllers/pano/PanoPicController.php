@@ -67,14 +67,11 @@ class PanoPicController extends FController{
     	$fileName = $explode_url[$count-1];
     	$suffix = $explode_url[$count-2];
     	$faceKeys = array_keys($this->face_box);
-    	echo $face;
     	if(!$scene_id || !in_array($face, $faceKeys)){
     		$this->show_default(2);
     	}
-    	echo $scene_id;
     	$path = $this->get_pano_file_path($scene_id, $face);
-    	echo $path;
-    	if(!file_exists($path)){
+    	if(!$path || !file_exists($path)){
     		$this->show_default($face);
     	}
     	$water = 0;
@@ -319,14 +316,11 @@ class PanoPicController extends FController{
     	if(!$file_id){
     		return false;
     	}
-    	echo $file_id;
     	//获取文件地址
     	$path = $this->get_file_floder ($file_id);
-    	echo $path;
     	if(!$path || !is_dir($path)){
     		return false;
     	}
-    	echo $path;
     	return $path . '/'. $this->face_box[$face] . '.jpg';
     }
 
