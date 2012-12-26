@@ -65,6 +65,8 @@ class PanoPicTools{
     	$ox = $time*$rand;
     	$rand = rand(0, 5);
     	$oy = $time*$rand;
+    	echo $this->water_pic_path;
+    	exit();
     	$water = new Imagick($this->water_pic_path);
     	$dw = new ImagickDraw();
     	$dw -> composite($water->getImageCompose(),$ox,$oy,50,0,$water);
@@ -101,8 +103,7 @@ class PanoPicTools{
     	if($sharpen){
     		$this->myimage->sharpenImage($sharpen, $sharpen);
     	}
-    	echo $to;
-    	exit();
+    	
     	$this->myimage->writeImage($to);
 
     	header( 'Content-Type: '.$this->_extensionToMime($ext) );
