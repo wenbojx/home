@@ -68,10 +68,11 @@ class PanoPicController extends FController{
     	$suffix = $explode_url[$count-2];
     	$faceKeys = array_keys($this->face_box);
     	if(!$scene_id || !in_array($face, $faceKeys)){
-    		$this->show_default(2);
+    		$this->show_default($face);
     	}
     	$path = $this->get_pano_file_path($scene_id, $face);
     	if(!$path || !file_exists($path)){
+    		echo 111;
     		$this->show_default($face);
     	}
     	$water = 0;
