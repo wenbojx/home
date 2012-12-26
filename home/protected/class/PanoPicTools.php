@@ -6,7 +6,7 @@ class PanoPicTools{
     private $default_thumb_img = 'style/img/thumb_default.gif';
     private $default_thumb_pano = 'style/img/thumb_pano.gif';
     private $default_face_img = 'style/img/default_face.jpg';
-    private $face_box = array ('s_f'=>'style/img/box_front.gif', 's_r'=>'style/img/box_right.gif', 's_l'=>'style/img/box_left.gif', 's_b'=>'style/img/box_back.gif', 's_u'=>'style/img/box_up.gif', 'style/img/'=>'box_down.gif');
+    private $face_box = array ('s_f'=>'style/img/box_front.gif', 's_r'=>'style/img/box_right.gif', 's_l'=>'style/img/box_left.gif', 's_b'=>'style/img/box_back.gif', 's_u'=>'style/img/box_up.gif', 's_d'=>'style/img/box_down.gif');
 
     private function _extensionToMime($ext){
 		static $mime = array(
