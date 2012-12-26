@@ -59,7 +59,7 @@ class PanoPicTools{
      * @return boolean
      */
     public function water_pic(){
-    	//$rand = rand(0, 8);
+    	$rand = rand(0, 8);
     	$time = substr(time(), $rand, 2);
     	$rand = rand(0, 5);
     	$ox = $time*$rand;
