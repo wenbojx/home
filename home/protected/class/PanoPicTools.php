@@ -69,7 +69,7 @@ class PanoPicTools{
     	$water = new Imagick($this->water_pic_path);
     	$dw = new ImagickDraw();
     	$compose = $water->getImageCompose();
-    	echo $this->water_pic_path;
+    	echo $ox.'-'.$oy;;
     	exit();
     	$dw -> composite($compose, $ox, $oy, 50, 0, $water);
     	
