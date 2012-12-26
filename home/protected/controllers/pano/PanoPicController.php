@@ -322,6 +322,7 @@ class PanoPicController extends FController{
     	echo $file_id;
     	//获取文件地址
     	$path = $this->get_file_floder ($file_id);
+    	echo $path;
     	if(!$path || !is_dir($path)){
     		return false;
     	}
