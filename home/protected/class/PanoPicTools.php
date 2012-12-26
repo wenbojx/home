@@ -65,10 +65,11 @@ class PanoPicTools{
     	$ox = $time*$rand;
     	$rand = rand(0, 5);
     	$oy = $time*$rand;
-    	echo $this->water_pic_path;
-    	exit();
+    	
     	$water = new Imagick($this->water_pic_path);
     	$dw = new ImagickDraw();
+    	echo $this->water_pic_path;
+    	exit();
     	$dw -> composite($water->getImageCompose(),$ox,$oy,50,0,$water);
     	$this->myimage -> drawImage($dw);
     	$water->clear();
