@@ -226,6 +226,7 @@ class PanoPicController extends FController{
     	}
     	$toPath .= '/' . $size . '.jpg';
     	$panoPicTools = new PanoPicTools();
+    	$sharpen = $size == $this->size[0] ? 0.5 : 0;
     	//echo $path.'<br>'. $toPath.'<br>'. $size;
     	$panoPicTools->turnToStatic($path, $toPath, $size, '90', 0, 0.5);
     }
