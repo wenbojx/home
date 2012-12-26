@@ -59,7 +59,7 @@ class PanoPicTools{
      * @return boolean
      */
     public function water_pic(){
-    	$rand = rand(0, 8);
+    	//$rand = rand(0, 8);
     	$time = substr(time(), $rand, 2);
     	$rand = rand(0, 5);
     	$ox = $time*$rand;
@@ -70,9 +70,9 @@ class PanoPicTools{
     	$dw = new ImagickDraw();
     	$compose = $water->getImageCompose();
     	echo $ox.'-'.$oy;;
-    	exit();
-    	$dw -> composite($compose, $ox, $oy, 50, 0, $water);
     	
+    	$dw -> composite($compose, $ox, $oy, 50, 0, $water);
+    	exit();
     	$this->myimage -> drawImage($dw);
     	$water->clear();
     	$water->destroy();
