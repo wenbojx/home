@@ -164,7 +164,7 @@ class UploadController extends Controller{
     	}
     	$file_name = 'thumb.jpg';
     	$file_info['name'] = $file_name;//获取文件名
-    	$file_info['size'] = $myimage->getimagelength();//获取文件大小
+    	$file_info['size'] = $myimage->getImageSize();//获取文件大小
     	$file_info['type'] = 'jpg';//获取文件类型
 
     	$to = $folder.$md5.'.jpg';
