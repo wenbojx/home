@@ -160,7 +160,7 @@ class PanoPicTools{
 
 		$myimage->cropimage($half_x, $half_y, $x, $y);
 		$myimage->resizeimage($maxW, $maxW, Imagick::FILTER_LANCZOS, 1, true);
-		
+
 		$quality = 80;
 		$sharpen = 0.5;
 		$myimage->setImageCompression(imagick::COMPRESSION_JPEG);
