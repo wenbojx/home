@@ -57,7 +57,9 @@ class Pano2CubesCommand extends CConsoleCommand {
 		
 		//echo $this->script_path;
 		if (file_exists($this->script_path)) {
-			unlink ($this->script_path);
+			if(!unlink ($this->script_path)){
+				echo "error ---- ". $this->script_path. "\r\n";
+			}
 		}
 		$log_file = $this->linux_path_prefix . '/tmp/log.txt';
 		$str_old = '';
@@ -66,6 +68,7 @@ class Pano2CubesCommand extends CConsoleCommand {
 		}
 		$str = $str_old . $this->str . "\r\n\+++++++++++++++++\r\n\r\n";
 		file_put_contents($log_file, $str );
+		
 	}
 	
 	private function delFileUnderDir( $dirName='' ){
@@ -155,10 +158,10 @@ o f4 y0 r0 p90 v360";
 		//echo $str;
 		exec($str);
 		if (file_exists($this->script_path)) {
-			unlink ($this->script_path);
-			echo $this->script_path;
+			if(!unlink ($this->script_path)){
+				echo "error ---- ". $this->script_path. "\r\n";
+			}
 		}
-		
 		//echo "----cube pano down {$path}----\r\n";
 		$this->str .= "---cube ok {$path}---\r\n";
 		$this->covert($path);
