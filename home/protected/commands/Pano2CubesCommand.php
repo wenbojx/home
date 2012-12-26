@@ -156,6 +156,7 @@ o f4 y0 r0 p90 v360";
 		exec($str);
 		if (file_exists($this->script_path)) {
 			unlink ($this->script_path);
+			echo $this->script_path;
 		}
 		
 		//echo "----cube pano down {$path}----\r\n";
