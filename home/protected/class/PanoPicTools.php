@@ -86,6 +86,8 @@ class PanoPicTools{
     	}
     	$this->myimage = new Imagick($from);
     	$ext = strtolower( $this->myimage->getImageFormat() );
+    	echo $ext;
+    	exit();
     	$this->myimage->setImageFormat($ext);
     	//重置尺寸
     	$this->myimage->resizeimage($width, $height, Imagick::FILTER_LANCZOS, 1, true);
