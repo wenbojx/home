@@ -118,7 +118,7 @@ class PanoPicController extends FController{
 		$size = $this->img_size/2;
 		$toPath = PicTools::get_pano_static_path($scene_id) . '/'. $face. '/' . $suffix;
 		echo $toPath;
-		exit();
+		
 		if(!$this->make_unexit_dir($toPath)){
 			$this->show_default(2);
 		}
@@ -141,6 +141,7 @@ class PanoPicController extends FController{
 		$toPath .= "/{$fileName}";
 		echo $path."<br>";
 		echo $toPath."<br>";
+		exit();
 		$panoPicTools = new PanoPicTools();
 		if(!$panoPicTools->turnToStatic($path, $toPath, $size, $quality, $water, $sharpen)){
 			$this->show_default(2);
