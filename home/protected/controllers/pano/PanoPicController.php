@@ -23,8 +23,11 @@ class PanoPicController extends FController{
 		else if (strstr($this->url, '/small/')){
 			$this->get_pano_small();
 		}
-		if(strstr($this->url, '/fthumb/')){
+		elseif(strstr($this->url, '/fthumb/')){
 			$this->get_face_thumb();
+		}
+		elseif(strstr($this->url, '/map/')){
+			$this->get_pano_map();
 		}
 		else if(strstr($this->url, '.jpg')){
 			$this->put_out_pano_face();
@@ -33,6 +36,55 @@ class PanoPicController extends FController{
 			$this->put_out_xmlb();
 
 		}
+	}
+	/**
+	 * 地图
+	 */
+	private function get_pano_map(){
+		$explode_url = explode ('/', $this->url);
+		$num = count($explode_url)-1;
+		$file_name = $explode_url[$num];
+		$map_id = substr($file_name, 0, -4);
+		$project_id = $explode_url[$num-2];
+		//echo $project_id;
+		if(!$map_id){
+			$this->show_default(3);
+		}
+		//获取文件
+		$map_info = $this->get_map_file_id($map_id);
+		if(!$map_info){
+			$this->show_default(3);
+		}
+		$file_id = $map_info['file_id'];
+		$flePathDB = new FilePath();
+		//获取文件地址
+		$path = $flePathDB->get_file_path ($file_id);
+		if(!$path || !is_file($path)){
+			return false;
+		}
+		
+		$toPath = PicTools::get_pano_static_path($project_id.'/map');
+		//echo $toPath;
+		
+		if(!$this->make_unexit_dir($toPath)){
+			$this->show_default(3);
+		}
+		$toPath .= '/' . $map_id . '.jpg';
+		$panoPicTools = new PanoPicTools();
+		$sharpen = $size == $this->size[0] ? 0.5 : 0;
+		//echo $path.'<br>'. $toPath.'<br>'. $size;
+		$sharpen = 0;
+		$size = $map_info['width']. 'x'. $map_info['height'];
+		if(!$panoPicTools->turnToStatic($path, $toPath, $size, '90', 0, $sharpen)){
+			$this->show_default(3);
+		} 
+	}
+	/**
+	 * 根据map_id 获取对应的文件ID 
+	 */
+	private function get_map_file_id($map_id){
+		$mapDB = new ProjectMap();
+		return $mapDB->find_by_map_id($map_id);
 	}
 	/**
 	 * 去掉图片后面的参数

@@ -1,5 +1,6 @@
 <?php
 class PicTools{
+	public $path = '';
 	//private $;
 	public static function get_img_domain($num=''){
 		$domains = array(
@@ -44,6 +45,14 @@ class PicTools{
 		
 		$path = self::get_img_domain($num%2). '/' .self::get_pano_static_path($scene_id);
 		return $path;
+	}
+	public static function get_pano_map($project_id, $map_id){
+		if(!$project_id || !$map_id){
+			return false;
+		}
+		$num = substr($project_id, -1);
+		$path = self::get_img_domain($num%2). '/' .self::get_pano_static_path($project_id.'/map');
+		return $path . '/' . $map_id. '.jpg';
 	}
 	/**
 	 * 获取全景图小图地址

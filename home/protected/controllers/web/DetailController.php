@@ -17,7 +17,7 @@ class DetailController extends FController{
 
             $datas['extend'] = $this->get_extend_datas($datas['scene_id'], $datas['project']['id']);
         	//print_r($datas['extend']);
-        	$datas['map'] = $this->get_map_info($datas['scene_id']);
+        	$datas['map'] = $this->get_map_info($datas['project']['id']);
         	//print_r($datas['map']);
         }
         $this->render('/web/detail', array('datas'=>$datas));
@@ -26,28 +26,12 @@ class DetailController extends FController{
     /**
      * 获取地图信息
      */
-    private function get_map_info($scene_id){
-    	$map_db = new ScenesMap();
-    	$map_datas = $map_db->get_map_info($scene_id);
+    private function get_map_info($project_id){
+    	$map_db = new ProjectMap();
+    	$map_datas = $map_db->get_map_info($project_id);
     	if(!$map_datas){
     		return false;
     	}
-    	 
-    	//获取图片名
-    	$file_path_db = new FilePath();
-    	$file_path = $file_path_db->get_file_path($map_datas['map']['file_id'], 'original');
-    	if(is_file($file_path)){
-    		$myimage = new Imagick($file_path);
-    		$map_datas['img']['width'] = $myimage->getImageWidth();
-    		$map_datas['img']['height'] = $myimage->getImageHeight();
-    		$file_info = $file_path_db->get_by_file_id($map_datas['map']['file_id']);
-    		$map_datas['img']['md5'] = $file_info['md5value'];
-    	}
-    	else{
-    		$map_datas['img']['width'] = '0';
-    		$map_datas['img']['height'] = '0';
-    	}
-    	 
     	return $map_datas;
     }
     

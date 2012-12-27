@@ -31,7 +31,7 @@
                 	<div id="scroll_map" class="scroll_map" style="display:<?=$datas['map_flag']?'block':'none'?>">
                 		<div class="marker_map" id="marker_map">
                 			<?php if($flag){?>
-			        		<img src="<?=$this->createUrl('/panos/imgOut/index/', array('id'=>$datas['map']['img']['md5'], 'size'=>$datas['map']['img']['width'].'x'.$datas['map']['img']['height'].'.jpg'))?>" class="imgMap"/>
+			        		<img src="<?=PicTools::get_pano_map($datas['project']['id'], $datas['map']['map']['id'])?>" class="imgMap"/>
 			        		<?php }?>
 			        		<?php if($datas['map']['position']){foreach($datas['map']['position'] as $v){?>
 			        		<div title="<?=$datas['map']['link_scenes'][$v['scene_id']]['name']?>" class="marker" id="markers_<?=$v['scene_id']?>_<?=$v['id']?>" data-coords="<?=$v['left']?>,<?=$v['top']?>">
@@ -118,8 +118,8 @@ var player_url = '<?=Yii::app()->baseUrl?>/plugins/salado/Player.swf';
 var scene_xml_url = '<?=$this->createUrl('/salado/index/a/', array('id'=>$datas['scene_id']))?>';
 load_scene(scene_box, scene_xml_url, player_url, 'transparent');
 <?php if($flag){?>
-map_width = '<?=$datas['map']['img']['width']?>';
-map_height = '<?=$datas['map']['img']['height']?>';
+map_width = '<?=$datas['map']['map']['width']?>';
+map_height = '<?=$datas['map']['map']['height']?>';
 
 bind_map(box_marker);
 <?php }?>

@@ -58,7 +58,8 @@ class ConfigController extends Controller{
         	//print_r($datas['camera']);
         }
         elseif ($type == 'map'){
-        	$datas['map'] = $this->get_map_info($scene_id);
+        	$datas['project_id'] = $request->getParam('project_id');
+        	$datas['map'] = $this->get_map_info($datas['project_id']);
         	//print_r($datas['map']['link_scenes']);
         	$datas['scene_list'] = $this->get_link_scenes($scene_id, false);
         }
@@ -98,14 +99,14 @@ class ConfigController extends Controller{
     /**
      * 获取地图信息
      */
-    private function get_map_info($scene_id){
-    	$map_db = new ScenesMap();
-    	$map_datas = $map_db->get_map_info($scene_id);
+    private function get_map_info($project_id){
+    	$map_db = new ProjectMap();
+    	$map_datas = $map_db->get_map_info($project_id);
     	if(!$map_datas){
     		return false;
     	}
     	
-    	//获取图片名
+    	/* //获取图片名
     	$file_path_db = new FilePath();
     	$file_path = $file_path_db->get_file_path($map_datas['map']['file_id'], 'original');
     	if(is_file($file_path)){
@@ -118,7 +119,7 @@ class ConfigController extends Controller{
     	else{
     		$map_datas['img']['width'] = '0';
     		$map_datas['img']['height'] = '0';
-    	}
+    	} */
     	
     	return $map_datas;
     }

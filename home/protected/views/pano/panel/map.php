@@ -45,10 +45,12 @@
         	</span>
         </div>
         <div class="tips">
-        	<div id="map_tips" style="display:<?=$flag?'none':''?>">请上传地图</div>
+        	<div id="map_tips" style="display:<?=$flag?'none':''?>">
+        	<h3>请上传地图</h3>
+        	</div>
         	<div id="map_container" class='scene_map' style="display:<?=$flag?'':'none'?>">
         		<?php if($flag){?>
-        		<img src="<?=$this->createUrl('/panos/imgOut/index/', array('id'=>$datas['map']['img']['md5'], 'size'=>$datas['map']['img']['width'].'x'.$datas['map']['img']['height'].'.jpg'))?>" class="imgMap"/>
+        		<img src="<?=PicTools::get_pano_map($datas['project_id'], $datas['map']['map']['id'])?>" class="imgMap"/>
         		<?php }?>
         		<?php if($datas['map']['position']){foreach($datas['map']['position'] as $v){?>
         		<div title="<?=$datas['map']['link_scenes'][$v['scene_id']]['name']?>" class="marker" id="markers_<?=$v['id']?>" data-coords="<?=$v['left']?>, <?=$v['top']?>">
@@ -63,13 +65,14 @@
 <script type="text/javascript">
 var map_upload_url='<?=$this->createUrl('/pano/upload/')?>';
 var scene_id = '<?=$datas['scene_id']?>';
+var project_id = '<?=$datas['project_id']?>';
 var map_button_img = "<?=Yii::app()->baseUrl?>/style/img/upload_map.gif";
 var save_map_marker_url = '<?=$this->createUrl('/salado/modules/map/')?>';
 map_box_upload();
 var map_id = '<?=$flag?$datas['map']['map']['id']:''?>';
 <?php if($flag){?>
-map_width = '<?=$datas['map']['img']['width']?>';
-map_height = '<?=$datas['map']['img']['height']?>';
+map_width = '<?=$datas['map']['map']['width']?>';
+map_height = '<?=$datas['map']['map']['height']?>';
 bind_map('scene_map');
 <?php }?>
 </script>

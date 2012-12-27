@@ -16,7 +16,7 @@ class ProjectMapPosition extends Ydao
      */
     public function tableName()
     {
-        return '{{scene_map_position}}';
+        return '{{project_map_position}}';
     }
     public function save_map_position($datas){
         if(!$datas['map_id'] || !$datas['scene_id']){
@@ -26,6 +26,7 @@ class ProjectMapPosition extends Ydao
         $this->scene_id = $datas['scene_id'];
         $this->left = $datas['left'];
         $this->top = $datas['top'];
+        //print_r($datas);
         if(!$this->save()){
         	return false;
         }

@@ -55,10 +55,12 @@
         <div class="span3">
             <div class="thumbnail">
                 <div class="list_box">
+                	<button class="btn btn-success" onclick="jump_to('<?=$this->createUrl('/pano/scene/add/', array('id'=>$project_id));?>')">新建场景</button>
+                	<br>
                 	<button id="online_project" class="btn btn btn-warning" style="<?=$datas['project']['display'] == '1'?'':'display:none' ?>" onclick="publish_project(<?=$project_id?>, 2)">发布项目</button>
                 	<button id="offline_project" class="btn btn btn-warning" style="<?=$datas['project']['display'] == '3'?'':'display:none' ?>" onclick="publish_project(<?=$project_id?>, 1)">下线项目</button>
-                	<br>
-                	<button class="btn btn-success" onclick="jump_to('<?=$this->createUrl('/pano/scene/add/', array('id'=>$project_id));?>')">新建场景</button>
+                	
+                	
                 </div>
             </div>
         </div>

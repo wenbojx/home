@@ -6,11 +6,12 @@ class MapController extends Controller{
     public function actionSave(){
         $request = Yii::app()->request;
         $scene_id = $request->getParam('scene_id');
+        $project_id = $request->getParam('project_id');
         $datas['map_id'] = $request->getParam('map_id');
         $datas['scene_id'] = $request->getParam('link_scene_id');
         $datas['left'] = $request->getParam('left');
         $datas['top'] = $request->getParam('top');
-        $this->check_scene_own($scene_id);
+        $this->check_project_owner($project_id);
         $msg['flag'] = 0;
         $msg['msg'] = '操作失败';
         if(!$datas['map_id'] || !$datas['scene_id']){
@@ -26,13 +27,13 @@ class MapController extends Controller{
         $this->display_msg($msg);
     }
     private function add_marker($datas){
-    	$map_position_db = new ScenesMapPosition();
+    	$map_position_db = new ProjectMapPosition();
     	return $map_position_db->save_map_position($datas);
     }
     public function actionDel(){
     	$request = Yii::app()->request;
-    	$scene_id = $request->getParam('scene_id');
-    	$this->check_scene_own($scene_id);
+    	$project_id = $request->getParam('project_id');
+    	$this->check_project_owner($project_id);
     	$id = $request->getParam('id');
     	$msg['flag'] = 0;
     	$msg['msg'] = '操作失败';
@@ -45,7 +46,7 @@ class MapController extends Controller{
         $this->display_msg($msg);
     }
     private function del_marker($id){
-    	$map_position_db = new ScenesMapPosition();
+    	$map_position_db = new ProjectMapPosition();
     	return $map_position_db->del_marker($id);
     }
 }

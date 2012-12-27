@@ -16,45 +16,53 @@ class ProjectMap extends Ydao
      */
     public function tableName()
     {
-        return '{{scene_map}}';
+        return '{{project_map}}';
     }
-    public function save_scene_map($scene_id, $file_id){
-        if(!$scene_id || !$file_id){
+    public function save_project_map($project_id, $file_id, $width, $height){
+        if(!$project_id || !$file_id){
             return false;
         }
-        $map_datas = $this->find_by_scene_id($scene_id);
+        $map_datas = $this->find_by_project_id($project_id);
         if($map_datas){
         	$id = $map_datas['id'];
         	$attributes = array('status'=>2);
         	$this->updateByPk($id, $attributes);
         }
-        $this->scene_id = $scene_id;
+        $this->project_id = $project_id;
         $this->file_id = $file_id;
+        $this->width = (int) $width;
+        $this->height = (int) $height;
         if(!$this->save()){
         	return false;
         }
         $id = $this->attributes['id'];
         return $id;
     }
-    public function find_by_scene_id($scene_id, $status=1){
+    public function find_by_map_id($map_id){
+    	if(!$map_id){
+    		return false;
+    	}
+    	return $this->findByPk($map_id);
+    }
+    public function find_by_project_id($project_id, $status=1){
         $criteria=new CDbCriteria;
-    	if(!$scene_id){
+    	if(!$project_id){
     		return false;
     	}
     	if($status!==0){
     		$criteria->addCondition("status={$status}");
     	}
-    	$criteria->addCondition("scene_id={$scene_id}");
+    	$criteria->addCondition("project_id={$project_id}");
     	$map_datas = $this->find($criteria);
     	return $map_datas;
     }
-    public function get_map_info($scene_id){
+    public function get_map_info($project_id){
     	$map_datas = array();
-    	if(!$scene_id){
+    	if(!$project_id){
     		return false;
     	}
     	//获取地图信息
-    	$map_datas['map'] = $this->find_by_scene_id($scene_id);
+    	$map_datas['map'] = $this->find_by_project_id($project_id);
     	if(!$map_datas['map'] || !$map_datas['map'] ['id']){
     		return false;
     	}
@@ -79,7 +87,7 @@ class ProjectMap extends Ydao
     	return $map_datas;
     }
     private function get_map_position($map_id){
-    	$map_positon_db = new ScenesMapPosition();
+    	$map_positon_db = new ProjectMapPosition();
     	return $map_positon_db->find_by_map_id($map_id);
     }
 }

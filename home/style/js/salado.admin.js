@@ -156,12 +156,13 @@ function save_marker(){
 	}
 	data.link_scene_id = id_split[1];
 	
+    data.project_id = project_id;
     data.scene_id = scene_id;
     data.map_id = map_id;
     data.top = top.replace('px','');
     data.left = left.replace('px','');
 
-    if(!data.map_id || !data.scene_id){
+    if(!data.map_id || !data.project_id){
     	alert('参数错误');
     	return false;
     }
@@ -192,7 +193,7 @@ function del_marker(){
 		return false;
 	}
 	data.id = position_id;
-	data.scene_id = scene_id;
+	data.project_id = project_id;
 	var url = save_map_marker_url+'/del/';
     save_datas(url, data, '', '', call_back);
     function call_back(datas){
@@ -225,7 +226,7 @@ function marker_del_save_display(){
 
 
 function map_box_upload(){
-    var post_datas = {'scene_id':scene_id,'from':'map_pic','SESSION_ID':session_id};
+    var post_datas = {'scene_id':scene_id, 'project_id':project_id, 'from':'map_pic','SESSION_ID':session_id};
     $("#map_box_upload").uploadify({
         'swf': flash_url,
         'uploader': map_upload_url,
@@ -235,7 +236,7 @@ function map_box_upload(){
         'debug':false,
         'width':74,
         'height':28,
-        'fileSizeLimit':'5120KB',
+        'fileSizeLimit':'1024KB',
         'fileTypeDesc' : 'jpg,png,gif格式',
         'fileTypeExts':'*.jpg;*.png;*.gif;',
         'buttonImage':map_button_img,

@@ -74,7 +74,8 @@ class UploadController extends Controller{
         }
         //地图
         elseif($from_map_pic){
-        	$flag_scene =$this->save_scene_map($file_id,$scene_id);
+        	$project_id = $request->getParam('project_id');
+        	$flag_scene =$this->save_project_map($file_id,$project_id);
         }
         elseif($from_pano_pic){
         	$flag_scene =$this->save_scene_pano($file_id,$scene_id);
@@ -188,9 +189,20 @@ class UploadController extends Controller{
     	$panoQueue->add_queue ($data);
     	return $flag;
     }
-    private function save_scene_map($file_id,$scene_id){
-    	$scene_map_db = new ScenesMap();
-    	$datas = $scene_map_db->save_scene_map($scene_id, $file_id);
+    private function save_project_map($file_id,$project_id){
+    	$map_db = new ProjectMap();
+    	//获取图片的宽高信息
+    	$flePathDB = new FilePath();
+    	//获取文件地址
+    	$path = $flePathDB->get_file_path ($file_id);
+    	if(!is_file($path)){
+    		return false;
+    	}
+    	$myimage = new Imagick($path);
+    	$width = $myimage->getImageWidth();
+    	$height = $myimage->getImageHeight();
+    	
+    	$datas = $map_db->save_project_map($project_id, $file_id, $width, $height);
     	return $datas;
     }
 

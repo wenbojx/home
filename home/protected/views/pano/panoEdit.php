@@ -79,7 +79,7 @@ var position_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'position'
 //var preview_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'preview', 'scene_id'=>$datas['pano']['id']))?>';
 var thumb_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'thumb', 'scene_id'=>$datas['pano']['id']))?>';
 var camera_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'camera', 'scene_id'=>$datas['pano']['id']))?>';
-var map_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'map', 'scene_id'=>$datas['pano']['id']))?>';
+var map_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'map', 'scene_id'=>$datas['pano']['id'],  'project_id'=>$datas['pano']['project_id']))?>';
 var hotspot_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'hotspot', 'scene_id'=>$datas['pano']['id']))?>';
 var hotspot_edit_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'hotspotEdit', 'scene_id'=>$datas['pano']['id']))?>';
 </script>
