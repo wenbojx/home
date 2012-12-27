@@ -12,7 +12,7 @@ class ViewController extends FController{
     	$this->scene_db = new Scene();
     	$datas = array();
     	$datas['list'] = '';
-    	$datas['pages'] = '';
+    	//$datas['pages'] = '';
     	if($project_id){
     		$datas['project'] = $this->get_project_datas($project_id);
     		//$datas['list'] = $this->get_scene_datas($project_id);
