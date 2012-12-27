@@ -71,8 +71,6 @@ class PanoPicController extends FController{
 		}
 		$toPath .= '/' . $map_id . '.jpg';
 		$panoPicTools = new PanoPicTools();
-		$sharpen = $size == $this->size[0] ? 0.5 : 0;
-		//echo $path.'<br>'. $toPath.'<br>'. $size;
 		$sharpen = 0;
 		$size = $map_info['width']. 'x'. $map_info['height'];
 		if(!$panoPicTools->turnToStatic($path, $toPath, $size, '90', 0, $sharpen)){
