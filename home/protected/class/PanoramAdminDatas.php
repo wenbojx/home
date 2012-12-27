@@ -450,10 +450,10 @@ class PanoramAdminDatas{
         $this->modules_datas[$type]['window']['s_attribute']['align'] = 'horizontal:right,vertical:bottom';
         $this->modules_datas[$type]['buttons']['s_attribute']['path'] = $this->module_media_path('button_bar');
         $this->modules_datas[$type]['buttons']['button']['1']['s_attribute']['name'] = 'autorotation';
-        $this->modules_datas[$type]['buttons']['button']['2']['s_attribute']['name'] = 'left';
-        $this->modules_datas[$type]['buttons']['button']['3']['s_attribute']['name'] = 'right';
-        $this->modules_datas[$type]['buttons']['button']['4']['s_attribute']['name'] = 'down';
-        $this->modules_datas[$type]['buttons']['button']['5']['s_attribute']['name'] = 'up';
+        //$this->modules_datas[$type]['buttons']['button']['2']['s_attribute']['name'] = 'left';
+        //$this->modules_datas[$type]['buttons']['button']['3']['s_attribute']['name'] = 'right';
+        //$this->modules_datas[$type]['buttons']['button']['4']['s_attribute']['name'] = 'down';
+        //$this->modules_datas[$type]['buttons']['button']['5']['s_attribute']['name'] = 'up';
         $this->modules_datas[$type]['buttons']['button']['6']['s_attribute']['name'] = 'out';
         $this->modules_datas[$type]['buttons']['button']['7']['s_attribute']['name'] = 'in';
         $this->modules_datas[$type]['buttons']['button']['8']['s_attribute']['name'] = 'fullscreen';
