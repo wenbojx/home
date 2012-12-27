@@ -14,7 +14,32 @@ $display = array('1'=>'待发布', '2'=>'待审核', '3'=>'上线中')
             <div class="thumbnail">
             	<div class="project_list">
             	<?php if(isset($datas['list'])){ foreach($datas['list'] as $v){?>
-            		<div class="project_single">
+            	   <div class="scene_single">
+            			<div class="previe_img">
+	            			<a href="<?=$this->createUrl('pano/scene/list', array('id'=>$v['id']));?>">
+	            			<img width="150" src="<?=PicTools::get_pano_thumb($datas['thumb'][$v['id']] , '150x110')?>"/>
+	            			</a>
+            			</div>
+            			<div class="scene_title">
+            				<div class="title_line">
+            					<?php echo CHtml::link($v['name'],array('pano/scene/list','id'=>$v['id']));?>
+            				</div>
+            				<div class="scene_desc">
+            					<?=$v['desc']?>
+            					<br>
+            					<?=$display[$v['display']];?>&nbsp;|
+                    			<?php echo CHtml::link("编辑",array('pano/project/edit','id'=>$v['id']));?>
+                    		</div>
+                    	</div>
+                    </div>
+                    <div class="clear"></div>
+   <!--          		<div class="scene_single">
+            			<div class="previe_img">
+	            			<a href="<?=$this->createUrl('/pano/salado/edit/', array('id'=>1));?>">
+	            			<img width="150" src="<?=PicTools::get_pano_thumb(1, '150x110')?>"/>
+	            			</a>
+            			</div>
+            			
             			<div class="float_left title">
                     	<?php //echo $v['id'];?>  <?php echo CHtml::link($v['name'],array('pano/scene/list','id'=>$v['id']));?>
                     	</div>
@@ -22,7 +47,7 @@ $display = array('1'=>'待发布', '2'=>'待审核', '3'=>'上线中')
                     	<?=$display[$v['display']];?>&nbsp;|
                     	<?php echo CHtml::link("编辑",array('pano/project/edit','id'=>$v['id']));?>
                     	</div>
-                    </div>
+                    </div> -->
                 <?php }} else { ?>
                 	<div class="margin-top10">
 					<strong>您还没有项目，点击右侧"新建项目"按钮，建立您的第一个项目</strong>

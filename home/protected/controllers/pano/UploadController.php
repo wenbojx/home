@@ -69,7 +69,8 @@ class UploadController extends Controller{
         }
         //场景缩略图
         elseif($from_thumb_pic){
-        	$flag_scene =$this->save_scene_thumb($file_id,$scene_id);
+        	$recommend = $request->getParam('recommend');
+        	$flag_scene =$this->save_scene_thumb($file_id, $scene_id, $recommend);
         }
         //地图
         elseif($from_map_pic){
@@ -207,9 +208,9 @@ class UploadController extends Controller{
     /**
      * 保存缩略图
      */
-    private function save_scene_thumb($file_id,$scene_id){
+    private function save_scene_thumb($file_id,$scene_id, $recommend=0){
         $scene_thumb_db = new ScenesThumb();
-        $datas = $scene_thumb_db->save_pano_thumb($scene_id, $file_id);
+        $datas = $scene_thumb_db->save_pano_thumb($scene_id, $file_id, $recommend);
         return $datas;
     }
     /*

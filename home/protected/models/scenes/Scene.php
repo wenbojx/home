@@ -112,7 +112,7 @@ class Scene extends Ydao
     	}
     	return $this->updateByPk($scene_id, array('file_id'=>$file_id));
     }
-    public function find_scene_by_project_id($project_id, $limit=12, $order='', $offset=0){
+    public function find_scene_by_project_id($project_id, $limit=12, $order='', $offset=0, $status=1, $display=2){
     	$datas = array();
     	if(!$project_id){
     		return $datas;
@@ -129,8 +129,11 @@ class Scene extends Ydao
     	if($offset){
     		$criteria->offset = $offset;
     	}
-    	$criteria->addCondition('status=1');
-    	$criteria->addCondition('display=2');
+    	
+    	$criteria->addCondition("status={$status}");
+    	if($display!==0){
+    		$criteria->addCondition("display={$display}");
+    	}
     	$criteria->addCondition("project_id={$project_id}");
     	$scene_datas = $this->findAll($criteria);
     	return $scene_datas;
@@ -234,6 +237,7 @@ class Scene extends Ydao
     	$criteria->addCondition('display=2');
     	return $this->count($criteria);
     }
+
 }
 
 

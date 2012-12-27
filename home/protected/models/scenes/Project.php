@@ -163,6 +163,52 @@ class Project extends Ydao
     	}
     	return $this->count($criteria);
     }
+    /**
+     * 获取项目的默认缩略图
+     */
+    public function get_thumb_scene_id($project_id){
+    	$scene_ids = $this->get_project_scene_ids($project_id);
+    	if(!$scene_ids){
+    		return false;
+    	}
+    	$scene_ids_str = implode(',', $scene_ids);
+    	if(!$scene_ids_str){
+    		return false;
+    	}
+    	$sceneThumbDB = new ScenesThumb();
+    	$criteria=new CDbCriteria;
+    	$criteria->addCondition("scene_id in ({$scene_ids_str})");
+    	//$criteria->addCondition("recommend=1");
+    	$datas = $sceneThumbDB->findAll($criteria);
+    	if(!$datas){
+    		return $scene_ids[0];
+    	}
+    	foreach ($datas as $v){
+    		if($v['recommend'] == '1'){
+    			return $v['scene_id'];
+    		}
+    	}
+    	return $datas[0]['scene_id'];
+    }
+    /**
+     * 获取该项目所有有效场景ID
+     */
+    public function get_project_scene_ids($project_id){
+    	if(!$project_id){
+    		return false;
+    	}
+    	$sceneDB = new Scene();
+    	$sceneDatas = $sceneDB->find_scene_by_project_id($project_id, 0, 0, 0, 1, 0);
+    	//print_r($sceneDatas);
+    	if(!$sceneDatas){
+    		return false;
+    	}
+    	$scene_ids = array();
+    	foreach($sceneDatas as $v){
+    		$scene_ids[] = $v['id'];
+    	}
+    	return $scene_ids;
+    }
     
 }
 

@@ -48,9 +48,14 @@
 			</div>
 			
 			<div style="padding-top:30px; padding-left:5px;" align="center">
+				<input name="recommend"  id="recommend" type="checkbox" value="1"  <?=$datas['thumb_info']['recommend']=='1' ? 'checked' : ''?>> 选为项目缩略图&nbsp;&nbsp;&nbsp;&nbsp;
 				<input value=" 保存缩略图" class="up_submit" type="button"  onclick="save_thumb_datas()">
 				<input name="cut_pos" id="cut_pos" value="" type="hidden">
 			</div>
+        </div>
+        <?php } else {?>
+        <div class="pano_small_thumb">
+        <br><h3>请先上传场景图</h3>
         </div>
         <?php }?>
     </div>

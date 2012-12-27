@@ -29,6 +29,14 @@ class ProjectController extends Controller{
                 $pages->applyLimit($criteria);
                 $datas['pages'] = $pages;
                 $datas['list'] = $project_db->findAll($criteria);
+                $datas['thumb'] = array();
+                if($datas['list']){
+                	foreach($datas['list'] as $k=>$v){
+                		//获取缩略图
+                		$datas['thumb'][$v['id']] = $this->get_thumb_scene_id($v['id']);
+                	}
+                }
+                print_r($datas['thumb']);
             }
         }
         $datas['page_title'] = '项目列表';
@@ -80,6 +88,17 @@ class ProjectController extends Controller{
 		}
 		$this->display_msg($msg);
 	}
+	/**
+	 * 获取项目的默认缩略图
+	 */
+	private function get_thumb_scene_id($project_id){
+		if(!$project_id){
+			return false;
+		}
+		$projectDB = new Project();
+		return $projectDB->get_thumb_scene_id($project_id);
+	}
+
 	private function check_thumb($project_id){
 		$scene_db = new Scene();
 		$num = $scene_db->get_scene_num($project_id);

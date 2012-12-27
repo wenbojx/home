@@ -18,17 +18,19 @@ class ScenesThumb extends Ydao
     {
         return '{{scene_thumb}}';
     }
-    public function save_pano_thumb($scene_id, $file_id){
+    public function save_pano_thumb($scene_id, $file_id, $recommend=0){
         if(!$scene_id){
             return false;
         }
         if (!$scene_datas = $this->find_by_scene_id($scene_id)){
             $this->scene_id = $scene_id;
             $this->file_id = $file_id;
+            $this->recommend = $recommend == '1' ? 1 : 0;
             return $this->insert();
         }
         else{
-            $attributes = array('file_id'=>$file_id);
+        	$recommend = $recommend == '1' ? 1 : 0;
+            $attributes = array('file_id'=>$file_id, 'recommend'=>$recommend);
             return $this->updateByPk($scene_id, $attributes);
         }
     }

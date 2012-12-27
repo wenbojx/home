@@ -389,7 +389,8 @@ function save_thumb_datas(){
 		alert("数据出错");
 		return false;
 	}
-	 var post_datas = {'scene_id':scene_id,'from':'thumb_pic','pos':pos};
+	var recommend = $("#recommend").attr("checked") ? '1' : '0';
+	 //var post_datas = {'scene_id':scene_id, 'from':'thumb_pic', 'pos':pos, 'recommend':recommend};
 	 var msg = {};
 	    msg.error = '操作失败';
 	    msg.success = '操作成功';
@@ -401,6 +402,7 @@ function save_thumb_datas(){
 	    data.from = 'thumb_pic';
 	    data.pos = pos;
 	    data.scene_id = scene_id;
+	    data.recommend = recommend;
 
 	    var url = thumb_upload_url;
 	    save_datas(url, data, '', '', call_back);

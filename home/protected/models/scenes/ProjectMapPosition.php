@@ -1,5 +1,5 @@
 <?php
-class ScenesMapPosition extends Ydao
+class ProjectMapPosition extends Ydao
 {
     /**
      * Returns the static model of the specified AR class.

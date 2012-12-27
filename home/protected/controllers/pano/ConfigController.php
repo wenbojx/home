@@ -21,11 +21,14 @@ class ConfigController extends Controller{
             $datas['link_scene'] = $this->get_link_scenes($scene_id);
         }
         elseif ($type == 'thumb'){
-            $datas['thumb'] = $this->get_thumb($scene_id);
+            $datas['thumb'] = $this->get_thumb_path($scene_id);
             $data['pano_info'] = $this->get_pano_info($scene_id);
             $datas['file_id'] = '';
             if($data['pano_info'] || $data['pano_info']['file_id']>0){
             	$datas['file_id'] = $data['pano_info']['file_id'];
+            	//获取缩略图信息
+            	$datas['thumb_info'] = $this->get_thumb_info($scene_id);
+            	//print_r($datas['thumb_info']);
             	unset($data['pano_info']);
             }
         }
@@ -175,9 +178,16 @@ class ConfigController extends Controller{
     /**
      * 获取场景缩略图
      */
-    private function get_thumb($scene_id){
+    private function get_thumb_path($scene_id){
         return PicTools::get_pano_thumb($scene_id, '200x100');
         return false;
+    }
+    /**
+     * 获取场景缩略图信息
+     */
+    private function get_thumb_info($scene_id){
+    	$thumbDB = new ScenesThumb();
+    	return $thumbDB->find_by_scene_id($scene_id);
     }
     /**
      * 获取项目中的其他场景列表
