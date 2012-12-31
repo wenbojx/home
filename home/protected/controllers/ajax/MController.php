@@ -2,7 +2,7 @@
 
 class MController extends FController{
 
-    public function actionProject(){
+    public function actionPS(){
     	$request = Yii::app()->request;
     	$datas = array();
     	$project_id = $request->getParam('id');
@@ -13,6 +13,54 @@ class MController extends FController{
     	$msg['project'] = $this->get_project_list($project_id);
     	
     	$this->display_msg($msg);
+    }
+    public function actionPL(){
+    	$request = Yii::app()->request;
+    	$datas = array();
+    	$project_id = $request->getParam('id');
+    	$msg['panos'] = array();
+    	$msg['map'] = '';
+    	if(!$project_id){
+    		$this->display_msg($msg);
+    	}
+    	$msg['panos'] = $this->get_scene_datas($project_id);
+    	$msg['map'] = $this->get_scene_map($project_id);
+    	
+    	$this->display_msg($msg);
+    }
+    /**
+     * 获取地图
+     */
+    private function get_scene_map($project_id){
+    	$map_db = new ProjectMap();
+    	$map_datas = $map_db->get_map_info($project_id);
+    	if(!$map_datas){
+    		return false;
+    	}
+    	$map_id = $map_datas['map']['id'];
+    	return PicTools::get_pano_map($project_id, $map_id);
+    }
+    /**
+     * 获取场景信息
+     */
+    private function get_scene_datas($project_id){
+    	$order = 'id ASC';
+    	$sceneDB = new Scene();
+    	$datas =  $sceneDB->find_scene_by_project_id($project_id, 10, $order, 0);
+    	if(!$datas){
+    		return array();
+    	}
+    	$sceneDatas = array();
+    	$i = 0;
+    	foreach($datas as $v){
+    		$sceneDatas[$i]['id'] = $v['id'];
+    		$sceneDatas[$i]['title'] = $v['name'];
+    		$sceneDatas[$i]['info'] = $v['desc'];
+    		$sceneDatas[$i]['thumb'] = PicTools::get_pano_thumb($v['id'] , '150x110');
+    		$sceneDatas[$i]['state'] = 1;
+    		$i++;
+    	}
+    	return $sceneDatas;
     }
     /**
      * 获取全景图状态
