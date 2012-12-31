@@ -3,7 +3,7 @@ ini_set('memory_limit', '100M');
 class PanoPicController extends FController{
 	public $defaultAction = 'index';
 	private $url = '';
-	private $size = array('200x100', '150x110' , '400x200', '1024x512', '1500x750');
+	private $size = array('200x100', '150x110' , '400x200', '1024x512');
 	private $request = null;
 	public $img_size = 1024;
 	public $tile_size = 512;
