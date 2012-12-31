@@ -23,10 +23,45 @@ class MController extends FController{
     	if(!$project_id){
     		$this->display_msg($msg);
     	}
-    	$msg['panos'] = $this->get_scene_datas($project_id);
+    	$msg['panos'] = $this->get_scene_list($project_id);
     	$msg['map'] = $this->get_scene_map($project_id);
     	
     	$this->display_msg($msg);
+    }
+    public function actionPV(){
+    	$request = Yii::app()->request;
+    	$datas = array();
+    	$scene_id = $request->getParam('id');
+    	$msg['pano'] = array();
+    	if(!$scene_id){
+    		$this->display_msg($msg);
+    	}
+    	$msg['panos'] = $this->get_scene_data($scene_id);
+    	$this->display_msg($msg);
+    }
+    /**
+     * 获取场景信息
+     */
+    private function get_scene_data($scene_id){
+    	$sceneDB = new Scene();
+    	$datas = $sceneDB->get_by_scene_id($scene_id);
+    	if(!$datas){
+    		return false;
+    	}
+    	$sceneData = array();
+    	$sceneData['id'] = $datas['id'];
+    	$sceneData['id'] = $v['id'];
+    	$sceneData['title'] = $v['name'];
+    	$sceneData['info'] = $v['desc'];
+    	$sceneData['state'] = 1;
+    	$size = '1024x512';
+    	$sceneData['s_f'] = PicTools::get_face_small($scene_id, 's_f' , $size);
+    	$sceneData['s_r'] = PicTools::get_face_small($scene_id, 's_r' , $size);
+    	$sceneData['s_b'] = PicTools::get_face_small($scene_id, 's_b' , $size);
+    	$sceneData['s_l'] = PicTools::get_face_small($scene_id, 's_l' , $size);
+    	$sceneData['s_u'] = PicTools::get_face_small($scene_id, 's_u' , $size);
+    	$sceneData['s_d'] = PicTools::get_face_small($scene_id, 's_d' , $size);
+    	return $sceneData;
     }
     /**
      * 获取地图
@@ -43,7 +78,7 @@ class MController extends FController{
     /**
      * 获取场景信息
      */
-    private function get_scene_datas($project_id){
+    private function get_scene_list($project_id){
     	$order = 'id ASC';
     	$sceneDB = new Scene();
     	$datas =  $sceneDB->find_scene_by_project_id($project_id, 10, $order, 0);
