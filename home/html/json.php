@@ -58,7 +58,8 @@ $project = array('project' => array(
 		)
 		
 	));
-$panos = array('panos' => array(
+$panos = array('map'=>'http://beta1.yiluhao.com/html/pano/front.jpg',
+		'panos' => array(
 		array(
 				'id'=>'1',
 				'title'=>'景点一',
@@ -110,18 +111,31 @@ $panos = array('panos' => array(
 		)
 		
 ));
+$map = '<?xml version="1.0" encoding="utf-8"?><maps><map name="map">
+		<area shape="poly" coords="230,35,294,38,299,57,299,79,228,79" id="@+id/area1" name = "N. Dakota"/>
+		<area shape="poly" coords="227,80,299,80,302,120,282,116,226,116" id="@+id/area2" name = "S. Dakota"/>
+		<area shape="poly" coords="229,35,226,87,154,81,145,86,131,69,123,21" id="@+id/area3" name = "Montana"/>
+		<area shape="poly" coords="224,89,223,143,148,136,156,83" id="@+id/area4" name = "Wyoming"/>
+		<area shape="poly" coords="169,141,241,147,241,197,162,191" id="@+id/area5" name = "Colorado"/>
+		<area shape="poly" coords="112,20,121,20,132,87,152,87,149,119,94,111" id="@+id/area6" name = "Idaho"/>
+		<area shape="poly" coords="42,10,66,7,111,18,104,57,48,51,40,36" id="@+id/area7" name = "Washington"/>
+		<area shape="poly" coords="40,42,47,54,104,60,92,111,18,94" id="@+id/area8" name = "Oregon"/>
+		<area shape="poly" coords="57,106,120,118,101,206,49,147" id="@+id/area9" name = "Nevada"/>
+	</map>
+</maps>';
 
 $pano = array('pano' =>
 					array(
 						'id'=>'1',
 						'title'=>'景点一',
 						'info' =>'景点一简介',
-						's_f'=>'http://www.yiluhao.com/salado/index/b/id/498/s_f/10/front.jpg',
-							's_r'=>'http://www.yiluhao.com/salado/index/b/id/498/s_r/10/right.jpg',
-							's_b'=>'http://www.yiluhao.com/salado/index/b/id/498/s_b/10/back.jpg',
-							's_l'=>'http://www.yiluhao.com/salado/index/b/id/498/s_l/10/left.jpg',
-							's_u'=>'http://www.yiluhao.com/salado/index/b/id/498/s_u/10/up.jpg',
-							's_d'=>'http://www.yiluhao.com/salado/index/b/id/498/s_d/10/down.jpg',
+						
+						's_f'=>'http://beta1.yiluhao.com/html/pano/front.jpg',
+							's_r'=>'http://beta1.yiluhao.com/html/pano/right.jpg',
+							's_b'=>'http://beta1.yiluhao.com/html/pano/back.jpg',
+							's_l'=>'http://beta1.yiluhao.com/html/pano/left.jpg',
+							's_u'=>'http://beta1.yiluhao.com/html/pano/up.jpg',
+							's_d'=>'http://beta1.yiluhao.com/html/pano/down.jpg',
 						'state'=>'1',
 							'hotspot'=>array(
 									array(
@@ -147,6 +161,9 @@ if(isset($_GET['panos'])){
 }
 elseif(isset($_GET['pano'])){
 	$str = json_encode($pano);
+}
+elseif(isset($_GET['map'])){
+	$str = json_encode($map);
 }
 else{
 	$str = json_encode($project);
