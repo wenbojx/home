@@ -29,7 +29,7 @@ class MController extends FController{
     	foreach($project_list as $v){
     		$datas[$i]['id'] = $v['id'];
     		$datas[$i]['title'] = $v['name'];
-    		//$datas[$i]['info'] = $v['desc'];
+    		$datas[$i]['info'] = $v['desc'];
     		$datas[$i]['state'] = 1;
     		$datas[$i]['count'] = $this->get_scene_num($v['id']);
     		$thumb_scene_id = $this->get_thumb_scene_id($v['id']);
