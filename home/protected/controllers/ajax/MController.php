@@ -50,9 +50,9 @@ class MController extends FController{
     	}
     	$sceneData = array();
     	$sceneData['id'] = $datas['id'];
-    	$sceneData['id'] = $v['id'];
-    	$sceneData['title'] = $v['name'];
-    	$sceneData['info'] = $v['desc'];
+    	$sceneData['id'] = $datas['id'];
+    	$sceneData['title'] = $datas['name'];
+    	$sceneData['info'] = $datas['desc'];
     	$sceneData['state'] = 1;
     	$size = '1024x512';
     	$sceneData['s_f'] = PicTools::get_face_small($scene_id, 's_f' , $size);
