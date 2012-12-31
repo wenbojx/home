@@ -36,7 +36,7 @@ class MController extends FController{
     	if(!$scene_id){
     		$this->display_msg($msg);
     	}
-    	$msg['panos'] = $this->get_scene_data($scene_id);
+    	$msg['pano'] = $this->get_scene_data($scene_id);
     	$this->display_msg($msg);
     }
     /**
