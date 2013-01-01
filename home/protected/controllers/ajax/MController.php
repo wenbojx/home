@@ -40,6 +40,52 @@ class MController extends FController{
     	$this->display_msg($msg);
     }
     /**
+     * 地图
+     */
+    public function actionMP(){
+    	$request = Yii::app()->request;
+    	$datas = array();
+    	$project_id = $request->getParam('id');
+    	$str = '<?xml version="1.0" encoding="utf-8"?><maps><map name="map">';
+    	if($project_id){
+    		$str .= $this->get_map_position($project_id);
+    	}
+    	$str .= '</map></maps>';
+
+/*     	$str = '<?xml version="1.0" encoding="utf-8"?><maps><map name="map">
+		<area shape="poly" link="1" coords="230,35,294,38,299,57,299,79" id="@+id/area1" name = "西湖"/>
+		<area shape="poly" link="2" coords="227,80,299,80,302,120,282,116" id="@+id/area2" name = "测试题"/>
+		<area shape="poly" link="3" coords="229,35,226,87,154,81,145,86,131,69" id="@+id/area3" name = "水电费"/>
+		<area shape="poly" link="4" coords="224,89,223,143,148,136,156,83" id="@+id/area4" name = "随碟附送"/>
+		<area shape="poly" link="5" coords="169,141,241,147,241,197,162,191" id="@+id/area5" name = "是打发撒旦"/>
+	</map>
+</maps>'; */
+    	
+    	echo $str;
+    }
+    private function get_map_position($project_id){
+    	$str = '';
+    	$map_db = new ProjectMap();
+    	$map_datas = $map_db->get_map_info($project_id);
+    	$map_positon = $map_datas['position'];
+    	if(!$map_positon){
+    		return $str;
+    	}
+    	$positionData = array();
+    	foreach($map_positon as $v){
+    		$p11 = $v['left'] -15;
+    		$p12 = $v['top'] - 20;
+    		$p21 = $v['left'] +15;
+    		$p22 = $v['top'] -20;
+    		$p31 = $v['left'] -15;
+    		$p32 = $v['top'] +20;
+    		$p41 = $v['left'] +15;
+    		$p42 = $v['top'] +20;
+    		$str .= "<area shape=\"poly\" link=\"{$v['scene_id']}\" coords=\"{$p11},{$p12},{$p21},{$p22},{$p41},{$p42},{$p31},{$p32}\" id=\"@+id/area{$v['id']}\" name = \"{$map_datas['link_scenes'][$v['scene_id']]['name']}\"/>";
+    	}
+    	return $str;
+    }
+    /**
      * 获取场景信息
      */
     private function get_scene_data($scene_id){
