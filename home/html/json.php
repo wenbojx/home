@@ -163,7 +163,7 @@ elseif(isset($_GET['pano'])){
 	$str = json_encode($pano);
 }
 elseif(isset($_GET['map'])){
-	$str = json_encode($map);
+	$str = $map;
 }
 else{
 	$str = json_encode($project);
