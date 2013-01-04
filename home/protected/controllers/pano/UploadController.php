@@ -117,7 +117,7 @@ class UploadController extends Controller{
     	
     	if(!file_exists($file_path)){
     		return false;
-    	} */
+    	}  */
     	$file_path = PicTools::get_pano_static_path($scene_id).'/small/1024x512.jpg';
 
     	$myimage = new Imagick($file_path);
@@ -153,7 +153,7 @@ class UploadController extends Controller{
     		mkdir($folder_pic);
     	}
     	$myimage->resizeimage(250, 155, Imagick::FILTER_LANCZOS, 1, true);
-    	$sharpen = 3;
+    	$sharpen = 5;
     	$myimage->sharpenImage($sharpen, $sharpen);
     	
     	$md5 = md5($myimage->getImagesBLOB());
