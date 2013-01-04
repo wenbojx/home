@@ -76,7 +76,9 @@ class PanoPicTools{
     	$water->destroy();
     	return true;
     }
-
+/**
+ * 生成静态图片 imagick
+ */
     public function turnToStatic ($from, $to, $size, $quality=100, $water=1, $sharpen=0){
     	if(!file_exists($from) || !$to || !$size){
     		return false;
@@ -113,6 +115,39 @@ class PanoPicTools{
     	$this->myimage->clear();
     	$this->myimage->destroy();
     	exit();
+    }
+    /**
+     * 生成静态图片 GD
+     */
+    public function turnToStaticGD ($from, $to, $size, $quality=100, $water=0, $sharpen=0){
+    	if(!file_exists($from) || !$to || !$size){
+    		return false;
+    	}
+    	$size_explode = explode ('x', $size);
+    	$width = (int) $size_explode[0];
+    	$height = (int) $size_explode[0];
+    	if(!$width || !$height){
+    		return false;
+    	}
+    	$image = Yii::app()->image->load($old);
+		//$image->quality(70);
+		//$image->save($new);
+    	//重置尺寸
+    	$image->resize($width, $height);
+    	//$this->myimage->resizeimage($width, $height, Imagick::FILTER_LANCZOS, 1, true);
+    	//图片质量
+    	if( $quality && $quality != 100){
+    		//$this->myimage->setImageCompression(imagick::COMPRESSION_JPEG);
+    		//$this->myimage->setImageCompressionQuality($quality);
+    		$image->quality($quality);
+    	}
+
+    	if($sharpen){
+    		$image->sharpen($sharpen*10);
+    	}
+    	 
+    	$image->save($new);
+    	$image->render();
     }
 
     public function get_exif_imagetype($file_path){
