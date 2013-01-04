@@ -153,7 +153,7 @@ class UploadController extends Controller{
     		mkdir($folder_pic);
     	}
     	$myimage->resizeimage(250, 155, Imagick::FILTER_LANCZOS, 1, true);
-    	$sharpen = 2;
+    	$sharpen = 1;
     	$myimage->sharpenImage($sharpen, $sharpen);
     	
     	$md5 = md5($myimage->getImagesBLOB());
