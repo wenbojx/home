@@ -107,7 +107,7 @@ class UploadController extends Controller{
      * 保存缩略图
      */
     private function get_thumb_pic($scene_id, $pos){
-    	$file_id = $this->get_pano_file_id($scene_id);
+    	/* $file_id = $this->get_pano_file_id($scene_id);
     	if(!$file_id){
     		return false;
     	}
@@ -117,7 +117,9 @@ class UploadController extends Controller{
     	
     	if(!file_exists($file_path)){
     		return false;
-    	}
+    	} */
+    	$file_path = PicTools::get_pano_static_path($scene_id).'/small/1024x512.jpg';
+
     	$myimage = new Imagick($file_path);
     	$ext = strtolower( $myimage->getImageFormat() );
     	$myimage->setImageFormat($ext);
@@ -151,7 +153,7 @@ class UploadController extends Controller{
     		mkdir($folder_pic);
     	}
     	$myimage->resizeimage(250, 155, Imagick::FILTER_LANCZOS, 1, true);
-    	$sharpen = 1;
+    	$sharpen = 3;
     	$myimage->sharpenImage($sharpen, $sharpen);
     	
     	$md5 = md5($myimage->getImagesBLOB());
