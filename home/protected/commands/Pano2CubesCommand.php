@@ -1,5 +1,5 @@
 <?php
-ini_set('memory_limit', '100M');
+ini_set('memory_limit', '500M');
 class Pano2CubesCommand extends CConsoleCommand {
 
 	public $width = '3724';  //cube
@@ -210,17 +210,12 @@ o f4 y0 r0 p90 v360";
 		}
 	}
 	public function tifToJpg($old, $new){
-
 		if(!file_exists($old)){
 			return false;
 		}
-		$myimage = new Imagick($old);
-		$myimage->setImageFormat("jpeg");
-		$myimage->setCompressionQuality( 70 );
-		$myimage->writeImage($new);
-
-		$myimage->clear();
-		$myimage->destroy();
+		$image = Yii::app()->image->load($old);
+		$image->quality(70);
+		$image->save($new);
 	}
 
 	/**
