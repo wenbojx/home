@@ -1,5 +1,5 @@
 <?php
-ini_set('memory_limit', '100M');
+ini_set('memory_limit', '150M');
 class TestImageCommand extends CConsoleCommand {
 	private $file = "/var/www/home/home/html/test.jpg";
 	
