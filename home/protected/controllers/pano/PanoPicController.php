@@ -178,7 +178,7 @@ class PanoPicController extends FController{
 		elseif($suffix == '10'){
 			//原图分解成4份
 			$panoPicTools = new PanoPicTools();
-			$panoPicTools->split_img_ten($path, $fileName);
+			$panoPicTools->split_img($path, $fileName);
 			$path = substr($path, 0, strlen($path)-4) . '/10/' . $fileName;
 			$quality = 90;
 			if(strstr($face, 's_l') || strstr($face, 's_b') || strstr($face, 's_u') || strstr($face, 's_d')){
