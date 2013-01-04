@@ -180,7 +180,7 @@ class PanoPicController extends FController{
 			$panoPicTools = new PanoPicTools();
 			$panoPicTools->split_img_ten($path, $fileName);
 			$path = substr($path, 0, strlen($path)-4) . '/10/' . $fileName;
-			$quality = 100;
+			$quality = 90;
 			if(strstr($face, 's_l') || strstr($face, 's_b') || strstr($face, 's_u') || strstr($face, 's_d')){
 				if(strstr($fileName, '1_1')){
 					$water =1;
