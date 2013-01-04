@@ -147,6 +147,8 @@ class PanoPicTools{
     	}
     	 
     	$image->save($to);
+    	$image = Yii::app()->image->load($to);
+    	$image->quality(80);
     	$image->render();
     }
 

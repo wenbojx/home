@@ -284,7 +284,7 @@ class PanoPicController extends FController{
 		//echo $path.'<br>'. $toPath.'<br>'. $size;
 		$sharpen = 0;
 		 
-		if(!$panoPicTools->turnToStaticGD($path, $toPath, $size, '80', 0, $sharpen)){
+		if(!$panoPicTools->turnToStaticGD($path, $toPath, $size, '90', 0, $sharpen)){
 			$this->show_default(3);
 		}
 	}
