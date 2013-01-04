@@ -140,7 +140,7 @@ class PanoPicController extends FController{
 		//echo $size;
 		$panoPicTools = new PanoPicTools();
 		 
-		if(!$panoPicTools->turnToStaticSD($path, $toPath, $size, $quality, $water, $sharpen)){
+		if(!$panoPicTools->turnToStatic($path, $toPath, $size, $quality, $water, $sharpen)){
 			$this->show_default($face);
 		}
 	}
@@ -173,7 +173,7 @@ class PanoPicController extends FController{
 		}
 		if($suffix == '9'){
 			$size = '256x256';
-			$quality = 60;
+			$quality = 40;
 		}
 		elseif($suffix == '10'){
 			//原图分解成4份
@@ -190,7 +190,7 @@ class PanoPicController extends FController{
 		$toPath .= "/{$fileName}";
 
 		$panoPicTools = new PanoPicTools();
-		if(!$panoPicTools->turnToStatic($path, $toPath, $size, $quality, $water, $sharpen)){
+		if(!$panoPicTools->turnToStaticSD($path, $toPath, $size, $quality, $water, $sharpen)){
 			$this->show_default(2);
 		}
 	}
