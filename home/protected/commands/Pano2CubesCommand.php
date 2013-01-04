@@ -213,9 +213,19 @@ o f4 y0 r0 p90 v360";
 		if(!file_exists($old)){
 			return false;
 		}
-		$image = Yii::app()->image->load($old);
+		if(!file_exists($old)){
+			return false;
+		}
+		$myimage = new Imagick($old);
+		$myimage->setImageFormat("jpeg");
+		$myimage->setCompressionQuality( 70 );
+		$myimage->writeImage($new);
+		
+		$myimage->clear();
+		$myimage->destroy();
+		/* $image = Yii::app()->image->load($old);
 		$image->quality(70);
-		$image->save($new);
+		$image->save($new); */
 	}
 
 	/**
