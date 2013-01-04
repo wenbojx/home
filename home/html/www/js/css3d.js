@@ -1,39 +1,4 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<title>three.js css3d - panorama</title>
-		<style>
-			body {
-				background-color: #000000;
-				margin: 0;
-				cursor: move;
-				overflow: hidden;
-			}
-			a {
-				color: #ffffff;
-			}
-			#info {
-				position: absolute;
-				width: 100%;
-				color: #ffffff;
-				padding: 5px;
-				font-family: Monospace;
-				font-size: 13px;
-				font-weight: bold;
-				text-align: center;
-				z-index: 1;
-			}
-		</style>
-	</head>
-	<body>
-		<script src="./three.min.js"></script>
-		<script src="./CSS3DRenderer.js"></script>
-
-		<script>
-
-			var camera, scene, renderer;
+var camera, scene, renderer;
 			var geometry, material, mesh;
 			var target = new THREE.Vector3();
 
@@ -41,9 +6,6 @@
 			var phi = 0, theta = 0;
 
 			var touchX, touchY;
-
-			init();
-			animate();
 
 			function init() {
 
@@ -99,7 +61,7 @@
 
 				}
 				var hotspot = {};
-				hotspot.url = 'hotspot-10.png';
+				hotspot.url = 'img/hotspot-10.png';
 				hotspot.position = new THREE.Vector3( -512, 0, 0 );
 				hotspot.rotation = new THREE.Vector3( 0, Math.PI / 2, 0 );
 				
@@ -214,7 +176,3 @@
 				renderer.render( scene, camera );
 
 			}
-
-		</script>
-	</body>
-</html>

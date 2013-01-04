@@ -11,7 +11,6 @@ class MController extends FController{
     		//$msg['msg'] = '参数错误';
     	}
     	$msg['project'] = $this->get_project_list($project_id);
-    	
     	$this->display_msg($msg);
     }
     public function actionPL(){
@@ -25,9 +24,11 @@ class MController extends FController{
     	}
     	$msg['panos'] = $this->get_scene_list($project_id);
     	$msg['map'] = $this->get_scene_map($project_id);
-    	
+    	$msg['info'] = $this->getProjectInfo($project_id);
+    	//print_r($msg);
     	$this->display_msg($msg);
     }
+    
     public function actionPV(){
     	$request = Yii::app()->request;
     	$datas = array();
@@ -62,6 +63,17 @@ class MController extends FController{
 </maps>'; */
     	
     	echo $str;
+    }
+    /**
+     * 获取项目信息
+     */
+    private function getProjectInfo($project_id){
+    	$projectDB = new Project();
+    	$projectData = $projectDB->find_by_project_id($project_id);
+    	if(!$projectData){
+    		return '';
+    	}
+    	return $projectData['desc'];
     }
     private function get_map_position($project_id){
     	$str = '';
@@ -137,7 +149,8 @@ class MController extends FController{
     		$sceneDatas[$i]['id'] = $v['id'];
     		$sceneDatas[$i]['title'] = $v['name'];
     		$sceneDatas[$i]['info'] = $v['desc'];
-    		$sceneDatas[$i]['thumb'] = PicTools::get_pano_thumb($v['id'] , '150x110');
+    		$sceneDatas[$i]['created'] = date(' Y-m-d H : i ', $v['created']);
+    		$sceneDatas[$i]['thumb'] = PicTools::get_pano_small($v['id'] , '200x100');
     		$sceneDatas[$i]['state'] = 1;
     		$i++;
     	}
@@ -158,7 +171,8 @@ class MController extends FController{
     	foreach($project_list as $v){
     		$datas[$i]['id'] = $v['id'];
     		$datas[$i]['title'] = $v['name'];
-    		$datas[$i]['info'] = $v['desc'];
+    		//$datas[$i]['info'] = $v['desc'];
+    		$datas[$i]['created'] = date(' Y 年 m 月 d 日', $v['created']);
     		$datas[$i]['state'] = 1;
     		$datas[$i]['count'] = $this->get_scene_num($v['id']);
     		$thumb_scene_id = $this->get_thumb_scene_id($v['id']);
