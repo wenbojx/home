@@ -1,5 +1,5 @@
 <?php
-ini_set('memory_limit', '500M');
+ini_set('memory_limit', '200M');
 class PanoPicController extends FController{
 	public $defaultAction = 'index';
 	private $url = '';
