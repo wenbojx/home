@@ -140,7 +140,7 @@ class PanoPicController extends FController{
 		//echo $size;
 		$panoPicTools = new PanoPicTools();
 		 
-		if(!$panoPicTools->turnToStatic($path, $toPath, $size, $quality, $water, $sharpen)){
+		if(!$panoPicTools->turnToStaticSD($path, $toPath, $size, $quality, $water, $sharpen)){
 			$this->show_default($face);
 		}
 	}

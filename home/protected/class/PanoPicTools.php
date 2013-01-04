@@ -147,6 +147,15 @@ class PanoPicTools{
     	}
     	 
     	$image->save($to);
+    	//打水印
+    	$this->myimage = new Imagick($to);
+    	$ext = strtolower( $this->myimage->getImageFormat() );
+    	$this->myimage->setImageFormat($ext);
+    	if($water){
+    		$this->water_pic();
+    	}
+    	$this->myimage->writeImage($to);
+    	
     	$image = Yii::app()->image->load($to);
     	$image->quality(80);
     	$image->render();
