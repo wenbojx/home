@@ -25,6 +25,18 @@ class TestImageCommand extends CConsoleCommand {
 		$myimage->clear();
 		$myimage->destroy();
 	}
+	public function actionImagickSingle(){
+		$myimage = new Imagick($this->file);
+		$myimage->setImageFormat("jpeg");
+		//$myimage->setCompressionQuality( 70 );
+		//$maxW =2048;
+		//$maxH = 1024;
+		//$myimage->resizeimage($maxW, $maxH, Imagick::FILTER_LANCZOS, 1, true);
+		$new_file = "/var/www/home/home/html/imagick.jpg";
+		$myimage->writeImage($new_file);
+		$myimage->clear();
+		$myimage->destroy();
+	}
 }
 ?>
 
