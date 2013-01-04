@@ -190,7 +190,7 @@ class PanoPicController extends FController{
 		$toPath .= "/{$fileName}";
 
 		$panoPicTools = new PanoPicTools();
-		if(!$panoPicTools->turnToStaticGD($path, $toPath, $size, $quality, $water, $sharpen)){
+		if(!$panoPicTools->turnToStatic($path, $toPath, $size, $quality, $water, $sharpen)){
 			$this->show_default(2);
 		}
 	}
