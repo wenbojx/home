@@ -129,7 +129,7 @@ class PanoPicTools{
     	if(!$width || !$height){
     		return false;
     	}
-    	$image = Yii::app()->image->load($old);
+    	$image = Yii::app()->image->load($from);
 		//$image->quality(70);
 		//$image->save($new);
     	//重置尺寸
@@ -146,7 +146,7 @@ class PanoPicTools{
     		$image->sharpen($sharpen*10);
     	}
     	 
-    	$image->save($new);
+    	$image->save($to);
     	$image->render();
     }
 
