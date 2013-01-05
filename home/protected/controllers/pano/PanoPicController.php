@@ -171,28 +171,26 @@ class PanoPicController extends FController{
 		if(!$this->make_unexit_dir($toPath)){
 			$this->show_default(2);
 		}
+		$toPath .= "/{$fileName}";
 		if($suffix == '9'){
 			$size = '256x256';
 			$quality = 40;
+			$panoPicTools = new PanoPicTools();
+			if(!$panoPicTools->turnToStatic($path, $toPath, $size, $quality, $water, $sharpen)){
+				$this->show_default(2);
+			}
 		}
 		elseif($suffix == '10'){
 			//原图分解成4份
 			$panoPicTools = new PanoPicTools();
-			$panoPicTools->split_img_ten($path, $fileName);
-			$path = substr($path, 0, strlen($path)-4) . '/10/' . $fileName;
-			$quality = 90;
 			if(strstr($face, 's_l') || strstr($face, 's_b') || strstr($face, 's_u') || strstr($face, 's_d')){
 				if(strstr($fileName, '1_1')){
 					$water =1;
 				}
 			}
+			$panoPicTools->split_img_ten($path, $fileName, $toPath, $water);
 		}
-		$toPath .= "/{$fileName}";
-
-		$panoPicTools = new PanoPicTools();
-		if(!$panoPicTools->turnToStatic($path, $toPath, $size, $quality, $water, $sharpen)){
-			$this->show_default(2);
-		}
+		
 	}
 	private function put_out_xmlb(){
 		$explode_url = explode ('/', $this->url);

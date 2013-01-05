@@ -234,57 +234,59 @@ class PanoPicTools{
     /**
      * 切割图片
      */
-    public function split_img_ten($src_file, $file_name, $file_type='jpg'){
-
+    public function split_img_ten($src_file, $file_name, $toPath, $water){
+    	$file_type='jpg';
         $maxW = $maxH = $this->tile_info[10]/2;
-        $folder = substr($src_file, 0, strlen($src_file)-4);
-        if(!is_dir($folder)){
-        	mkdir($folder);
-        }
-        $folder .= '/10';
-    	if(!is_dir($folder)){
-        	mkdir($folder);
-        }
-        $file = $folder . '/'. $file_name;
 
-        $myimage = new Imagick($src_file);
-        $ext = strtolower( $myimage->getImageFormat() );
-        $myimage->setImageFormat($ext);
-        $p_width = $myimage->getImageWidth();
-        $p_height = $myimage->getImageHeight();
-        //重置尺寸
-        //$myimage->resizeimage($this->tile_info[10], $this->tile_info[10], Imagick::FILTER_LANCZOS, 1, true);
-        //$sharpen = 0.5;
-        //$myimage->sharpenImage($sharpen, $sharpen);
-
+        $this->myimage = new Imagick($src_file);
+        $ext = strtolower( $this->myimage->getImageFormat() );
+        $this->myimage->setImageFormat($ext);
+        
+        $quality = 80;
+        $sharpen = 0.6;
+        $this->myimage->setImageCompression(imagick::COMPRESSION_JPEG);
+        $this->myimage->setImageCompressionQuality($quality);
+        $this->myimage->sharpenImage($sharpen, $sharpen);
+        $maxW = $this->tile_info[10];
+        $this->myimage->resizeimage($maxW, $maxW, Imagick::FILTER_LANCZOS, 1, true);
+        $p_width = $this->myimage->getImageWidth();
+        $p_height = $this->myimage->getImageHeight();
 
         $x = 0 ;
         $y = 0;
-        $half_x = $p_width/2;
-        $half_y = $p_height/2;
+        $add_px = 3;
+        $half_x = $this->tile_info[9];
+        $half_y = $half_x;
         if(strstr($file_name, '1_0')){
         	$x = $half_x;
-        }
-        else if(strstr($file_name, '0_1')){
-        	$y = $half_y;
+        	$half_y += $add_px;
         }
         else if(strstr($file_name, '1_1')){
         	$x = $half_x;
         	$y = $half_y;
         }
+        else if(strstr($file_name, '0_1')){
+        	$y = $half_y;
+        	$half_x += $add_px;
+        }
+        else {
+        	$half_x += $add_px;
+        	$half_y += $add_px;
+        }
 
-		$myimage->cropimage($half_x, $half_y, $x, $y);
-		$myimage->resizeimage($maxW, $maxW, Imagick::FILTER_LANCZOS, 1, true);
+		$this->myimage->cropimage($half_x, $half_y, $x, $y);
+		if($water){
+			$this->water_pic();
+		}
+		$this->myimage->writeImage($toPath);
+		
+		header( 'Content-Type: '.$this->_extensionToMime($ext) );
+		echo $this->myimage->getImagesBLOB();
+		
+		$this->myimage->clear();
+		$this->myimage->destroy();
+		exit();
 
-		$quality = 80;
-		$sharpen = 0.5;
-		$myimage->setImageCompression(imagick::COMPRESSION_JPEG);
-		$myimage->setImageCompressionQuality($quality);
-       $myimage->sharpenImage($sharpen, $sharpen);
-
-		$myimage->writeImage($file);
-		$myimage->clear();
-		$myimage->destroy();
 
     }
 }
