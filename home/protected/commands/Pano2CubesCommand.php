@@ -156,11 +156,11 @@ o f4 y0 r0 p90 v360";
 		echo "----cube pano {$path}----\r\n";
 		//echo $str;
 		exec($str);
-		if (file_exists($this->script_path)) {
+		/* if (file_exists($this->script_path)) {
 			if(!unlink ($this->script_path)){
 				echo "error ---- ". $this->script_path. "\r\n";
 			}
-		}
+		} */
 		//echo "----cube pano down {$path}----\r\n";
 		$this->str .= "---cube ok {$path}---\r\n";
 		$this->covert($path);
