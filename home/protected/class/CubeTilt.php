@@ -79,6 +79,9 @@ class CubeTilt{
 		
 		$this->newObj->clear();
 		$this->newObj->destroy();
+		
+		$this->logs .= " ------OK-----\r\n";
+		$this->logMsg();
 	}
 	public function DealPicPath ($path='', $scene_id, $face){
 		$this->face = $face;
