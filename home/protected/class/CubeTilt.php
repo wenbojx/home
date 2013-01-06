@@ -107,7 +107,7 @@ class CubeTilt{
 		$sharpen = 0.5;
 		$quality = 80;
 		if($round == 1){
-			$quality = 10;
+			$quality = 20;
 		}
 		$this->myimage->setImageCompression(imagick::COMPRESSION_JPEG);
 		$this->myimage->setImageCompressionQuality($quality);
