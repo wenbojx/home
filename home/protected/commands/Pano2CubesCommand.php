@@ -59,6 +59,8 @@ class Pano2CubesCommand extends CConsoleCommand {
 		}
 		$this->cubeTile->myimage->clear();
 		$this->cubeTile->myimage->destroy();
+		$this->myimage->clear();
+		$this->myimage->destroy();
 		//清理web文件
 
 		//echo $this->script_path;
@@ -222,10 +224,11 @@ o f4 y0 r0 p90 v360";
 		if(!file_exists($old)){
 			return false;
 		}
-		$myimage = new Imagick($old);
-		$myimage->setImageFormat("jpeg");
-		$myimage->setCompressionQuality( 70 );
-		$myimage->writeImage($new);
+		$this->myimage = new Imagick($old);
+		$this->myimage->setImageFormat("jpeg");
+		$this->myimage->setCompressionQuality( 70 );
+		$this->myimage->writeImage($new);
+		
 		$this->cubeTile->logs .= "scene_id:{$this->scene_id}\r\n";
 		if($this->scene_id){
 			$face = $this->cubeTile->face_box[$face];
@@ -235,8 +238,7 @@ o f4 y0 r0 p90 v360";
 			$this->cubeTile->logMsg();
 		}
 		
-		$myimage->clear();
-		$myimage->destroy();
+		
 		/* $image = Yii::app()->image->load($old);
 		$image->quality(70);
 		$image->save($new); */
