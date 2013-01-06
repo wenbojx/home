@@ -16,6 +16,7 @@ class CubeTilt{
 	private $face = null;
 	private $add_px = 3; //增加的像素
 	public $water_pic_path = '';
+	public $newObj = null;
 	/**
 	 * 找出最佳尺寸
 	 */
@@ -67,6 +68,9 @@ class CubeTilt{
 		$this->Deal();
 		$this->myimage->clear();
 		$this->myimage->destroy();
+		
+		$this->newObj->clear();
+		$this->newObj->destroy();
 	}
 	public function DealPicPath ($path='', $scene_id, $face){
 		$this->face = $face;
@@ -83,6 +87,8 @@ class CubeTilt{
 		$this->Deal();
 		$this->myimage->clear();
 		$this->myimage->destroy();
+		$this->newObj->clear();
+		$this->newObj->destroy();
 	}
 	/**
 	 * 将图处理成各种尺寸的静态地址图
@@ -161,9 +167,9 @@ class CubeTilt{
 				} */
 				$this->logStr .= "x={$x}--y={$y}\r\n";
 				$this->logStr .= "add_x={$add_x}--add_y={$add_y}\r\n";
-				$newObj = $this->myimage->getimageregion($width, $height, $x, $y);
+				$this->newObj = $this->myimage->getimageregion($width, $height, $x, $y);
 				
-				$this->savePic($newObj, $num, $name);
+				$this->savePic( $num, $name);
 				
 			}
 		}
@@ -205,9 +211,9 @@ class CubeTilt{
 	 * 保存图片
 	 * $add_x宽度加像素，$add_y高度加像素
 	 */
-	private function savePic($obj, $level, $name){
+	private function savePic( $level, $name){
 		$level = $level+$this->startFolder;
-		if(!$obj || !$name){
+		if( !$name){
 			return false;
 		}
 		$folder = $this->folderPath . '/' . $this->face . '/' . $level;
@@ -219,9 +225,9 @@ class CubeTilt{
 		
 		$this->logStr .= "save file {$newFile}\r\n";
 		//$obj->resizeimage($width, $height, Imagick::FILTER_LANCZOS, 1, true);
-		$obj->writeImage($newFile);
-		$obj->clear();
-		$obj->destroy();
+		$this->newObj->writeImage($newFile);
+		$this->newObj->clear();
+		$this->newObj->destroy();
 	}
 
 	/**
