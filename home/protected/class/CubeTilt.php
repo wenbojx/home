@@ -9,7 +9,7 @@ class CubeTilt{
 	private $level = 2;
 	private $startFolder = 9;
 	private $folderPath = '';
-	private $logStr = null;
+	public $logStr = null;
 	public $rootPath = '';
 	public $face_box = array ('front'=>'s_f', 'right'=>'s_r', 'left'=>'s_l', 'back'=>'s_b', 'top'=>'s_u', 'bottom'=>'s_d');
 	
@@ -165,8 +165,8 @@ class CubeTilt{
 				/* if($this->CheckFileExit($num, $name)){
 					continue;
 				} */
-				$this->logStr .= "x={$x}--y={$y}\r\n";
-				$this->logStr .= "add_x={$add_x}--add_y={$add_y}\r\n";
+				//$this->logStr .= "x={$x}--y={$y}\r\n";
+				//$this->logStr .= "add_x={$add_x}--add_y={$add_y}\r\n";
 				$this->newObj = $this->myimage->getimageregion($width, $height, $x, $y);
 				
 				$this->savePic( $num, $name);
