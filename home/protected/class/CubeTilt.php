@@ -107,14 +107,14 @@ class CubeTilt{
 		$sharpen = 0.5;
 		$quality = 80;
 		if($round == 1){
-			$w_h = $w_h/2;
-			$quality = 30;
+			$quality = 20;
 		}
 		$this->myimage->setImageCompression(imagick::COMPRESSION_JPEG);
 		$this->myimage->setImageCompressionQuality($quality);
 		$this->myimage->sharpenImage($sharpen, $sharpen);
 		
 		$maxW = $this->maxSiz/pow(2, $this->level-$num);
+		
 		$this->myimage->resizeimage($maxW, $maxW, Imagick::FILTER_LANCZOS, 1, true);
 		
 		if($round != 1){
