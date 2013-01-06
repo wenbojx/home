@@ -14,6 +14,7 @@ class Pano2CubesCommand extends CConsoleCommand {
 	private $str = "\r\n";
 	private $g_num = 1;
 	private $scene_id = 0;
+	public $cubeTile = null;
 
 	public function actionRun(){
 		$num = $this->get_script_path();
@@ -42,7 +43,9 @@ class Pano2CubesCommand extends CConsoleCommand {
 			$pano_queue->update_lock($v, 1);
 
 		}
-
+		
+		$this->cubeTile = new CubeTilt();
+		
 		foreach($pano_pics as $k=>$v){
 			$this->scene_id = $k;
 			$this->turn_to_cube($v);
@@ -54,6 +57,8 @@ class Pano2CubesCommand extends CConsoleCommand {
 				$this->delFileUnderDir($static_path);
 			}
 		}
+		$this->cubeTile->myimage->clear();
+		$this->cubeTile->myimage->destroy();
 		//清理web文件
 
 		//echo $this->script_path;
@@ -221,13 +226,13 @@ o f4 y0 r0 p90 v360";
 		$myimage->setImageFormat("jpeg");
 		$myimage->setCompressionQuality( 70 );
 		$myimage->writeImage($new);
-		
-		$cubeTile = new CubeTilt();
+		$this->cubeTile->logs = "scene_id:{$this->scene_id}\r\n";
 		if($this->scene_id){
-			$face = $cubeTile->face_box[$face];
-			$this->str .= $cubeTile->logStr;
-			$cubeTile->DealPicObj($myimage, $this->scene_id, $face);
-			
+			$face = $this->cubeTile->face_box[$face];
+			$this->str .= $this->cubeTile->logStr;
+			$this->cubeTile->DealPicObj($myimage, $this->scene_id, $face);
+			$this->cubeTile->logs .= "finish: {$this->scene_id}\r\n";
+			$this->cubeTile->logMsg();
 		}
 		
 		$myimage->clear();

@@ -3,7 +3,7 @@
  * 处理成静态图片
  */
 class CubeTilt{
-	private $myimage = null;
+	public $myimage = null;
 	public $scene_id = 0;
 	private $maxSiz = 1800;
 	private $level = 2;
@@ -17,6 +17,7 @@ class CubeTilt{
 	private $add_px = 3; //增加的像素
 	public $water_pic_path = '';
 	public $newObj = null;
+	public $logs = '';
 	/**
 	 * 找出最佳尺寸
 	 */
@@ -59,7 +60,7 @@ class CubeTilt{
 		file_put_contents('/var/www/home/home/tmp/log1.txt', $this->logs);
 	}
 	public function DealPicObj ($obj, $scene_id, $face){
-		$this->logs = "DealPicObj:{$scene_id}-{$face}\r\n";
+		$this->logs .= "DealPicObj:{$scene_id}-{$face}\r\n";
 		$this->logMsg();
 		$this->face = $face;
 		if(!$obj || !$scene_id){
