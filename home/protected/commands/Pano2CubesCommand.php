@@ -1,5 +1,5 @@
 <?php
-ini_set('memory_limit', '500M');
+ini_set('memory_limit', '100M');
 class Pano2CubesCommand extends CConsoleCommand {
 
 	public $width = '3724';  //cube
