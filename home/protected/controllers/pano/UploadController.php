@@ -224,7 +224,6 @@ class UploadController extends Controller{
      */
     private function save_scene_thumb($file_id,$scene_id, $recommend=0, $pos=0){
         $scene_thumb_db = new ScenesThumb();
-        echo $pos;
         $datas = $scene_thumb_db->save_pano_thumb($scene_id, $file_id, $recommend, $pos);
         return $datas;
     }
