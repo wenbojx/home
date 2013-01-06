@@ -56,13 +56,9 @@ class CubeTilt{
 		}
 		return false;
 	}
-	public function logMsg(){
-		echo $this->logs;
-		//file_put_contents('/var/www/home/home/tmp/log1.txt', $this->logs);
-	}
+
 	public function DealPicObj ($obj, $scene_id, $face){
-		$this->logs .= "DealPicObj:{$scene_id}-{$face}\r\n";
-		$this->logMsg();
+		
 		$this->face = $face;
 		if(!$obj || !$scene_id){
 			return false;
@@ -70,8 +66,7 @@ class CubeTilt{
 		if(!$this->GetStaticFolder($scene_id)){
 			return false;
 		}
-		$this->logs .= " folderPath:{$this->folderPath}\r\n";
-		$this->logMsg();
+		
 		
 		$this->scene_id= $scene_id;
 		$this->myimage = $obj;
@@ -79,9 +74,7 @@ class CubeTilt{
 		
 		$this->newObj->clear();
 		$this->newObj->destroy();
-		
-		$this->logs .= " ------OK-----\r\n";
-		$this->logMsg();
+
 	}
 	public function DealPicPath ($path='', $scene_id, $face){
 		$this->face = $face;
@@ -231,15 +224,11 @@ class CubeTilt{
 		$folder = $this->folderPath . '/' . $this->face . '/' . $level;
 
 		if(!is_dir($folder)){
-			$this->logs .= " mkdir folder:{$folder}\r\n";
-			$this->logMsg();
 			$this->make_unexit_dir($folder);
 		}
 		$newFile = $folder . '/' . $name;
 		$str = "----save file {$newFile}\r\n";
 		
-		$this->logs .= " newFile:{$newFile}\r\n";
-		$this->logMsg();
 		
 		$this->logStr .= $str;
 		echo $str;
@@ -256,8 +245,7 @@ class CubeTilt{
 		if(!$path){
 			return false;
 		}
-		$this->logs .= " Path:{$path}\r\n";
-		$this->logMsg();
+
 		$path = str_replace($this->rootPath.'/', '', $path);
 		$path_explode = explode ('/', $path);
 		//print_r($path_explode);
@@ -270,9 +258,6 @@ class CubeTilt{
 				continue;
 			}
 			$path .= '/' . $path_explode[$i];
-			//echo $path."\r\n";
-			$this->logs .= " Path:{$path}\r\n";
-			$this->logMsg();
 			
 			if(!is_dir($path)){
 				mkdir($path);

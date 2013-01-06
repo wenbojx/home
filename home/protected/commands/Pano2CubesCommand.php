@@ -204,8 +204,6 @@ o f4 y0 r0 p90 v360";
 			//echo $prefix;
 			$new = $prefix.$new;
 			echo "----covering tifToJpg {$new}----\n";
-			$this->cubeTile->logs .= "----covering tifToJpg {$new}----\n";
-			$this->cubeTile->logMsg();
 
 			$this->tifToJpg($old, $new, $v);
 
@@ -214,8 +212,6 @@ o f4 y0 r0 p90 v360";
 			}
 			echo "----covering tifToJpg success {$old}----\n";
 			$this->str .= "---covering ok {$new}---\r\n";
-			$this->cubeTile->logs .= "---covering ok {$new}---\r\n";
-			$this->cubeTile->logMsg();
 			//$this->move_cube_file($new);
 		}
 	}
@@ -240,8 +236,7 @@ o f4 y0 r0 p90 v360";
 		
 		$myimage->clear();
 		$myimage->destroy();
-		$this->cubeTile->logs .= "finish: {$this->scene_id}\r\n";
-		$this->cubeTile->logMsg();
+
 		/* $image = Yii::app()->image->load($old);
 		$image->quality(70);
 		$image->save($new); */
