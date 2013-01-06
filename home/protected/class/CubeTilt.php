@@ -57,7 +57,8 @@ class CubeTilt{
 		return false;
 	}
 	public function logMsg(){
-		file_put_contents('/var/www/home/home/tmp/log1.txt', $this->logs);
+		echo $this->logs;
+		//file_put_contents('/var/www/home/home/tmp/log1.txt', $this->logs);
 	}
 	public function DealPicObj ($obj, $scene_id, $face){
 		$this->logs .= "DealPicObj:{$scene_id}-{$face}\r\n";
