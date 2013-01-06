@@ -59,7 +59,7 @@ class CubeTilt{
 		file_put_contents('/var/www/home/home/tmp/log1.txt', $this->logs);
 	}
 	public function DealPicObj ($obj, $scene_id, $face){
-		$this->logs = "DealPicObj:{$scene_id}-{$face}";
+		$this->logs = "DealPicObj:{$scene_id}-{$face}\r\n";
 		$this->logMsg();
 		$this->face = $face;
 		if(!$obj || !$scene_id){
@@ -68,7 +68,7 @@ class CubeTilt{
 		if(!$this->GetStaticFolder($scene_id)){
 			return false;
 		}
-		$this->logs = " folderPath:{$this->folderPath}";
+		$this->logs .= " folderPath:{$this->folderPath}\r\n";
 		$this->logMsg();
 		
 		$this->scene_id= $scene_id;
@@ -206,6 +206,7 @@ class CubeTilt{
 		$rand = rand(0, 8);
 		$oy = $time*$rand;
 		 
+		
 		$water = new Imagick($this->water_pic_path);
 		$dw = new ImagickDraw();
 		$compose = $water->getImageCompose();
@@ -232,7 +233,7 @@ class CubeTilt{
 		$newFile = $folder . '/' . $name;
 		$str = "----save file {$newFile}\r\n";
 		
-		$this->logs = " newFile:{$newFile}";
+		$this->logs .= " newFile:{$newFile}\r\n";
 		$this->logMsg();
 		
 		$this->logStr .= $str;
@@ -263,6 +264,9 @@ class CubeTilt{
 			}
 			$path .= '/' . $path_explode[$i];
 			//echo $path."\r\n";
+			$this->logs .= " Path:{$path}\r\n";
+			$this->logMsg();
+			
 			if(!is_dir($path)){
 				mkdir($path);
 			}
