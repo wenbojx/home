@@ -32,6 +32,7 @@ class ScenesThumb extends Ydao
         else{
         	$recommend = $recommend == '1' ? 1 : 0;
             $attributes = array('file_id'=>$file_id, 'recommend'=>$recommend, 'pos'=>$pos);
+            print_r($attributes);
             return $this->updateByPk($scene_id, $attributes);
         }
     }
