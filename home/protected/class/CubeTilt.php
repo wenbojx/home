@@ -104,7 +104,7 @@ class CubeTilt{
 		$round = pow(2, $num);
 		
 		$w_h = $this->maxSiz / pow(2, $this->level);
-		$sharpen = 0.6;
+		$sharpen = 0.5;
 		$quality = 80;
 		if($round == 1){
 			$w_h = $w_h/2;
@@ -112,10 +112,11 @@ class CubeTilt{
 		}
 		$this->myimage->setImageCompression(imagick::COMPRESSION_JPEG);
 		$this->myimage->setImageCompressionQuality($quality);
+		$this->myimage->sharpenImage($sharpen, $sharpen);
 		
 		$maxW = $this->maxSiz/pow(2, $this->level-$num);
 		$this->myimage->resizeimage($maxW, $maxW, Imagick::FILTER_LANCZOS, 1, true);
-		$this->myimage->sharpenImage($sharpen, $sharpen);
+		
 		if($round != 1){
 			$this->water_pic();
 		}
