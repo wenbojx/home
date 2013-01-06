@@ -170,12 +170,14 @@ o f4 y0 r0 p90 v360";
 		$this->covert($path);
 	}
 	public function covert($path){
-		$panos = array( 'pano0005'=>'bottom',
+		$panos = array( 
 				'pano0000'=>'front',
 				'pano0001'=>'right',
 				'pano0002'=>'back',
 				'pano0003'=>'left',
-				'pano0004'=>'top', );
+				'pano0004'=>'top', 
+				'pano0005'=>'bottom'
+				);
 		foreach($panos as $k=>$v){
 			$folder_pre  =$this->linux_path_prefix . '/tmp/' . $this->script_num. '/' ;
 			$old = $folder_pre . $k.'.tif';
