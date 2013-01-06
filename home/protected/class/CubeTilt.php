@@ -11,7 +11,8 @@ class CubeTilt{
 	private $folderPath = '';
 	private $logStr = null;
 	public $rootPath = '';
-	public $face_box = array ('s_f'=>'front', 's_r'=>'right', 's_l'=>'left', 's_b'=>'back', 's_u'=>'top', 's_d'=>'bottom');
+	public $face_box = array ('front'=>'s_f', 'right'=>'s_r', 'left'=>'s_l', 'back'=>'s_b', 'top'=>'s_u', 'bottom'=>'s_d');
+	
 	private $face = null;
 	private $add_px = 3; //增加的像素
 	public $water_pic_path = '';

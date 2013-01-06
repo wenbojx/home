@@ -13,6 +13,7 @@ class Pano2CubesCommand extends CConsoleCommand {
 	private $script_path = '';
 	private $str = "\r\n";
 	private $g_num = 1;
+	private $scene_id = 0;
 
 	public function actionRun(){
 		$a = new CubeTiltCommand();
@@ -47,6 +48,7 @@ class Pano2CubesCommand extends CConsoleCommand {
 
 		foreach($pano_pics as $k=>$v){
 			$this->turn_to_cube($v);
+			$this->scene_id = $k;
 			$this->update_item_state_lock($k);
 
 			$static_path = PicTools::get_pano_static_path($v);
@@ -201,7 +203,7 @@ o f4 y0 r0 p90 v360";
 			$new = $prefix.$new;
 			echo "----covering tifToJpg {$new}----\n";
 
-			$this->tifToJpg($old, $new);
+			$this->tifToJpg($old, $new, $v);
 
 			if(file_exists($old)){
 				unlink($old);
@@ -211,7 +213,7 @@ o f4 y0 r0 p90 v360";
 			//$this->move_cube_file($new);
 		}
 	}
-	public function tifToJpg($old, $new){
+	public function tifToJpg($old, $new, $face){
 		if(!file_exists($old)){
 			return false;
 		}
@@ -222,6 +224,12 @@ o f4 y0 r0 p90 v360";
 		$myimage->setImageFormat("jpeg");
 		$myimage->setCompressionQuality( 70 );
 		$myimage->writeImage($new);
+		
+		$cubeTile = new CubeTilt();
+		if($this->scene_id){
+			$face = $cubeTile->face_box[$face];
+			$cubeTile->DealPicObj($myimage, $v['scene_id'], $face);
+		}
 		
 		$myimage->clear();
 		$myimage->destroy();

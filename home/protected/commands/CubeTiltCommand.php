@@ -18,8 +18,8 @@ class CubeTiltCommand extends CConsoleCommand{
 			//获取文件地址
 			$path = $this->rootPath. '/' . $flePathDB->get_file_folder ($file_id, 'cube');
 			foreach ($cubeTile->face_box as $k=>$v1){
-				$filePath = "{$path}/{$v1}.jpg";
-				$cubeTile->DealPicPath($filePath, $v['scene_id'], $k);
+				$filePath = "{$path}/{$k}.jpg";
+				$cubeTile->DealPicPath($filePath, $v['scene_id'], $v1);
 			}
 			
 		}
