@@ -230,6 +230,8 @@ class CubeTilt{
 		$folder = $this->folderPath . '/' . $this->face . '/' . $level;
 
 		if(!is_dir($folder)){
+			$this->logs .= " mkdir folder:{$folder}\r\n";
+			$this->logMsg();
 			$this->make_unexit_dir($folder);
 		}
 		$newFile = $folder . '/' . $name;
