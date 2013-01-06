@@ -253,6 +253,8 @@ class CubeTilt{
 		if(!$path){
 			return false;
 		}
+		$this->logs .= " Path:{$path}\r\n";
+		$this->logMsg();
 		$path = str_replace($this->rootPath.'/', '', $path);
 		$path_explode = explode ('/', $path);
 		//print_r($path_explode);
