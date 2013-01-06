@@ -226,7 +226,7 @@ o f4 y0 r0 p90 v360";
 		$myimage->setImageFormat("jpeg");
 		$myimage->setCompressionQuality( 70 );
 		$myimage->writeImage($new);
-		$this->cubeTile->logs = "scene_id:{$this->scene_id}\r\n";
+		$this->cubeTile->logs .= "scene_id:{$this->scene_id}\r\n";
 		if($this->scene_id){
 			$face = $this->cubeTile->face_box[$face];
 			$this->str .= $this->cubeTile->logStr;
