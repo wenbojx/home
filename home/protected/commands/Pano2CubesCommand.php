@@ -44,8 +44,8 @@ class Pano2CubesCommand extends CConsoleCommand {
 		}
 
 		foreach($pano_pics as $k=>$v){
-			$this->turn_to_cube($v);
 			$this->scene_id = $k;
+			$this->turn_to_cube($v);
 			$this->update_item_state_lock($k);
 
 			$static_path = PicTools::get_pano_static_path($v);
