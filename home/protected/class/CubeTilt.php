@@ -75,8 +75,6 @@ class CubeTilt{
 		$this->scene_id= $scene_id;
 		$this->myimage = $obj;
 		$this->Deal();
-		$this->myimage->clear();
-		$this->myimage->destroy();
 		
 		$this->newObj->clear();
 		$this->newObj->destroy();
