@@ -1,5 +1,5 @@
 <?php
-ini_set('memory_limit', '100M');
+ini_set('memory_limit', '50M');
 class IndexController extends FController{
     public $defaultAction = 'a';
     //public $layout = 'scene';

@@ -15,7 +15,9 @@ class Pano2CubesCommand extends CConsoleCommand {
 	private $g_num = 1;
 
 	public function actionRun(){
-
+		$a = new CubeTiltCommand();
+		$a->a();
+		return false;
 		$num = $this->get_script_path();
 		if(!$num){
 			return false;

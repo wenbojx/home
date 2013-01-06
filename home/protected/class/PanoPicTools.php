@@ -1,6 +1,6 @@
 <?php
 class PanoPicTools{
-    public $tile_info = array('11'=>2048, '10'=>1024, '9'=>512);
+    public $tile_info = array('11'=>1800, '10'=>900, '9'=>450);
     private $myimage = null;
     public $water_pic_path = 'style/img/water.png';
     private $default_thumb_img = 'style/img/thumb_default.gif';

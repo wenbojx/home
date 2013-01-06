@@ -76,7 +76,17 @@ class PanoQueue extends Ydao
     	$queue_datas = $this->findAll($criteria);
     	return $queue_datas;
     }
-    
+    /**
+     * 获取已处理的队列
+     */
+    public function get_deal_list(){
+    	$criteria=new CDbCriteria;
+    	$criteria->order = 'update_time ASC';
+    	$criteria->addCondition('state=0');
+    	$criteria->addCondition('locked=0');
+    	$queue_datas = $this->findAll($criteria);
+    	return $queue_datas;
+    }
 }
 
 

@@ -67,14 +67,23 @@ class TestImageCommand extends CConsoleCommand {
 	}
 
 	public function actionImagick(){
-		$myimage = new Imagick($this->file);
+		$myimage = new Imagick($this->files);
 		$myimage->setImageFormat("jpeg");
 		$myimage->setCompressionQuality( 70 );
-		$maxW =2048;
-		$maxH = 1024;
+		
+		$maxW =3600;
+		$maxH = 3600;
+		//$myimage->resizeimage($maxW, $maxH, Imagick::FILTER_LANCZOS, 1, true);
+		//$new_file = "C:/mydatas/APMServ5.2.6/www/htdocs/www/home/tmp/1.jpg";
+		//$myimage->writeImage($new_file);
+		
+		$maxW =1800;
+		$maxH = 1800;
+		
 		$myimage->resizeimage($maxW, $maxH, Imagick::FILTER_LANCZOS, 1, true);
-		$new_file = "/var/www/home/home/html/imagick.jpg";
+		$new_file = "C:/mydatas/APMServ5.2.6/www/htdocs/www/home/tmp/2.jpg";
 		$myimage->writeImage($new_file);
+		
 		$myimage->clear();
 		$myimage->destroy();
 	}

@@ -5,8 +5,8 @@ class PanoPicController extends FController{
 	private $url = '';
 	private $size = array('200x100', '150x110' , '400x200', '1024x512', '2048x1024');
 	private $request = null;
-	public $img_size = 1024;
-	public $tile_size = 512;
+	public $img_size = 1800;
+	public $tile_size = 450;
 	private $face_box = array ('s_f'=>'front', 's_r'=>'right', 's_l'=>'left', 's_b'=>'back', 's_u'=>'top', 's_d'=>'bottom');
 
 	/**
