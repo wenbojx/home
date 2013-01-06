@@ -55,7 +55,12 @@ class CubeTilt{
 		}
 		return false;
 	}
+	public function logMsg(){
+		file_put_contents('/var/www/home/home/tmp/log1.txt', $this->logs);
+	}
 	public function DealPicObj ($obj, $scene_id, $face){
+		$this->logs = "DealPicObj:{$scene_id}-{$face}";
+		$this->logMsg();
 		$this->face = $face;
 		if(!$obj || !$scene_id){
 			return false;
@@ -63,6 +68,9 @@ class CubeTilt{
 		if(!$this->GetStaticFolder($scene_id)){
 			return false;
 		}
+		$this->logs = " folderPath:{$this->folderPath}";
+		$this->logMsg();
+		
 		$this->scene_id= $scene_id;
 		$this->myimage = $obj;
 		$this->Deal();
@@ -223,6 +231,10 @@ class CubeTilt{
 		}
 		$newFile = $folder . '/' . $name;
 		$str = "----save file {$newFile}\r\n";
+		
+		$this->logs = " newFile:{$newFile}";
+		$this->logMsg();
+		
 		$this->logStr .= $str;
 		echo $str;
 		//$obj->resizeimage($width, $height, Imagick::FILTER_LANCZOS, 1, true);
