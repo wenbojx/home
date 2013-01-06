@@ -212,6 +212,8 @@ o f4 y0 r0 p90 v360";
 			}
 			echo "----covering tifToJpg success {$old}----\n";
 			$this->str .= "---covering ok {$new}---\r\n";
+			$this->cubeTile->logs .= "---covering ok {$new}---\r\n";
+			$this->cubeTile->logMsg();
 			//$this->move_cube_file($new);
 		}
 	}
