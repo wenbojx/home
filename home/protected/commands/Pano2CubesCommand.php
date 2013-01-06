@@ -204,6 +204,8 @@ o f4 y0 r0 p90 v360";
 			//echo $prefix;
 			$new = $prefix.$new;
 			echo "----covering tifToJpg {$new}----\n";
+			$this->cubeTile->logs .= "----covering tifToJpg {$new}----\n";
+			$this->cubeTile->logMsg();
 
 			$this->tifToJpg($old, $new, $v);
 
