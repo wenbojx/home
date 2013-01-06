@@ -229,12 +229,13 @@ o f4 y0 r0 p90 v360";
 			$face = $this->cubeTile->face_box[$face];
 			$this->str .= $this->cubeTile->logStr;
 			$this->cubeTile->DealPicObj($myimage, $this->scene_id, $face);
-			$this->cubeTile->logs .= "finish: {$this->scene_id}\r\n";
-			$this->cubeTile->logMsg();
+			
 		}
 		
 		$myimage->clear();
 		$myimage->destroy();
+		$this->cubeTile->logs .= "finish: {$this->scene_id}\r\n";
+		$this->cubeTile->logMsg();
 		/* $image = Yii::app()->image->load($old);
 		$image->quality(70);
 		$image->save($new); */
