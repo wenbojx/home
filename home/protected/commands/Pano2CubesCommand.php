@@ -225,6 +225,7 @@ o f4 y0 r0 p90 v360";
 		$cubeTile = new CubeTilt();
 		if($this->scene_id){
 			$face = $cubeTile->face_box[$face];
+			echo $face;
 			$cubeTile->DealPicObj($myimage, $v['scene_id'], $face);
 		}
 		

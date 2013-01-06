@@ -222,8 +222,9 @@ class CubeTilt{
 			$this->make_unexit_dir($folder);
 		}
 		$newFile = $folder . '/' . $name;
-		
-		$this->logStr .= "save file {$newFile}\r\n";
+		$str = "----save file {$newFile}\r\n";
+		$this->logStr .= $str;
+		echo $str;
 		//$obj->resizeimage($width, $height, Imagick::FILTER_LANCZOS, 1, true);
 		$this->newObj->writeImage($newFile);
 		$this->newObj->clear();
