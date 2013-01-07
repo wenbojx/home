@@ -21,7 +21,35 @@ class CubeTiltsCommand extends CConsoleCommand{
 				$filePath = "{$path}/{$k}.jpg";
 				$cubeTile->DealPicPath($filePath, $v['scene_id'], $v1);
 			}
-			
+		}
+	}
+	public function actionSmall(){
+		//获取已处理的场景
+		$panoQueueDB = new PanoQueue();
+		$panoList = $panoQueueDB->get_deal_list();
+		$flePathDB = new FilePath();
+		foreach($panoList as $v){
+			//获取项目原图目录
+			$file_id = $this->get_pano_file_id($v['scene_id']);
+			if(!$file_id){
+				return false;
+			}
+			//获取文件地址
+			$path = $this->rootPath. '/' . $flePathDB->get_file_folder ($file_id);
+			if(!is_dir($path.'small')){
+				mkdir($path);
+			}
+			$md5 = substr($path, strlen($path)-32, 32);
+			$from = $path . 'original/'. $md5 .'.jpg';
+			$to = $path . 'small/'. $md5 .'.jpg';
+			echo $from."\r\n";
+			echo $to."\r\n";
+			continue;
+			$myimage = new Imagick($from);
+			$myimage->resizeimage(4000, 2000, Imagick::FILTER_LANCZOS, 1, true);
+			$myimage->writeImage($to);
+			$myimage->clear();
+			$myimage->destroy();
 		}
 	}
 	/**

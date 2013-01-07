@@ -93,20 +93,21 @@ class PanoPicTools{
     	$ext = strtolower( $this->myimage->getImageFormat() );
     	
     	$this->myimage->setImageFormat($ext);
-    	//重置尺寸
-    	$this->myimage->resizeimage($width, $height, Imagick::FILTER_LANCZOS, 1, true);
+    	
     	//图片质量
     	if( $quality && $quality != 100){
     		$this->myimage->setImageCompression(imagick::COMPRESSION_JPEG);
     		$this->myimage->setImageCompressionQuality($quality);
     	}
-    	if($water){
-    		$this->water_pic();
-    	}
+    	//重置尺寸
+    	$this->myimage->resizeimage($width, $height, Imagick::FILTER_LANCZOS, 1, true);
     	if($sharpen){
     		$this->myimage->sharpenImage($sharpen, $sharpen);
     	}
-    	
+    	if($water){
+    		$this->water_pic();
+    	}
+
     	$this->myimage->writeImage($to);
 
     	header( 'Content-Type: '.$this->_extensionToMime($ext) );

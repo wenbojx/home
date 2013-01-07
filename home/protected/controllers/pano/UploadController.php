@@ -283,15 +283,20 @@ class UploadController extends Controller{
         $this->image_height = $myimage->getImageHeight();
         if($from_pano_pic){
         	//创建目录
-        	$cube_path = $folder.'cube';
-        	if(!is_dir($cube_path)){
-        		//mkdir($cube_path);
+        	$small_path = $folder.'../small';
+        	if(!is_dir($small_path)){
+        		mkdir($small_path);
         	}
+        	$myimage->resizeimage(4000, 2000, Imagick::FILTER_LANCZOS, 1, true);
+        	$to = $small_path . '/' .$file_info['md5value'].'.'.$file_info['type'];
+        	$myimage->writeImage($to);
         	//清理静态文件
-        	$fileTools = new FileTools();
-        	$fileTools->del_pano_static_files($this->scene_id);
+        	//$fileTools = new FileTools();
+        	//$fileTools->del_pano_static_files($this->scene_id);
         	//unlink($sc)
         }
+        $myimage->clear();
+        $myimage->destroy();
         if(!$from_box_pic){
         	return $file_info;
         }

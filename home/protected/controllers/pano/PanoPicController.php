@@ -269,7 +269,7 @@ class PanoPicController extends FController{
 		}
 		$flePathDB = new FilePath();
 		//获取文件地址
-		$path = $flePathDB->get_file_path ($file_id);
+		$path = $flePathDB->get_file_path ($file_id, 'small');
 
 		$toPath = PicTools::get_pano_static_path($scene_id) . '/small';
 
@@ -278,11 +278,11 @@ class PanoPicController extends FController{
 		}
 		$toPath .= '/' . $size . '.jpg';
 		$panoPicTools = new PanoPicTools();
-		$sharpen = $size == $this->size[0] ? 0.5 : 0;
+		$sharpen = $size == $this->size[0] ? 0.6 : 0.4;
 		//echo $path.'<br>'. $toPath.'<br>'. $size;
-		$sharpen = 0;
+		//$sharpen = 0.8;
 		 
-		if(!$panoPicTools->turnToStaticGD($path, $toPath, $size, '90', 0, $sharpen)){
+		if(!$panoPicTools->turnToStatic($path, $toPath, $size, '90', 0, $sharpen)){
 			$this->show_default(3);
 		}
 	}
@@ -290,7 +290,7 @@ class PanoPicController extends FController{
 	 * 获取全景图缩略图
 	 */
 	private function get_pano_thumb(){
-
+		
 		$explode_url = explode ('/', $this->url);
 		$count = count($explode_url);
 		$scene_id = (int) $explode_url[$count-3];
@@ -309,7 +309,6 @@ class PanoPicController extends FController{
 			$this->show_default(1);
 		}
 		$toPath = PicTools::get_pano_static_path($scene_id) . '/thumb';
-
 
 		if(!$this->make_unexit_dir($toPath)){
 			$this->show_default(1);
