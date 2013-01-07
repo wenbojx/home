@@ -45,7 +45,6 @@ class CubeTiltsCommand extends CConsoleCommand{
 			$to = $path . 'small/'. $md5 .'.jpg';
 			echo $from."\r\n";
 			echo $to."\r\n";
-			continue;
 			$myimage = new Imagick($from);
 			$myimage->resizeimage(4000, 2000, Imagick::FILTER_LANCZOS, 1, true);
 			$myimage->writeImage($to);
