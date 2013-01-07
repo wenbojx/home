@@ -139,7 +139,7 @@ class MController extends FController{
     private function get_scene_list($project_id){
     	$order = 'id ASC';
     	$sceneDB = new Scene();
-    	$datas =  $sceneDB->find_scene_by_project_id($project_id, 10, $order, 0);
+    	$datas =  $sceneDB->find_scene_by_project_id($project_id, 0, $order, 0);
     	if(!$datas){
     		return array();
     	}
