@@ -37,9 +37,8 @@ class CubeTiltsCommand extends CConsoleCommand{
 			}
 			//获取文件地址
 			$path = $this->rootPath. '/' . $flePathDB->get_file_folder ($file_id, '');
-			echo $path."\r\n";
 			if(!is_dir($path.'small')){
-				mkdir($path);
+				mkdir($path.'small');
 			}
 			$md5 = substr($path, strlen($path)-32, 32);
 			$from = $path . 'original/'. $md5 .'.jpg';
