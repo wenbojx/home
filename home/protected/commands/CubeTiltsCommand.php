@@ -24,6 +24,7 @@ class CubeTiltsCommand extends CConsoleCommand{
 		}
 	}
 	public function actionSmall(){
+		$this->rootPath = dirname(__FILE__).'/../..';
 		//获取已处理的场景
 		$panoQueueDB = new PanoQueue();
 		$panoList = $panoQueueDB->get_deal_list();
@@ -35,7 +36,7 @@ class CubeTiltsCommand extends CConsoleCommand{
 				return false;
 			}
 			//获取文件地址
-			$path = $this->rootPath. '/' . $flePathDB->get_file_folder ($file_id);
+			$path = $this->rootPath. '/' . $flePathDB->get_file_folder ($file_id, '');
 			echo $path."\r\n";
 			if(!is_dir($path.'small')){
 				mkdir($path);
