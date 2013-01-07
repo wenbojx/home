@@ -234,7 +234,6 @@ class CubeTilt{
 		$newFile = $folder . '/' . $name;
 		$str = "----save file {$newFile}\r\n";
 		$this->logStr .= $str;
-		echo $str;
 		//$obj->resizeimage($width, $height, Imagick::FILTER_LANCZOS, 1, true);
 		$this->newObj->writeImage($newFile);
 		$this->newObj->clear();
