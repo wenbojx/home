@@ -40,7 +40,7 @@ class CubeTiltsCommand extends CConsoleCommand{
 			if(!is_dir($path.'small')){
 				mkdir($path.'small');
 			}
-			$md5 = substr($path, strlen($path)-32, 32);
+			$md5 = substr($path, strlen($path)-31, 32);
 			$from = $path . 'original/'. $md5 .'.jpg';
 			$to = $path . 'small/'. $md5 .'.jpg';
 			echo $from."\r\n";
