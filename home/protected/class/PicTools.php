@@ -26,12 +26,12 @@ class PicTools{
 			return false;
 		}
 		$md5 = md5($scene_id . Yii::app()->params['pic_path_prefix']);
-		$lastThreeChar = substr($md5, strlen($md5)-3, 3);
-		$num = substr($scene_id, strlen($scene_id)-1, 1)%2;
+		$lastThreeChar = substr($md5, strlen($md5)-6, 6);
+		//$num = substr($scene_id, strlen($scene_id)-1, 1)%2;
 		$str =  Yii::app()->params['pano_static_path'] . '/' ;
-		$str .= substr($lastThreeChar, 0, 1) . '/';
-		$str .= substr($lastThreeChar, 1, 1). '/';
-		$str .= substr($lastThreeChar, 2, 1);
+		$str .= substr($lastThreeChar, 0, 2) . '/';
+		$str .= substr($lastThreeChar, 2, 2). '/';
+		$str .= substr($lastThreeChar, 4, 2);
 		return $str. '/' . $scene_id;
 	}
 	/**
