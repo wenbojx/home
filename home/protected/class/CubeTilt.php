@@ -225,11 +225,14 @@ class CubeTilt{
 
 		if(!is_dir($folder)){
 			$this->make_unexit_dir($folder);
+			if(!is_dir($folder)){
+				$str = "----error------- file {$newFile}\r\n";
+				$this->logStr .= $str;
+				return false;
+			}
 		}
 		$newFile = $folder . '/' . $name;
 		$str = "----save file {$newFile}\r\n";
-		
-		
 		$this->logStr .= $str;
 		echo $str;
 		//$obj->resizeimage($width, $height, Imagick::FILTER_LANCZOS, 1, true);
