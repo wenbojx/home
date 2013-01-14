@@ -233,7 +233,9 @@ o f4 y0 r0 p90 v360";
 			$this->cubeTile->DealPicObj($myimage, $this->scene_id, $face);
 			
 		}
-		
+		$path = $this->cubeTile->GetStaticFolder($this->scene_id);
+		$str = "chmod -R 777 {$path}";
+		exec($str);
 		$myimage->clear();
 		$myimage->destroy();
 
