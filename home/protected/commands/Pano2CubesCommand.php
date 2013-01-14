@@ -235,6 +235,7 @@ o f4 y0 r0 p90 v360";
 		}
 		$path = $this->cubeTile->GetStaticFolder($this->scene_id);
 		$str = "chmod -R 777 {$path}";
+		echo $str;
 		exec($str);
 		$myimage->clear();
 		$myimage->destroy();
