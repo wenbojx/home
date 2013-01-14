@@ -8,7 +8,7 @@ class CubeTilt{
 	private $maxSiz = 1800;
 	private $level = 2;
 	private $startFolder = 9;
-	private $folderPath = '';
+	public $folderPath = '';
 	public $logStr = null;
 	public $rootPath = '';
 	public $face_box = array ('front'=>'s_f', 'right'=>'s_r', 'left'=>'s_l', 'back'=>'s_b', 'top'=>'s_u', 'bottom'=>'s_d');
