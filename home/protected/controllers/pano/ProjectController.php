@@ -36,7 +36,7 @@ class ProjectController extends Controller{
                 		$datas['thumb'][$v['id']] = $this->get_thumb_scene_id($v['id']);
                 	}
                 }
-                print_r($datas['thumb']);
+                //print_r($datas['thumb']);
             }
         }
         $datas['page_title'] = '项目列表';
