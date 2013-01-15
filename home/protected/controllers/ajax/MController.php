@@ -47,7 +47,7 @@ class MController extends FController{
     	}
     	$msg['pano'] = $this->get_scene_data($scene_id);
     	$msg['hotspots'] = $this->get_scene_hotspots($scene_id);
-    	//print_r($msg);
+    	print_r($msg);
     	$this->display_msg($msg);
     }
     /**

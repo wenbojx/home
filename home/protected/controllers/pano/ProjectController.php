@@ -73,6 +73,7 @@ class ProjectController extends Controller{
 		$msg['flag'] = 1;
 		$msg['msg'] = '操作成功';
 		$display = $request->getParam('display');
+		
 		if($display == '2'){
 			if(!$this->check_thumb($project_id)){
 				$msg['flag'] = 0;
@@ -80,6 +81,7 @@ class ProjectController extends Controller{
 				$this->display_msg($msg);
 			}
 		}
+		$display = 3;
 		$project_db = new Project();
 		$datas = $project_db->update_dispaly($project_id, $display);
 		if(!$datas){
