@@ -115,7 +115,7 @@ class CubeTilt{
 		$round = pow(2, $num);
 		
 		$w_h = $this->maxSiz / pow(2, $this->level);
-		$sharpen = 0.5;
+		$sharpen = 0.4;
 		$quality = 80;
 		if($round == 1){
 			$quality = 10;

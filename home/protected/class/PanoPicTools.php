@@ -244,7 +244,7 @@ class PanoPicTools{
         $this->myimage->setImageFormat($ext);
         
         $quality = 80;
-        $sharpen = 0.6;
+        $sharpen = 0.4;
         $this->myimage->setImageCompression(imagick::COMPRESSION_JPEG);
         $this->myimage->setImageCompressionQuality($quality);
         $this->myimage->sharpenImage($sharpen, $sharpen);
