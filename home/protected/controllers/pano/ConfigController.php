@@ -174,7 +174,7 @@ class ConfigController extends Controller{
     	if(!$hotspot_datas){
     		return false;
     	}
-    	return $this->get_thumb($hotspot_datas['link_scene_id']);
+    	return $this->get_thumb_path($hotspot_datas['link_scene_id']);
     }
     /**
      * 获取场景缩略图

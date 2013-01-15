@@ -236,7 +236,6 @@ o f4 y0 r0 p90 v360";
 		$this->cubeTile->GetStaticFolder($this->scene_id);
 		$path = $this->cubeTile->folderPath;
 		$str = "chmod -R 777 {$path}";
-		echo $str;
 		if(is_dir($path)){
 			exec($str);
 		}
