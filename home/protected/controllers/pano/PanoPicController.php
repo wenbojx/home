@@ -126,7 +126,7 @@ class PanoPicController extends FController{
 		}
 		$water = 0;
 		$sharpen = 0;
-		$quality = 80;
+		$quality = 100;
 		$size = substr($fileName, 0, -4);
 		$toPath = PicTools::get_pano_static_path($scene_id) . '/'. $face. '/' . $suffix;
 		//echo $toPath;
