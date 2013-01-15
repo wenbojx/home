@@ -180,7 +180,7 @@ class ConfigController extends Controller{
      * 获取场景缩略图
      */
     private function get_thumb_path($scene_id){
-        return PicTools::get_pano_thumb($scene_id, '200x100');
+        return PicTools::get_pano_small($scene_id, '200x100');
         return false;
     }
     /**
