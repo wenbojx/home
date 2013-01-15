@@ -33,6 +33,23 @@ class ScenesHotspot extends Ydao
     public function find_by_scene_id($scene_id){
         return $this->findAllByAttributes(array('scene_id'=>$scene_id));
     }
+    public function get_scene_hotspots($scene_id){
+    	$datas = $this->find_by_scene_id($scene_id);
+    	if(!$datas){
+    		return array();
+    	}
+    	$hotspots = array();
+    	$k = 0;
+    	foreach($datas as $v){
+    		$hotspots[$k]['id'] = $v['id'];
+    		$hotspots[$k]['link_scene_id'] = $v['link_scene_id'];
+    		$hotspots[$k]['tilt'] = $v['tilt'];
+    		$hotspots[$k]['pan'] = $v['pan'];
+    		$hotspots[$k]['transform'] = $v['transform'];
+    		$k++;
+    	}
+    	return $hotspots;
+    }
     public function get_by_hotspot_id($hotspot_id){
     	return $this->findByPk($hotspot_id);
     }

@@ -2,6 +2,9 @@
 
 class MController extends FController{
 
+	/**
+	 * 项目列表
+	 */
     public function actionPS(){
     	$request = Yii::app()->request;
     	$datas = array();
@@ -13,6 +16,9 @@ class MController extends FController{
     	$msg['project'] = $this->get_project_list($project_id);
     	$this->display_msg($msg);
     }
+    /**
+     * 场景列表
+     */
     public function actionPL(){
     	$request = Yii::app()->request;
     	$datas = array();
@@ -28,7 +34,9 @@ class MController extends FController{
     	//print_r($msg);
     	$this->display_msg($msg);
     }
-    
+    /**
+     * 场景详细
+     */
     public function actionPV(){
     	$request = Yii::app()->request;
     	$datas = array();
@@ -38,6 +46,8 @@ class MController extends FController{
     		$this->display_msg($msg);
     	}
     	$msg['pano'] = $this->get_scene_data($scene_id);
+    	$msg['hotspots'] = $this->get_scene_hotspots($scene_id);
+    	//print_r($msg);
     	$this->display_msg($msg);
     }
     /**
@@ -132,6 +142,17 @@ class MController extends FController{
     	}
     	$map_id = $map_datas['map']['id'];
     	return PicTools::get_pano_map($project_id, $map_id);
+    }
+    /**
+     * 获取场景热点
+     */
+    private function get_scene_hotspots($scene_id){
+    	$hotspots = array();
+    	if(!$scene_id){
+    		return $hotspots;
+    	}
+    	$hotspotsDB = new ScenesHotspot();
+    	return $hotspotsDB->get_scene_hotspots($scene_id);
     }
     /**
      * 获取场景信息
