@@ -25,6 +25,14 @@ function bind_pano_btn(){
         load_page(hotspot_url, 'hotspot');
         hotspot_click();
     });
+    $('#btn_pad').bind('click',function(){
+    	if ($("#pano-detail").is(":hidden")){
+    		$("#pano-detail").show();
+    	}
+    	else{
+    		$("#pano-detail").hide();
+    	}
+    });
     $('#btn_preview').bind('click',function(){
         jump_to(preview_url, 'blank');
     });
