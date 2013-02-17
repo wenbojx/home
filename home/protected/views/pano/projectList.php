@@ -1,6 +1,6 @@
 <?php $this->pageTitle=$datas['page_title'].'---足不出户，畅游中国';?>
 <?php 
-$display = array('1'=>'待发布', '2'=>'待审核', '3'=>'上线中')
+$display = array('1'=>'待发布', '2'=>'待审核', '3'=>'已发布')
 ?>
 <div class="detail">
     <div class="hero-unit margin-top55">
@@ -27,8 +27,9 @@ $display = array('1'=>'待发布', '2'=>'待审核', '3'=>'上线中')
             				<div class="scene_desc">
             					<?=$v['desc']?>
             					<br>
-            					<?=$display[$v['display']];?>&nbsp;|
+            					
                     			<?php echo CHtml::link("编辑",array('pano/project/edit','id'=>$v['id']));?>
+                    			&nbsp;| <?=$display[$v['display']];?>
                     		</div>
                     	</div>
                     </div>
