@@ -154,10 +154,18 @@ class MController extends FController{
     	$map_db = new ProjectMap();
     	$map_datas = $map_db->get_map_info($project_id);
     	if(!$map_datas){
-    		return false;
+    		return "false";
     	}
     	$map_id = $map_datas['map']['id'];
-    	return PicTools::get_pano_map($project_id, $map_id);
+    	$mapUrl = PicTools::get_pano_map($project_id, $map_id);
+    	echo $mapUrl;
+    	echo 111;
+    	if($mapUrl){
+    		return $mapUrl;
+    	}
+    	else{
+    		return "false";
+    	}
     }
     /**
      * 获取场景热点
