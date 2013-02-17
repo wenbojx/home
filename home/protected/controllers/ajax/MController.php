@@ -158,8 +158,8 @@ class MController extends FController{
     	}
     	$map_id = $map_datas['map']['id'];
     	$mapUrl = PicTools::get_pano_map($project_id, $map_id);
-    	echo $mapUrl;
-    	echo 111;
+    	//echo $mapUrl;
+    	//echo 111;
     	if($mapUrl){
     		return $mapUrl;
     	}
