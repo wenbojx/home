@@ -154,7 +154,7 @@ class MController extends FController{
     	$map_db = new ProjectMap();
     	$map_datas = $map_db->get_map_info($project_id);
     	if(!$map_datas){
-    		return "false";
+    		return "nomap";
     	}
     	$map_id = $map_datas['map']['id'];
     	$mapUrl = PicTools::get_pano_map($project_id, $map_id);
@@ -164,7 +164,7 @@ class MController extends FController{
     		return $mapUrl;
     	}
     	else{
-    		return "false";
+    		return "nomap";
     	}
     }
     /**
