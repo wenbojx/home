@@ -30,8 +30,8 @@ class ScenesHotspot extends Ydao
         unset($datas);
         return $this->insert();
     }
-    public function find_by_scene_id($scene_id){
-        return $this->findAllByAttributes(array('scene_id'=>$scene_id));
+    public function find_by_scene_id($scene_id, $status=1){
+        return $this->findAllByAttributes(array('scene_id'=>$scene_id, 'status'=>$status));
     }
     public function get_scene_hotspots($scene_id){
     	$datas = $this->find_by_scene_id($scene_id);
