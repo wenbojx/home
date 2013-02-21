@@ -45,6 +45,7 @@ class ScenesHotspot extends Ydao
     		$hotspots[$k]['link_scene_id'] = $v['link_scene_id'];
     		$hotspots[$k]['tilt'] = $v['tilt'];
     		$hotspots[$k]['pan'] = $v['pan'];
+    		$hotspots[$k]['type'] = $v['type'];
     		$hotspots[$k]['transform'] = $v['transform'];
     		$k++;
     	}
