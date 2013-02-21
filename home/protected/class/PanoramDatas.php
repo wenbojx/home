@@ -316,7 +316,7 @@ class PanoramDatas{
         }
         //添加js模块
         $this->get_js_gateway_module();
-        if($no_button_bar && $this->display_config['btb']){
+        if($no_button_bar && $this->display_config['nobtb']){
             //获取默认button_bar
             $this->get_default_button_bar();
         }
