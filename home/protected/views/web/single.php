@@ -1,4 +1,4 @@
-<?php $this->pageTitle=$datas['project']['name'].'---足不出户，畅游中国';?>
+<?php $this->pageTitle=$datas['scene']['name'].'---足不出户，畅游中国';?>
 <div id="pano-detail" style="width:<?=$datas['style']['width']?>px; height:<?=$datas['style']['height']?>px;">
 <div id="scene_box"></div>
 <div id="pano_loading" class="pano_loading">
