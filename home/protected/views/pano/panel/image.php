@@ -33,7 +33,7 @@
 </div>
 <script>
 var scene_id = '<?=$datas['scene_id']?>';
-
+var project_id = '<?=$datas['project_id']?>';
 var image_button_img = "<?=Yii::app()->baseUrl?>/style/img/image_upload_img.gif";
 var image_upload_url='<?=$this->createUrl('/pano/upload/')?>';
 
