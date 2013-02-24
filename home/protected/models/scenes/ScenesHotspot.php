@@ -43,15 +43,33 @@ class ScenesHotspot extends Ydao
     	}
     	$hotspots = array();
     	$k = 0;
+    	$img_hotspots = array();
     	foreach($datas as $v){
     		$hotspots[$k]['id'] = $v['id'];
+    		$hotspots[$k]['scene_id'] = $v['scene_id'];
     		$hotspots[$k]['link_scene_id'] = $v['link_scene_id'];
     		$hotspots[$k]['tilt'] = $v['tilt'];
     		$hotspots[$k]['pan'] = $v['pan'];
     		$hotspots[$k]['type'] = $v['type'];
     		$hotspots[$k]['transform'] = $v['transform'];
     		$k++;
+    		if($v['type'] == "4"){
+    			$img_hotspots[] = $v['id'];
+    		}
     	}
+    	/* if($img_hotspots){
+    		$hotspot_file_db = new MpHotspotFile();
+    		
+    		$imgHotspots = $hotspot_file_db->find_by_hotspot_ids($img_hotspots);
+    		if($imgHotspots){
+    			foreach ($hotspots as $k=>$v){
+    				if($v['type'] == "4"){
+    					$hotspots[$k]['file_id'] = $imgHotspots[$v['id']];
+    				}
+    			}
+    		}
+    	}
+    	print_r($hotspots); */
     	return $hotspots;
     }
     public function get_by_hotspot_id($hotspot_id){

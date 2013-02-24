@@ -36,6 +36,23 @@ class MpHotspotFile extends Ydao
         }
         return $this->updateByPk($id, $datas);
     }
+    public function find_by_hotspot_ids($hotspot_ids){
+    	if(!$hotspot_ids){
+    		return false;
+    	}
+    	$hotspot_ids_str = implode(',', $hotspot_ids);
+    	$criteria=new CDbCriteria;
+    	$criteria->addCondition("hotspot_id in ({$hotspot_ids_str})");
+    	$img_hotspot = $this->findAll($criteria);
+    	if(!$img_hotspot){
+    		return false;
+    	}
+    	$hotspots_file = array();
+    	foreach($img_hotspot as $v){
+    		$hotspots_file[$v['hotspot_id']] = $v['file_id'];
+    	}
+    	return $hotspots_file;
+    }
     public function get_file_id($hotspot_id){
     	if(!$hotspot_id){
     		return false;

@@ -176,7 +176,17 @@ class MController extends FController{
     		return $hotspots;
     	}
     	$hotspotsDB = new ScenesHotspot();
-    	return $hotspotsDB->get_scene_hotspots($scene_id);
+    	$hotspots = $hotspotsDB->get_scene_hotspots($scene_id);
+    	//print_r($hotspots);
+    	if(!$hotspots){
+    		return array();
+    	}
+    	foreach($hotspots as $k=>$v){
+    		if($v['type'] == 4){
+    			$hotspots[$k]['file_path'] = PicTools::get_img_hotspot_path($v['scene_id'], $v['id']);
+    		}
+    	}
+    	return $hotspots;
     }
     /**
      * 获取场景信息
