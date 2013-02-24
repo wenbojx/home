@@ -86,18 +86,26 @@ class PanoPicTools{
     	$size_explode = explode ('x', $size);
     	$width = (int) $size_explode[0];
     	$height = (int) $size_explode[0];
-    	if(!$width || !$height){
+    	/* if(!$width || !$height){
     		return false;
-    	}
+    	} */
     	$this->myimage = new Imagick($from);
     	$ext = strtolower( $this->myimage->getImageFormat() );
     	
     	$this->myimage->setImageFormat($ext);
-    	
+    	$imgWidth = $this->myimage->getimagewidth();
+    	$imgHeight = $this->myimage->getimageheight();
     	//图片质量
     	if( $quality && $quality != 100){
     		$this->myimage->setImageCompression(imagick::COMPRESSION_JPEG);
     		$this->myimage->setImageCompressionQuality($quality);
+    	}
+    	$max_size = $width > $height ? $width : $height;
+    	if($width >$imgWidth){
+    		$width = $imgWidth;
+    	}
+    	if($height > $imgHeight){
+    		$height = $imgHeight;
     	}
     	//重置尺寸
     	$this->myimage->resizeimage($width, $height, Imagick::FILTER_LANCZOS, 1, true);

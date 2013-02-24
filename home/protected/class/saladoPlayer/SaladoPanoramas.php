@@ -75,9 +75,13 @@ class SaladoPanoramas extends SaladoPlayer{
             if($v['type'] == '2'){
                 $hotspots_str .= $this->get_hotspot_swf($v);
             }
-            if($v['type'] == '1'){
+            else if($v['type'] == '1'){
                 $hotspots_str .= $this->get_hotspot_img($v);
             }
+            else if($v['type'] == '4'){
+            	$hotspots_str .= $this->get_imghotspot_swf($v);
+            }
+            
         }
         return $hotspots_str;
     }
@@ -101,6 +105,21 @@ class SaladoPanoramas extends SaladoPlayer{
         $swf_str .= $this->build_attribute($img['s_attribute']);
         $swf_str .= '</image>';
         return $swf_str;
+    }
+    private function get_imghotspot_swf($swf){
+    	$swf_str = '<swf';
+    	if(isset($swf['s_attribute'])){
+    		$swf_str .= $this->build_attribute($swf['s_attribute']);
+    	}
+    	if(isset($swf['settings'])){
+    		$swf_str .= '<settings';
+    		if(isset($swf['settings']['s_attribute'])){
+    			$swf_str .= $this->build_attribute($swf['settings']['s_attribute']);
+    		}
+    		$swf_str .= '</settings>';
+    	}
+    	$swf_str .= '</swf>';
+    	return $swf_str;
     }
 }
 

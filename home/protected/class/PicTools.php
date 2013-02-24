@@ -54,6 +54,14 @@ class PicTools{
 		$path = self::get_img_domain($num%2). '/' .self::get_pano_static_path($project_id.'/map');
 		return $path . '/' . $map_id. '.jpg';
 	}
+	public static function get_img_hotspot_path($scene_id, $hotspot_id){
+		if(!$scene_id || !$hotspot_id){
+			return false;
+		}
+		$num = substr($scene_id, -1);
+		$path = self::get_img_domain($num%2). '/' .self::get_pano_static_path($scene_id.'/hotimage');
+		return $path . '/' . $hotspot_id. '.jpg';
+	}
 	/**
 	 * 获取全景图小图地址
 	 */

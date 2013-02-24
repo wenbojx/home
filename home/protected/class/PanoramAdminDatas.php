@@ -10,7 +10,9 @@ class PanoramAdminDatas{
     public $link_open_pre = 'link_open_';
     public $link_open_id_pre = 'link_pano_';
     public $edit_hotspot_pre = 'edit_hotspot_';
+    public $edit_imghotspot_pre = 'edit_imghotspot_';
     public $edit_hotspot_js_pre = 'edit_hotspot_js_';
+    public $edit_imghotspot_js_pre = 'edit_imghotspot_js_';
     public $module_type_link_open = 70; //link_open默认type值
     public $module_type_button_bar = 10; //button_bar默认type值
     public $module_type_menu_scroller = 40; //MenuScroller默认type值
@@ -127,16 +129,19 @@ class PanoramAdminDatas{
         }
         $hotspot_db = new ScenesHotspot();
         $hotspot_datas = $hotspot_db->find_by_scene_ids($hotspots);
+        //print_r($hotspot_datas);
         $hotspots_info = array(); //所有场景的热点信息
         if($hotspot_datas){
             foreach ($hotspot_datas as $v){
                 $scene_id_snap = $v['scene_id'];
                 $hotspots_info[$v['id']]['scene_id'] = $v['scene_id'];
                 $hotspots_info[$v['id']]['link_scene_id'] = $v['link_scene_id'];
+                $hotspots_info[$v['id']]['type'] = $v['type'];
                 $datas[$scene_id_snap]['hotspots'][$v['id']] = $this->get_hotspot_info($v);
             }
         }
         $this->hotspots_info = $hotspots_info;
+        //print_r($hotspots_info);
         if($hotspots_info){
             $this->add_hotspot_action($hotspots_info, $scene_id);
         }
@@ -148,6 +153,7 @@ class PanoramAdminDatas{
      * 添加hotspot模块的action
      */
     public function add_hotspot_action($hotspots_info, $scene_id){
+    	//print_r($hotspots_info);
         foreach($hotspots_info as $k=>$v){
             /* if (in_array($v['link_scene_id'], $this->scenes_info)){
                 $id = $this->edit_hotspot_pre.$v['link_scene_id'];
@@ -162,12 +168,24 @@ class PanoramAdminDatas{
                 $content = 'LinkOpener.open('.$this->link_open_pre.$v['link_scene_id'].')';
 
             } */
+        	
             $id = $this->edit_hotspot_pre.$k;
             $content = "JSGateway.run({$this->edit_hotspot_js_pre}{$k})";
+            if($v['type'] == 4){
+            	$id = $this->edit_imghotspot_pre.$k;
+            	$content = "JSGateway.run({$this->edit_imghotspot_js_pre}{$k})";
+            }
+            
             $this->add_single_action($id, $content);
+            
+            
             //添加js function
             $id = $this->edit_hotspot_js_pre.$k;
             $name = 'edit_hotspot';
+            if($v['type'] == 4){
+            	$name = 'edit_imghotspot';
+            	$id = $this->edit_imghotspot_js_pre.$k;
+            }
             $text = $k;
             $this->add_single_js_fun($id, $id, $name, $text);
         }
@@ -190,7 +208,9 @@ class PanoramAdminDatas{
         }
         //如果hotspot的链接在本场景内则load_pano
         $mouse = 'onClick:'.$this->edit_hotspot_pre.$datas['id'];
-
+        if($hotspot['type'] == 4){
+        	$mouse = 'onClick:'.$this->edit_imghotspot_pre.$datas['id'];
+        }
         //合并属性
         if(is_array($hotspot_attribute) && isset($hotspot_attribute['s_attribute']['mouse']) && $hotspot_attribute['s_attribute']['mouse']){
             $hotspot_attribute['s_attribute']['mouse'] .= ','.$mouse;
@@ -210,6 +230,12 @@ class PanoramAdminDatas{
             $hotspot['settings']['s_attribute']['path'] = $this->module_hotspot_path($datas['transform']);
             $hotspot['settings']['s_attribute']['beatUp'] = 'scale:0.7';
             $hotspot['settings']['s_attribute']['mouseOver'] = 'scale:1.1';
+        }
+        elseif ($datas['type'] == '4'){
+        	$hotspot['s_attribute']['path'] = $this->module_path('Hotspot');
+        	$hotspot['settings']['s_attribute']['path'] = $this->module_imghotspot_path($datas['transform']);
+        	$hotspot['settings']['s_attribute']['beatUp'] = 'scale:0.7';
+        	$hotspot['settings']['s_attribute']['mouseOver'] = 'scale:1.1';
         }
         return $hotspot;
     }
@@ -246,6 +272,10 @@ class PanoramAdminDatas{
      */
     public function module_hotspot_path($num=10){
     	$path = Yii::app()->baseUrl.'/style/img/hotspot/hotspot-'.$num.'.png';
+    	return $path;
+    }
+    public function module_imghotspot_path($num=10){
+    	$path = Yii::app()->baseUrl.'/style/img/imghotspot.png';
     	return $path;
     }
     /**

@@ -29,6 +29,9 @@ class PanoPicController extends FController{
 		elseif(strstr($this->url, '/map/')){
 			$this->get_pano_map();
 		}
+		elseif(strstr($this->url, '/hotimage/')){
+			$this->get_pano_hotimage();
+		}
 		else if(strstr($this->url, '.jpg')){
 			$this->put_out_pano_face();
 		}
@@ -76,6 +79,55 @@ class PanoPicController extends FController{
 		if(!$panoPicTools->turnToStatic($path, $toPath, $size, '90', 0, $sharpen)){
 			$this->show_default(3);
 		} 
+	}
+	/**
+	 * 热点图片
+	 */
+	private function get_pano_hotimage(){
+		$explode_url = explode ('/', $this->url);
+		$num = count($explode_url)-1;
+		$file_name = $explode_url[$num];
+		$hotspot_id = substr($file_name, 0, -4);
+		$scene_id = $explode_url[$num-2];
+		//echo $project_id;
+		if(!$hotspot_id){
+			$this->show_default(1);
+		}
+		//echo $scene_id.'--'.$hotspot_id;
+		//获取文件
+		$hotspot_info = $this->get_image_hotspot_file_id($hotspot_id);
+		if(!$hotspot_info){
+			$this->show_default(1);
+		}
+		$file_id = $hotspot_info['file_id'];
+		$flePathDB = new FilePath();
+		//获取文件地址
+		$path = $flePathDB->get_file_path ($file_id);
+		if(!$path || !is_file($path)){
+			return false;
+		}
+		
+		$toPath = PicTools::get_pano_static_path($scene_id.'/hotimage');
+		//echo $toPath;
+		
+		if(!$this->make_unexit_dir($toPath)){
+			$this->show_default(1);
+		}
+		$toPath .= '/' . $hotspot_id . '.jpg';
+		$panoPicTools = new PanoPicTools();
+		$sharpen = 0;
+		$size = 800 .'x'. 0;
+		if(!$panoPicTools->turnToStatic($path, $toPath, $size, '90', 0, $sharpen)){
+			$this->show_default(1);
+		}
+	}
+	private function get_image_hotspot_file_id($hotspot_id){
+		if(!$hotspot_id){
+			return false;
+		}
+		$imghotspot_db = new MpHotspotFile();
+		return  $imghotspot_db->get_file_id($hotspot_id);
+
 	}
 	/**
 	 * 根据map_id 获取对应的文件ID 

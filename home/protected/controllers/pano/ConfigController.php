@@ -4,7 +4,7 @@ class ConfigController extends Controller{
     public $defaultType = array(
             'face', 'position', 'basic', 'camera', 'view', 'hotspot','hotspotEdit',
             'button', 'map', 'navigat', 'radar',
-            'html', 'rightkey', 'link', 'flare','action','thumb'
+            'html', 'rightkey', 'link', 'flare','action','thumb','image','imageEdit'
             );
     private $pano_thumb_size = '200x100';
 
@@ -66,6 +66,9 @@ class ConfigController extends Controller{
         elseif($type == 'hotspotEdit'){
         	$datas['hotspot_id'] = $request->getParam('hotspot_id');
         	$datas['thumb'] = $this->get_thumb_by_hotspot($datas['hotspot_id']);
+        }
+        elseif($type == 'imageEdit'){
+        	$datas['hotspot_id'] = $request->getParam('hotspot_id');
         }
         if(!in_array($type, $this->defaultType)){
             exit();

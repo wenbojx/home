@@ -19,6 +19,9 @@
                         <div id="hotspot_icon" class="hotspot_icon">
                         	<img id="hotspot_icon_img" src="<?=Yii::app()->baseUrl . '/style/img/hotspot/hotspot-10.png'?>"/>
                         </div>
+                        <div id="imagehotspot_icon" class="hotspot_icon">
+                        	<img id="hotspot_icon_img" src="<?=Yii::app()->baseUrl . '/style/img/imghotspot.png'?>"/>
+                        </div>
                     </div>
             </div>
         </div>
@@ -27,7 +30,7 @@
                 <div class="edit_box">
                     <div class="edit_relative">
                         <div class="edit_buttons">
-                            <button class="btn btn-success" id="btn_review">载入</button>
+                            <button class="btn btn-success" id="btn_review">刷新</button>
                             <button class="btn" id="btn_upload">上传</button>
                             <!-- <button class="btn" id="btn_position">位置</button> -->
                             <button class="btn" id="btn_thumb">缩略</button>
@@ -35,12 +38,13 @@
                             <button class="btn" id="btn_map">地图</button>
                             <!-- <button class="btn">视角</button> -->
                             <button class="btn" id="btn_hotspot">热点</button>
+                            <button class="btn" id="btn_image">图片</button>
                             <!-- <button class="btn">按钮</button>
                             <button class="btn">导航</button> -->
                             <button id="online_pano" class="btn btn-warning" style="<?=$datas['pano']['display'] == '1'?'':'display:none' ?>" onclick="publish_scene(<?=$datas['pano']['id']?>,2)">发布</button>
                             <button id="offline_pano" class="btn btn-warning" style="<?=$datas['pano']['display'] == '2'?'':'display:none' ?>" onclick="publish_scene(<?=$datas['pano']['id']?>,1)">下线</button>
                         	<button class="btn btn-primary" id="btn_preview">预览</button>
-                        	<button class="btn btn-primary" id="btn_pad">pad</button>
+                        	<button class="btn btn-primary" id="btn_pad">隐藏</button>
                         </div>
                         <div class="edit_panel" id="edit_panel">
                             <div id="panel_box" class="panel_box">
@@ -82,7 +86,9 @@ var thumb_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'thumb', 'sce
 var camera_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'camera', 'scene_id'=>$datas['pano']['id']))?>';
 var map_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'map', 'scene_id'=>$datas['pano']['id'],  'project_id'=>$datas['pano']['project_id']))?>';
 var hotspot_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'hotspot', 'scene_id'=>$datas['pano']['id']))?>';
+var image_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'image', 'scene_id'=>$datas['pano']['id']))?>';
 var hotspot_edit_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'hotspotEdit', 'scene_id'=>$datas['pano']['id']))?>';
+var imghotspot_edit_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'imageEdit', 'scene_id'=>$datas['pano']['id']))?>';
 </script>
 <!-- 
 <script>

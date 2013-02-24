@@ -16,7 +16,7 @@ function bind_pano_btn(){
         load_page(thumb_url, 'thumb');
     });
     $('#btn_camera').bind('click',function(){
-        load_page(camera_url, 'camera');
+    	load_page(camera_url, 'camera');
     });
     $('#btn_map').bind('click',function(){
         load_page(map_url, 'map');
@@ -24,6 +24,10 @@ function bind_pano_btn(){
     $('#btn_hotspot').bind('click',function(){
         load_page(hotspot_url, 'hotspot');
         hotspot_click();
+    });
+    $('#btn_image').bind('click',function(){
+        load_page(image_url, 'image');
+        image_hotspot_click();
     });
     $('#btn_pad').bind('click',function(){
     	if ($("#pano-detail").is(":hidden")){
@@ -275,6 +279,62 @@ function map_box_upload(){
         }
     });
 }
+
+
+function image_box_upload(){
+    var post_datas = {'scene_id':scene_id, 'project_id':project_id, 'from':'image_pic','SESSION_ID':session_id};
+    $("#image_box_upload").uploadify({
+        'swf': flash_url,
+        'uploader': image_upload_url,
+        'formData': post_datas,
+        //'uploadLimit':1,
+        'buttonText':'上传图片',
+        'debug':false,
+        'width':74,
+        'height':28,
+        'fileSizeLimit':'2048KB',
+        'fileTypeDesc' : 'jpg,png,gif格式',
+        'fileTypeExts':'*.jpg;*.png;*.gif;',
+        'buttonImage':image_button_img,
+        'multi': false,
+        'removeTimeout':1,
+        'auto': true,
+        'onSelectError':function(file){
+        },
+        'onUploadError':function(file,data){
+        },
+        'onUploadSuccess':function(file, data, response){
+            var dataObj = eval("("+data+")");
+            if(dataObj.flag == '0'){
+                alert(dataObj.msg);
+            }
+            else if(response>0){
+            	max_size = 350;
+            	map_width = dataObj.w;
+            	map_height = dataObj.h;
+            	if(map_width >= map_height){
+            		zoom = max_size/map_width;
+            		map_width = max_size;
+            		map_height = map_height * zoom;
+            	}
+            	else{
+            		zoom = max_size/map_height;
+            		map_height = max_size;
+            		map_width = map_width * zoom;
+            	}
+                var url = pic_url+'/id/'+dataObj.file+'/size/'+parseInt(map_width)+'x'+parseInt(map_height)+'.'+dataObj.type;
+                //alert(url);
+                var img_str = '<img src="'+url+'" class="imgMap"/>';
+                $("#image_container").html(img_str);
+                var file_id = dataObj.file_id;
+                $("#image_file_id").val(file_id);
+                $("#save_image_button_box").show();
+            }
+        }
+    });
+}
+
+
 function init_upload_box(){
 	if(box_left != ""){
 		$("#box_left").attr('src', box_left);
@@ -374,7 +434,34 @@ function hotspot_click(){
         $("#hotspot_icon").css("top",top+"px");
         $("#hotspot_icon").css("left",left+"px");
         $("#hotspot_icon").show();
+        
+        if($("#imagehotspot_icon") && !$("#imagehotspot_icon").is(":hidden")){
+        	$("#imagehotspot_icon").hide();
+        }
 }
+function image_hotspot_click(){
+	var img_width = $("#imagehotspot_icon").css("width");
+    var img_height = $("#imagehotspot_icon").css("height");
+    var box_width = $("#pano-detail").css("width");
+    var box_height = $("#pano-detail").css("height");
+    img_width = img_width.replace('px','');
+    img_height = img_height.replace('px','');
+    img_width = 30;
+    img_height = 30;
+
+    box_width = box_width.replace('px','');
+    box_height = box_height.replace('px','');
+    
+    var top = (parseInt(box_height)-parseInt(img_height) )/2;
+    var left = (parseInt(box_width)-parseInt(img_width) )/2;
+    $("#imagehotspot_icon").css("top",top+"px");
+    $("#imagehotspot_icon").css("left",left+"px");
+    $("#imagehotspot_icon").show();
+    if($("#hotspot_icon") && !$("#hotspot_icon").is(":hidden")){
+    	$("#hotspot_icon").hide();
+    }
+}
+
 function hide_hotspot_icon(){
     $("#hotspot_icon").hide();
 }
@@ -385,6 +472,12 @@ function onViewChange(pan, tilt, fov, direction){
         $("#hotspot_info_tilt").html(tilt);
         $("#hotspot_info_fov").html(fov);
     }
+    if($("#imagehotspot_icon") && !$("#imagehotspot_icon").is(":hidden")){
+        $("#imghotspot_info_pan").html(pan);
+        $("#imghotspot_info_tilt").html(tilt);
+        $("#imghotspot_info_fov").html(fov);
+    }
+    
     if($("#camera-info-pan")){
         $("#camera-info-pan").html(pan);
         $("#camera-info-tilt").html(tilt);
@@ -559,7 +652,11 @@ function change_hotspot_angle(){
 }
 function edit_hotspot(id){
 	var edit_url = hotspot_edit_url+'/hotspot_id/'+id;
-	load_page(edit_url);
+	load_page(edit_url, 'hotspotEdit');
+}
+function edit_imghotspot(id){
+	var edit_url = imghotspot_edit_url+'/hotspot_id/'+id+'/scene_id/'+scene_id;
+	load_page(edit_url, 'imageEdit');
 }
 function hotspot_del(hotspot_id){
 	var msg = {};
@@ -573,6 +670,44 @@ function hotspot_del(hotspot_id){
     	return false;
     }
     var url = $("#del_hotspot").attr('action');
+    save_datas(url, data, '', '', call_back);
+    function call_back(datas){
+        alert(datas.msg);
+    }
+}
+function image_hotspot_del(hotspot_id){
+	var msg = {};
+    msg.error = '操作失败';
+    msg.success = '操作成功';
+    var data = {};
+    data.hotspot_id = hotspot_id;
+    if(!data.hotspot_id){
+    	alert('参数错误');
+    	return false;
+    }
+    var url = $("#del_imghotspot").attr('action');
+    save_datas(url, data, '', '', call_back);
+    function call_back(datas){
+        alert(datas.msg);
+    }
+}
+
+function save_image_info(){
+	var msg = {};
+    msg.error = '操作失败';
+    msg.success = '操作成功';
+    //var element_id = 'hotspot_del_msg';
+    var data = {};
+    data.scene_id = scene_id;
+    data.pan = parseInt ($("#imghotspot_info_pan").html());
+    data.tilt = parseInt ($("#imghotspot_info_tilt").html());
+    data.fov = parseInt ($("#imghotspot_info_fov").html());
+    data.file_id = parseInt ($("#image_file_id").val());
+    if(!data.scene_id){
+    	alert('参数错误');
+    	return false;
+    }
+    var url = $("#save_image_form").attr('action');
     save_datas(url, data, '', '', call_back);
     function call_back(datas){
         alert(datas.msg);

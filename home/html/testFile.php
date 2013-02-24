@@ -34,7 +34,7 @@
 <input type="hidden" name="from" value="map_pic">
 
 <br />
-<input type="submit" name="submit" value="Submit" />
+<input type="submit" name="submit" value="地图" />
 </form>
 
 <form action="http://www.dev.yiluhao.com/pano/upload" method="post" enctype="multipart/form-data">
@@ -44,7 +44,18 @@
 <input type="hidden" name="from" value="pano_pic">
 
 <br />
-<input type="submit" name="submit" value="Submit" />
+<input type="submit" name="submit" value="场景图片" />
+</form>
+
+<form action="http://www.dev.yiluhao.com/pano/upload" method="post" enctype="multipart/form-data">
+<label for="file">Filename:</label>
+<input type="file" name="Filedata" id="file" />
+<input type="hidden" name="project_id" value="1">
+<input type="hidden" name="scene_id" value="3">
+<input type="hidden" name="from" value="image_pic">
+
+<br />
+<input type="submit" name="submit" value="图片" />
 </form>
 
 </body>

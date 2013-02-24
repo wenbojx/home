@@ -7,6 +7,7 @@ class PanoramDatas{
     public $hotspots_num = 5;
     public $panoram_pre = 'pano_';
     public $hotspot_pre = 'hotspot_';
+    public $imghotspot_pre = 'imghotspot_';
     public $link_open_pre = 'link_open_';
     public $link_open_id_pre = 'link_pano_';
     public $load_pano_pre = 'load_pano_';

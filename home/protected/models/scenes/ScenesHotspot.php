@@ -28,7 +28,10 @@ class ScenesHotspot extends Ydao
         $this->link_scene_id = $datas['link_scene_id'] ? $datas['link_scene_id'] : 0;
         $this->scene_id = $datas['scene_id'];
         unset($datas);
-        return $this->insert();
+        if (!$this->insert()){
+        	return false;
+        }
+        return $this->attributes['id'];
     }
     public function find_by_scene_id($scene_id, $status=1){
         return $this->findAllByAttributes(array('scene_id'=>$scene_id, 'status'=>$status));

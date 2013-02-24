@@ -17,7 +17,8 @@ class UploadController extends Controller{
         $from_box_pic = false;
         $from_thumb_pic = false;
         $from_map_pic = false;
-        $from_pano_pic = false;;
+        $from_pano_pic = false;
+        $from_image_pic = false;
 
         $scene_id = $request->getParam('scene_id');
         $this->scene_id = $scene_id;
@@ -34,9 +35,12 @@ class UploadController extends Controller{
         elseif ($request->getParam('from')=='map_pic' && $scene_id>0){
         	$from_map_pic = true;
         }
-       else if ($request->getParam('from')=='pano_pic' && $scene_id>0 ){
-       		$from_pano_pic = true;
-       }
+	    else if ($request->getParam('from')=='pano_pic' && $scene_id>0 ){
+	    	$from_pano_pic = true;
+	    }
+	    else if ($request->getParam('from')=='image_pic' && $scene_id>0 ){
+	    	$from_image_pic = true;
+	    }
 
         $this->check_scene_own($scene_id);
         if($from_thumb_pic){
@@ -49,7 +53,7 @@ class UploadController extends Controller{
         else {
         	$file_info = $this->upload($from_box_pic, $from_pano_pic);
         }
-        
+        //print_r($file_info);
         $flag = true;
         $flag_scene = false;
         if(!$file_info){
@@ -80,12 +84,17 @@ class UploadController extends Controller{
         elseif($from_pano_pic){
         	$flag_scene =$this->save_scene_pano($file_id,$scene_id);
         }
+        elseif ($from_image_pic){
+        	$flag_scene = true;
+        }
         if(!$flag_scene){
         	$this->display_msg($msg);
         }
+        //echo 111;
         $file_info['width'] = $this->image_width;
         $file_info['height'] = $this->image_height;
-        $msg = array('flag'=>1,'msg'=>'', 'id'=>$flag_scene, 'type'=>$file_info['type'], 'w'=>$file_info['width'], 'h'=>$file_info['height'], 'file'=>$file_info['md5value']);
+        //$file_info['file_id'] = $file_id;
+        $msg = array('flag'=>1,'msg'=>'', 'id'=>$flag_scene, 'file_id'=>$file_id, 'type'=>$file_info['type'], 'w'=>$file_info['width'], 'h'=>$file_info['height'], 'file'=>$file_info['md5value']);
         $this->display_msg($msg);
     }
     /**
