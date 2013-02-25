@@ -67,8 +67,11 @@ class ConfigController extends Controller{
         	$datas['hotspot_id'] = $request->getParam('hotspot_id');
         	$datas['thumb'] = $this->get_thumb_by_hotspot($datas['hotspot_id']);
         }
-        elseif($type == 'imageEdit'){
+        elseif($type == 'image'){
         	$datas['project_id'] = $request->getParam('project_id');
+        }
+        elseif($type == 'imageEdit'){
+        	
         	$datas['hotspot_id'] = $request->getParam('hotspot_id');
         }
         if(!in_array($type, $this->defaultType)){
