@@ -1,9 +1,9 @@
 <?php
-class PhotoerController extends FController{
+class ServiceController extends FController{
     public $defaultAction = 'a';
     public $layout = 'home';
     public function actionA(){
     	$datas = array();
-        $this->render('/web/photoer', array('datas'=>$datas));
+        $this->render('/web/service', array('datas'=>$datas));
     }
 }
