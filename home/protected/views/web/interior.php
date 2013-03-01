@@ -16,7 +16,7 @@
 	<div class="hero-unit banner_box padding5 display_none" id="pano_banner">
 		<div class="banner_box">
 			<div>
-				<iframe src="<?=$this->createUrl('/web/single/a/', array('id'=>$datas['baner_scene_id'],'w'=>'932','h'=>'550','auto'=>'1'));?>" frameborder=0 width="930" height="550" scrolling="no">
+				<iframe src="<?=$this->createUrl('/web/single/a/', array('id'=>$datas['baner_scene_id'],'w'=>'932','h'=>'600','auto'=>'1'));?>" frameborder=0 width="930" height="600" scrolling="no">
 				</iframe>
 			</div>
 			<p class="r_top">
