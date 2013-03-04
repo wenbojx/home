@@ -5,6 +5,7 @@ function save_project(id){
     var element_id = 'save_project_msg';
     var data = {};
     data.name = $("#project_name").val();
+    data.category_id = $("#category_id").val();
     if(id){
     	data.id = id;
     }

@@ -85,6 +85,8 @@ class Project extends Ydao
     	$this->desc = $datas['desc'];
     	$this->member_id = $datas['member_id'];
     	$this->created = $datas['created'];
+    	$this->category_id = $datas['category_id'];
+    	//print_r($datas);
     	if(!$this->save()){
     		return false;
     	}
@@ -105,7 +107,7 @@ class Project extends Ydao
     /**
      * 获取项目列表
      */
-    public function get_project_list($limit=5, $order='', $offset=0, $display=''){
+    public function get_project_list($limit=5, $order='', $offset=0, $display='', $category=1){
     	
     	$criteria=new CDbCriteria;
     	$criteria->order = 'id ASC';
@@ -117,6 +119,9 @@ class Project extends Ydao
     	}
     	if($offset){
     		$criteria->offset = $offset;
+    	}
+    	if($category){
+    		$criteria->addCondition("category_id={$category}");
     	}
     	if($display){
     		$criteria->addCondition("display={$display}");
@@ -154,13 +159,17 @@ class Project extends Ydao
     /*
      * 获取景点数
     */
-    public function get_project_num($display=''){
+    public function get_project_num($display='', $category=1){
 
     	$criteria=new CDbCriteria;
     	$criteria->addCondition('status=1');
+    	if($category){
+    		$criteria->addCondition("category_id={$category}");
+    	}
     	if($display){
     		$criteria->addCondition("display={$display}");
     	}
+    	//print_r($criteria);
     	return $this->count($criteria);
     }
     /**

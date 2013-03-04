@@ -32,9 +32,11 @@ function bind_pano_btn(){
     $('#btn_pad').bind('click',function(){
     	if ($("#pano-detail").is(":hidden")){
     		$("#pano-detail").show();
+    		$("#btn_pad").html("隐藏");
     	}
     	else{
     		$("#pano-detail").hide();
+    		$("#btn_pad").html("展开");
     	}
     });
     $('#btn_preview').bind('click',function(){
@@ -641,7 +643,9 @@ function publish_project(project_id, display){
 
 function change_hotspot_select(){
     var id = $('#hotspot_info_d_link_scene_id').val();
-    var url = panos_thumb_url+'/id/'+id+'/size/'+size;
+    
+    //var url = panos_thumb_url+'/id/'+id+'/size/'+size;
+    var url = pano_thumb_url_array[id];
     $('#hotspot_pano_thumb').attr('src', url);
 }
 function change_hotspot_angle(){

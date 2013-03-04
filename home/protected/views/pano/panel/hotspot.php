@@ -67,7 +67,10 @@
 <script>
 var hotspot_img_pre = '<?=Yii::app()->baseUrl . '/style/img/hotspot/'?>';
 var size = '200x100.jpg';
-var panos_thumb_url = '<?php echo Yii::app()->createUrl('/panos/thumb/pic/');?>';
+var pano_thumb_url_array = {};
+<?php if($datas['link_scene']){ foreach($datas['link_scene'] as $v){?>
+pano_thumb_url_array[<?=$v['id']?>] = '<?php echo PicTools::get_pano_small($v['id'], '200x100');?>';
+<?php }}?>
 </script>
 
 

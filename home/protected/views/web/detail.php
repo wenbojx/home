@@ -1,4 +1,4 @@
-<?php $this->pageTitle=$datas['project']['name'].'---足不出户，畅游中国';?>
+<?php $this->pageTitle=$datas['project']['name'].'，全景，三维，上海';?>
 <?php $flag = $datas['map']['map']? true:false;?>
 <div class="detail">
     <div class="hero-unit margin-top55">

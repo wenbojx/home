@@ -1,4 +1,4 @@
-<?php $this->pageTitle='足不出户，畅游中国';?>
+<?php $this->pageTitle='全景，三维，上海';?>
 <style>
 .index_banner{height:238px;}
 .index_banner .click{padding:180px 0 0 0; font-size:24px}
@@ -16,7 +16,7 @@
 	<div class="hero-unit banner_box padding5 display_none" id="pano_banner">
 		<div class="banner_box">
 			<div>
-				<iframe src="<?=$this->createUrl('/web/single/a/', array('id'=>$datas['baner_scene_id'],'w'=>'932','h'=>'600','auto'=>'1'));?>" frameborder=0 width="930" height="600" scrolling="no">
+				<iframe src="<?=$this->createUrl('/web/single/a/', array('id'=>$datas['baner_scene_id'],'w'=>'932','h'=>'600','auto'=>'1', 'nobtb'=>1));?>" frameborder=0 width="930" height="600" scrolling="no">
 				</iframe>
 			</div>
 			<p class="r_top">
@@ -25,49 +25,49 @@
 		</div>
 	</div>
 	
-	<div class="mini-layout">
-        <div class="row-fluid">
-        <div class="span12">
-        	<div class="span10">
-        	<br>
-        	<!-- 
-        	<h3>项目简介</h3>
-        	<span>
-        	"装修助手"是继"全景西湖"后，全景视界开发的一个家居类的手机app项目。本项目旨在为用户和设计师提供一个室内设计参考平台。<br>
-        	所有内容都以全景方式制作，解决以往只能展示室内局部图片的弊端.<br>
-        	360度展示室内全景，颠覆传统视觉体验。为设计师提供一个全新的作品展示平台。
-        	</span>
-        	 -->
-                <br><br>
-	              		<h3><span style="color: red">限时特惠</span></h3>
-	              		<br>
-	                	<strong>凡在3.1日至3.31日预约家居类室内全景摄影的客户(限上海地区)，
-	                	即可享受<span style="color: red">超级特惠</span>服务</strong>
-	                	<br><br>
-	                	<h3>特惠内容</h3>
-	              		<br>
-	                	<span>1、价格，800元拍摄3个场景(原价2400元)，超出部分400元/场景</span><br><br>
-	                	<span>2、为项目嵌入客户网站免费提供技术支持</span><br><br>
-	                	<span>3、免费为项目添加客户自己的logo</span><br><br>
-	                	
-	                	<h3>报名方式</h3>
-	              		<br>
-	                	<span>如果您有意愿参加我们此次活动，请发送邮件至yiluhao@gmail.com 或联系QQ：1423795537</span>
-	                	<br><br>
-	                	邮件标题: 预约室内摄影<br>
-	                	邮件内容: 您的姓名， 联系电话， 联系地址<br>
-	                	附件：含全景的室内设计项目的图片一张或多张
-	                	<br><br>
-	                	<h3>注意事项</h3>
-	              		<br>
-	                	<span>1、收到您的预约后，我们会电话确认拍摄时间和地点，并安排专职摄影师实地拍摄。</span><br><br>
-	                	<span>2、每位客户只能有一个项目参加优惠，如客户作品优秀，此条件可适当放宽</span><br><br>
-	                	<span>3、我们以您发送邮件的日期为准，超过截止日期的不享受此优惠活动</span><br><br>
-	                	
-	                	<br><br>
-	                	<br><br>
-        	</div>
-        	
-        </div>
-        </div>
-    </div>
+		<div class="row project">
+	<?php if($datas['projects']){ foreach($datas['projects'] as $v){?>
+		<div class="span12">
+			<div class="list_title">
+				<h3 class="float_left title">
+					<a href="<?=$this->createUrl('/web/view/a/', array('id'=>$v['project']['id']));?>">
+					<?=$v['project']['name']?>
+					</a>
+					<span> (共 <?=$v['total_num']?> 个场景)</span>
+				</h3>
+				<span class="float_right info">
+					<a href="<?=$this->createUrl('/web/view/a/', array('id'=>$v['project']['id']));?>">
+					浏览更多...
+					</a>
+				</span>
+				<div class="clear"></div>
+			</div>
+			<div class="row">
+			<?php if ($v['scene']){ foreach($v['scene'] as $v1){?>
+				<div class="span3">
+					<div class="thumbnail">
+					<a href="<?=$this->createUrl('/web/detail/a/', array('id'=>$v1['id']));?>">
+						<img src="<?=PicTools::get_pano_small($v1['id'], '200x100')?>"/>
+					</a>
+					</div>
+				</div>
+			<?php }}?>
+			</div>
+		</div>
+	<?php }}?>
+		
+	</div>
+		<div class="page-footer">
+					<div class="pagination">
+                    <?php if(isset($datas['pages'])){  $this->widget('CLinkPager',array(
+                        'header'=>'',
+                        //'firstPageLabel' => '首页',
+                        //'lastPageLabel' => '末页',
+                        'prevPageLabel' => '上一页',
+                        'nextPageLabel' => '下一页',
+                        'pages' => $datas['pages'],
+                        'maxButtonCount'=>10
+                        )
+                    );}?>
+	</div>
+</div>

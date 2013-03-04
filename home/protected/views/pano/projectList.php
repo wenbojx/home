@@ -4,7 +4,7 @@ $display = array('1'=>'待发布', '2'=>'待审核', '3'=>'已发布')
 ?>
 <div class="detail">
     <div class="hero-unit margin-top55">
-        <h2>足不出户  畅游中国</h2>
+        <h2>简单，易用</h2>
     </div>
     <ul class="breadcrumb">
         <li class="active">项目</li>
@@ -22,7 +22,7 @@ $display = array('1'=>'待发布', '2'=>'待审核', '3'=>'已发布')
             			</div>
             			<div class="scene_title">
             				<div class="title_line">
-            					<?php echo CHtml::link($v['name'],array('pano/scene/list','id'=>$v['id']));?>
+            					<?php echo CHtml::link($v['name'],array('pano/scene/list','id'=>$v['id']));?> 
             				</div>
             				<div class="scene_desc">
             					<?=$v['desc']?>
@@ -30,6 +30,7 @@ $display = array('1'=>'待发布', '2'=>'待审核', '3'=>'已发布')
             					
                     			<?php echo CHtml::link("编辑",array('pano/project/edit','id'=>$v['id']));?>
                     			&nbsp;| <?=$display[$v['display']];?>
+                    			&nbsp;| 分类：[<?=Yii::app()->params['panoCategory'][$v['category_id']]?>]
                     		</div>
                     	</div>
                     </div>

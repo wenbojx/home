@@ -1,4 +1,4 @@
-<?php $this->pageTitle='足不出户，畅游中国';?>
+<?php $this->pageTitle='全景，三维，上海';?>
 <div class="list">
 	<div class="hero-unit margin-top55">
 		<div class="banner_box">
@@ -14,6 +14,34 @@
         <div class="span12">
                 <div class="span7">
 	                <div style="color: #333333">
+	                <br><br>
+	              		<h3><span style="color: red">限时特惠</span></h3>
+	              		<br>
+	                	<strong>凡在3.1日至3.31日预约家居类室内全景摄影的客户(限上海地区)，
+	                	即可享受<span style="color: red">超级特惠</span>服务</strong>
+	                	<br><br>
+	                	<h3>特惠内容</h3>
+	              		<br>
+	                	<span>1、价格，800元拍摄3个场景(原价2400元)，超出部分400元/场景</span><br><br>
+	                	<span>2、为项目嵌入客户网站免费提供技术支持</span><br><br>
+	                	<span>3、免费为项目添加客户自己的logo</span><br><br>
+	                	
+	                	<h3>报名方式</h3>
+	              		<br>
+	                	<span>如果您有意愿参加我们此次活动，请发送邮件至yiluhao@gmail.com 或联系QQ：1423795537</span>
+	                	<br><br>
+	                	邮件标题: 预约室内摄影<br>
+	                	邮件内容: 您的姓名， 联系电话， 联系地址<br>
+	                	附件：含全景的室内设计项目的图片一张或多张
+	                	<br><br>
+	                	<h3>注意事项</h3>
+	              		<br>
+	                	<span>1、收到您的预约后，我们会电话确认拍摄时间和地点，并安排专职摄影师实地拍摄。</span><br><br>
+	                	<span>2、每位客户只能有一个项目参加优惠，如客户作品优秀，此条件可适当放宽</span><br><br>
+	                	<span>3、我们以您发送邮件的日期为准，超过截止日期的不享受此优惠活动</span><br><br>
+	                	
+	                	<br><br>
+	                	<br><br>
 	                	<br>
 	              		<h3>服务</h3>
 	              		<br>

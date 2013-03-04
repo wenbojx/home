@@ -1,7 +1,7 @@
 <?php $this->pageTitle=$datas['page_title'].'---足不出户，畅游中国';?>
 <div class="detail">
     <div class="hero-unit margin-top55">
-        <h2>足不出户  畅游中国</h2>
+        <h2>简单，易用</h2>
     </div>
     <ul class="breadcrumb">
         <li><?php echo CHtml::link('项目',array('pano/project/list'));?> <span class="divider">/</span></li>
@@ -41,10 +41,12 @@
                             <button class="btn" id="btn_image">图片</button>
                             <!-- <button class="btn">按钮</button>
                             <button class="btn">导航</button> -->
-                            <button id="online_pano" class="btn btn-warning" style="<?=$datas['pano']['display'] == '1'?'':'display:none' ?>" onclick="publish_scene(<?=$datas['pano']['id']?>,2)">发布</button>
-                            <button id="offline_pano" class="btn btn-warning" style="<?=$datas['pano']['display'] == '2'?'':'display:none' ?>" onclick="publish_scene(<?=$datas['pano']['id']?>,1)">下线</button>
+                            
                         	<button class="btn btn-primary" id="btn_preview">预览</button>
                         	<button class="btn btn-primary" id="btn_pad">隐藏</button>
+                        	<br><br><br><br><br><br><br><br><br>
+                        	<button id="online_pano" class="btn btn-warning" style="<?=$datas['pano']['display'] == '1'?'':'display:none' ?>" onclick="publish_scene(<?=$datas['pano']['id']?>,2)">发布</button>
+                            <button id="offline_pano" class="btn btn-warning" style="<?=$datas['pano']['display'] == '2'?'':'display:none' ?>" onclick="publish_scene(<?=$datas['pano']['id']?>,1)">下线</button>
                         </div>
                         <div class="edit_panel" id="edit_panel">
                             <div id="panel_box" class="panel_box">

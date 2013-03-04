@@ -4,7 +4,7 @@ $state = array('1'=>'待发布', '2'=>'已发布');
 ?>
 <div class="detail">
     <div class="hero-unit margin-top55">
-        <h2>足不出户  畅游中国</h2>
+        <h2>简单，易用</h2>
     </div>
     <ul class="breadcrumb">
         <li><?php echo CHtml::link('项目',array('pano/project/list'));?> <span class="divider">/</span></li>

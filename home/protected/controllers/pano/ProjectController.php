@@ -53,6 +53,7 @@ class ProjectController extends Controller{
 		$request = Yii::app()->request;
 		$datas['name'] = $request->getParam('name');
 		$datas['desc'] = $request->getParam('desc');
+		$datas['category_id'] = $request->getParam('category_id');
 		$msg['flag'] = 1;
 		$msg['msg'] = '操作成功';
 		if($datas['name'] == ''){
@@ -142,6 +143,7 @@ class ProjectController extends Controller{
 		$datas['id'] = $request->getParam('id');
 		$datas['name'] = $request->getParam('name');
 		$datas['desc'] = $request->getParam('desc');
+		$datas['category_id'] = $request->getParam('category_id');
 		$msg['flag'] = 1;
 		$msg['msg'] = '操作成功';
 		if($datas['id'] == ''){

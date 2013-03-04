@@ -16,7 +16,7 @@
     <li class="active" id="pano_upload_tab">
     <a href="javascript:pano_upload_change(1)">上传全景图</a>
     </li>
-    <li id="cube_upload_tab"><a href="javascript:pano_upload_change(2)">单图</a></li>
+    <!-- <li id="cube_upload_tab"><a href="javascript:pano_upload_change(2)">单图</a></li> -->
     </ul>
     <div id="pano_upload"  class="pano_upload">
     	<div class="pano_upload_box">

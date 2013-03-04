@@ -5,6 +5,7 @@ class ListController extends FController{
     public $project_db = null;
     public $page_size = 5; //每页显示的数
     public $page_obj = null;
+    public $category = 1;
 
     public function actionA(){
     	$request = Yii::app()->request;
@@ -18,7 +19,7 @@ class ListController extends FController{
     	$datas = array();
     	$this->project_db = new Project();
     	
-    	$total = $this->project_db->get_project_num(3);
+    	$total = $this->project_db->get_project_num(3, $this->category);
     	$project_datas = array();
     	if($total>0){
     		$route = '/web/list/a';
