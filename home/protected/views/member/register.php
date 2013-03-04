@@ -1,7 +1,7 @@
 <?php $this->pageTitle=$datas['page']['title'].'---足不出户，畅游中国';?>
 <div class="detail">
     <div class="hero-unit margin-top55">
-        <h2>足不出户 畅游中国</h2>
+        <h2>轻轻松松，全景无忧</h2>
     </div>
     <div class="mini-layout">
         <div class="row-fluid show-grid">
@@ -39,14 +39,7 @@
                                 <p class="help-block">字母，数字，汉字皆可 <span id="reg_tip_nickname" class="color_red"></span></p>
                             </div>
                         </div>
-                        <div class="control-group">
-                            <label class="control-label" for="reg_code">邀请码</label>
-                            <div class="controls">
-                                <input type="text" class="input-xlarge" value="" id="reg_code" name="reg[code]" maxlength="6">
-                                <p class="help-block">输入六位邀请码 <span id="reg_tip_code" class="color_red"></span></p>
-                                <a href="<?=$this->createUrl('/web/photoer/a');?>">索取邀请码</a>
-                            </div>
-                        </div>
+                        
                         <div class="form-actions">
                             <button class="btn btn-primary" type="button" onclick="member.check_reg()">免费注册</button>
                             <p class="help-block color_red" id="reg_tip_flag"></p>

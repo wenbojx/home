@@ -3,6 +3,8 @@ class DetailController extends FController{
     public $defaultAction = 'a';
     public $layout = 'home';
     public $default_scroller_num = 6;
+    public $pageName = 1;
+    
     public function actionA(){
 
         $request = Yii::app()->request;
@@ -13,6 +15,7 @@ class DetailController extends FController{
 
             if($datas['scene']){
                 $datas['project'] = $this->get_project_datas($datas['scene']['project_id']);
+                $this->pageName = $datas['project']['category_id'];
             }
 
             $datas['extend'] = $this->get_extend_datas($datas['scene_id'], $datas['project']['id']);

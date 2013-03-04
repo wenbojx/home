@@ -64,6 +64,10 @@ hr.soften {
 .list .hero-unit{
     padding:20px;
 }
+.navbar-inner .brand{
+	color:#999999;	
+}
+
 .project .thumbnail{
     margin:5px 0;text-align:center;
 }

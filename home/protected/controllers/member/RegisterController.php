@@ -21,7 +21,7 @@ class RegisterController extends FController{
         $datas['passwd'] = $request->getParam('passwd');
         $datas['repasswd'] = $request->getParam('repasswd');
         $datas['nickname'] = $request->getParam('nickname');
-        $datas['code'] = $request->getParam('code');
+       // $datas['code'] = $request->getParam('code');
         
         $msg['flag'] = '1';
         if($datas['email']== ''){
@@ -36,10 +36,10 @@ class RegisterController extends FController{
             $msg['flag'] = 0;
             $msg['field']['repasswd'] = '0';
         }
-        if($datas['code']== ''){
+        /* if($datas['code']== ''){
             $msg['flag'] = 0;
             $msg['field']['code'] = '0';
-        }
+        } */
         if($datas['nickname']== ''){
         	$msg['flag'] = 0;
         	$msg['field']['nickname'] = '0';
@@ -52,17 +52,17 @@ class RegisterController extends FController{
         	$msg['flag'] = 0;
         	$msg['field']['nickname'] = '1'; //已存在
         }
-        $code_flag = $this->check_code($datas['code']);
+        /* $code_flag = $this->check_code($datas['code']);
         if($code_flag != '1'){
             $msg['flag'] = 0;
             $msg['field']['code'] = $code_flag; //错误
-        }
+        } */
         if($msg['flag']){
             $flag = $this->add_user($datas);
             if($flag){
                 $msg['flag'] = 1;
                 $msg['url'] = $this->createUrl('/member/login');
-                $this->overdue_code($datas['code']);
+                //$this->overdue_code($datas['code']);
             }
             else{
                 $msg['flag'] = 0;

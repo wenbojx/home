@@ -6,6 +6,7 @@ class ListController extends FController{
     public $page_size = 5; //每页显示的数
     public $page_obj = null;
     public $category = 1;
+    public $pageName = '1';
 
     public function actionA(){
     	$request = Yii::app()->request;

@@ -37,10 +37,10 @@ member.reg_clear = function(){
 	$("#"+tip+'passwd').html("");
 	$("#"+tip+'repasswd').html("");
 	$("#"+tip+'nickname').html("");
-	$("#"+tip+'code').html("");
+	/*$("#"+tip+'code').html("");*/
 }
 member.check_reg = function(){
-	member.reg_clear();
+	//member.reg_clear();
     var tip = 'reg_tip_';
     var email = $("#reg_email").val();
     if(!email){
@@ -66,13 +66,13 @@ member.check_reg = function(){
         $("#"+tip+'nickname').html("请输入昵称");
         return false;
     }
-    var code = $("#reg_code").val();
+    /*var code = $("#reg_code").val();
     if(!code){
         $("#"+tip+'code').html("请输入邀请码");
         return false;
-    }
+    }*/
     var url = $("#member_reg").attr('action');
-    var datas = {'email':email, 'passwd':passwd, 'repasswd':repasswd, 'code':code, 'nickname':nickname};
+    var datas = {'email':email, 'passwd':passwd, 'repasswd':repasswd, 'nickname':nickname};
 
     member.save_datas(url, datas, do_after);
 

@@ -4,6 +4,7 @@ class SingleController extends FController{
     public $layout = 'single';
     private $default_width = "1024";
     private $default_height= "600";
+    
 
 	public function actionA(){
         $request = Yii::app()->request;

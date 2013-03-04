@@ -5,6 +5,7 @@ class IndexController extends FController{
     private $project_num = 3;
     private $scene_num = 8;
     private $baner_scene_id = '10001';
+    public $pageName = '0';
     //private $baner_scene_id = '10';
 
     public function actionA(){

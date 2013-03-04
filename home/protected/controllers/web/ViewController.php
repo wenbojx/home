@@ -4,6 +4,7 @@ class ViewController extends FController{
     public $layout = 'home';
     public $num = 16; //每页显示的数
     public $scene_db = null;
+    public $pageName = '1';
 
     public function actionA(){
     	$request = Yii::app()->request;
@@ -15,6 +16,7 @@ class ViewController extends FController{
     	//$datas['pages'] = '';
     	if($project_id){
     		$datas['project'] = $this->get_project_datas($project_id);
+    		$this->pageName = $datas['project']['category_id'];
     		//$datas['list'] = $this->get_scene_datas($project_id);
     		$total = $this->scene_db->get_scene_num($project_id);
     		if($total>0){

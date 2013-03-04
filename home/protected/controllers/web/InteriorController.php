@@ -7,6 +7,7 @@ class InteriorController extends FController{
     public $page_size = 5; //每页显示的数
     public $page_obj = null;
     public $category = 2;
+    public $pageName = '2';
     
     public function actionA(){
     	$request = Yii::app()->request;
@@ -21,7 +22,6 @@ class InteriorController extends FController{
     	$this->project_db = new Project();
     	 
     	$total = $this->project_db->get_project_num(3, $this->category);
-    	echo $total;
     	$project_datas = array();
     	if($total>0){
     		$route = '/web/list/a';

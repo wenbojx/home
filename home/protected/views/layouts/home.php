@@ -40,10 +40,11 @@ var check_login_url = '<?=$this->createUrl('/member/login/check');?>';
                 <a href="/" class="brand" style="font-weight: bold">全景视界</a>
                 <div id="main-menu" class="nav-collapse  bold font-size14">
                     <ul id="main-menu-left" class="nav">
-                        <li><a href="<?=$this->createUrl('/jingdian');?>">景点风光 </a></li>
-                        <li><a href="<?=$this->createUrl('/jiajv');?>">家 居室内 </a></li>
-                        <li><a href="<?=$this->createUrl('/fuwu');?>">服务报价</a></li>
-                        <li><a href="<?=$this->createUrl('/yidong');?>">手机移动</a></li>
+                        <li<?=isset($this->pageName) && $this->pageName == '1'?' class="active"':''?>><a href="<?=$this->createUrl('/jingdian');?>">景点风光  </a></li>
+                        <li<?=isset($this->pageName) && $this->pageName == '2'?' class="active"':''?>><a href="<?=$this->createUrl('/jiajv');?>">家居室内 </a></li>
+                        <li<?=isset($this->pageName) && $this->pageName == '10'?' class="active"':''?>><a href="<?=$this->createUrl('/fuwu');?>">服务报价 </a></li>
+                        <li<?=isset($this->pageName) && $this->pageName == '11'?' class="active"':''?>><a href="<?=$this->createUrl('/yidong');?>">手机移动 </a></li>
+                        <li<?=isset($this->pageName) && $this->pageName == '12'?' class="active"':''?>><a href="<?=$this->createUrl('/lianxi');?>">联系我们 </a></li>
                         <!-- <li><a href="<?=$this->createUrl('/web/photoer/a');?>">摄影师</a></li>  -->
                     </ul>
                     <ul id="main-menu-right" class="nav pull-right">
@@ -74,7 +75,7 @@ var check_login_url = '<?=$this->createUrl('/member/login/check');?>';
     	<a target="_blank" href="http://www.miibeian.gov.cn">沪ICP备12048111号</a>
     	<img src="/style/img/gs.gif">
     	<br>
-    	QQ群：280573438 Email:yiluhao@gmail.com 微博：<a href="http://weibo.com/yiluhao" target="_blank">http://weibo.com/yiluhao</a>
+    	QQ：1423795537 Email:yiluhao@gmail.com 微博：<a href="http://weibo.com/yiluhao" target="_blank">http://weibo.com/yiluhao</a>
     	<br><br><br>
     </div>
 </div>
