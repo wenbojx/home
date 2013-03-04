@@ -40,9 +40,10 @@ var check_login_url = '<?=$this->createUrl('/member/login/check');?>';
                 <a href="/" class="brand" style="font-weight: bold">全景视界</a>
                 <div id="main-menu" class="nav-collapse  bold font-size14">
                     <ul id="main-menu-left" class="nav">
-                        <li><a href="<?=$this->createUrl('/jingdian');?>">景 点</a></li>
-                        <li><a href="<?=$this->createUrl('/jiajv');?>">家 居</a></li>
-                        <li><a href="<?=$this->createUrl('/fuwu');?>">服 务</a></li>
+                        <li><a href="<?=$this->createUrl('/jingdian');?>">景点风光 </a></li>
+                        <li><a href="<?=$this->createUrl('/jiajv');?>">家 居室内 </a></li>
+                        <li><a href="<?=$this->createUrl('/fuwu');?>">服务报价</a></li>
+                        <li><a href="<?=$this->createUrl('/yidong');?>">手机移动</a></li>
                         <!-- <li><a href="<?=$this->createUrl('/web/photoer/a');?>">摄影师</a></li>  -->
                     </ul>
                     <ul id="main-menu-right" class="nav pull-right">
