@@ -10,7 +10,7 @@
                 <br>
                 <form method="post" class="form-horizontal" id="member_reg" action="<?=$this->createUrl('/member/register/reg');?>">
                     <fieldset>
-                        <legend>免费注册</legend>
+                        <legend>免费注册，轻松制作全景项目</legend>
                         <div class="control-group">
                             <label class="control-label" for="reg_email">邮箱</label>
                             <div class="controls">
