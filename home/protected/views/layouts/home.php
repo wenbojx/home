@@ -42,8 +42,8 @@ var check_login_url = '<?=$this->createUrl('/member/login/check');?>';
                     <ul id="main-menu-left" class="nav">
                         <li<?=isset($this->pageName) && $this->pageName == '1'?' class="active"':''?>><a href="<?=$this->createUrl('/jingdian');?>">景点风光  </a></li>
                         <li<?=isset($this->pageName) && $this->pageName == '2'?' class="active"':''?>><a href="<?=$this->createUrl('/jiajv');?>">家居室内 </a></li>
-                        <li<?=isset($this->pageName) && $this->pageName == '10'?' class="active"':''?>><a href="<?=$this->createUrl('/fuwu');?>">服务报价 </a></li>
                         <li<?=isset($this->pageName) && $this->pageName == '11'?' class="active"':''?>><a href="<?=$this->createUrl('/yidong');?>">手机移动 </a></li>
+                        <li<?=isset($this->pageName) && $this->pageName == '10'?' class="active"':''?>><a href="<?=$this->createUrl('/fuwu');?>">服务报价 </a></li>
                         <li<?=isset($this->pageName) && $this->pageName == '12'?' class="active"':''?>><a href="<?=$this->createUrl('/lianxi');?>">联系我们 </a></li>
                         <!-- <li><a href="<?=$this->createUrl('/web/photoer/a');?>">摄影师</a></li>  -->
                     </ul>
