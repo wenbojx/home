@@ -19,7 +19,7 @@
 	                <br><br>
 	              		<h3><span style="color: red">PanoPlayer专业全景播放器</span></h3>
 	              		<br>
-	                	<span>支持2.2及以上的安卓手机， 如需体验请"<a target="_blank" href="/mos/panoPlayer-v1.0.apk">点击下载</a>"</span><br><br>
+	                	<span>支持android SDK2.2及以上的安卓手机， 如需体验请"<a target="_blank" href="/mos/panoPlayer-v1.0.apk">点击下载</a>"</span><br><br>
 	                	<span>使用原生java语言开发,效率更快，兼容性更好</span><br><br>
 	                	<span>支持用户自定义修改应用信息，制作出您自己个性的app，如何修改详见"<a target="_blank" href="/web/doc/b">应用修改教程</a>"</span>
 	                	<br><br>
