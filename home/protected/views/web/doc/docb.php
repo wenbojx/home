@@ -24,7 +24,8 @@
 	              		<span>2. app名称修改</span><br>
 	              		<span>3. app启动画面修改</span><br>
 	              		<span>4. app播放项目修改</span><br>
-	              		<span>5. 其它文字及图标修改</span><br><br>
+	              		<span>5. 修改项目简介</span><br>
+	              		<span>6. 其它文字及图标修改</span><br><br>
 	              		<strong>以下是操作步骤</strong>
 	              		<br>
 	                	<span>1. 下载移动app至您的电脑 <a target="blank" href="/mos/panoPlayer-v1.0.apk">点此下载</a></span><br>
@@ -36,10 +37,11 @@
 	                	<span>7. 修改程序icon图标：进入drawable及drawable开头的目录将ic_launcher.png替换成你自己的，注意图片尺寸</span><br>
 	                	<span>8. 修改程序的引导图：进入raw目录将图片welcome.png替换成你自己的</span><br>
 	                	<span>9. 修改项目ID及APP名称：进入values目录记事本打开strings.xml，修改project_id成你自己的项目ID，每个项目的项目ID可在后台项目列表中看到。修改app_name成你自己的名字</span><br>
-	                	<span>10. APP修改完毕，按以下步骤重新打包程序</span><br>
-	                	<span>11. 返回apktool目录双击CMD-DOS.exe</span><br>
-	                	<span>12. 命令行输入"Repack-apk.bat"回车开始打包签名</span><br>
-	                	<span>13. 打包完毕，在目录New_APK中可以找到修改后的apk文件</span><br>
+	                	<span>10. 修改项目简介：进入Working_APK/_panoPlayer-v1.0.apk/assets目录，修改info.html文件，此文件为标准html文件</span><br>
+	                	<span>11. APP修改完毕，按以下步骤重新打包程序</span><br>
+	                	<span>12. 返回apktool目录双击CMD-DOS.exe</span><br>
+	                	<span>13. 命令行输入"Repack-apk.bat"回车开始打包签名</span><br>
+	                	<span>14. 打包完毕，在目录New_APK中可以找到修改后的apk文件</span><br>
 	                	以上如有不清楚的地方可以在群里交流，QQ群215777211<br><br>
 	                <br>
 	                <br>
