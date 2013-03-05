@@ -7,8 +7,8 @@
 	<div class="hero-unit padding5" id="static_banner">
 		<div class="banner_box">
 			<div class="index_banner" style="background:url(<?=Yii::app()->baseUrl . '/style/banner/'.$datas['baner_scene_id'].'.jpg'?>)">
-				<div class="click" onclick="show_banner_pano()">点击，开始奇妙之旅！</div>
-				<div class="tips">拖动鼠标，享受不一样的视觉体验！</div>
+				<div class="click" onclick="show_banner_pano()">点击，拖动，开始奇妙之旅！</div>
+				
 			</div>
 			
 		</div>
@@ -31,6 +31,7 @@
                 <div class="span7">
 	                <div style="color: #333333">
 	                <br><br>
+	                <!-- 
 	              		<h3><span style="color: red">限时特惠</span></h3>
 	              		<br>
 	                	<strong>凡在3.1日至3.31日预约家居类室内全景摄影的客户(限上海地区)，
@@ -57,7 +58,7 @@
 	                	<span>3、我们以您发送邮件的日期为准，超过截止日期的不享受此优惠活动</span><br><br>
 	                	
 	                	<br><br>
-
+ -->
 	              		<h3>服务</h3>
 	              		<br>
 	                	<span>1、为客户提供全景摄影服务，适用行业(房产，酒店，旅游，学校...)</span>

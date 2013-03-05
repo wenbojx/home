@@ -22,7 +22,7 @@ $display = array('1'=>'待发布', '2'=>'待审核', '3'=>'已发布')
             			</div>
             			<div class="scene_title">
             				<div class="title_line">
-            					<?php echo CHtml::link($v['name'],array('pano/scene/list','id'=>$v['id']));?> 
+            					<?php echo CHtml::link($v['name'],array('pano/scene/list','id'=>$v['id']));?>&nbsp&nbsp&nbsp&nbsp<span style="font-size:12px">项目ID:<?=$v['id']?></span>
             				</div>
             				<div class="scene_desc">
             					<?=$v['desc']?>
