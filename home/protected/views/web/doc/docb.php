@@ -28,6 +28,7 @@
 	              		<span>6. 其它文字及图标修改</span><br><br>
 	              		<strong>以下是操作步骤</strong>
 	              		<br>
+	              		apktool这个工具运行需要java环境，如果您的电脑没有安装java，大家可以下载安装java <a target="_blanck" href="http://download.oracle.com/otn-pub/java/jdk/7u17-b02/jdk-7u17-windows-i586.exe">点击下载</a><br>
 	                	<span>1. 下载移动app至您的电脑 <a target="blank" href="/mos/panoPlayer-v1.0.apk">点此下载</a></span><br>
 	                	<span>2. 下载解包/打包工具  <a target="blank" href="/mos/apktool.zip">点此下载</a></span><br>
 	                	<span>3. 解压下载的apktool.zip文件，将panoPlayer-v1.0.apk放入解压后的apktool目录</span><br>
