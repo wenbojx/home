@@ -19,9 +19,10 @@
 	                <br><br>
 	              		<h3><span style="color: red">PanoPlayer专注移动全景播放器</span></h3>
 	              		<br>
-	                	<span>支持android SDK2.2及以上的安卓手机， 如需体验请"<a target="_blank" href="/mos/panoPlayer-v1.0.apk">点击下载</a>"</span><br>
-	                	<span>使用原生java语言开发,效率更快，兼容性更好</span><br>
-	                	<span>支持用户自定义修改应用信息，制作出您自己个性的app，如何修改详见"<a target="_blank" href="/web/doc/b">应用修改教程</a>"</span><br>
+	                	<span>1. 支持android SDK2.2及以上的安卓手机， 如需体验请"<a target="_blank" href="/mos/panoPlayer-v1.0.apk">点击下载</a>"</span><br>
+	                	<span>2. 使用原生java语言开发,效率更快，兼容性更好。实例中连续播放130个场景轻松应对</span><br>
+	                	<span>3. 场景图片缓存，运行一次场景图片保存在手机SD卡上，下次哪怕没网络也可以播放。</span><br>
+	                	<span>4. 支持用户自定义修改应用信息，制作出您自己个性的app，如何修改详见"<a target="_blank" href="/web/doc/b">应用修改教程</a>"</span><br>
 	                	<span>QQ交流群:1423795537</span>
 	                	
 	                	<!-- 

@@ -17,7 +17,7 @@
                 <div class="span11">
 	                <div style="color: #333333;line-height:24px;" >
 	                <br><br>
-	                <iframe height=500 width=700 frameborder=0 src="http://player.youku.com/embed/XNTIyOTQ4Nzcy" allowfullscreen></iframe><br>
+	                <iframe height=498 width=510 frameborder=0 src="http://player.youku.com/embed/XNTIzMDY2MTE2" allowfullscreen></iframe><br>
 	               		<span>在自定义app前请先创建您自己的项目，创建新项目参见 <a target="_blank" href="/web/doc/a">"如何创建项目"</a></span>
 	              		<h3>如何自定义app</h3><br>
 	              		<strong>自定义支持如下修改</strong><br>
