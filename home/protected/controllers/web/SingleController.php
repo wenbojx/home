@@ -19,9 +19,9 @@ class SingleController extends FController{
         $center = $request->getParam('center'); //是否自动转
         //$single = $request->getParam('single'); //是否单个
         $datas['config']['nobtb'] = $nobtb ? '1' :'0';
-        $datas['config']['auto'] = $auto ? '1' :'0';
+        $datas['config']['auto'] = $auto ? '0' :'1';
         $datas['config']['single'] = 1;
-        $datas['config']['center'] = $center ? '1':'0';
+        $datas['config']['center'] = $center ? '0':'1';
         
         if($datas['scene_id']){
             $datas['scene'] = $this->get_scene_datas($datas['scene_id']);
