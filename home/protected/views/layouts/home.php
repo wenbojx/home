@@ -2,6 +2,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
 <?php Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl . "/style/css/bootstrap.min.css"); ?>
 <?php Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl . "/style/css/style.css"); ?>
 <script>
@@ -30,7 +33,7 @@ var check_login_url = '<?=$this->createUrl('/member/login/check');?>';
 <?php Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl . "/style/css/admin.css"); ?>
 <?php Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/style/js/admin.js");?>
 <?php }?>
-
+<!--[if IE 6]><link rel="stylesheet" type="text/css" href="/style/css/ie6.min.css" /><![endif]-->
 <title><?=$this->pageTitle?></title>
 </head>
 <body>
@@ -79,6 +82,9 @@ var check_login_url = '<?=$this->createUrl('/member/login/check');?>';
     	<br><br><br>
     </div>
 </div>
+<script>
+    $(function(){if($.browser.msie&&parseInt($.browser.version,10)===6){$('.row div[class^="span"]:last-child').addClass("last-child");$('[class*="span"]').addClass("margin-left-20");$(':button[class="btn"], :reset[class="btn"], :submit[class="btn"], input[type="button"]').addClass("button-reset");$(":checkbox").addClass("input-checkbox");$('[class^="icon-"], [class*=" icon-"]').addClass("icon-sprite");$(".pagination li:first-child a").addClass("pagination-first-child")}})
+</script>
 <script type="text/javascript" src="<?=Yii::app()->baseUrl . "/style/js/google.analytics.js"?>"></script>
 </body>
 </html>

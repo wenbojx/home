@@ -1,13 +1,15 @@
 <?php $this->pageTitle=$datas['scene']['name'].'，全景，三维，上海';?>
 <div>
-	<div id="pano-detail" style="width:<?=$datas['style']['width']?>px; height:<?=$datas['style']['height']?>px;">
-	<div id="scene_box"></div>
-	<div id="pano_loading" class="pano_loading">
-		<img id="pano_loading_img" src="<?=Yii::app()->baseUrl . '/style/img/loading_4.gif'?>"/>
-	</div>
-	<div id="hotspot_loading" class="hotspot_loading">
-		<img id="hotspot_loading_img" src="<?=Yii::app()->baseUrl . '/style/img/loading_5.gif'?>"/>
-	</div>
+	<div style="position:relative;width:<?=$datas['style']['width']?>px; height:<?=$datas['style']['height']?>px;<?=$datas['config']['center'] ? ' margin:0 auto' :''?>">
+		<div id="pano-detail" style="width:<?=$datas['style']['width']?>px; height:<?=$datas['style']['height']?>px;<?=$datas['config']['center'] ? ' margin:0 auto' :''?>">
+		<div id="scene_box"></div>
+		<div id="pano_loading" class="pano_loading">
+			<img id="pano_loading_img" src="<?=Yii::app()->baseUrl . '/style/img/loading_4.gif'?>"/>
+		</div>
+		<div id="hotspot_loading" class="hotspot_loading">
+			<img id="hotspot_loading_img" src="<?=Yii::app()->baseUrl . '/style/img/loading_5.gif'?>"/>
+		</div>
+		</div>
 	</div>
 </div>
 <script type="text/javascript" src="<?=Yii::app()->baseUrl . "/style/js/common.js"?>"></script>
