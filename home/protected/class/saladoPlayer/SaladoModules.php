@@ -3,7 +3,7 @@ class SaladoModules extends SaladoPlayer{
     private $map_type = array(
             '10'=>'ButtonBar','20'=>'ImageButton','30'=>'InfoBubble',
             '40'=>'MenuScroller','50'=>'JSGateway','60'=>'JSGateway',
-            '70'=>'LinkOpener','80'=>'MouseCursor'
+            '70'=>'LinkOpener','80'=>'MouseCursor','90'=>'ImageMap'
     );
     private $modules_datas = array(
             //'attribute'=>array('debug'=>false),
@@ -51,6 +51,22 @@ class SaladoModules extends SaladoPlayer{
                             ),
                     ),
             ),
+    		'ImageMap'=>array(
+    				's_attribute'=>array('path'=>''),
+    				'window'=>array('s_attribute'=>array('open'=>'', 'transition'=>'', 'openTween'=>'', 'onOpen'=>'', 'onClose'=>'', 'alpha'=>'')),
+    				'close'=>array('s_attribute'=>array('path'=>'', 'move'=>'')),
+    				'viewer'=>array('s_attribute'=>array('path'=>'')),
+    				'maps'=>array('s_attribute'=>array('id'=>'', 'path'=>'', 'onSet'=>'')),
+    				'maps'=>array(
+    						'waypoints'=> array('s_attribute'=>array('path'=>'', 'mov'=>'', 'radar'=>'')),
+    						'waypoints'=> array( 'subPoint' => array(
+    								'0'=>array('s_attribute'=>array('target'=>'', 'position'=>'', 'mouse'=>'')),
+    								'1'=>array('s_attribute'=>array('target'=>'', 'position'=>'', 'mouse'=>'')),
+								)
+    						)
+    				)
+    		
+    		),
             'InfoBubble'=>array(
                     's_attribute'=>array('path'=>''),
                     'settings'=>array('s_attribute'=>array('enabled'=>'true','onEnable'=>'','onDisable'=>'')),
@@ -116,6 +132,7 @@ class SaladoModules extends SaladoPlayer{
     		),
     );
     public function get_modules_info($modules){
+    	//print_r($modules);
         $modules_str = '<modules>';
         if (!is_array($modules)){
             return $modules_str;
@@ -127,6 +144,47 @@ class SaladoModules extends SaladoPlayer{
         }
         $modules_str .= '</modules>';
         return $modules_str;
+    }
+    private function get_ImageMap($imageMap){
+    	$string = '<ImageMap';
+    	$string .= $this->build_attribute($imageMap['s_attribute']);
+    	if (isset($imageMap['window'])){
+    		$string .= '<window';
+    		$string .= $this->build_attribute($imageMap['window']['s_attribute']);
+    		$string .= '</window>';
+    	}
+    	if (isset($imageMap['close'])){
+    		$string .= '<close';
+    		$string .= $this->build_attribute($imageMap['close']['s_attribute']);
+    		$string .= '</close>';
+    	}
+    	//viewer
+    	if (isset($imageMap['viewer'])){
+    		$string .= '<viewer';
+    		$string .= $this->build_attribute($imageMap['viewer']['s_attribute']);
+    		$string .= '</viewer>';
+    	}
+    	if (isset($imageMap['map'])){
+    		$string .= '<maps>';
+    		$string .= '<map';
+    		$string .= $this->build_attribute($imageMap['map']['s_attribute']);
+    		$string .='<waypoints';
+    		$string .= $this->build_attribute($imageMap['map']['waypoints']['s_attribute']);
+    		
+    		if(is_array($imageMap['map']['waypoints']['subPoint'])){
+    			foreach($imageMap['map']['waypoints']['subPoint'] as $v){
+    				$string .= '<waypoint';
+    				$string .= $this->build_attribute($v['s_attribute']);
+    				$string .= '</waypoint>';
+    			}
+    		}
+    		
+    		$string .='</waypoints>';
+    		$string .='</map>';
+    		$string .= '</maps>';
+    	}
+    	$string .='</ImageMap>';
+    	return $string;
     }
     private function get_ButtonBar($buttonBar){
         $string = '<ButtonBar';

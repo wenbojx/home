@@ -15,6 +15,6 @@
 <script>
 var scene_box = 'scene_box';
 var player_url = '<?=Yii::app()->baseUrl?>/plugins/salado/Player.swf';
-var scene_xml_url = '<?=$this->createUrl('/salado/index/a/', array('id'=>$datas['scene_id'],'w'=>$datas['style']['width'],'h'=>$datas['style']['height'],'auto'=>$datas['config']['auto'],'single'=>$datas['config']['single'], 'nobtb'=>$datas['config']['nobtb']))?>';
+var scene_xml_url = '<?=$this->createUrl('/salado/index/s/', array('id'=>$datas['scene_id'],'w'=>$datas['style']['width'],'h'=>$datas['style']['height'],'auto'=>$datas['config']['auto'],'single'=>$datas['config']['single'], 'nobtb'=>$datas['config']['nobtb']))?>';
 load_scene(scene_box, scene_xml_url, player_url, 'transparent');
 </script>

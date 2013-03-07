@@ -58,6 +58,37 @@ class SaladoPlayer{
     	$content = $admin ? $this->get_admin_content($id) : $this->get_user_content($id);
         return $content;
     }
+    public function get_single_config($id){
+    	$content = $this->get_single_content($id);
+    	return $content;
+    }
+    private function get_single_content($id){
+    	$admin = 0;
+    	$memcache_obj = new Ymemcache();
+    	$key = $memcache_obj->get_pano_xml_key($id, false);
+    	//$key = 0;
+    	if( $content = $memcache_obj->get_mem_data($key)){
+    		return $content;
+    	}
+    	else{
+    		$panodatas_obj = new PanoSingleDatas();   		
+    		$panodatas_obj->display_config = $this->display_config;
+    		$panodatas = $panodatas_obj->get_panoram_datas($id);
+    		$content = $this->config_start();
+    		$content .= $this->config_global($panodatas['global']);
+    		
+    		$content .= $this->config_panoramas($panodatas['panorams']);
+    		
+    		$content .= $this->config_modules($panodatas['modules']);
+    		
+    		$content .= $this->config_actions($panodatas['actions']);
+    		
+    		$content .= $this->config_end();
+    		//echo $content;
+    		$memcache_obj->set_mem_data($key, $content, 0);
+    	}
+    	return $content;
+    }
     private function get_user_content($id){
     	$admin = 0;
     	$memcache_obj = new Ymemcache();

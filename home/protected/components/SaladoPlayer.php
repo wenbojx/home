@@ -50,10 +50,6 @@ class SaladoPlayer{
         return $player_info;
     }
 
-    public function get_config_content($id){
-
-
-    }
     private function config_global($global){
         $global_str = '';
         if(!is_array($global) || count($global)<1){

@@ -90,6 +90,27 @@ class IndexController extends FController{
             $this->actionXmlb($id);
         }
     }
+    public function actionS(){
+    	$request = Yii::app()->request;
+    	$id = $request->getParam('id');
+    	$from = $request->getParam('from');
+    
+    	$nobtb = $request->getParam('nobtb'); //是否含button_bar
+    	$auto = $request->getParam('auto'); //是否自动转
+    	$single = $request->getParam('single'); //是否自动转
+    	$player_width = $request->getParam('w'); //是否自动转
+    	$player_height = $request->getParam('h'); //是否自动转
+    	$config['nobtb'] = $nobtb ? false :true;
+    	$config['auto'] = $auto ? true :false;
+    	$config['single'] = $single ? true :false;
+    	$config['player_width'] = $player_width;
+    	$config['player_height'] = $player_height;
+    
+    	if(!$id){
+    		exit('');
+    	}
+    	$this->actionXmls($id, $from, $config);
+    }
     private function actionXmla($id, $from, $config){
         //获取全景信息
         $player_obj = new SaladoPlayer();
@@ -107,6 +128,16 @@ class IndexController extends FController{
         $datas['imgSize'] = $this->img_size;
         $datas['tileSize'] = $this->tile_size;
         $this->render('/salado/xmlb', array('datas'=>$datas));
+    }
+    private function actionXmls($id, $from, $config){
+    	//获取全景信息
+    	$player_obj = new SaladoPlayer();
+    	$datas['scene_id'] = $id;
+    	$admin = false;
+    	$player_obj->display_config = $config;
+    	$datas['content'] = $player_obj->get_single_config($id);
+    	$this->render('/salado/xmla', array('datas'=>$datas));
+    	exit();
     }
     private function actionImage($id, $position, $suffix='', $file = '', $water= false){
         $flag = true;
