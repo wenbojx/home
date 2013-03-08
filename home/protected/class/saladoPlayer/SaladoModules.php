@@ -278,6 +278,9 @@ class SaladoModules extends SaladoPlayer{
             if(isset($infoBubble['bubbles']['s_attribute'])){
             	$string .= $this->build_attribute($infoBubble['bubbles']['s_attribute']);
             }
+            else {
+            	$string .= '>';
+            }
             if (isset($infoBubble['bubbles']['text'])){
                 foreach ($infoBubble['bubbles']['text'] as $k=>$v){
                     $string .= '<text';
