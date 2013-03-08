@@ -88,7 +88,7 @@ class PanoSingleDatas{
         if(!isset($this->global_datas['s_attribute']['debug'])){
             $this->global_datas['s_attribute']['debug'] = 'false';
         }
-        //$this->global_datas['s_attribute']['debug'] = 'true';
+        $this->global_datas['s_attribute']['debug'] = 'true';
         // $this->global_datas['control']['s_attribute']['autorotation'] = 'enabled:false';
         $this->global_datas['control']['s_attribute']['autorotation'] = 'enabled:true,delay:3';
         if($this->display_config['auto']){
@@ -291,7 +291,7 @@ class PanoSingleDatas{
         $path['ImageButton'] = Yii::app()->baseUrl.'/plugins/salado/modules/ImageButton.swf';
         $path['JSGateway'] = Yii::app()->baseUrl.'/plugins/salado/modules/JSGateway.swf';
         $path['MouseCursor'] = Yii::app()->baseUrl.'/plugins/salado/modules/MouseCursor.swf';
-        $path['ImageMap'] = Yii::app()->baseUrl.'/plugins/salado/modules/ImageMap-1.4.2';
+        $path['ImageMap'] = Yii::app()->baseUrl.'/plugins/salado/modules/ImageMap-1.4.2.swf';
         $path['InfoBubble'] = Yii::app()->baseUrl.'/plugins/salado/modules/InfoBubble-1.3.2.swf';
         if(!isset($path[$name])){
             return '';
