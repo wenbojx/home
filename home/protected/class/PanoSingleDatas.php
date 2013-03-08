@@ -222,7 +222,9 @@ class PanoSingleDatas{
     public function add_hotspot_action($hotspots_info, $scene_id){
     	//print_r($hotspots_info);
         foreach($hotspots_info as $k=>$v){
-        	$this->add_infobubble($this->info_bubble_pre.$v['link_scene_id'], $this->scene_datas[$v['link_scene_id']]['name']);
+        	if(isset($this->scene_datas[$v['link_scene_id']])){
+        		$this->add_infobubble($this->info_bubble_pre.$v['link_scene_id'], $this->scene_datas[$v['link_scene_id']]['name']);
+        	}
         	
         	$id = $this->load_pano_pre.$v['link_scene_id'];
         	//添加外部JS loading事件
