@@ -88,7 +88,7 @@ class PanoSingleDatas{
         if(!isset($this->global_datas['s_attribute']['debug'])){
             $this->global_datas['s_attribute']['debug'] = 'false';
         }
-        $this->global_datas['s_attribute']['debug'] = 'true';
+        //$this->global_datas['s_attribute']['debug'] = 'true';
         // $this->global_datas['control']['s_attribute']['autorotation'] = 'enabled:false';
         $this->global_datas['control']['s_attribute']['autorotation'] = 'enabled:true,delay:3';
         if($this->display_config['auto']){
