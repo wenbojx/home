@@ -11,6 +11,9 @@ class PanoSingleDatas{
     public $link_open_pre = 'link_open_';
     public $link_open_id_pre = 'link_pano_';
     public $load_pano_pre = 'load_pano_';
+    public $info_bubble_pre = 'info_bubble_';
+    public $show_bubble_pre = 'show_';
+    public $hide_bubble_pre = 'hide_bubble';
     
     public $module_type_link_open = 70; //link_open默认type值
     public $module_type_button_bar = 10; //button_bar默认type值
@@ -19,6 +22,8 @@ class PanoSingleDatas{
     public $module_type_jsgateway = 60; //jsgateway默认type值
     public $module_type_mouse_cursor = 80; //jsgateway默认type值
     public $module_type_image_map = 90; //jsgateway默认type值
+    public $module_type_info_bubble = 30; 
+    
     
     public $prifix_js_id = 'js_'; //js模块ID前缀
     public $js_hotspot_loading = 'js_action_loading';
@@ -34,6 +39,9 @@ class PanoSingleDatas{
 
     public $display_config = array(); //是否载入button_bar
     private $image_map_datas = array();
+    private $infoBubble_datas = array();
+    //private $info_sub_add = 0;
+    private $scene_datas = array();
 
     public function get_panoram_datas($id = 0){
         $datas = array();
@@ -82,12 +90,13 @@ class PanoSingleDatas{
         }
         //$this->global_datas['s_attribute']['debug'] = 'true';
         // $this->global_datas['control']['s_attribute']['autorotation'] = 'enabled:false';
-        $this->global_datas['control']['s_attribute']['autorotation'] = 'enabled:true,delay:7';
+        $this->global_datas['control']['s_attribute']['autorotation'] = 'enabled:true,delay:3';
         if($this->display_config['auto']){
-        	$this->global_datas['control']['s_attribute']['autorotation'] = 'enabled:true,delay:7';
+        	$this->global_datas['control']['s_attribute']['autorotation'] = 'enabled:true,delay:3';
         }
         $this->global_datas['branding']['s_attribute']['visible'] = 'false';
         $this->global_datas['panoramas']['s_attribute']['firstPanorama'] = $this->panoram_pre.$this->scene_id;
+        $this->global_datas['panoramas']['s_attribute']['firstOnEnter'] = "mapOpen";
         return $this->global_datas;
     }
     /**
@@ -126,18 +135,35 @@ class PanoSingleDatas{
     	$this->panoram_datas = array();
     	//获取项目下所有场景
     	$scene_db = new Scene();
-    	$scene_datas = $scene_db->find_scene_by_project_id($this->project_id, 0, '', 0, 1, 2);
-    	if(!$scene_datas){
+    	$this->scene_datas = $scene_db->find_scene_by_project_id($this->project_id, 0, '', 0, 1, 2);
+    	if(!$this->scene_datas){
     		return false;
     	}
     	$scene_ids = array();
-    	foreach($scene_datas as $v){
+    	foreach($this->scene_datas as $v){
     		$scene_ids[] = $v['id'];
-    		$pano_attribute = array();
+    		
     		$datas[$v['id']]['s_attribute']['id'] = $this->panoram_pre.$v['id'];
     		$datas[$v['id']]['s_attribute']['path'] = $this->panoram_xml_path($v['id']);
     		$datas[$v['id']]['s_attribute']['onEnter'] = 'js_action_loaded';
+    		
     	}
+    	$panoram_db = new ScenesPanoram();
+    	$panoram_datas = $panoram_db->find_by_scene_ids($scene_ids);
+    	if($panoram_datas){
+    		foreach($scene_ids as $v){
+    			$pano_attribute = array();
+		    	if(isset($panoram_datas[$v])){
+		    		if (isset($panoram_datas[$v]['content']) && $panoram_datas[$v]['content']){
+		    			$pano_attribute = @json_decode($panoram_datas[$v]['content'],true);
+		    		}
+		    		if (is_array($pano_attribute) && isset($pano_attribute['s_attribute'])){
+		    			$datas[$v]['s_attribute'] = array_merge($datas[$v]['s_attribute'], $pano_attribute['s_attribute']);
+		    		}
+		    	}
+    		}
+    	}
+    	
     	//获取场景热点
     	$hotspot_db = new ScenesHotspot();
     	$hotspot_datas = $hotspot_db->find_by_scene_ids($scene_ids);
@@ -148,43 +174,63 @@ class PanoSingleDatas{
     		$scene_id_snap = $v['scene_id'];
     		$hotspots_info[$v['id']]['scene_id'] = $v['scene_id'];
     		$hotspots_info[$v['id']]['link_scene_id'] = $v['link_scene_id'];
+    		
     		$datas[$scene_id_snap]['hotspots'][$v['id']] = $this->get_hotspot_info($v);
     		
     	}
     	$this->hotspots_info = $hotspots_info;
     	if($hotspots_info){
+    		$this->init_infobubble();
     		$this->add_hotspot_action($hotspots_info, $this->scene_id);
+
     	}
-
-
         $this->panoram_datas = $datas;
         return $datas;
+    }
+    /**
+     * 初始化infobubble
+     */
+    private function init_infobubble(){
+    	$type = $this->module_type_info_bubble;
+    	$this->modules_datas[$type]['s_attribute']['path'] = $this->module_path('InfoBubble');
+    	$this->modules_datas[$type]['bubbles']['text'] = array();
+    	$this->modules_datas[$type]['styles'][1]['s_attribute']['id'] = 'buttonBar';
+    	$this->modules_datas[$type]['styles'][1]['s_attribute']['content'] = 'bubblePadding:3,fontSize:12,borderSize:1';
+    }
+    /**
+     * 添加infobubble text image
+     */
+    private function add_infobubble($id, $text, $style='buttonBar', $angle=1){
+    	$type = $this->module_type_info_bubble;
+    	$this->modules_datas[$type]['bubbles']['text'][$id]['s_attribute']['id'] = $id;
+    	$this->modules_datas[$type]['bubbles']['text'][$id]['s_attribute']['text'] = $text;
+    	$this->modules_datas[$type]['bubbles']['text'][$id]['s_attribute']['style'] = $style;
+    	$this->modules_datas[$type]['bubbles']['text'][$id]['s_attribute']['angle'] = $angle;
+    	$bub_id = $this->show_bubble_pre.$id;
+    	$content = "InfoBubble.show({$id})";
+    	$this->add_single_action($bub_id, $content);
+    	
+    	$id = $this->hide_bubble_pre;
+    	$content = "InfoBubble.hide()";
+    	$this->add_single_action($id, $content);
+    	//print_r($this->modules_datas[$type]['bubbles']);
+    	//$this->info_sub_add++;
     }
     /**
      * 添加hotspot模块的action
      */
     public function add_hotspot_action($hotspots_info, $scene_id){
+    	//print_r($hotspots_info);
         foreach($hotspots_info as $k=>$v){
-            /* if (in_array($v['link_scene_id'], $this->scenes_info)){
-                $id = $this->load_pano_pre.$v['link_scene_id'];
-                //添加外部JS loading事件
-                $content = "SaladoPlayer.advancedMoveToHotspot({$this->hotspot_pre}$k,NaN,40,Expo.easeIn)";
-                $content .= ';JSGateway.run(jsf_hotspot_loading)';
-                $content .= ';SaladoPlayer.loadPano('.$this->panoram_pre.$v['link_scene_id'].')';
-
-            }
-            else{
-                $id = $this->link_open_id_pre.$v['link_scene_id'];
-                $content = 'LinkOpener.open('.$this->link_open_pre.$v['link_scene_id'].')';
-
-            } */
+        	$this->add_infobubble($this->info_bubble_pre.$v['link_scene_id'], $this->scene_datas[$v['link_scene_id']]['name']);
+        	
         	$id = $this->load_pano_pre.$v['link_scene_id'];
         	//添加外部JS loading事件
         	$content = "SaladoPlayer.advancedMoveToHotspot({$this->hotspot_pre}$k,NaN,40,Expo.easeIn)";
         	$content .= ';JSGateway.run(jsf_hotspot_loading)';
         	$content .= ';SaladoPlayer.loadPano('.$this->panoram_pre.$v['link_scene_id'].')';
-        	
             $this->add_single_action($id, $content);
+            
         }
         return $this->action_datas;
     }
@@ -205,7 +251,7 @@ class PanoSingleDatas{
         }
         //如果hotspot的链接在本场景内则load_pano
        // if (in_array($datas['link_scene_id'], $this->scenes_info)){
-            $mouse = 'onClick:'.$this->load_pano_pre.$datas['link_scene_id'];
+            $mouse = 'onClick:'.$this->load_pano_pre.$datas['link_scene_id'].',onOver:'.$this->show_bubble_pre.$this->info_bubble_pre.$datas['link_scene_id'].',onOut:'.$this->hide_bubble_pre;
         //}
         /* else{
             $mouse = 'onClick:'.$this->link_open_id_pre.$datas['link_scene_id'];
@@ -244,6 +290,7 @@ class PanoSingleDatas{
         $path['JSGateway'] = Yii::app()->baseUrl.'/plugins/salado/modules/JSGateway.swf';
         $path['MouseCursor'] = Yii::app()->baseUrl.'/plugins/salado/modules/MouseCursor.swf';
         $path['ImageMap'] = Yii::app()->baseUrl.'/plugins/salado/modules/ImageMap-1.3.swf';
+        $path['InfoBubble'] = Yii::app()->baseUrl.'/plugins/salado/modules/InfoBubble-1.3.2.swf';
         if(!isset($path[$name])){
             return '';
         }
@@ -381,8 +428,9 @@ class PanoSingleDatas{
     	
     	foreach($datas['position'] as $k=>$v){
     		//$target_id = $datas['link_scenes'][$v['']]
-    		$this->modules_datas[$type]['map']['waypoints']['subPoint'][$k]['s_attribute']['target'] = $this->panoram_pre.$v['scene_id'];
-    		$this->modules_datas[$type]['map']['waypoints']['subPoint'][$k]['s_attribute']['position'] = "x:{$v['left']},y:".($v['top']+20);
+    		$this->modules_datas[$type]['map']['waypoints']['waypoint'][$k]['s_attribute']['target'] = $this->panoram_pre.$v['scene_id'];
+    		$this->modules_datas[$type]['map']['waypoints']['waypoint'][$k]['s_attribute']['position'] = "x:{$v['left']},y:".($v['top']+20);
+    		$this->modules_datas[$type]['map']['waypoints']['waypoint'][$k]['s_attribute']['mouse'] = 'onOver:'.$this->show_bubble_pre.$this->info_bubble_pre.$v['scene_id'].',onOut:'.$this->hide_bubble_pre;
     		//$this->modules_datas[$type]['map']['waypoints']['subPoint'][$k]['s_attribute']['mouse'] = 'onOver:showBubbleKiev,onOut:hideBubble';
     	}
     	
@@ -614,7 +662,10 @@ class PanoSingleDatas{
         $type = $this->module_type_button_bar;
         $this->modules_datas[$type]['s_attribute']['path'] = $this->module_path('ButtonBar');
         $this->modules_datas[$type]['window']['s_attribute']['align'] = 'horizontal:right,vertical:bottom';
+        $this->modules_datas[$type]['window']['s_attribute']['alpha'] = '0.6';
         $this->modules_datas[$type]['buttons']['s_attribute']['path'] = $this->module_media_path('button_bar');
+        $this->modules_datas[$type]['buttons']['extraButton']['map']['s_attribute']['name'] = 'b';
+        $this->modules_datas[$type]['buttons']['extraButton']['map']['s_attribute']['action'] = 'mapToggle';
         $this->modules_datas[$type]['buttons']['button']['1']['s_attribute']['name'] = 'autorotation';
         //$this->modules_datas[$type]['buttons']['button']['2']['s_attribute']['name'] = 'left';
         //$this->modules_datas[$type]['buttons']['button']['3']['s_attribute']['name'] = 'right';
@@ -622,8 +673,8 @@ class PanoSingleDatas{
        // $this->modules_datas[$type]['buttons']['button']['5']['s_attribute']['name'] = 'up';
         $this->modules_datas[$type]['buttons']['button']['6']['s_attribute']['name'] = 'out';
         $this->modules_datas[$type]['buttons']['button']['7']['s_attribute']['name'] = 'in';
-        $this->modules_datas[$type]['buttons']['extraButton']['map']['s_attribute']['name'] = 'b';
-        $this->modules_datas[$type]['buttons']['extraButton']['map']['s_attribute']['action'] = 'mapToggle';
+        
+        
         //$this->modules_datas[$type]['buttons']['extraButton']['map']['s_attribute']['mouse'] = 'onOver:showBubbleMap,onOut:hideBubble';
         
         //<extraButton name="b" action="mapToggle" mouse="onOver:showBubbleMap,onOut:hideBubble"/>

@@ -1,17 +1,17 @@
 <?php
-class PanosCommand extends CConsoleCommand {
+class PanosmCommand extends CConsoleCommand {
     //public $defaultAction = 'index'; //默认动作
     //public $find_path = '/mnt/hgfs/pics/suzhou/zzy'; //搜索全景图的目录
-    public $find_path = "C:/mydatas/pic/海富花园";
+    public $find_path = "C:/mydatas/pic/hai";
 	//public $find_path = "C:/Users/faashi/Desktop/pics/苏州/留园";
     public $panos_path = array();
     public $default_new_folder = 'panos';  //新的全景图目录
 	public $default_lightroom = 'ligthroom';
     public $default_pano_name = 'Panorama.jpg'; //默认的搜索的全景图名称
     public $new_pano_name = 'Panorama-2.jpg';
-    public $width = '3724';  //cube图的宽度
-    public $swidth = '11700'; //sphere的宽度
-    public $sheight = '5850'; //sphere的宽度
+    public $width = '1800';  //cube图的宽度
+    public $swidth = '5800'; //sphere的宽度
+    public $sheight = '2900'; //sphere的宽度
     public $error = array();
     public $split_file = '';
     public $cube_path = '';
@@ -243,8 +243,7 @@ class PanosCommand extends CConsoleCommand {
         $path = $this->cube_path;
         $this->myScanCubeDir($path);
 		foreach($this->panos_path as $k=>$v){
-
-			if($k!="26"){
+			if($k!="8"){
 				//continue;
 			}
 //echo $k.'--'.$v."\r\n";
@@ -261,7 +260,7 @@ class PanosCommand extends CConsoleCommand {
         $right = $path.'/cube/right.JPG';
         $top = $path.'/cube/top.JPG';
         $bottom = $path.'/cube/bottom.JPG';
-        $script = "p w{$this->swidth} h{$this->sheight} f2 v360 u0 n\"JPEG q100\"
+        $script = "p w{$this->swidth} h{$this->sheight} f2 v360 u0 n\"JPEG q95\"
 i n\"{$front}\"
 o f0 y0 r0 p0 v90
 i n\"{$right}\"
@@ -359,6 +358,20 @@ o f0 y0 r0 p-90 v90";
 		echo $str."\r\n";
         system($str);
 		echo "-----end {$str}----\r\n";
+	$this->lightness($to);
+    }
+
+    //提高亮度，加锐化
+    public function lightness($to){
+//$to = 'C:/mydatas/pic/hai/panos/01/Panorama.JPG';
+    	$myimage = new Imagick($to);
+    	$myimage->setImageFormat("jpeg");
+    	//$myimage->setCompressionQuality( 60 );
+    	$myimage->sharpenimage(1.5, 1.5);
+    	$myimage->modulateImage(102, 100, 100);
+    	$myimage->writeImage($to);
+    	$myimage->clear();
+    	$myimage->destroy();
     }
 	
     public function exec_sphere(){

@@ -2,7 +2,15 @@
 <div>
 	<div style="position:relative;width:<?=$datas['style']['width']?>px; height:<?=$datas['style']['height']?>px;<?=$datas['config']['center'] ? ' margin:0 auto' :''?>">
 	<?php if($datas['config']['title'] && $datas['project']){?>
-	<div style="background-color:#EEEEEE;margin:3px 0"><h3>&nbsp;<?=$datas['project']['name']?></h3></div>
+	<div style="background-color:#EEEEEE;margin:3px 0; padding:0px 10px">
+	
+	<table width="100%">
+		<tr>
+			<td><h3>&nbsp;<?=$datas['project']['name']?></h3></td>
+			<td align="right">联系人:张文亮 &nbsp;&nbsp;电话:13918443357</td>
+		</tr>
+	</table>
+	</div>
 	<?php }?>
 		<div id="pano-detail" style="width:<?=$datas['style']['width']?>px; height:<?=$datas['style']['height']?>px;<?=$datas['config']['center'] ? ' margin:0 auto' :''?>">
 		<div id="scene_box"></div>

@@ -59,7 +59,7 @@ class SaladoModules extends SaladoPlayer{
     				'maps'=>array('s_attribute'=>array('id'=>'', 'path'=>'', 'onSet'=>'')),
     				'maps'=>array(
     						'waypoints'=> array('s_attribute'=>array('path'=>'', 'mov'=>'', 'radar'=>'')),
-    						'waypoints'=> array( 'subPoint' => array(
+    						'waypoints'=> array( 'waypoint' => array(
     								'0'=>array('s_attribute'=>array('target'=>'', 'position'=>'', 'mouse'=>'')),
     								'1'=>array('s_attribute'=>array('target'=>'', 'position'=>'', 'mouse'=>'')),
 								)
@@ -140,6 +140,7 @@ class SaladoModules extends SaladoPlayer{
         foreach ($modules as $k=>$v){
             $type_name = $this->map_type[$k];
             $method = 'get_'.$type_name;
+            //echo $method;
             $modules_str .= $this->$method($v);
         }
         $modules_str .= '</modules>';
@@ -171,8 +172,8 @@ class SaladoModules extends SaladoPlayer{
     		$string .='<waypoints';
     		$string .= $this->build_attribute($imageMap['map']['waypoints']['s_attribute']);
     		
-    		if(is_array($imageMap['map']['waypoints']['subPoint'])){
-    			foreach($imageMap['map']['waypoints']['subPoint'] as $v){
+    		if(isset($imageMap['map']['waypoints']['waypoint']) && is_array($imageMap['map']['waypoints']['waypoint'])){
+    			foreach($imageMap['map']['waypoints']['waypoint'] as $v){
     				$string .= '<waypoint';
     				$string .= $this->build_attribute($v['s_attribute']);
     				$string .= '</waypoint>';
@@ -199,27 +200,26 @@ class SaladoModules extends SaladoPlayer{
             if (isset($buttonBar['buttons']['s_attribute'])){
                 $string .= $this->build_attribute($buttonBar['buttons']['s_attribute']);
             }
-            if (isset($buttonBar['buttons']['button'])){
-                $button = $buttonBar['buttons']['button'];
-                if(is_array($buttonBar['buttons']['button'])){
-                    foreach ($button as $k=>$v){
-                        $string .= '<button';
-                        $string .= $this->build_attribute($v['s_attribute']);
-                        $string .= '</button>';
-                    }
-                }
-
+            
+            if(isset($buttonBar['buttons']) && is_array($buttonBar['buttons'])){
+            	foreach($buttonBar['buttons'] as $k=>$v){
+            		if($k == 'button'){
+            			foreach($v as $v1){
+	            			$string .= '<button';
+	            			$string .= $this->build_attribute($v1['s_attribute']);
+	            			$string .= '</button>';
+            			}
+            		}
+            		else if($k=='extraButton'){
+            			foreach($v as $v1){
+	            			$string .= '<extraButton';
+	            			$string .= $this->build_attribute($v1['s_attribute']);
+	            			$string .= '</extraButton>';
+            			}
+            		}
+            	}
             }
-            //print_r($buttonBar['buttons']['extraButton']);
-            if (isset($buttonBar['buttons']['extraButton'])){
-                $extraButton = $buttonBar['buttons']['extraButton'];
-                foreach ($extraButton as $k=>$v){
-                    $string .= '<extraButton';
-                    $string .= $this->build_attribute($v['s_attribute']);
-                    $string .= '</extraButton>';
-                }
-
-            }
+            
             $string .= '</buttons>';
         }
         $string .= "</ButtonBar>\n";
@@ -254,12 +254,9 @@ class SaladoModules extends SaladoPlayer{
         return $string;
     }
     private function get_InfoBubble($infoBubble){
+    	//print_r($infoBubble);
         $string = '<InfoBubble';
-        if (isset($infoBubble['s_attribute'])){
-            $string .= ' ';
-            $string .= $this->build_attribute($infoBubble['s_attribute']);
-        }
-        $string .= '>';
+        $string .= $this->build_attribute($infoBubble['s_attribute']);
         if (isset($infoBubble['settings'])){
             $string .= '<settings';
             $string .= $this->build_attribute($infoBubble['settings']);
@@ -269,7 +266,7 @@ class SaladoModules extends SaladoPlayer{
             $string .= '<styles>';
             foreach ($infoBubble['styles'] as $k=>$v){
                 $string .= '<style';
-                $string .= $this->build_attribute($infoBubble['styles']);
+                $string .= $this->build_attribute($v['s_attribute']);
                 $string .= '</style>';
             }
             $string .= '</styles>';

@@ -10,7 +10,7 @@
 <?php Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/style/js/core.js");?>
 <title><?=$this->pageTitle?></title>
 </head>
-<body>
+<body style="background-image: url(<?=Yii::app()->baseUrl . "/style/img/single_bg.png"?>);">
 <?php echo $content;?>
 </body>
 </html>

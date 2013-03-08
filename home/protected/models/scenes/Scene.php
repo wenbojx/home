@@ -135,7 +135,14 @@ class Scene extends Ydao
     		$criteria->addCondition("display={$display}");
     	}
     	$criteria->addCondition("project_id={$project_id}");
-    	$scene_datas = $this->findAll($criteria);
+    	$datas = $this->findAll($criteria);
+    	if(!$datas){
+    		return false;
+    	}
+    	$scene_datas = array();
+    	foreach($datas as $v){
+    		$scene_datas[$v['id']] = $v;
+    	}
     	return $scene_datas;
     }
     /**
