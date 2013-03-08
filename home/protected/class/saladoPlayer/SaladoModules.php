@@ -256,7 +256,9 @@ class SaladoModules extends SaladoPlayer{
     private function get_InfoBubble($infoBubble){
     	//print_r($infoBubble);
         $string = '<InfoBubble';
-        $string .= $this->build_attribute($infoBubble['s_attribute']);
+        if(isset($infoBubble['s_attribute'])){
+       		$string .= $this->build_attribute($infoBubble['s_attribute']);
+        }
         if (isset($infoBubble['settings'])){
             $string .= '<settings';
             $string .= $this->build_attribute($infoBubble['settings']);
