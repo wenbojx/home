@@ -24,11 +24,15 @@ class SingleController extends FController{
         $datas['config']['single'] = 1;
         $datas['config']['center'] = $center ? '0':'1';
         $datas['config']['title'] = $title ? '0': '1';
+        $datas['config']['contact_show'] = false;
         
         if($datas['scene_id']){
             $datas['scene'] = $this->get_scene_datas($datas['scene_id']);
             if($datas['config']['title']){
             	$datas['project'] = $this->get_project_datas($datas['scene']['project_id']);
+            	if($datas['project']['id'] == '1007'){
+            		$datas['config']['contact_show'] = true;
+            	}
             }
         }
         $this->render('/web/single', array('datas'=>$datas));

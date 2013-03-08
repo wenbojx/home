@@ -7,7 +7,7 @@
 	<table width="100%">
 		<tr>
 			<td><h3>&nbsp;<?=$datas['project']['name']?></h3></td>
-			<td align="right">联系人:张文亮 &nbsp;&nbsp;电话:13918443357</td>
+			<td align="right"><?php if($datas['config']['contact_show']){?>联系人:张文亮 &nbsp;&nbsp;电话:13918443357<?php }?></td>
 		</tr>
 	</table>
 	</div>
