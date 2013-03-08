@@ -291,7 +291,7 @@ class PanoSingleDatas{
         $path['ImageButton'] = Yii::app()->baseUrl.'/plugins/salado/modules/ImageButton.swf';
         $path['JSGateway'] = Yii::app()->baseUrl.'/plugins/salado/modules/JSGateway.swf';
         $path['MouseCursor'] = Yii::app()->baseUrl.'/plugins/salado/modules/MouseCursor.swf';
-        $path['ImageMap'] = Yii::app()->baseUrl.'/plugins/salado/modules/ImageMap-1.3.swf';
+        $path['ImageMap'] = Yii::app()->baseUrl.'/plugins/salado/modules/ImageMap-1.4.2';
         $path['InfoBubble'] = Yii::app()->baseUrl.'/plugins/salado/modules/InfoBubble-1.3.2.swf';
         if(!isset($path[$name])){
             return '';
