@@ -19,11 +19,17 @@
 	                <br><br>
 	              		<h3><span style="color: red">PanoPlayer专注移动全景播放器</span></h3>
 	              		<br>
-	                	<span>1. 支持android SDK2.2及以上的安卓手机， 如需体验请"<a target="_blank" href="/mos/panoPlayer-v1.0.apk">点击下载</a>"</span><br>
-	                	<span>2. 使用原生java语言开发,效率更快，兼容性更好。实例中连续播放130个场景轻松应对</span><br>
-	                	<span>3. 场景图片缓存，运行一次场景图片保存在手机SD卡上，下次哪怕没网络也可以播放。</span><br>
-	                	<span>4. 支持用户自定义修改应用信息，制作出您自己个性的app，如何修改详见"<a target="_blank" href="/web/doc/b">应用修改教程</a>"</span><br>
-	                	<span>QQ交流群:1423795537</span>
+	                	<span>1. 支持android SDK2.2及以上的安卓手机， 支持ios5.0及以上苹果手机及ipad</span><br>
+	                	<span>2. 使用原生语言开发,效率更快，兼容性更好。实例中连续播放130个场景轻松应对</span><br>
+	                	<span>3. 场景图片缓存，运行一次场景图片保存在手机SD卡上，下次哪怕没网络也可以播放。</span><br><br>
+	                
+	                	<strong>用户下载</strong><br>
+	                	<a target="_blank" href="https://itunes.apple.com/cn/app/xi-hu-qiu-jing/id605688832?mt=8"><img src="/mos/aimg/iphone.jpg"/></a>&nbsp;&nbsp;&nbsp;&nbsp;
+	                	<a target="_blank" href="http://static.apk.hiapk.com/html/2013/03/1239835.html"><img src="/mos/aimg/android.jpg"/></a>
+	                	
+	                	<!-- <span>4. 支持用户自定义修改应用信息，制作出您自己个性的app，如何修改详见"<a target="_blank" href="/web/doc/b">应用修改教程</a>"</span><br> -->
+	                	
+	                	<!-- <span>QQ交流群:1423795537</span> -->
 	                	
 	                	<!-- 
 	                	<strong>关于收费</strong>
