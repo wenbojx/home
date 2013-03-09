@@ -47,7 +47,7 @@ class InteriorController extends FController{
     }
     private function get_scene_list($project_id){
     	$scene_db = new Scene();
-    	return $scene_db->find_scene_by_project_id($project_id, 12);
+    	return $scene_db->find_scene_by_project_id($project_id, 8);
     }
     private function get_scene_num($project_id){
     	if(!$project_id){
