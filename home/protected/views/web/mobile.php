@@ -21,7 +21,7 @@
 	              		<br>
 	                	<span>1. 支持android SDK2.2及以上的安卓手机， 支持ios5.0及以上苹果手机及ipad</span><br>
 	                	<span>2. 使用原生语言开发,效率更快，兼容性更好。实例中连续播放130个场景轻松应对</span><br>
-	                	<span>3. 场景图片缓存，运行一次场景图片保存在手机SD卡上，下次哪怕没网络也可以播放。</span><br><br>
+	                	<span>3. 场景图片缓存，运行一次场景图片缓存在手机上，网络也可运行。</span><br><br>
 	                
 	                	<strong>用户下载</strong><br>
 	                	<a target="_blank" href="https://itunes.apple.com/cn/app/xi-hu-qiu-jing/id605688832?mt=8"><img src="/mos/aimg/iphone.jpg"/></a>&nbsp;&nbsp;&nbsp;&nbsp;
