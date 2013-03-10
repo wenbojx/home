@@ -33,10 +33,10 @@
 	<div class="span6">
 		<h3>基本信息</h3>
 		<div class="margin-top10">
-			<h4><a href="">还等什么？ 马上发布全景图</a></h4>
+			<h4><a href="<?=$this->createUrl('/member/register/a');?>">还等什么？ 马上发布全景图</a></h4>
 			<p></p>
 			<p>自主研发移动端全景播放器，速度，效率，兼容性一流</p>
-			<p>当前共有 (<a class="color_red" href="<?=$this->createUrl('/web/list/a');?>"><?=$datas['total_num']?></a>) 个场景，
+			<p>当前系统共有 (<a class="color_red" href="<?=$this->createUrl('/web/list/a');?>"><?=$datas['total_num']?></a>) 个场景，
 			<a target="_blank" href="http://weibo.com/yiluhao">关注微博</a>获取最新研发动态..
 				 <!-- <a href="<?=$this->createUrl('/web/list/a');?>">查看全部</a> -->
 			</p>
