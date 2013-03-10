@@ -11,7 +11,7 @@ class RegisterController extends FController{
         
         $datas['page']['title'] = '免费注册';
         if($this->member_id){
-        	$this->redirect(array('web/index'));
+        	$this->redirect(array('/pano/project'));
         }
         $this->render('/member/register', array('datas'=>$datas));
     }

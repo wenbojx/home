@@ -68,13 +68,16 @@ hr.soften {
 .navbar-inner .brand{
 	color:#999999;	
 }
-
+.content_center{
+	text-align:center;
+}
 .project .thumbnail{
     margin:5px 0;text-align:center;
 }
 .project .thumbnail a{
     display:block;margin:4px 0;
 }
+
 .project hr{
     margin:10px 0;
 }

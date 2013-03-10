@@ -23,25 +23,27 @@
 
 <div class="row about">
 	<div class="span6">
-		<h3>奇妙旅程</h3>
-		<p>360度全景体验，宅在家里也可以畅游世界</p>
+		<h3><a href="#">免费全景制作平台</a></h3>
+		<div class="margin-top10">
+			<p>1、免费全景播放器，功能实用，可定制</p>
+			<p>2、轻松在线制作全景项目，漫游，地图等等不在话下</p>
+			<p>3、一次制作，发布无忧，网页，手机，平板，一键搞定</p>
+		</div>
  	</div>
 	<div class="span6">
-		<h3><a href="<?=$this->createUrl('/web/list/a');?>">全部景点</a></h3>
-		<p>当前共有 (<a class="color_red" href="<?=$this->createUrl('/web/list/a');?>"><?=$datas['total_num']?></a>) 个场景，
-		<a target="_blank" href="http://weibo.com/yiluhao">关注微博</a>，获取最新景点发布信息..
-			 <a href="<?=$this->createUrl('/web/list/a');?>">查看全部</a>
-		</p>
-	</div>
-</div>
-<div class="row case">
-<?php if($datas['scenes']){ foreach ($datas['scenes'] as $v){?>
-	<div class="span3">
-		<div class="thumbnail">
-			<a href="<?=$this->createUrl('/web/detail/a/', array('id'=>$v['id']));?>">
-				<img src="<?=PicTools::get_pano_small($v['id'], '200x100')?>"/>
-			</a>
+		<h3>基本信息</h3>
+		<div class="margin-top10">
+			<h4><a href="">还等什么？ 马上发布全景图</a></h4>
+			<p></p>
+			<p>自主研发移动端全景播放器，速度，效率，兼容性一流</p>
+			<p>当前共有 (<a class="color_red" href="<?=$this->createUrl('/web/list/a');?>"><?=$datas['total_num']?></a>) 个场景，
+			<a target="_blank" href="http://weibo.com/yiluhao">关注微博</a>获取最新研发动态..
+				 <!-- <a href="<?=$this->createUrl('/web/list/a');?>">查看全部</a> -->
+			</p>
 		</div>
 	</div>
-<?php }}?>
+</div>
+<br>
+<div class="row case">
+<div class="content_center"><img src="<?=Yii::app()->baseUrl . '/style/img/yingdao.jpg'?>"/></div>
 </div>

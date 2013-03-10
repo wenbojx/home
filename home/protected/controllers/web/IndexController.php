@@ -11,8 +11,8 @@ class IndexController extends FController{
     public function actionA(){
     	$projects = $this->get_last_project($this->project_num);
     	$datas['baner_scene_id'] = $this->baner_scene_id;
-    	$datas['scenes'] = $this->get_project_panos($this->scene_num, $projects);
-    	$datas['total_num'] = $this->get_total_panos();
+    	//$datas['scenes'] = $this->get_project_panos($this->scene_num, $projects);
+    	$datas['total_num'] = $this->get_total_panos()*21;
         $this->render('/web/index', array('datas'=>$datas));
     }
     /**
