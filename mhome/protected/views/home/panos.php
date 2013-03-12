@@ -11,7 +11,7 @@
 		<ul data-role="listview" class="panos" >
 			<?php if($datas['scenes']){ foreach ($datas['scenes'] as $v){?>
 	        <li>
-	        	<a rel="external" href="<?=$this->createUrl('/home/view/a/', array('id'=>$v['id']));?>" class="ui-link-inherit">
+	        	<a rel="external" href="<?=$this->createUrl('/home/view/a/', array('id'=>$v['id']));?>/index.html" class="ui-link-inherit">
 		            <img src="<?=PicTools::get_pano_thumb($v['id'], '150x110')?>" />
 		            <h3><?=$v['name']?></h3>
 	            </a>

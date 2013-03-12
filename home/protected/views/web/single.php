@@ -25,6 +25,7 @@
 </div>
 <script type="text/javascript" src="<?=Yii::app()->baseUrl . "/style/js/common.js"?>"></script>
 <script type="text/javascript" src="<?=Yii::app()->baseUrl . "/plugins/salado/scene.js"?>"></script>
+
 <script>
 var scene_box = 'scene_box';
 var player_url = '<?=Yii::app()->baseUrl?>/plugins/salado/Player.swf';

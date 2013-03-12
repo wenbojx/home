@@ -11,6 +11,7 @@ class SingleController extends FController{
         $datas['scene_id'] = $request->getParam('id');
         $width = $request->getParam('w');
         $height = $request->getParam('h');
+        $m = $request->getParam('m');
         $datas['style']['width'] = $width ? $width : $this->default_width;
         $datas['style']['height'] = $height ? $height : $this->default_height;
         
@@ -35,7 +36,13 @@ class SingleController extends FController{
             	}
             }
         }
-        $this->render('/web/single', array('datas'=>$datas));
+        if(!$m){
+        	$this->render('/web/single', array('datas'=>$datas));
+        }
+        else{
+        	$this->layout = 'htmlPlayer';
+        	$this->render('/web/msingle', array('datas'=>$datas));
+        }
     }
     private function get_scene_datas($scene_id){
         $scene_db = new Scene();
