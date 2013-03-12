@@ -7,7 +7,7 @@ class ConfigController extends FController{
 
     public function actionA(){
     	$request = Yii::app()->request;
-
+    	$datas=array();
         $this->render('/html/config', array('datas'=>$datas));
     }
    
