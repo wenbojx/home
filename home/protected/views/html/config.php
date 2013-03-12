@@ -1,4 +1,5 @@
 
+<tour start="node_<?=$datas['scene_id']?>">
 <?php 
 $size = '1024x1024';
 $i = 0;
@@ -6,9 +7,7 @@ if($datas['scene_list']){
 foreach($datas['scene_list'] as $k=>$v){
 
 ?>
-<?php if($i===0){?>
-<tour start="node_<?=$k?>">
-<?php }?>
+
   <panorama id="node_<?=$k?>" hideabout="1">
     <view fovmode="0" pannorth="0">
       <start pan="<?=(0-$datas['scene_info'][$k]['pan'])?>" fov="<?=$datas['scene_info'][$k]['fov']?>" tilt="<?=$datas['scene_info'][$k]['tilt']?>"/>

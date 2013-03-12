@@ -7,33 +7,50 @@ class ConfigController extends FController{
 
     public function actionA(){
     	$request = Yii::app()->request;
-    	$project_id = $request->getParam('id');
+    	$scene_id = $request->getParam('id');
+    	
     	$memcache_obj = new Ymemcache();
     	$key = $memcache_obj->get_pano_html_xml_key($project_id, false);
     	//$key = 0;
     	$datas = $memcache_obj->get_mem_data($key);
     	if(!$datas){
-    		$datas['scene_list'] = $this->get_pano_list($project_id);
-    		
-    		$scene_ids = array_keys($datas['scene_list']);
-    		$scene_info = $this->get_pano_infos($scene_ids);
-    		$datas['scene_info'] = array();
-    		if($datas['scene_list']){
-    			$datas['scene_info'] = $this->format_info($scene_info, $datas['scene_list']);
+    		$scene_datas = $this->get_scene_info($scene_id);
+    		if(!$scene_datas){
+    			
     		}
-    		//print_r($datas['scene_info']);
-    		$hotspots = $this->get_hotspots($scene_ids);
-    		$datas['hotspot'] = $this->format_hotspot($datas['scene_list'], $hotspots);
-    		$content = serialize($datas);
-    		$memcache_obj->set_mem_data($key, $content, 0);
+    		else{
+	    		$project_id = $scene_datas['project_id'];
+	    		$datas['scene_list'] = $this->get_pano_list($project_id);
+	    		$scene_ids = array();
+	    		if(is_array($datas['scene_list'])){
+	    			$scene_ids = array_keys($datas['scene_list']);
+	    		}
+	    		$scene_info = $this->get_pano_infos($scene_ids);
+	    		$datas['scene_info'] = array();
+	    		if($datas['scene_list']){
+	    			$datas['scene_info'] = $this->format_info($scene_info, $datas['scene_list']);
+	    		}
+	    		//print_r($datas['scene_info']);
+	    		$hotspots = $this->get_hotspots($scene_ids);
+	    		$datas['hotspot'] = $this->format_hotspot($datas['scene_list'], $hotspots);
+	    		$content = serialize($datas);
+	    		$memcache_obj->set_mem_data($key, $content, 0);
+    		}
     	}
     	else{
     		header('mcache: cached');
     		//$datas = unserialize($content);
     	}
-
+    	$datas['scene_id'] = $scene_id;
     	//print_r($datas['hotspot']);
         $this->render('/html/config', array('datas'=>$datas));
+    }
+    /**
+     * 获取project_id
+     */
+    private function get_scene_info($scene_id){
+    	$scene_db = new Scene();
+    	return $scene_db->get_by_scene_id($scene_id);
     }
     /**
      * 处理热点

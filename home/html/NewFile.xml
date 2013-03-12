@@ -1,1 +1,256 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
+
+<tour start="node_10223">
+  <panorama id="node_10223" hideabout="1">
+    <view fovmode="0" pannorth="0">
+      <start pan="67" fov="90" tilt="-1"/>
+      <min pan="0" fov="50" tilt="-90"/>
+      <max pan="360" fov="90" tilt="90"/>
+    </view>
+    <userdata title="" datetime="" description="" copyright="" tags="" author="" source="" comment="" info="" longitude="" latitude=""/>
+    <hotspots width="180" height="20" wordwrap="1">
+    
+      <label width="180" backgroundalpha="1" enabled="1" height="20" backgroundcolor="0xffffff" bordercolor="0x000000" border="1" textcolor="0x000000" borderalpha="1" borderradius="1" wordwrap="1" textalpha="1"/>
+      <polystyle mode="0" backgroundalpha="0.2509803921568627" backgroundcolor="0x0000ff" bordercolor="0x0000ff" borderalpha="1"/>
+            <hotspot title="餐厅过道" target="" pan="59" skinid="" url="{node_10224}" id="Point160" tilt="-19"/>
+          </hotspots>
+
+    <input tile0url="http://www.dev.yiluhao.com/pp/36/20/c4/10223/s_f/fthumb/1024x1024.jpg" tile5url="http://www.dev.yiluhao.com/pp/36/20/c4/10223/s_d/fthumb/1024x1024.jpg" tilesize="1024" tile4url="http://www.dev.yiluhao.com/pp/36/20/c4/10223/s_u/fthumb/1024x1024.jpg" tile3url="http://www.dev.yiluhao.com/pp/36/20/c4/10223/s_l/fthumb/1024x1024.jpg" tilescale="1.010940919037199" tile2url="http://www.dev.yiluhao.com/pp/36/20/c4/10223/s_b/fthumb/1024x1024.jpg" tile1url="http://www.dev.yiluhao.com/pp/36/20/c4/10223/s_r/fthumb/1024x1024.jpg"/>
+    <autorotate speed="0.100" nodedelay="75.00" startloaded="0" returntohorizon="0.000" delay="5.00"/>
+    <control simulatemass="1" lockedmouse="0" lockedkeyboard="0" dblclickfullscreen="0" invertwheel="0" lockedwheel="0" invertcontrol="1" speedwheel="1" sensitivity="8"/>
+  </panorama>
+  
+<tour start="node_10223">
+  <panorama id="node_10224" hideabout="1">
+    <view fovmode="0" pannorth="0">
+      <start pan="-165" fov="90" tilt="-6"/>
+      <min pan="0" fov="50" tilt="-90"/>
+      <max pan="360" fov="90" tilt="90"/>
+    </view>
+    <userdata title="" datetime="" description="" copyright="" tags="" author="" source="" comment="" info="" longitude="" latitude=""/>
+    <hotspots width="180" height="20" wordwrap="1">
+    
+      <label width="180" backgroundalpha="1" enabled="1" height="20" backgroundcolor="0xffffff" bordercolor="0x000000" border="1" textcolor="0x000000" borderalpha="1" borderradius="1" wordwrap="1" textalpha="1"/>
+      <polystyle mode="0" backgroundalpha="0.2509803921568627" backgroundcolor="0x0000ff" bordercolor="0x0000ff" borderalpha="1"/>
+            <hotspot title="客厅" target="" pan="-159" skinid="" url="{node_10225}" id="Point161" tilt="-3"/>
+            <hotspot title="卧室过道" target="" pan="-124" skinid="" url="{node_10227}" id="Point169" tilt="-2"/>
+            <hotspot title="厨房过道" target="" pan="24" skinid="" url="{node_10232}" id="Point170" tilt="-19"/>
+            <hotspot title="餐厅" target="" pan="62" skinid="" url="{node_10233}" id="Point171" tilt="-2"/>
+            <hotspot title="客卧二" target="" pan="116" skinid="" url="{node_10234}" id="Point172" tilt="-4"/>
+            <hotspot title="门厅" target="" pan="-71" skinid="" url="{node_10223}" id="Point176" tilt="-20"/>
+          </hotspots>
+
+    <input tile0url="http://www.dev.yiluhao.com/pp/4d/05/2d/10224/s_f/fthumb/1024x1024.jpg" tile5url="http://www.dev.yiluhao.com/pp/4d/05/2d/10224/s_d/fthumb/1024x1024.jpg" tilesize="1024" tile4url="http://www.dev.yiluhao.com/pp/4d/05/2d/10224/s_u/fthumb/1024x1024.jpg" tile3url="http://www.dev.yiluhao.com/pp/4d/05/2d/10224/s_l/fthumb/1024x1024.jpg" tilescale="1.010940919037199" tile2url="http://www.dev.yiluhao.com/pp/4d/05/2d/10224/s_b/fthumb/1024x1024.jpg" tile1url="http://www.dev.yiluhao.com/pp/4d/05/2d/10224/s_r/fthumb/1024x1024.jpg"/>
+    <autorotate speed="0.100" nodedelay="75.00" startloaded="0" returntohorizon="0.000" delay="5.00"/>
+    <control simulatemass="1" lockedmouse="0" lockedkeyboard="0" dblclickfullscreen="0" invertwheel="0" lockedwheel="0" invertcontrol="1" speedwheel="1" sensitivity="8"/>
+  </panorama>
+  
+<tour start="node_10223">
+  <panorama id="node_10225" hideabout="1">
+    <view fovmode="0" pannorth="0">
+      <start pan="-10" fov="90" tilt="0"/>
+      <min pan="0" fov="50" tilt="-90"/>
+      <max pan="360" fov="90" tilt="90"/>
+    </view>
+    <userdata title="" datetime="" description="" copyright="" tags="" author="" source="" comment="" info="" longitude="" latitude=""/>
+    <hotspots width="180" height="20" wordwrap="1">
+    
+      <label width="180" backgroundalpha="1" enabled="1" height="20" backgroundcolor="0xffffff" bordercolor="0x000000" border="1" textcolor="0x000000" borderalpha="1" borderradius="1" wordwrap="1" textalpha="1"/>
+      <polystyle mode="0" backgroundalpha="0.2509803921568627" backgroundcolor="0x0000ff" bordercolor="0x0000ff" borderalpha="1"/>
+            <hotspot title="阳台" target="" pan="-16" skinid="" url="{node_10226}" id="Point162" tilt="-10"/>
+            <hotspot title="卧室过道" target="" pan="174" skinid="" url="{node_10227}" id="Point163" tilt="-7"/>
+            <hotspot title="餐厅过道" target="" pan="-108" skinid="" url="{node_10224}" id="Point173" tilt="-3"/>
+          </hotspots>
+
+    <input tile0url="http://www.dev.yiluhao.com/pp/a8/8f/55/10225/s_f/fthumb/1024x1024.jpg" tile5url="http://www.dev.yiluhao.com/pp/a8/8f/55/10225/s_d/fthumb/1024x1024.jpg" tilesize="1024" tile4url="http://www.dev.yiluhao.com/pp/a8/8f/55/10225/s_u/fthumb/1024x1024.jpg" tile3url="http://www.dev.yiluhao.com/pp/a8/8f/55/10225/s_l/fthumb/1024x1024.jpg" tilescale="1.010940919037199" tile2url="http://www.dev.yiluhao.com/pp/a8/8f/55/10225/s_b/fthumb/1024x1024.jpg" tile1url="http://www.dev.yiluhao.com/pp/a8/8f/55/10225/s_r/fthumb/1024x1024.jpg"/>
+    <autorotate speed="0.100" nodedelay="75.00" startloaded="0" returntohorizon="0.000" delay="5.00"/>
+    <control simulatemass="1" lockedmouse="0" lockedkeyboard="0" dblclickfullscreen="0" invertwheel="0" lockedwheel="0" invertcontrol="1" speedwheel="1" sensitivity="8"/>
+  </panorama>
+  
+<tour start="node_10223">
+  <panorama id="node_10226" hideabout="1">
+    <view fovmode="0" pannorth="0">
+      <start pan="-157" fov="90" tilt="-5"/>
+      <min pan="0" fov="50" tilt="-90"/>
+      <max pan="360" fov="90" tilt="90"/>
+    </view>
+    <userdata title="" datetime="" description="" copyright="" tags="" author="" source="" comment="" info="" longitude="" latitude=""/>
+    <hotspots width="180" height="20" wordwrap="1">
+    
+      <label width="180" backgroundalpha="1" enabled="1" height="20" backgroundcolor="0xffffff" bordercolor="0x000000" border="1" textcolor="0x000000" borderalpha="1" borderradius="1" wordwrap="1" textalpha="1"/>
+      <polystyle mode="0" backgroundalpha="0.2509803921568627" backgroundcolor="0x0000ff" bordercolor="0x0000ff" borderalpha="1"/>
+            <hotspot title="客厅" target="" pan="73" skinid="" url="{node_10225}" id="Point164" tilt="-10"/>
+          </hotspots>
+
+    <input tile0url="http://www.dev.yiluhao.com/pp/79/e6/25/10226/s_f/fthumb/1024x1024.jpg" tile5url="http://www.dev.yiluhao.com/pp/79/e6/25/10226/s_d/fthumb/1024x1024.jpg" tilesize="1024" tile4url="http://www.dev.yiluhao.com/pp/79/e6/25/10226/s_u/fthumb/1024x1024.jpg" tile3url="http://www.dev.yiluhao.com/pp/79/e6/25/10226/s_l/fthumb/1024x1024.jpg" tilescale="1.010940919037199" tile2url="http://www.dev.yiluhao.com/pp/79/e6/25/10226/s_b/fthumb/1024x1024.jpg" tile1url="http://www.dev.yiluhao.com/pp/79/e6/25/10226/s_r/fthumb/1024x1024.jpg"/>
+    <autorotate speed="0.100" nodedelay="75.00" startloaded="0" returntohorizon="0.000" delay="5.00"/>
+    <control simulatemass="1" lockedmouse="0" lockedkeyboard="0" dblclickfullscreen="0" invertwheel="0" lockedwheel="0" invertcontrol="1" speedwheel="1" sensitivity="8"/>
+  </panorama>
+  
+<tour start="node_10223">
+  <panorama id="node_10227" hideabout="1">
+    <view fovmode="0" pannorth="0">
+      <start pan="109" fov="90" tilt="-4"/>
+      <min pan="0" fov="50" tilt="-90"/>
+      <max pan="360" fov="90" tilt="90"/>
+    </view>
+    <userdata title="" datetime="" description="" copyright="" tags="" author="" source="" comment="" info="" longitude="" latitude=""/>
+    <hotspots width="180" height="20" wordwrap="1">
+    
+      <label width="180" backgroundalpha="1" enabled="1" height="20" backgroundcolor="0xffffff" bordercolor="0x000000" border="1" textcolor="0x000000" borderalpha="1" borderradius="1" wordwrap="1" textalpha="1"/>
+      <polystyle mode="0" backgroundalpha="0.2509803921568627" backgroundcolor="0x0000ff" bordercolor="0x0000ff" borderalpha="1"/>
+            <hotspot title="书房" target="" pan="126" skinid="" url="{node_10230}" id="Point166" tilt="-29"/>
+            <hotspot title="客卧一" target="" pan="-174" skinid="" url="{node_10231}" id="Point167" tilt="-4"/>
+            <hotspot title="客厅" target="" pan="-12" skinid="" url="{node_10225}" id="Point174" tilt="-5"/>
+            <hotspot title="主卧" target="" pan="32" skinid="" url="{node_10228}" id="Point175" tilt="-9"/>
+            <hotspot title="主卫" target="" pan="41" skinid="" url="{node_10229}" id="Point188" tilt="1"/>
+          </hotspots>
+
+    <input tile0url="http://www.dev.yiluhao.com/pp/06/94/fc/10227/s_f/fthumb/1024x1024.jpg" tile5url="http://www.dev.yiluhao.com/pp/06/94/fc/10227/s_d/fthumb/1024x1024.jpg" tilesize="1024" tile4url="http://www.dev.yiluhao.com/pp/06/94/fc/10227/s_u/fthumb/1024x1024.jpg" tile3url="http://www.dev.yiluhao.com/pp/06/94/fc/10227/s_l/fthumb/1024x1024.jpg" tilescale="1.010940919037199" tile2url="http://www.dev.yiluhao.com/pp/06/94/fc/10227/s_b/fthumb/1024x1024.jpg" tile1url="http://www.dev.yiluhao.com/pp/06/94/fc/10227/s_r/fthumb/1024x1024.jpg"/>
+    <autorotate speed="0.100" nodedelay="75.00" startloaded="0" returntohorizon="0.000" delay="5.00"/>
+    <control simulatemass="1" lockedmouse="0" lockedkeyboard="0" dblclickfullscreen="0" invertwheel="0" lockedwheel="0" invertcontrol="1" speedwheel="1" sensitivity="8"/>
+  </panorama>
+  
+<tour start="node_10223">
+  <panorama id="node_10228" hideabout="1">
+    <view fovmode="0" pannorth="0">
+      <start pan="48" fov="90" tilt="-6"/>
+      <min pan="0" fov="50" tilt="-90"/>
+      <max pan="360" fov="90" tilt="90"/>
+    </view>
+    <userdata title="" datetime="" description="" copyright="" tags="" author="" source="" comment="" info="" longitude="" latitude=""/>
+    <hotspots width="180" height="20" wordwrap="1">
+    
+      <label width="180" backgroundalpha="1" enabled="1" height="20" backgroundcolor="0xffffff" bordercolor="0x000000" border="1" textcolor="0x000000" borderalpha="1" borderradius="1" wordwrap="1" textalpha="1"/>
+      <polystyle mode="0" backgroundalpha="0.2509803921568627" backgroundcolor="0x0000ff" bordercolor="0x0000ff" borderalpha="1"/>
+            <hotspot title="客卧一" target="" pan="-151" skinid="" url="{node_10231}" id="Point178" tilt="-3"/>
+            <hotspot title="卧室过道" target="" pan="-144" skinid="" url="{node_10227}" id="Point179" tilt="-3"/>
+          </hotspots>
+
+    <input tile0url="http://www.dev.yiluhao.com/pp/16/3c/1b/10228/s_f/fthumb/1024x1024.jpg" tile5url="http://www.dev.yiluhao.com/pp/16/3c/1b/10228/s_d/fthumb/1024x1024.jpg" tilesize="1024" tile4url="http://www.dev.yiluhao.com/pp/16/3c/1b/10228/s_u/fthumb/1024x1024.jpg" tile3url="http://www.dev.yiluhao.com/pp/16/3c/1b/10228/s_l/fthumb/1024x1024.jpg" tilescale="1.010940919037199" tile2url="http://www.dev.yiluhao.com/pp/16/3c/1b/10228/s_b/fthumb/1024x1024.jpg" tile1url="http://www.dev.yiluhao.com/pp/16/3c/1b/10228/s_r/fthumb/1024x1024.jpg"/>
+    <autorotate speed="0.100" nodedelay="75.00" startloaded="0" returntohorizon="0.000" delay="5.00"/>
+    <control simulatemass="1" lockedmouse="0" lockedkeyboard="0" dblclickfullscreen="0" invertwheel="0" lockedwheel="0" invertcontrol="1" speedwheel="1" sensitivity="8"/>
+  </panorama>
+  
+<tour start="node_10223">
+  <panorama id="node_10229" hideabout="1">
+    <view fovmode="0" pannorth="0">
+      <start pan="0" fov="NaN" tilt="NaN"/>
+      <min pan="0" fov="50" tilt="-90"/>
+      <max pan="360" fov="90" tilt="90"/>
+    </view>
+    <userdata title="" datetime="" description="" copyright="" tags="" author="" source="" comment="" info="" longitude="" latitude=""/>
+    <hotspots width="180" height="20" wordwrap="1">
+    
+      <label width="180" backgroundalpha="1" enabled="1" height="20" backgroundcolor="0xffffff" bordercolor="0x000000" border="1" textcolor="0x000000" borderalpha="1" borderradius="1" wordwrap="1" textalpha="1"/>
+      <polystyle mode="0" backgroundalpha="0.2509803921568627" backgroundcolor="0x0000ff" bordercolor="0x0000ff" borderalpha="1"/>
+            <hotspot title="卧室过道" target="" pan="68" skinid="" url="{node_10227}" id="Point180" tilt="-2"/>
+          </hotspots>
+
+    <input tile0url="http://www.dev.yiluhao.com/pp/83/40/d7/10229/s_f/fthumb/1024x1024.jpg" tile5url="http://www.dev.yiluhao.com/pp/83/40/d7/10229/s_d/fthumb/1024x1024.jpg" tilesize="1024" tile4url="http://www.dev.yiluhao.com/pp/83/40/d7/10229/s_u/fthumb/1024x1024.jpg" tile3url="http://www.dev.yiluhao.com/pp/83/40/d7/10229/s_l/fthumb/1024x1024.jpg" tilescale="1.010940919037199" tile2url="http://www.dev.yiluhao.com/pp/83/40/d7/10229/s_b/fthumb/1024x1024.jpg" tile1url="http://www.dev.yiluhao.com/pp/83/40/d7/10229/s_r/fthumb/1024x1024.jpg"/>
+    <autorotate speed="0.100" nodedelay="75.00" startloaded="0" returntohorizon="0.000" delay="5.00"/>
+    <control simulatemass="1" lockedmouse="0" lockedkeyboard="0" dblclickfullscreen="0" invertwheel="0" lockedwheel="0" invertcontrol="1" speedwheel="1" sensitivity="8"/>
+  </panorama>
+  
+<tour start="node_10223">
+  <panorama id="node_10230" hideabout="1">
+    <view fovmode="0" pannorth="0">
+      <start pan="54" fov="90" tilt="-2"/>
+      <min pan="0" fov="50" tilt="-90"/>
+      <max pan="360" fov="90" tilt="90"/>
+    </view>
+    <userdata title="" datetime="" description="" copyright="" tags="" author="" source="" comment="" info="" longitude="" latitude=""/>
+    <hotspots width="180" height="20" wordwrap="1">
+    
+      <label width="180" backgroundalpha="1" enabled="1" height="20" backgroundcolor="0xffffff" bordercolor="0x000000" border="1" textcolor="0x000000" borderalpha="1" borderradius="1" wordwrap="1" textalpha="1"/>
+      <polystyle mode="0" backgroundalpha="0.2509803921568627" backgroundcolor="0x0000ff" bordercolor="0x0000ff" borderalpha="1"/>
+            <hotspot title="卧室过道" target="" pan="-129" skinid="" url="{node_10227}" id="Point181" tilt="-9"/>
+          </hotspots>
+
+    <input tile0url="http://www.dev.yiluhao.com/pp/6c/a2/34/10230/s_f/fthumb/1024x1024.jpg" tile5url="http://www.dev.yiluhao.com/pp/6c/a2/34/10230/s_d/fthumb/1024x1024.jpg" tilesize="1024" tile4url="http://www.dev.yiluhao.com/pp/6c/a2/34/10230/s_u/fthumb/1024x1024.jpg" tile3url="http://www.dev.yiluhao.com/pp/6c/a2/34/10230/s_l/fthumb/1024x1024.jpg" tilescale="1.010940919037199" tile2url="http://www.dev.yiluhao.com/pp/6c/a2/34/10230/s_b/fthumb/1024x1024.jpg" tile1url="http://www.dev.yiluhao.com/pp/6c/a2/34/10230/s_r/fthumb/1024x1024.jpg"/>
+    <autorotate speed="0.100" nodedelay="75.00" startloaded="0" returntohorizon="0.000" delay="5.00"/>
+    <control simulatemass="1" lockedmouse="0" lockedkeyboard="0" dblclickfullscreen="0" invertwheel="0" lockedwheel="0" invertcontrol="1" speedwheel="1" sensitivity="8"/>
+  </panorama>
+  
+<tour start="node_10223">
+  <panorama id="node_10231" hideabout="1">
+    <view fovmode="0" pannorth="0">
+      <start pan="-58" fov="90" tilt="-6"/>
+      <min pan="0" fov="50" tilt="-90"/>
+      <max pan="360" fov="90" tilt="90"/>
+    </view>
+    <userdata title="" datetime="" description="" copyright="" tags="" author="" source="" comment="" info="" longitude="" latitude=""/>
+    <hotspots width="180" height="20" wordwrap="1">
+    
+      <label width="180" backgroundalpha="1" enabled="1" height="20" backgroundcolor="0xffffff" bordercolor="0x000000" border="1" textcolor="0x000000" borderalpha="1" borderradius="1" wordwrap="1" textalpha="1"/>
+      <polystyle mode="0" backgroundalpha="0.2509803921568627" backgroundcolor="0x0000ff" bordercolor="0x0000ff" borderalpha="1"/>
+            <hotspot title="卧室过道" target="" pan="109" skinid="" url="{node_10227}" id="Point182" tilt="-7"/>
+          </hotspots>
+
+    <input tile0url="http://www.dev.yiluhao.com/pp/4f/64/89/10231/s_f/fthumb/1024x1024.jpg" tile5url="http://www.dev.yiluhao.com/pp/4f/64/89/10231/s_d/fthumb/1024x1024.jpg" tilesize="1024" tile4url="http://www.dev.yiluhao.com/pp/4f/64/89/10231/s_u/fthumb/1024x1024.jpg" tile3url="http://www.dev.yiluhao.com/pp/4f/64/89/10231/s_l/fthumb/1024x1024.jpg" tilescale="1.010940919037199" tile2url="http://www.dev.yiluhao.com/pp/4f/64/89/10231/s_b/fthumb/1024x1024.jpg" tile1url="http://www.dev.yiluhao.com/pp/4f/64/89/10231/s_r/fthumb/1024x1024.jpg"/>
+    <autorotate speed="0.100" nodedelay="75.00" startloaded="0" returntohorizon="0.000" delay="5.00"/>
+    <control simulatemass="1" lockedmouse="0" lockedkeyboard="0" dblclickfullscreen="0" invertwheel="0" lockedwheel="0" invertcontrol="1" speedwheel="1" sensitivity="8"/>
+  </panorama>
+  
+<tour start="node_10223">
+  <panorama id="node_10232" hideabout="1">
+    <view fovmode="0" pannorth="0">
+      <start pan="-58" fov="90" tilt="-6"/>
+      <min pan="0" fov="50" tilt="-90"/>
+      <max pan="360" fov="90" tilt="90"/>
+    </view>
+    <userdata title="" datetime="" description="" copyright="" tags="" author="" source="" comment="" info="" longitude="" latitude=""/>
+    <hotspots width="180" height="20" wordwrap="1">
+    
+      <label width="180" backgroundalpha="1" enabled="1" height="20" backgroundcolor="0xffffff" bordercolor="0x000000" border="1" textcolor="0x000000" borderalpha="1" borderradius="1" wordwrap="1" textalpha="1"/>
+      <polystyle mode="0" backgroundalpha="0.2509803921568627" backgroundcolor="0x0000ff" bordercolor="0x0000ff" borderalpha="1"/>
+            <hotspot title="餐厅" target="" pan="-38" skinid="" url="{node_10233}" id="Point183" tilt="-5"/>
+            <hotspot title="餐厅过道" target="" pan="58" skinid="" url="{node_10224}" id="Point184" tilt="-16"/>
+          </hotspots>
+
+    <input tile0url="http://www.dev.yiluhao.com/pp/12/4e/5e/10232/s_f/fthumb/1024x1024.jpg" tile5url="http://www.dev.yiluhao.com/pp/12/4e/5e/10232/s_d/fthumb/1024x1024.jpg" tilesize="1024" tile4url="http://www.dev.yiluhao.com/pp/12/4e/5e/10232/s_u/fthumb/1024x1024.jpg" tile3url="http://www.dev.yiluhao.com/pp/12/4e/5e/10232/s_l/fthumb/1024x1024.jpg" tilescale="1.010940919037199" tile2url="http://www.dev.yiluhao.com/pp/12/4e/5e/10232/s_b/fthumb/1024x1024.jpg" tile1url="http://www.dev.yiluhao.com/pp/12/4e/5e/10232/s_r/fthumb/1024x1024.jpg"/>
+    <autorotate speed="0.100" nodedelay="75.00" startloaded="0" returntohorizon="0.000" delay="5.00"/>
+    <control simulatemass="1" lockedmouse="0" lockedkeyboard="0" dblclickfullscreen="0" invertwheel="0" lockedwheel="0" invertcontrol="1" speedwheel="1" sensitivity="8"/>
+  </panorama>
+  
+<tour start="node_10223">
+  <panorama id="node_10233" hideabout="1">
+    <view fovmode="0" pannorth="0">
+      <start pan="-1" fov="90" tilt="-6"/>
+      <min pan="0" fov="50" tilt="-90"/>
+      <max pan="360" fov="90" tilt="90"/>
+    </view>
+    <userdata title="" datetime="" description="" copyright="" tags="" author="" source="" comment="" info="" longitude="" latitude=""/>
+    <hotspots width="180" height="20" wordwrap="1">
+    
+      <label width="180" backgroundalpha="1" enabled="1" height="20" backgroundcolor="0xffffff" bordercolor="0x000000" border="1" textcolor="0x000000" borderalpha="1" borderradius="1" wordwrap="1" textalpha="1"/>
+      <polystyle mode="0" backgroundalpha="0.2509803921568627" backgroundcolor="0x0000ff" bordercolor="0x0000ff" borderalpha="1"/>
+            <hotspot title="厨房过道" target="" pan="37" skinid="" url="{node_10232}" id="Point185" tilt="-10"/>
+            <hotspot title="餐厅过道" target="" pan="-21" skinid="" url="{node_10224}" id="Point186" tilt="-6"/>
+          </hotspots>
+
+    <input tile0url="http://www.dev.yiluhao.com/pp/6e/0f/64/10233/s_f/fthumb/1024x1024.jpg" tile5url="http://www.dev.yiluhao.com/pp/6e/0f/64/10233/s_d/fthumb/1024x1024.jpg" tilesize="1024" tile4url="http://www.dev.yiluhao.com/pp/6e/0f/64/10233/s_u/fthumb/1024x1024.jpg" tile3url="http://www.dev.yiluhao.com/pp/6e/0f/64/10233/s_l/fthumb/1024x1024.jpg" tilescale="1.010940919037199" tile2url="http://www.dev.yiluhao.com/pp/6e/0f/64/10233/s_b/fthumb/1024x1024.jpg" tile1url="http://www.dev.yiluhao.com/pp/6e/0f/64/10233/s_r/fthumb/1024x1024.jpg"/>
+    <autorotate speed="0.100" nodedelay="75.00" startloaded="0" returntohorizon="0.000" delay="5.00"/>
+    <control simulatemass="1" lockedmouse="0" lockedkeyboard="0" dblclickfullscreen="0" invertwheel="0" lockedwheel="0" invertcontrol="1" speedwheel="1" sensitivity="8"/>
+  </panorama>
+  
+<tour start="node_10223">
+  <panorama id="node_10234" hideabout="1">
+    <view fovmode="0" pannorth="0">
+      <start pan="4" fov="90" tilt="-3"/>
+      <min pan="0" fov="50" tilt="-90"/>
+      <max pan="360" fov="90" tilt="90"/>
+    </view>
+    <userdata title="" datetime="" description="" copyright="" tags="" author="" source="" comment="" info="" longitude="" latitude=""/>
+    <hotspots width="180" height="20" wordwrap="1">
+    
+      <label width="180" backgroundalpha="1" enabled="1" height="20" backgroundcolor="0xffffff" bordercolor="0x000000" border="1" textcolor="0x000000" borderalpha="1" borderradius="1" wordwrap="1" textalpha="1"/>
+      <polystyle mode="0" backgroundalpha="0.2509803921568627" backgroundcolor="0x0000ff" bordercolor="0x0000ff" borderalpha="1"/>
+            <hotspot title="餐厅过道" target="" pan="-166" skinid="" url="{node_10224}" id="Point187" tilt="-20"/>
+          </hotspots>
+
+    <input tile0url="http://www.dev.yiluhao.com/pp/3d/c3/7e/10234/s_f/fthumb/1024x1024.jpg" tile5url="http://www.dev.yiluhao.com/pp/3d/c3/7e/10234/s_d/fthumb/1024x1024.jpg" tilesize="1024" tile4url="http://www.dev.yiluhao.com/pp/3d/c3/7e/10234/s_u/fthumb/1024x1024.jpg" tile3url="http://www.dev.yiluhao.com/pp/3d/c3/7e/10234/s_l/fthumb/1024x1024.jpg" tilescale="1.010940919037199" tile2url="http://www.dev.yiluhao.com/pp/3d/c3/7e/10234/s_b/fthumb/1024x1024.jpg" tile1url="http://www.dev.yiluhao.com/pp/3d/c3/7e/10234/s_r/fthumb/1024x1024.jpg"/>
+    <autorotate speed="0.100" nodedelay="75.00" startloaded="0" returntohorizon="0.000" delay="5.00"/>
+    <control simulatemass="1" lockedmouse="0" lockedkeyboard="0" dblclickfullscreen="0" invertwheel="0" lockedwheel="0" invertcontrol="1" speedwheel="1" sensitivity="8"/>
+  </panorama>
+  </tour>
