@@ -59,7 +59,9 @@ class ConfigController extends FController{
     private function format_info($scene_info, $scene_list){
     	$scene_datas = array();
     	foreach ($scene_list as $k=>$v){
-    		$pano_info = $scene_info[$k];
+    		if(isset($scene_info[$k])){
+    			$pano_info = $scene_info[$k];
+    		}
     		$attribute = array();
     		$pan = 0;
     		$tilt = 0;
