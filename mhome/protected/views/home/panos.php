@@ -1,7 +1,11 @@
 <?php $this->pageTitle=$datas['project']['name'].'---足不出户，畅游中国';?>
 <div data-role="page">
 
-	
+	<div data-role="header">
+		
+		<h1><?=$datas['project']['name']?></h1>
+		
+	</div><!-- /header -->
 
 	<div data-role="content">	
 		<ul data-role="listview" class="panos" >
