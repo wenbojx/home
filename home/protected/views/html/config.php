@@ -16,7 +16,7 @@
 
     <input tile0url="/pp/3f/66/94/10001/s_r/fthumb/1024x1024.jpg" tile5url="/pp/3f/66/94/10001/s_l/fthumb/1024x1024.jpg" tilesize="1024" tile4url="/pp/3f/66/94/10001/s_u/fthumb/1024x1024.jpg" tile3url="/pp/3f/66/94/10001/s_d/fthumb/1024x1024.jpg" tilescale="1.010940919037199" tile2url="/html/right.jpg" tile1url="/html/up.jpg"/>
     <autorotate speed="0.100" nodedelay="75.00" startloaded="0" returntohorizon="0.000" delay="5.00"/>
-    <control simulatemass="0" lockedmouse="0" lockedkeyboard="0" dblclickfullscreen="0" invertwheel="0" lockedwheel="0" invertcontrol="0" speedwheel="1" sensitivity="0"/>
+    <control simulatemass="0" lockedmouse="0" lockedkeyboard="0" dblclickfullscreen="0" invertwheel="0" lockedwheel="0" invertcontrol="0" speedwheel="0" sensitivity="0"/>
   </panorama>
   <panorama id="node1" hideabout="1">
     <view fovmode="0" pannorth="0">
