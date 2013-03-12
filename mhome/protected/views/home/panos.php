@@ -4,7 +4,7 @@
 	<div data-role="header">
 		
 		<h1><?=$datas['project']['name']?></h1>
-		
+		<a data-rel="back" href="#" data-role="button" data-mini="true">返回</a>
 	</div><!-- /header -->
 
 	<div data-role="content">	
