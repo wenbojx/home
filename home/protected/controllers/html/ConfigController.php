@@ -11,9 +11,8 @@ class ConfigController extends FController{
     	$memcache_obj = new Ymemcache();
     	$key = $memcache_obj->get_pano_html_xml_key($project_id, false);
     	//$key = 0;
-    	$datas = $memcache_obj->get_mem_data($key);
-    	if(!$datas){
-    		echo 111;
+    	$content = $memcache_obj->get_mem_data($key);
+    	if(!$content){
     		$datas['scene_list'] = $this->get_pano_list($project_id);
     		
     		$scene_ids = array_keys($datas['scene_list']);
@@ -25,8 +24,12 @@ class ConfigController extends FController{
     		//print_r($datas['scene_info']);
     		$hotspots = $this->get_hotspots($scene_ids);
     		$datas['hotspot'] = $this->format_hotspot($datas['scene_list'], $hotspots);
-    		//$content = 
-    		$memcache_obj->set_mem_data($key, $datas, 0);
+    		$content = serialize($datas);
+    		$memcache_obj->set_mem_data($key, $content, 0);
+    	}
+    	else{
+    		header('mcache: cached');
+    		$datas = unserialize($content);
     	}
 
     	//print_r($datas['hotspot']);

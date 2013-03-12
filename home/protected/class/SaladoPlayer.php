@@ -68,6 +68,7 @@ class SaladoPlayer{
     	$key = $memcache_obj->get_pano_xml_key($id, false);
     	//$key = 0;
     	if( $content = $memcache_obj->get_mem_data($key)){
+    		header('mcache: cached');
     		return $content;
     	}
     	else{
@@ -94,6 +95,7 @@ class SaladoPlayer{
     	$memcache_obj = new Ymemcache();
     	$key = $memcache_obj->get_pano_xml_key($id, false);
     	if($content = $memcache_obj->get_mem_data($key)){
+    		header('mcache: cached');
     		return $content;
     	}
     	else{
@@ -114,6 +116,7 @@ class SaladoPlayer{
     	$memcache_obj = new Ymemcache();
     	$key = $memcache_obj->get_pano_xml_key($id, true);
     	if($content = $memcache_obj->get_mem_data($key)){
+    		header('mcache: cached');
     		return $content;
     	}
     	else{
