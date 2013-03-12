@@ -40,7 +40,7 @@ class ConfigController extends FController{
     	foreach($scene_list as $k=>$v){
     		//print_r($hotspots[$k]);
     		//$hotspot = $hotspots[$k];
-    		if($hotspots[$k]){
+    		if(isset($hotspots[$k])){
 	    		foreach($hotspots[$k] as $k1=>$v1){
 		    		//$hotspot_id = $hotspot[$k1]['id'];
 		    		$hotspot_datas[$k][$k1]['pan'] = $v1['pan'];
