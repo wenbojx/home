@@ -11,7 +11,7 @@
 <script type="text/javascript">
 window.addEventListener("load", hideUrlBar);
 window.addEventListener("resize", hideUrlBar);
-window.addEventListener("orientationchange", hideUrlBar);
+//window.addEventListener("orientationchange", hideUrlBar);
 </script>
 <style type="text/css" title="Default">
 			/* fullscreen */
