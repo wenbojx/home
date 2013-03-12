@@ -9,17 +9,18 @@ class ConfigController extends FController{
     	$request = Yii::app()->request;
     	$scene_id = $request->getParam('id');
     	
+    	$scene_datas = $this->get_scene_info($scene_id);
+    	$project_id = 0;
+    	if($scene_datas){
+    		$project_id = $scene_datas['project_id'];
+    	}
+
     	$memcache_obj = new Ymemcache();
     	$key = $memcache_obj->get_pano_html_xml_key($project_id, false);
     	//$key = 0;
     	$datas = $memcache_obj->get_mem_data($key);
     	if(!$datas){
-    		$scene_datas = $this->get_scene_info($scene_id);
-    		if(!$scene_datas){
-    			
-    		}
-    		else{
-	    		$project_id = $scene_datas['project_id'];
+    		
 	    		$datas['scene_list'] = $this->get_pano_list($project_id);
 	    		$scene_ids = array();
 	    		if(is_array($datas['scene_list'])){
@@ -35,7 +36,6 @@ class ConfigController extends FController{
 	    		$datas['hotspot'] = $this->format_hotspot($datas['scene_list'], $hotspots);
 	    		$content = serialize($datas);
 	    		$memcache_obj->set_mem_data($key, $content, 0);
-    		}
     	}
     	else{
     		header('mcache: cached');
