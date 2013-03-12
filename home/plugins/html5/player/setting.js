@@ -26,7 +26,7 @@ function pano2vrGyro(panoObject,containerId) {
 
 	this.disable=function() {
 		if (isDeviceEnabled && isEnabled) {
-			window.removeEventListener("deviceorientation", handleDeviceOrientation);
+			//window.removeEventListener("deviceorientation", handleDeviceOrientation);
 			container.removeEventListener("touchstart", handleTouchStart);
 			container.removeEventListener("touchend", handleTouchEnd);		
 			container.removeEventListener("touchcancel", handleTouchEnd);	
@@ -64,7 +64,7 @@ function pano2vrGyro(panoObject,containerId) {
 	var lastTouch=0;
 
 	function handleDeviceOrientation(event) {
-
+return false;
 		if ((!event["alpha"]) || (!event["beta"]) || (!event["gamma"])) return;
 		 
 		var d = new Date();
