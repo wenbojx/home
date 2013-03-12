@@ -49,7 +49,7 @@ class ConfigController extends FController{
 		    		$hotspot_datas[$k][$k1]['link_scene_id'] = $v1['link_scene_id'];
 		    		$title = '';
 		    		if(isset($scene_list[$v1['link_scene_id']])){
-		    			$title = $scene_list[$v1['link_scene_id']];
+		    			$title = $scene_list[$v1['link_scene_id']]['name'];
 		    		}
 		    		$hotspot_datas[$k][$k1]['title'] = $title;
 	    		}
