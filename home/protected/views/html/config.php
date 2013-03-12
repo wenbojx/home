@@ -20,7 +20,7 @@ foreach($datas['scene_list'] as $k=>$v){
     
       <label width="180" backgroundalpha="1" enabled="1" height="20" backgroundcolor="0xffffff" bordercolor="0x000000" border="1" textcolor="0x000000" borderalpha="1" borderradius="1" wordwrap="1" textalpha="1"/>
       <polystyle mode="0" backgroundalpha="0.2509803921568627" backgroundcolor="0x0000ff" bordercolor="0x0000ff" borderalpha="1"/>
-      <?php if($datas['hotspot'][$k]){
+      <?php if(isset($datas['hotspot'][$k])){
       foreach($datas['hotspot'][$k] as $k1=>$v1){
 		if($v1['type'] != '2'){
 			continue;
