@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html><head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		
+		<script type="text/javascript">
+			// hide URL field on the iPhone/iPod touch
+			function hideUrlBar() {
+				if (((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)))) {
+					container = document.getElementById("container");
+					if (container) {
+						var cheight;
+					  	switch(window.innerHeight) {
+							case 208:cheight=268; break; // landscape
+						 	case 260:cheight=320; break; // landscape, fullscreen
+						 	case 336:cheight=396; break; // portrait, in call status bar
+							case 356:cheight=416; break; // portrait 
+							case 424:cheight=484; break; // portrait iPhone5, in call status bar
+							case 444:cheight=504; break; // portrait iPhone5 
+						 	default:
+								cheight=window.innerHeight;
+						}
+						if ((cheight) && ((container.offsetHeight!=cheight) || (window.innerHeight!=cheight))) {
+							container.style.height=cheight + "px";
+							setTimeout(function() { hideUrlBar(); }, 1000);
+						}
+					}
+				}
+				
+				document.getElementsByTagName("body")[0].style.marginTop="1px";
+				window.scrollTo(0, 1);
+			}
+			window.addEventListener("load", hideUrlBar);
+			window.addEventListener("resize", hideUrlBar);
+			window.addEventListener("orientationchange", hideUrlBar);
+		</script>
+		<style type="text/css" title="Default">
+			body, div, h1, h2, h3, span, p {
+				font-family: Verdana,Arial,Helvetica,sans-serif;
+				color: #000000; 
+			}
+			/* fullscreen */
+			html {
+				height:100%;
+			}
+			body {
+				height:100%;
+				margin: 0px;
+				overflow:hidden; /* disable scrollbars */
+			}
+			body {
+			  font-size: 10pt;
+			  background : #ffffff; 
+			}
+			table,tr,td {
+				font-size: 10pt;
+				border-color : #777777;
+				background : #dddddd; 
+				color: #000000; 
+				border-style : solid;
+				border-width : 2px;
+				padding: 5px;
+				border-collapse:collapse;
+			}
+			h1 {
+				font-size: 18pt;
+			}
+			h2 {
+				font-size: 14pt;
+			}
+			.warning { 
+				font-weight: bold;
+			} 
+			/* fix for scroll bars on webkit & Mac OS X Lion */ 
+			::-webkit-scrollbar {
+				background-color: rgba(0,0,0,0.5);
+				width: 0.75em;
+			}
+			::-webkit-scrollbar-thumb {
+    			background-color:  rgba(255,255,255,0.5);
+			}
+		</style>	
+	</head>
+	<body style="margin-top: 1px;">
+		<script type="text/javascript" src="yf_files/pano2vr_player.js">
+		</script>
+		<script type="text/javascript" src="yf_files/skin.js">
+		</script>
+		<script type="text/javascript" src="yf_files/pano2vrgyro.js">
+		</script>
+		<div id="container" style="width:100%;height:100%;"><div style="top:  0px;left: 0px;position:relative;"><div style="top: 0px; left: 0px; width: 1280px; height: 696px; overflow: hidden; position: absolute; z-index: 0; -moz-user-select: none;"><canvas height="696" width="1280"></canvas></div><div style="top: 0px; left: 0px; width: 1280px; height: 696px; overflow: hidden; position: absolute; z-index: 1000; -moz-user-select: none; cursor: auto;"><div style="position: absolute; left: 1077.26px; top: 235.599px; width: 5px; height: 5px; transform-origin: 50% 50% 0px; visibility: inherit; transition: none 0s ease 0s ;"><div style="position:absolute;left: -18px;top:  -10px;width: 39px;height: 39px;-moz-transform-origin: 50% 50%;visibility: inherit;"><img style="position: absolute;top: 0px;left: 0px;" src="yf_files/hsimage.png"></div><div style="position: absolute; left: -31.5px; top: 38px; width: auto; height: auto; transform-origin: 50% 50% 0px; visibility: hidden; border: 1px solid rgb(0, 0, 0); color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); text-align: center; white-space: nowrap; padding: 0px 1px; overflow: hidden; transition: none 0s ease 0s ;">Top-level</div></div><div style="position: absolute; left: 931.133px; top: 423.825px; width: 5px; height: 5px; transform-origin: 50% 50% 0px; visibility: inherit; transition: none 0s ease 0s ;"><div style="position:absolute;left: -18px;top:  -10px;width: 39px;height: 39px;-moz-transform-origin: 50% 50%;visibility: inherit;"><img style="position: absolute;top: 0px;left: 0px;" src="yf_files/hsimage.png"></div><div style="position: absolute; left: -81.5px; top: 38px; width: auto; height: auto; transform-origin: 50% 50% 0px; visibility: hidden; border: 1px solid rgb(0, 0, 0); color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); text-align: center; white-space: nowrap; padding: 0px 1px; overflow: hidden; transition: none 0s ease 0s ;">The middle layer - parlor</div></div><div style="position:absolute;left: 1px;top:  1px;width: 156px;height: 153px;-moz-transform-origin: 50% 50%;visibility: inherit;"><div style="position: absolute; left: 22px; top: 10px; width: 87px; height: 99px; transform-origin: 50% 50% 0px; visibility: hidden; transform: translate(0px, 0px) rotate(0deg) scale(1, 1) rotate(66.5163deg);"><img style="position: absolute;top: 0px;left: 0px;" src="yf_files/compass.png"></div><div style="position: absolute; left: 34px; top: 16px; width: 63px; height: 45px; transform-origin: 50% 50% 0px; visibility: inherit; transform: translate(0px, 0px) rotate(0deg) scale(1, 1) scale(0.795436, 1);"><img style="position: absolute;top: 0px;left: 0px;" src="yf_files/range.png"></div><div style="position:absolute;left: 23px;top:  19px;width: 84px;height: 84px;-moz-transform-origin: 50% 50%;visibility: inherit;"><img style="position: absolute;top: 0px;left: 0px;" src="yf_files/backimage.png"></div><div style="position:absolute;left: 54px;top:  28px;width: 24px;height: 19px;-moz-transform-origin: 50% 50%;visibility: inherit;cursor: pointer;"><img style="position: absolute;top: 0px;left: 0px;width: 24px;height: 19px;" src="yf_files/north.png"></div><div style="position:absolute;left: 53px;top:  72px;width: 24px;height: 19px;-moz-transform-origin: 50% 50%;visibility: inherit;"><img style="position: absolute;top: 0px;left: 0px;width: 24px;height: 19px;" src="yf_files/south.png"></div><div style="position:absolute;left: 78px;top:  48px;width: 19px;height: 24px;-moz-transform-origin: 50% 50%;visibility: inherit;"><img style="position: absolute;top: 0px;left: 0px;width: 19px;height: 24px;" src="yf_files/east.png"></div><div style="position:absolute;left: 34px;top:  48px;width: 18px;height: 24px;-moz-transform-origin: 50% 50%;visibility: inherit;"><img style="position: absolute;top: 0px;left: 0px;width: 18px;height: 24px;" src="yf_files/west.png"></div><div style="position:absolute;left: 54px;top:  117px;width: 22px;height: 22px;-moz-transform-origin: 50% 50%;visibility: inherit;cursor: pointer;"><img style="position: absolute;top: 0px;left: 0px;width: 22px;height: 22px;" src="yf_files/zoom_in.png"></div><div style="position:absolute;left: 117px;top:  51px;width: 22px;height: 22px;-moz-transform-origin: 50% 50%;visibility: inherit;"><img style="position: absolute;top: 0px;left: 0px;width: 22px;height: 22px;" src="yf_files/zoom_out.png"></div></div><div style="position: absolute; left: 1129px; top: 547px; width: 178px; height: 182px; transform-origin: 50% 50% 0px; transform: translate(0px, 0px) rotate(0deg) scale(0.6, 0.6); visibility: inherit; transition: none 0s ease 0s ;"><img style="position: absolute;top: 0px;left: 0px;" src="yf_files/_14.png"></div></div><canvas height="696" width="1280" style="top: 0px; left: 0px; width: 1280px; height: 696px; overflow: hidden; position: absolute; z-index: 900; -moz-user-select: none; visibility: hidden;"></canvas><div style="top:  0px;left: 0px;position:absolute;padding: 3px;visibility: hidden;z-index: 1100;"></div><audio autoplay="autoplay"><source src="yf_files/Somebody%2520That%2520I%2520Used%2520To%2520Know_Result.mp3"></audio></div></div>
+		<script type="text/javascript">
+	
+	
+			// create the panorama player with the container
+			pano=new pano2vrPlayer("container");
+			// add the skin object
+			skin=new pano2vrSkin(pano);
+			// load the configuration
+			pano.readConfigUrl("/plugins/yf.xml");
+			// hide the URL bar on the iPhone
+			hideUrlBar();
+			// add gyroscope controller
+			gyro=new pano2vrGyro(pano,"container");
+		</script>
+		<noscript>
+			<p><b>Please enable Javascript!</b></p>
+		</noscript>
+	
+
+</body></html>

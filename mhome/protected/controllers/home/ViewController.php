@@ -1,7 +1,7 @@
 <?php
 class ViewController extends FController{
     public $defaultAction = 'a';
-    public $layout = 'home';
+    public $layout = 'player';
     public $player = true;
     private $scene_db = null;
 

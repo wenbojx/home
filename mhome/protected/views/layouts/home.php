@@ -21,9 +21,6 @@
 		padding:0;
 	}
 </style>
-	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/plugins/threepano/three.min.js");?>
-	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/plugins/threepano/CSS3DRenderer.js");?>
-	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/style/js/player.js");?>
 		
 <?php }?>
 </head> 

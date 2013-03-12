@@ -1,46 +1,32 @@
 <?php $this->pageTitle=$datas['scene']['name'].'---足不出户，畅游中国';?>
 <div data-role="page">
-	<div data-role="header" id="header">
+	<div data-role="header" id="header" style="z-index: 99999">
 		<a rel="external" href="<?=$this->createUrl('/home/panos/list/', array('id'=>$datas['scene']['project_id']));?>" data-role="button" data-icon="home" data-mini="true">返回</a>
 		<h1><?=$datas['scene']['name']?></h1>
-		<?php if($datas['next_id']){?>
-		<a href="<?=$this->createUrl('/home/view/a/', array('id'=>$datas['next_id']));?>" rel="external" data-role="button" data-mini="true">下一个</a>
-		<?php }?>
+		
 	</div><!-- /header -->
-
-	<div data-role="content" id="pano_container">
-		<div id="loading" class="loading">
-			<!-- <img src="/style/img/loading_4.gif"/> -->
-		</div>
-	</div>
-
 </div>
-<script>
-var pic_width = windows_size();
-var pic_full_width = pic_width*2;
-var tilt_size = pic_full_width+'x'+pic_full_width+'.jpg';
-var url1 = '<?=PicTools::get_img_domain(0);?>/home/pictrue/index/';
-var url2 = '<?=PicTools::get_img_domain(1);?>/home/pictrue/index/';
-var url3 = '<?=PicTools::get_img_domain(0);?>/home/pictrue/index/';
-var url4 = '<?=PicTools::get_img_domain(1);?>/home/pictrue/index/';
-var url5 = '<?=PicTools::get_img_domain(0);?>/home/pictrue/index/';
-var url6 = '<?=PicTools::get_img_domain(1);?>/home/pictrue/index/';
+<div id="container" style="width:100%;height:100%;">
+		This content requires HTML5/CSS3, WebGL, or Adobe Flash Player Version 9 or higher.
+</div>
 
-var pano_right = url1+'id/<?=$datas['pics']['right']?>/size/'+tilt_size;
-var pano_left = url2+'id/<?=$datas['pics']['left']?>/size/'+tilt_size;
-var pano_top = url3+'id/<?=$datas['pics']['up']?>/size/'+tilt_size;
-var pano_bottom = url4+'id/<?=$datas['pics']['down']?>/size/'+tilt_size;
-var pano_front = url5+'id/<?=$datas['pics']['front']?>/size/'+tilt_size;
-var pano_back = url6+'id/<?=$datas['pics']['back']?>/size/'+tilt_size;
-
-var camera, scene, renderer;
-var geometry, material, mesh;
-var target = new THREE.Vector3();
-
-var lon = 90, lat = 0;
-var phi = 0, theta = 0;
-var touchX, touchY;
-
-init('pano_container');
-animate()
-</script>
+<script type="text/javascript" src="/style/player/player.js"></script>
+<script type="text/javascript" src="/style/player/skin.js"></script>
+<script type="text/javascript" src="/style/player/setting.js"></script>
+<script type="text/javascript">
+	
+	
+			// create the panorama player with the container
+			pano=new pano2vrPlayer("container");
+			// add the skin object
+			skin=new pano2vrSkin(pano,'/html/yf_files/');
+			// load the configuration
+			pano.readConfigUrl("/html/yf.xml");
+			// hide the URL bar on the iPhone
+			hideUrlBar();
+			// add gyroscope controller
+			gyro=new pano2vrGyro(pano,"container");
+		</script>
+		<noscript>
+			<p><b>您的浏览器不支持js</b></p>
+		</noscript>
