@@ -4,9 +4,9 @@
 	<div data-role="header">
 		
 		<h1><?=$datas['project']['name']?>详细</h1>
-		<?php if(!$datas['back_hide']){?>
+		
 		<a data-rel="back" href="#" data-role="button" data-mini="true">返回</a>
-		<?php }?>
+		
 	</div><!-- /header -->
 
 	<div data-role="content">	
