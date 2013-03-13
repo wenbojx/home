@@ -3,6 +3,11 @@ $this->pageTitle=$datas['page_title'].'---足不出户，畅游中国';
 $edit = $datas['done'] == 'doEdit' ? true : false;
 $datas['project']['category_id'] = $edit ? $datas['project']['category_id'] :'';
 ?>
+    <style type="text/css">
+        .clear {
+            clear: both;
+        }
+    </style>
 <div class="detail">
     <div class="hero-unit margin-top55">
         <h2>简单，易用</h2>
@@ -38,8 +43,9 @@ $datas['project']['category_id'] = $edit ? $datas['project']['category_id'] :'';
 	                        <div class="control-group">
 	                            <label class="control-label" for="login_passwd">项目简介</label>
 	                            <div class="controls">
-	                            	<textarea id="project_desc" class="input-xlarge" rows="3"><?=$edit ? $datas['project']['desc']:''?></textarea>
-	                                
+	                            	<div>
+	                                <script id="project_desc" type="text/plain"><?=($edit||$datas['scene']['desc']=='') ? $datas['project']['desc']:'请输入简介'?></script>
+	                            	</div>
 	                            </div>
 	                        </div>
 	                        <div class="form-actions">
@@ -60,7 +66,14 @@ $datas['project']['category_id'] = $edit ? $datas['project']['category_id'] :'';
         </div>
     </div>
 </div>
+<script type="text/javascript" src="<?=Yii::app()->baseUrl . "/plugins/ueditor/editor_config.js"?>"></script>
+<script type="text/javascript" src="<?=Yii::app()->baseUrl . "/plugins/ueditor/editor_all.js"?>"></script>
 <script>
+var ue = UE.getEditor('project_desc');
+ue.initialFrameWidth = 300;
+ue.addListener('ready',function(){
+    this.focus()
+});
 var project_url = '<?=$this->createUrl('/pano/project/list/');?>';
 </script>
 

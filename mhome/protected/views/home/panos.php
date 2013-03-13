@@ -1,12 +1,14 @@
-<?php $this->pageTitle=$datas['project']['name'].'---足不出户，畅游中国';?>
+<?php $this->pageTitle=$datas['project']['name'].'---yiluhao.com';?>
 <div data-role="page">
 
 	<div data-role="header">
-		
-		<h1><?=$datas['project']['name']?></h1>
 		<?php if(!$datas['back_hide']){?>
-		<a data-rel="back" href="#" data-role="button" data-mini="true">返回</a>
+		<a data-rel="back"  href="#" data-role="button" data-mini="true">返回</a>
+		<?php }else{?>
+		<a href="#" data-role="button" data-icon="home" data-mini="true">首页</a>
 		<?php }?>
+		<h1><?=$datas['project']['name']?></h1>
+		<a rel="external" href="<?=$this->createUrl('/home/info/a/', array('id'=>$datas['project']['id']));?>/" data-role="button" data-icon="info" data-mini="true">详细</a>
 	</div><!-- /header -->
 
 	<div data-role="content">	

@@ -13,7 +13,9 @@ function save_project(id){
         done_error(element_id, '请输入项目名称')
         return false;
     }
-    data.desc = $("#project_desc").val();
+    //data.desc = $("#project_desc").val();
+    data.desc = UE.getEditor('project_desc').getContent();
+    //alert(data.desc);
     url = $("#save_project").attr('action');
     save_datas(url, data, '', '', call_back);
     function call_back(datas){
@@ -40,7 +42,7 @@ function save_scene(id){
         done_error(element_id, '参数错误')
         return false;
     }
-    data.desc = $("#scene_desc").val();
+    data.desc = UE.getEditor('scene_desc').getContent();
     data.photo_time = $("#scene_photo_time").val();
     url = $("#save_scene").attr('action');
     save_datas(url, data, '', '', call_back);

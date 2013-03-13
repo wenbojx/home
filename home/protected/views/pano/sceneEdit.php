@@ -2,6 +2,11 @@
 $this->pageTitle=$datas['page_title'].'---足不出户，畅游中国';
 $edit = $datas['done'] == 'doEdit' ? true : false;
 ?>
+    <style type="text/css">
+        .clear {
+            clear: both;
+        }
+    </style>
 <div class="detail">
     <div class="hero-unit margin-top55">
         <h2>简单，易用</h2>
@@ -27,17 +32,21 @@ $edit = $datas['done'] == 'doEdit' ? true : false;
 	                            </div>
 	                        </div>
 	                        <div class="control-group">
-	                            <label class="control-label" for="login_passwd">场景简介</label>
+	                            <label class="control-label" for="login_passwd">拍摄时间</label>
 	                            <div class="controls">
-	                            	<textarea name="desc" id="scene_desc" class="input-xlarge" rows="3"><?=$edit ? $datas['scene']['desc']:''?></textarea>
+	                            	<input type="text" name="photo_time" class="input-xlarge" value="<?=$edit ? date('Y-m-d H:i',$datas['scene']['photo_time']):date('Y-m-d H:i',(time()-3600*24))?>" id="scene_photo_time">
 	                            </div>
 	                        </div>
 	                        <div class="control-group">
-	                            <label class="control-label" for="login_passwd">拍摄时间</label>
+	                            <label class="control-label" for="login_passwd">场景简介</label>
 	                            <div class="controls">
-	                            	<input type="text" name="photo_time" class="input-xlarge" value="<?=$edit ? date('Y-m-d H:i',$datas['scene']['photo_time']):''?>" id="scene_photo_time">
+	                            	<div>
+	                            	<?=($edit||$datas['scene']['desc']!='') ? $datas['scene']['desc']:'请输入简介'?>
+	                            	<script id="scene_desc" type="text/plain"><?=($edit||$datas['scene']['desc']=='') ? $datas['scene']['desc']:'请输入简介'?></script>
+	                            	</div>
 	                            </div>
 	                        </div>
+	                        
 	                        
 	                        <div class="form-actions">
 	                            <button class="btn btn-primary" type="button" onclick="save_scene(<?=$edit ? $datas['scene']['id']:''?>)">保存</button>
@@ -57,7 +66,14 @@ $edit = $datas['done'] == 'doEdit' ? true : false;
         </div>
     </div>
 </div>
+<script type="text/javascript" src="<?=Yii::app()->baseUrl . "/plugins/ueditor/editor_config.js"?>"></script>
+<script type="text/javascript" src="<?=Yii::app()->baseUrl . "/plugins/ueditor/editor_all.js"?>"></script>
 <script>
+var ue = UE.getEditor('scene_desc');
+ue.initialFrameWidth = 300;
+ue.addListener('ready',function(){
+    this.focus()
+});
 var scene_url = '<?=$this->createUrl('/pano/scene/list/', array('id'=>$project_id));?>';
 </script>
 

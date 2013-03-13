@@ -1,4 +1,4 @@
-<?php $this->pageTitle='一路好---足不出户，畅游中国';?>
+<?php $this->pageTitle='----yiluhao.com';?>
 <div data-role="page">
 
 	<div data-role="header">

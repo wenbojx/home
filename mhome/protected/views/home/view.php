@@ -1,4 +1,4 @@
-<?php $this->pageTitle=$datas['scene']['name'].'---足不出户，畅游中国';?>
+<?php $this->pageTitle=$datas['scene']['name'].'---yiluhao.com';?>
 <div data-role="page">
 	<div data-role="header" id="header" style="z-index: 99999">
 		<a rel="external"
