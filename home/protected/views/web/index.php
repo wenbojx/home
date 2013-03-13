@@ -1,4 +1,4 @@
-<?php $this->pageTitle='全景，三维，上海';?>
+<?php $this->pageTitle='全景，漫游，三维，上海，免费，发布平台';?>
 <div class="hero-unit padding5" id="static_banner">
 	<div class="banner_box">
 		<div class="index_banner" style="background:url(<?=Yii::app()->baseUrl . '/style/banner/'.$datas['baner_scene_id'].'.jpg'?>)">

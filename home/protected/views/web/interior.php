@@ -1,4 +1,4 @@
-<?php $this->pageTitle='全景，三维，上海';?>
+<?php $this->pageTitle='全景，室内，家居，三维，上海';?>
 <div class="list">
 	<div class="hero-unit margin-top55">
 		<div class="banner_box">
