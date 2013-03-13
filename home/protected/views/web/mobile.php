@@ -1,5 +1,10 @@
 <?php $this->pageTitle='手机,移动，全景，三维，上海';?>
+<?php 
+$widhtHeight = $widhtHeight = 100;
+$chl = urlencode("https://itunes.apple.com/cn/app/xi-hu-qiu-jing/id605688832?mt=8");
+$ch2 = urlencode('http://www.yiluhao.com/mos/panoPlayer-v1.0.apk');
 
+?>
 	<div class="hero-unit padding5" id="static_banner">
 		<div class="banner_box">
 			<br>
@@ -24,8 +29,27 @@
 	                	<span>3. 场景图片缓存，运行一次场景图片缓存在手机上，网络也可运行。</span><br><br>
 	                
 	                	<strong>用户下载</strong><br>
-	                	<a target="_blank" href="https://itunes.apple.com/cn/app/xi-hu-qiu-jing/id605688832?mt=8"><img src="/mos/aimg/iphone.jpg"/></a>&nbsp;&nbsp;&nbsp;&nbsp;
-	                	<a target="_blank" href="http://static.apk.hiapk.com/html/2013/03/1239835.html"><img src="/mos/aimg/android.jpg"/></a>
+	            		<table width="300">
+	                		<tr>
+	                			<td height="60">
+	                			<a target="_blank" href="https://itunes.apple.com/cn/app/xi-hu-qiu-jing/id605688832?mt=8"><img src="/mos/aimg/iphone.jpg"/></a>&nbsp;&nbsp;&nbsp;&nbsp;
+	                	
+	                			</td>
+	                			<td>
+	                			<a target="_blank" href="http://static.apk.hiapk.com/html/2013/03/1239835.html"><img src="/mos/aimg/android.jpg"/></a>
+	                	
+	                			</td>
+	                		</tr>
+	                		<tr>
+	                			<td><?php echo '<img src="http://chart.apis.google.com/chart?chs='.$widhtHeight.'x'.$widhtHeight.'&cht=qr&chld=L|0&chl='.$chl.'" alt="QR code" widhtHeight="'.$widhtHeight.'" widhtHeight="'.$widhtHeight.'"/>';?>
+                </td>
+	                			<td>
+	                			<?php echo '<img src="http://chart.apis.google.com/chart?chs='.$widhtHeight.'x'.$widhtHeight.'&cht=qr&chld=L|0&chl='.$ch2.'" alt="QR code" widhtHeight="'.$widhtHeight.'" widhtHeight="'.$widhtHeight.'"/>';?>
+                
+	                			</td>
+	                		</tr>
+	                	</table>
+	                	
 	                	
 	                	<!-- <span>4. 支持用户自定义修改应用信息，制作出您自己个性的app，如何修改详见"<a target="_blank" href="/web/doc/b">应用修改教程</a>"</span><br> -->
 	                	
