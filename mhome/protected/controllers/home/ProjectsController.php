@@ -22,16 +22,18 @@ class ProjectsController extends FController{
     	$datas = array();
     	$this->project_db = new Project();
     	
-    	$total = $this->project_db->get_project_num();
+    	$total = $this->project_db->get_project_num(3);
     	$page_num = ceil($total/$this->page_size);
+    	//echo $page_num;
     	if($page_num<2 || $page_num == $page){
     		$this->page_next = false;
+    		//echo 111;
     	}
     	if($total>0){
     		$offset = ($page-1)*$this->page_size;
     		$order = 'id DESC';
     		//获取场景信息
-    		$project_datas = $this->project_db->get_project_list($this->page_size, $order, $offset);
+    		$project_datas = $this->project_db->get_project_list($this->page_size, $order, $offset,3);
     	}
     	
     	if(!$project_datas){
@@ -39,17 +41,17 @@ class ProjectsController extends FController{
     	}
     	$project_ids = array();
     	foreach($project_datas as $k=>$v){
-    		if($scene_datas = $this->get_scene_list($v['id'])){
     			$datas[$v['id']]['project'] = $v;
-    			$datas[$v['id']]['scene'] = $scene_datas[0];
     			$datas[$v['id']]['total_num'] = $this->get_scene_num($v['id']);
-    		}
+    			$datas[$v['id']]['thumb'] = $this->get_default_thumb($v['id']);
     	}
     	return $datas;
     }
-    private function get_scene_list($project_id){
-    	$scene_db = new Scene();
-    	return $scene_db->find_scene_by_project_id($project_id, 1);
+    /**
+     * 项目默认缩略图
+     */
+    private function get_default_thumb($project_id){
+    	return $this->project_db->get_thumb_scene_id($project_id);
     }
     private function get_scene_num($project_id){
     	if(!$project_id){

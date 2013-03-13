@@ -28,7 +28,7 @@ class ListController extends FController{
     		$offset = ($page-1)*$this->page_size;
     		$order = 'id DESC';
     		//获取场景信息
-    		$project_datas = $this->project_db->get_project_list($this->page_size, $order, $offset, 3);
+    		$project_datas = $this->project_db->get_project_list($this->page_size, $order, $offset, 3, $this->category);
     	}
     	
     	if(!$project_datas){

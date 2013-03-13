@@ -3,7 +3,7 @@
 <?php 
 $size = '1024x1024';
 $i = 0;
-if($datas['scene_list']){
+if(isset($datas['scene_list']) && is_array($datas['scene_list'])){
 foreach($datas['scene_list'] as $k=>$v){
 
 ?>

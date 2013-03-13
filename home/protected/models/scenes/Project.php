@@ -107,7 +107,7 @@ class Project extends Ydao
     /**
      * 获取项目列表
      */
-    public function get_project_list($limit=5, $order='', $offset=0, $display='', $category=1){
+    public function get_project_list($limit=5, $order='', $offset=0, $display='', $category=0){
     	
     	$criteria=new CDbCriteria;
     	$criteria->order = 'id ASC';
