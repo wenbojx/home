@@ -30,7 +30,7 @@ foreach($datas['scene_list'] as $k=>$v){
     </hotspots>
 
     <input tile0url="<?=PicTools::get_face_small($k, 's_f' , $size)?>" tile5url="<?=PicTools::get_face_small($k, 's_d' , $size)?>" tilesize="1024" tile4url="<?=PicTools::get_face_small($k, 's_u' , $size)?>" tile3url="<?=PicTools::get_face_small($k, 's_l' , $size)?>" tilescale="1.010940919037199" tile2url="<?=PicTools::get_face_small($k, 's_b' , $size)?>" tile1url="<?=PicTools::get_face_small($k, 's_r' , $size)?>"/>
-    <autorotate speed="0.0500" nodedelay="75.00" startloaded="0" returntohorizon="0.000" delay="5.00"/>
+    <autorotate speed="0.100" nodedelay="75.00" startloaded="0" returntohorizon="0.000" delay="3.00"/>
     <control simulatemass="1" lockedmouse="0" lockedkeyboard="0" dblclickfullscreen="0" invertwheel="0" lockedwheel="0" invertcontrol="1" speedwheel="1" sensitivity="8"/>
   </panorama>
   <?php $i++; }}?>
