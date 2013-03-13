@@ -20,7 +20,7 @@ $chl = urlencode("http://m.yiluhao.com/l/{$datas['project']['id']}/");
 		<?php if($datas['project']){?>
 			<h3><?=$datas['project']['name']?></h3>
 			<p>
-				<?=tools::truncate_utf8_string(strip_tags($datas['project']['desc']),160)?>
+				<?=tools::truncate_utf8_string(strip_tags($datas['project']['desc']),150)?>
 			</p>
 		<?php }?>
 	 	</div>
