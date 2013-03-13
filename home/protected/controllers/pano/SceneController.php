@@ -2,7 +2,7 @@
 class SceneController extends Controller{
     public $defaultAction = 'list';
     public $layout = 'home';
-    private $page_size = 5;
+    private $page_size = 10;
     public $madmin = true;
 
     public function actionList(){

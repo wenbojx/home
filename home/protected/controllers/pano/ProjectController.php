@@ -2,7 +2,7 @@
 class ProjectController extends Controller{
     public $defaultAction = 'list';
     public $layout = 'home';
-    private $page_size = 10;
+    private $page_size = 5;
     public $madmin = true;
 
     public function actionList(){
