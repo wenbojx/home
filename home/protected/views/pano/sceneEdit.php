@@ -41,7 +41,6 @@ $edit = $datas['done'] == 'doEdit' ? true : false;
 	                            <label class="control-label" for="login_passwd">场景简介</label>
 	                            <div class="controls">
 	                            	<div>
-	                            	<?=($edit||$datas['scene']['desc']!='') ? $datas['scene']['desc']:'请输入简介'?>
 	                            	<script id="scene_desc" type="text/plain"><?=($edit||$datas['scene']['desc']=='') ? $datas['scene']['desc']:'请输入简介'?></script>
 	                            	</div>
 	                            </div>

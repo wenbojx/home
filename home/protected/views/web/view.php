@@ -1,28 +1,32 @@
 <?php $this->pageTitle=$datas['project']['name'].'，全景，三维，上海';?>
+<?php 
+$widhtHeight = $widhtHeight = 90;
+$chl = urlencode("http://m.yiluhao.com/l/{$datas['project']['id']}/");
+
+?>
 <div class="view">
 	<div class="hero-unit margin-top55">
 		<div class="banner_box">
 			<h2>全新视觉体验</h2>
 			<div class="r_index">
 				<a style="color:#0088CC;" href="/">返回首页</a>
+				
 			</div>
 		</div>
 	</div>
 	
 	<div class="row about">
-		<div class="span6">
+		<div class="span9">
 		<?php if($datas['project']){?>
 			<h3><?=$datas['project']['name']?></h3>
 			<p>
-				<?=$datas['project']['desc']?>
+				<?=tools::truncate_utf8_string(strip_tags($datas['project']['desc']),160)?>
 			</p>
 		<?php }?>
 	 	</div>
-	 	<div class="span6">
-			<h3></h3>
-			<ol>
-				
-			</ol>
+	 	<div class="span3" style="text-align:right">
+			<?php echo '<img src="http://chart.apis.google.com/chart?chs='.$widhtHeight.'x'.$widhtHeight.'&cht=qr&chld=L|0&chl='.$chl.'" alt="QR code" widhtHeight="'.$widhtHeight.'" widhtHeight="'.$widhtHeight.'"/>';?>
+
 	 	</div>
 	</div>
 	<hr class="line3">
