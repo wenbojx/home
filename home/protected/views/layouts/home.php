@@ -74,15 +74,21 @@ var check_login_url = '<?=$this->createUrl('/member/login/check');?>';
     <div id="footer">
     	Copyright © 2012 www.yiluhao.com All Rights Reserved 
     	<a target="_blank" href="http://www.miibeian.gov.cn">沪ICP备12048111号</a>
-    	<img src="/style/img/gs.gif">
+    	<img src="/style/img/gs.gif">    	<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F9805da3aa6c6c7c215ccf3f709789543' type='text/javascript'%3E%3C/script%3E"));
+</script>
     	<br>
     	QQ：1423795537 Email:yiluhao@gmail.com 微博：<a href="http://weibo.com/yiluhao" target="_blank">http://weibo.com/yiluhao</a>
+
     	<br><br><br>
     </div>
 </div>
 <script>
     $(function(){if($.browser.msie&&parseInt($.browser.version,10)===6){$('.row div[class^="span"]:last-child').addClass("last-child");$('[class*="span"]').addClass("margin-left-20");$(':button[class="btn"], :reset[class="btn"], :submit[class="btn"], input[type="button"]').addClass("button-reset");$(":checkbox").addClass("input-checkbox");$('[class^="icon-"], [class*=" icon-"]').addClass("icon-sprite");$(".pagination li:first-child a").addClass("pagination-first-child")}})
 </script>
+
+
 <script type="text/javascript" src="<?=Yii::app()->baseUrl . "/style/js/google.analytics.js"?>"></script>
 </body>
 </html>
