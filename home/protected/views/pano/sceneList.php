@@ -1,6 +1,8 @@
 <?php $this->pageTitle=$datas['page_title'].'---足不出户，畅游中国';?>
 <?php 
 $state = array('1'=>'待发布', '2'=>'已发布');
+$widhtHeight = $widhtHeight = 100;
+$chl = urlencode("http://m.yiluhao.com/l/{$datas['project']['id']}/");
 ?>
 <div class="detail">
     <div class="hero-unit margin-top55">
@@ -59,6 +61,7 @@ $state = array('1'=>'待发布', '2'=>'已发布');
         <div class="span3">
             <div class="thumbnail">
                 <div class="list_box">
+                	<br>
                 	<button class="btn btn-success" onclick="jump_to('<?=$this->createUrl('/pano/scene/add/', array('id'=>$project_id));?>')">新建场景</button>
                 	<br>
                 	<button id="online_project" class="btn btn btn-warning" style="<?=$datas['project']['display'] == '1'?'':'display:none' ?>" onclick="publish_project(<?=$project_id?>, 2)">上线项目</button>
@@ -66,10 +69,20 @@ $state = array('1'=>'待发布', '2'=>'已发布');
                 	
                 	
                 </div>
+                
+            </div>
+            <br>
+            <div class="thumbnail">
+                <div class="list_box">
+                <br><br>
+                	<?php echo '<img src="http://chart.apis.google.com/chart?chs='.$widhtHeight.'x'.$widhtHeight.'&cht=qr&chld=L|0&chl='.$chl.'" alt="QR code" widhtHeight="'.$widhtHeight.'" widhtHeight="'.$widhtHeight.'"/>';?>
+                <br><br>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <script>
 var project_publish_url = '<?=$this->createUrl('/pano/project/publish/', array('id'=>$project_id));?>';
+
 </script>

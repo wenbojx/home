@@ -10,6 +10,10 @@ class PanosController extends FController{
         $request = Yii::app()->request;
         $project_id = $request->getParam('id');
     	$page = $request->getParam('page')?$request->getParam('page'):1;
+    	$datas['back_hide'] = false;
+    	if($page == '1'){
+    		$datas['back_hide'] = true;
+    	}
         $datas['scenes'] = $this->get_scene_list($page, $project_id);
         //print_r($datas);
         $datas['project'] = $this->get_project_datas($project_id);
