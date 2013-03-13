@@ -19,6 +19,7 @@ class ConfigController extends FController{
     	$key = $memcache_obj->get_pano_html_xml_key($project_id, false);
     	//$key = 0;
     	$datas = $memcache_obj->get_mem_data($key);
+    	print_r($datas);
     	if(!$datas || !is_array($datas)){
 	    		$datas['scene_list'] = $this->get_pano_list($project_id);
 	    		$scene_ids = array();
