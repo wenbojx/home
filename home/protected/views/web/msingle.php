@@ -10,7 +10,7 @@
 	type="text/javascript"
 	src="<?=Yii::app()->baseUrl . "/plugins/html5/player/setting.js"?>"></script>
 <div id="container" style="width: 100%; height: 100%;">This content
-	requires HTML5/CSS3, WebGL, or Adobe Flash Player Version 9 or higher.
+	
 </div>
 <div id="mapTip" class="mapTip" style="display:<?=$datas['map_flag']?'none':'block'?>">
 	<img width="60" onclick="showMap()" src="<?=PicTools::get_pano_map($datas['project']['id'], $datas['map']['map']['id'])?>">
@@ -46,6 +46,9 @@ var mobile = true;
 <script type="text/javascript" src="<?=Yii::app()->baseUrl . "/plugins/craftmap/js/craftmap.js"?>"></script>
 <script type="text/javascript" src="<?=Yii::app()->baseUrl . "/plugins/craftmap/js/map.js"?>"></script>
 <script >
+
+//alert($('#titleTip', parent.document).html());
+
 function move_to_marker_player(id){
 	var datas = id.split("_");
 	sid = datas[1];
