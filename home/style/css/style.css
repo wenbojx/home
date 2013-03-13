@@ -171,6 +171,7 @@ hr.soften {
 	z-index:11;
 	display:none;
 }
+
 .marker_map {
 	filter: alpha(opacity=10); 
 	opacity: 0.9;

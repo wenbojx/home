@@ -4,7 +4,7 @@ class SingleController extends FController{
     public $layout = 'single';
     private $default_width = "880";
     private $default_height= "550";
-    
+    private $map_show = true;
 
 	public function actionA(){
         $request = Yii::app()->request;
@@ -40,9 +40,22 @@ class SingleController extends FController{
         	$this->render('/web/single', array('datas'=>$datas));
         }
         else{
+        	$datas['map_flag'] = $request->getParam('map')==''?$this->map_show:false;
         	$this->layout = 'htmlPlayer';
+        	$datas['map'] = $this->get_map_info($datas['project']['id']);
         	$this->render('/web/msingle', array('datas'=>$datas));
         }
+    }
+    /**
+     * 获取地图信息
+     */
+    private function get_map_info($project_id){
+    	$map_db = new ProjectMap();
+    	$map_datas = $map_db->get_map_info($project_id);
+    	if(!$map_datas){
+    		return false;
+    	}
+    	return $map_datas;
     }
     private function get_scene_datas($scene_id){
         $scene_db = new Scene();

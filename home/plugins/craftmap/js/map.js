@@ -1,7 +1,7 @@
 var map_container = "imgContent";
 	var map_width = 1000;
 	var map_height = 800;
-function bind_map(class_name){
+function bind_map(class_name, click){
 	return $('.'+class_name).craftmap({
 		image: {
 			width: map_width,
@@ -17,7 +17,9 @@ function bind_map(class_name){
 			popup: false,
 			move: false,
 			onClick: function(marker, popup){
+				if(click){
 				jump_to_new_scene(marker);
+				}
 			},
 		}
 	});

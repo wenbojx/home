@@ -417,6 +417,7 @@
 									P._mouse.update(e);
 									return false;
 								},
+
 								mousemove: function(e){
 									if (md) {
 										P._mouse.update(e);

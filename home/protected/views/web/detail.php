@@ -121,7 +121,7 @@ load_scene(scene_box, scene_xml_url, player_url, 'transparent');
 map_width = '<?=$datas['map']['map']['width']?>';
 map_height = '<?=$datas['map']['map']['height']?>';
 
-bind_map(box_marker);
+bind_map(box_marker, true);
 <?php }?>
 </script>
 

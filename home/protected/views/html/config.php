@@ -25,7 +25,7 @@ foreach($datas['scene_list'] as $k=>$v){
 			continue;
 		}
       	?>
-      <hotspot title="<?=$v1['title']?>" target="" pan="<?=(0-$v1['pan'])?>" skinid="" url="{node_<?=$v1['link_scene_id']?>}" id="Point<?=$k1?>" tilt="<?=$v1['tilt']?>"/>
+      <hotspot title="<?=$v1['title']?>" target="" pan="<?=(0-$v1['pan'])?>" skinid="" url="{node_<?=$v1['link_scene_id']?>}" id="Point<?=$k1?>_<?=$v1['link_scene_id']?>" tilt="<?=$v1['tilt']?>"/>
       <?php }}?>
     </hotspots>
 

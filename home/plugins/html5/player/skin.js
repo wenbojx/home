@@ -153,6 +153,7 @@ function pano2vrSkin(player,base) {
 		this.skinTimerEvent();
 	};
 	this.hotspotProxyClick=function(id) {
+		move_to_marker_player(id);
 	}
 	this.hotspotProxyOver=function(id) {
 	}
