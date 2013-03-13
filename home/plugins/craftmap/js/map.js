@@ -17,9 +17,7 @@ function bind_map(class_name, click){
 			popup: false,
 			move: false,
 			onClick: function(marker, popup){
-				if(click){
 				jump_to_new_scene(marker);
-				}
 			},
 		}
 	});
@@ -45,11 +43,29 @@ function move_to_marker(id){
 	var container_left = $("#"+map_container).css('left').replace('px','');
 	var container_top = $("#"+map_container).css('top').replace('px','');
 	
+	var container_width =  $("#"+map_container).css('width').replace('px','');
+	var container_height =  $("#"+map_container).css('height').replace('px','');
 	var box_width = $("#"+box_marker).css('width').replace('px','');
 	var box_height = $("#"+box_marker).css('height').replace('px','');
 
 	left = -parseInt(left)+parseInt(box_width)/2;
 	top = -parseInt(top)+parseInt(box_height)/2-10;
+	var minWidth = container_width - box_width;
+	var minHeight = container_height - box_height;
+	
+	if(left<-minWidth){
+		left = -minWidth;
+	}
+	if(top<-minHeight){
+		top = -minHeight;
+	}
+	if(top>0){
+		top = 0;
+	}
+	if(left>0){
+		left = 0;
+	}
+	
 	animate = {
 			top: top,
 			left: left
@@ -80,6 +96,9 @@ function jump_to_new_scene(marker){
 	var id = id_str_split[1];
 	if(id){
 		var url = page_url+'/id/'+id+'/map/1';
+		if(mobile){
+			url = page_url+'/s/'+id+'/?m=1';
+		}
 		jump_to(url);
 	}
 }

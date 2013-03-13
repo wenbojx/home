@@ -12,6 +12,9 @@
 <div id="container" style="width: 100%; height: 100%;">This content
 	requires HTML5/CSS3, WebGL, or Adobe Flash Player Version 9 or higher.
 </div>
+<div id="mapTip" class="mapTip" style="display:<?=$datas['map_flag']?'none':'block'?>">
+	<img width="60" onclick="showMap()" src="<?=PicTools::get_pano_map($datas['project']['id'], $datas['map']['map']['id'])?>">
+</div>
 <div id="scroll_map" class="scroll_map" style="display:<?=$datas['map_flag']?'block':'none'?>">
 	<div class="marker_map" id="marker_map">
 		<?php if($flag){?>
@@ -31,7 +34,13 @@ foreach($datas['map']['position'] as $v){?>
 		<?php }
 }?>
 	</div>
+	<div style="text-align:center">
+	<button onclick='showMap()'>关 闭</button>
+	</div>
 </div>
+<script>
+var mobile = true;
+</script>
 <script type="text/javascript" src="<?=Yii::app()->baseUrl . "/style/js/core.js"?>"></script>
 <script type="text/javascript" src="<?=Yii::app()->baseUrl . "/style/js/jquery.min.js"?>"></script>
 <script type="text/javascript" src="<?=Yii::app()->baseUrl . "/plugins/craftmap/js/craftmap.js"?>"></script>
@@ -42,12 +51,24 @@ function move_to_marker_player(id){
 	sid = datas[1];
 	move_to_marker(sid);
 }
+function showMap(){
+	if($("#scroll_map").is(":hidden")){
+		$("#mapTip").hide();
+		$("#scroll_map").show();
+		
+	}
+	else{
+		$("#mapTip").show();
+		$("#scroll_map").hide();
+	}
+}
 var scene_id = '<?=$datas['scene_id']?>';
 <?php if($flag){?>
-//var page_url = '<?=$this->createUrl('/web/single/a');?>'
+var page_url = '';
 map_width = '<?=$datas['map']['map']['width']?>';
 map_height = '<?=$datas['map']['map']['height']?>';
 var box_marker = 'marker_map';
+
 bind_map(box_marker, false);
 move_to_marker(scene_id);
 <?php }?>

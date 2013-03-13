@@ -38,21 +38,27 @@ body {
 .scroll_map{
 	border:1px solid #DDDDDD;
 	filter: alpha(opacity=10); 
-	opacity: 0.7;
+	opacity: 0.9;
 	z-index:9999;
 	position:absolute; 
 	top:5px; 
-	right:1px;
-	height:200px;
+	right:2px;
+	height:300px;
 	width:350px;
 }
-
+.mapTip{
+filter: alpha(opacity=10); 
+	opacity: 0.7;
+	z-index:9998;
+	position:absolute; 
+	top:5px; 
+	right:2px;
+}
 .marker_map {
-	filter: alpha(opacity=10); 
-	opacity: 0.9;
+
 	float:left;
 	width:350px;
-	height:200px;
+	height:300px;
 	-moz-box-shadow:0 0 5px #ddd;
 	-webkit-box-shadow:0 0 5px #ddd;
 	box-shadow:0 0 5px #ddd;
