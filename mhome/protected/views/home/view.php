@@ -12,7 +12,7 @@
 	<!-- /header -->
 	<div data-role="content" style="margin: 0; padding: 0">
 		<iframe id="pano_box" name="pano_box" width="100%" scrolling="no" frameborder="0"
-			src="http://www.dev.yiluhao.com/s/<?=$datas['scene']['id']?>/?m=1"> </iframe>
+			src="http://www.yiluhao.com/s/<?=$datas['scene']['id']?>/?m=1"> </iframe>
 	</div>
 </div>
 <script>
