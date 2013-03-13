@@ -28,7 +28,7 @@ $chl = urlencode("http://m.yiluhao.com/l/{$datas['project']['id']}/");
             					<?php echo CHtml::link($v['name'],array('pano/salado/edit','id'=>$v['id']));?>
             				</div>
             				<div class="scene_desc">
-            					<?=$v['desc']?>
+            					<?=tools::truncate_utf8_string(strip_tags($v['desc']),110)?>
             					<br>
             					<?php echo CHtml::link('编辑',array('pano/scene/edit','id'=>$v['id']));?>
             					 | <?php echo $state[$v['display']];?>

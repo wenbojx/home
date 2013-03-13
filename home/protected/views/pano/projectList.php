@@ -25,7 +25,7 @@ $display = array('1'=>'待发布', '2'=>'待审核', '3'=>'已发布')
             					<?php echo CHtml::link($v['name'],array('pano/scene/list','id'=>$v['id']));?>&nbsp&nbsp&nbsp&nbsp<span style="font-size:12px">项目ID:<?=$v['id']?></span>
             				</div>
             				<div class="scene_desc">
-            					<?=$v['desc']?>
+            					<?=tools::truncate_utf8_string(strip_tags($v['desc']),110)?>
             					<br>
             					
                     			<?php echo CHtml::link("编辑",array('pano/project/edit','id'=>$v['id']));?>
