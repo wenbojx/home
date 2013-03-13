@@ -37,9 +37,11 @@ body {
 }
 .scroll_map{
 	border:1px solid #DDDDDD;
+	filter: alpha(opacity=10); 
+	opacity: 0.7;
 	z-index:9999;
 	position:absolute; 
-	top:50px; 
+	top:5px; 
 	right:1px;
 	height:200px;
 	width:350px;
