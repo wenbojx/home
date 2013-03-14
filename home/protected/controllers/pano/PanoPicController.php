@@ -3,7 +3,7 @@ ini_set('memory_limit', '500M');
 class PanoPicController extends FController{
 	public $defaultAction = 'index';
 	private $url = '';
-	private $size = array('200x100', '150x110' , '400x200', '1024x512', '1024x1024', '512x512', '800x800');
+	private $size = array('200x100', '150x110' , '400x200', '1024x512', '1024x1024', '600x600', '512x512', '800x800');
 	private $request = null;
 	public $img_size = 1800;
 	public $tile_size = 450;
@@ -176,10 +176,14 @@ class PanoPicController extends FController{
 		if(!$path || !file_exists($path)){
 			$this->show_default($face);
 		}
+
 		$water = 0;
 		$sharpen = 0;
-		$quality = 80;
+		$quality = 70;
 		$size = substr($fileName, 0, -4);
+		if(!in_array($size, $this->size)){
+			exit();
+		}
 		$toPath = PicTools::get_pano_static_path($scene_id) . '/'. $face. '/' . $suffix;
 		//echo $toPath;
 		if(!$this->make_unexit_dir($toPath)){
@@ -191,7 +195,7 @@ class PanoPicController extends FController{
 		//echo $toPath."<br>";
 		//echo $size;
 		$panoPicTools = new PanoPicTools();
-		 
+
 		if(!$panoPicTools->turnToStatic($path, $toPath, $size, $quality, $water, $sharpen)){
 			$this->show_default($face);
 		}
@@ -342,7 +346,6 @@ class PanoPicController extends FController{
 	 * 获取全景图缩略图
 	 */
 	private function get_pano_thumb(){
-		
 		$explode_url = explode ('/', $this->url);
 		$count = count($explode_url);
 		$scene_id = (int) $explode_url[$count-3];
@@ -355,7 +358,6 @@ class PanoPicController extends FController{
 		if(!in_array($size, $this->size)){
 			$this->show_default(1);
 		}
-
 		$path = $this->get_pano_thumb_path($scene_id);
 		if(!$path){
 			$this->show_default(1);
@@ -368,7 +370,8 @@ class PanoPicController extends FController{
 		$toPath .= '/' . $size . '.jpg';
 		$panoPicTools = new PanoPicTools();
 		$sharpen = 0;
-		$quality=100;
+		$quality=80;
+
 		if(!$panoPicTools->turnToStatic($path, $toPath, $size, $quality, 0, $sharpen)){
 			$this->show_default(1);
 		}

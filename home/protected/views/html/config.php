@@ -1,7 +1,7 @@
 
 <tour start="node_<?=$datas['scene_id']?>">
 <?php 
-$size = '1024x1024';
+$size = '600x600';
 $i = 0;
 if(isset($datas['scene_list']) && is_array($datas['scene_list'])){
 foreach($datas['scene_list'] as $k=>$v){
@@ -29,7 +29,7 @@ foreach($datas['scene_list'] as $k=>$v){
       <?php }}?>
     </hotspots>
 
-    <input tile0url="<?=PicTools::get_face_small($k, 's_f' , $size)?>" tile5url="<?=PicTools::get_face_small($k, 's_d' , $size)?>" tilesize="1024" tile4url="<?=PicTools::get_face_small($k, 's_u' , $size)?>" tile3url="<?=PicTools::get_face_small($k, 's_l' , $size)?>" tilescale="1.010940919037199" tile2url="<?=PicTools::get_face_small($k, 's_b' , $size)?>" tile1url="<?=PicTools::get_face_small($k, 's_r' , $size)?>"/>
+    <input tile0url="<?=PicTools::get_face_small($k, 's_f' , $size)?>" tile5url="<?=PicTools::get_face_small($k, 's_d' , $size)?>" tilesize="600" tile4url="<?=PicTools::get_face_small($k, 's_u' , $size)?>" tile3url="<?=PicTools::get_face_small($k, 's_l' , $size)?>" tilescale="1.010940919037199" tile2url="<?=PicTools::get_face_small($k, 's_b' , $size)?>" tile1url="<?=PicTools::get_face_small($k, 's_r' , $size)?>"/>
     <autorotate speed="0.0600" nodedelay="75.00" startloaded="0" returntohorizon="0.000" delay="3.00"/>
     <control simulatemass="1" lockedmouse="0" lockedkeyboard="0" dblclickfullscreen="0" invertwheel="0" lockedwheel="0" invertcontrol="1" speedwheel="1" sensitivity="8"/>
   </panorama>
