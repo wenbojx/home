@@ -218,7 +218,51 @@ class Project extends Ydao
     	}
     	return $scene_ids;
     }
-    
+    /**
+     * 
+     */
+    public function get_by_project_ids($project_ids, $extends=false){
+    	if(!is_array($project_ids) || count($project_ids)<1){
+    		return false;
+    	}
+    	$project_ids_str = implode(',',$project_ids);
+    	$criteria=new CDbCriteria;
+    	if(!$project_ids_str){
+    		return false;
+    	}
+    	$criteria->order = 'id DESC';
+    	$criteria->addCondition("id in ({$project_ids_str})");
+    	$datas = $this->findAll($criteria);
+    	$project_datas = array();
+    	if($datas){
+    		foreach ($datas as $k=>$v){
+    			$thumb = $this->get_default_thumb($v['id']);
+    			$project_datas[$k]['id'] = $v['id'];
+    			$project_datas[$k]['name'] = $v['name'];
+    			$project_datas[$k]['desc'] = $v['desc'];
+    			$project_datas[$k]['thumb'] = $thumb;
+    			if($extends == 'fang'){
+    				$project_datas[$k]['extend'] = $this->get_extend_fang($v['id']);
+    			}
+    		}
+    	}
+    	//print_r($project_datas);
+
+    	return $project_datas;
+    }
+    /**
+     * 项目扩展
+     */
+    private function get_extend_fang($project_id){
+    	$extend_db = new ProjectExtendFang();
+    	return $extend_db->get_by_project_id($project_id);
+    }
+    /**
+     * 项目默认缩略图
+     */
+    private function get_default_thumb($project_id){
+    	return $this->get_thumb_scene_id($project_id);
+    }
 }
 
 
