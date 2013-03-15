@@ -10,6 +10,9 @@ for($s=$from; $s<=$to; $s++){
 	if(strlen($s)<3){
 		$i = strlen($s)>1? ('0'.$s) : ('00'.$s);
 	}
+	else{
+		$i = $s;
+	}
 	echo "dz_Panos_{$i}<br>";
 	if(!file_exists("dz_Panos_{$i}")){
 		mkdir("dz_Panos_{$i}");
