@@ -122,6 +122,7 @@ class SceneController extends Controller{
     	$request = Yii::app()->request;
     	$scene_id = $request->getParam("id");
     	$project_id = $request->getParam('id');
+    	$this->check_project_owner_msg($project_id);
 		$datas['done'] = 'doEdit';
 		if(!$scene_id){
 			$datas['msg'] = "参数错误";

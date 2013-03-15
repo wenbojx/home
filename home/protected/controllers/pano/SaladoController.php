@@ -9,6 +9,7 @@ class SaladoController extends Controller{
         $this->editPano = true;
         $scene_id = $request->getParam('id');
         $clean = $request->getParam('clean');
+        $this->check_project_owner_msg($project_id);
         if(!$scene_id){
             exit('参数错误');
         }
