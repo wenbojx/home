@@ -121,6 +121,7 @@ class ProjectController extends Controller{
 		$request = Yii::app()->request;
 		$datas = array();
 		$project_id = $request->getParam("id");
+		
 		$datas['done'] = 'doEdit';
 		if(!$project_id){
 			$datas['msg'] = "参数错误";

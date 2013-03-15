@@ -66,6 +66,20 @@ class Controller extends CController
     	}
     	return true;
     }
+    public function check_project_owner_msg($project_id = 0){
+    	$msg = '您无权访问！';
+    	if($project_id == 0){
+    		echo $msg;
+    		exit();
+    	}
+    	$project_db = new Project();
+    	$project_datas = $project_db->find_by_project_id($project_id);
+    	if(!$project_datas || $project_datas->member_id != $this->member_id){
+    		echo $msg;
+    		exit();
+    	}
+    	return true;
+    }
     public function display_msg($msg){
         $str = json_encode($msg);
         exit($str);
