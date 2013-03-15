@@ -27,14 +27,17 @@ $ch2 = urlencode('http://www.yiluhao.com/mos/panoPlayer-v1.0.apk');
 	                	<span>1. 支持android SDK2.2及以上的安卓手机， 支持ios5.0及以上苹果手机及ipad</span><br>
 	                	<span>2. 使用原生语言开发,效率更快，兼容性更好。实例中连续播放130个场景轻松应对</span><br>
 	                	<span>3. 场景图片缓存，运行一次场景图片缓存在手机上，网络也可运行。</span><br>
-	                	<span>4. 用户体验一流。</span><br><br>
+	                	<span>4. 用户体验一流。</span><br>
+	                	<span>5. 为全景摄影师提升服务的附加值。</span><br>
+	                	<br>
 	                	<h3><span style="color: red">关于收费</span></h3>
 	                	<br>
 	                	首次购买播放器含(android, iphone/ipad)收费880元，增送10个场景,可定制播放器外观,及加客户的logo。
 	                	以后每次打包项目每场景30元。<br><br>
 	                	<h3><span style="color: red">关于定制</span></h3>
 	                	首次定制用户需提供各种符合android,及iphone软件运行的图标及运行图片，详细尺寸请咨询QQ：1423795537
-	                	以后每次打包项目可修改APP名称。
+	                	以后每次打包项目可修改APP名称，项目如需上传至苹果app store另外收费每次200，<br><br>
+	    
 	                	<strong>实例下载</strong><br>
 	            		<table width="300">
 	                		<tr>
