@@ -31,6 +31,7 @@ class MController extends FController{
     	$msg['panos'] = $this->get_scene_list($project_id);
     	$msg['map'] = $this->get_scene_map($project_id);
     	$msg['info'] = $this->getProjectInfo($project_id);
+    	$msg['pay'] = '0';
     	//$msg['display'] = 
     	//print_r($msg);
     	$this->display_msg($msg);
