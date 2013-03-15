@@ -32,7 +32,8 @@ $ch2 = urlencode('http://www.yiluhao.com/mos/panoPlayer-v1.0.apk');
 	                	<br>
 	                	<h3><span style="color: red">关于收费</span></h3>
 	                	<br>
-	                	首次购买播放器含(android, iphone/ipad)收费880元，增送10个场景,可定制播放器外观,及加客户的logo。
+	                	首次购买播放器含(android, iphone/ipad)收费880元，增送10个场景,可定制播放器外观,及加客户的logo。<br>
+	                	购买单个版本播放器收费500元赠送5个场景,可定制播放器外观,及加客户的logo。
 	                	以后每次打包项目每场景30元。<br><br>
 	                	<h3><span style="color: red">关于定制</span></h3>
 	                	首次定制用户需提供各种符合android,及iphone软件运行的图标及运行图片，详细尺寸请咨询QQ：1423795537
