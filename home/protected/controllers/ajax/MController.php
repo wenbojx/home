@@ -32,7 +32,7 @@ class MController extends FController{
     	$msg['map'] = $this->get_scene_map($project_id);
     	$project_datas = $this->getProjectInfo($project_id);
     	$msg['info'] = $project_datas['desc'];
-    	$msg['pay'] = $project_datas['level'];
+    	$msg['level'] = $project_datas['level'];
     	//$msg['display'] = 
     	//print_r($msg);
     	$this->display_msg($msg);
