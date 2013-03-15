@@ -31,8 +31,9 @@ for($s=$from; $s<=$to; $s++){
 		if(!file_exists($leve8.$file_name)){
 			echo $get_url.'<br>';
 			$file = file_get_contents($get_url);
-			file_put_contents($file_name, $file);
-			copy($file_name, $leve8.$file_name);
+			file_put_contents($i.$file_name, $file);
+			copy($i.$file_name, $leve8.$file_name);
+			unlink($i.$file_name);
 			echo $leve8.$file_name.'<br>';
 		}
 	}
@@ -48,8 +49,9 @@ for($s=$from; $s<=$to; $s++){
 		if(!file_exists($leve9.$file_name)){
 			echo $get_url.'<br>';
 			$file = file_get_contents($get_url);
-			file_put_contents($file_name, $file);
-			copy($file_name, $leve9.$file_name);
+			file_put_contents($i.$file_name, $file);
+			copy($i.$file_name, $leve9.$file_name);
+			unlink($i.$file_name);
 			echo $leve9.$file_name.'<br>';
 		}
 	}
@@ -67,8 +69,9 @@ for($s=$from; $s<=$to; $s++){
 				if(!file_exists($leve10.$file_name)){
 					echo $get_url.'<br>';
 					$file = file_get_contents($get_url);
-					file_put_contents($file_name, $file);
-					copy($file_name, $leve10.$file_name);
+					file_put_contents($i.$file_name, $file);
+					copy($i.$file_name, $leve10.$file_name);
+					unlink($i.$file_name);
 					echo $leve10.$file_name.'<br>';
 				}
 			}
@@ -88,8 +91,9 @@ for($s=$from; $s<=$to; $s++){
 				if(!file_exists($leve11.$file_name)){
 					echo $get_url.'<br>';
 					$file = file_get_contents($get_url);
-					file_put_contents($file_name, $file);
-					copy($file_name, $leve11.$file_name);
+					file_put_contents($i.$file_name, $file);
+					copy($i.$file_name, $leve11.$file_name);
+					unlink($i.$file_name);
 					echo $leve11.$file_name.'<br>';
 				}
 			}
