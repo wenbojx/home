@@ -26,7 +26,7 @@ $ch2 = urlencode('http://www.yiluhao.com/mos/panoPlayer-v1.0.apk');
 	              		<br>
 	                	<span>1. 支持android SDK2.2及以上的安卓手机， 支持ios5.0及以上苹果手机及ipad</span><br>
 	                	<span>2. 使用原生语言开发,效率更快，兼容性更好。实例中连续播放130个场景轻松应对</span><br>
-	                	<span>3. 场景图片缓存，运行一次场景图片缓存在手机上，网络也可运行。</span><br>
+	                	<span>3. 场景图片缓存，运行一次场景图片缓存在手机上，无网络也可运行。</span><br>
 	                	<span>4. 用户体验一流。</span><br>
 	                	<span>5. 为全景摄影师提升服务的附加值。</span><br>
 	                	<br>
