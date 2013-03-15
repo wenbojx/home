@@ -10,6 +10,7 @@ class SceneController extends Controller{
         $datas = array();
         $project_id = $request->getParam('id');
         $datas = array();
+        $this->check_project_owner($project_id);
         if($project_id){
             //获取场景列表
             $scene_db = new Scene();
