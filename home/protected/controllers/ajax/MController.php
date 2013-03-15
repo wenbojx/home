@@ -30,8 +30,9 @@ class MController extends FController{
     	}
     	$msg['panos'] = $this->get_scene_list($project_id);
     	$msg['map'] = $this->get_scene_map($project_id);
-    	$msg['info'] = $this->getProjectInfo($project_id);
-    	$msg['pay'] = '0';
+    	$project_datas = $this->getProjectInfo($project_id);
+    	$msg['info'] = $project_datas['desc'];
+    	$msg['pay'] = $project_datas['level'];
     	//$msg['display'] = 
     	//print_r($msg);
     	$this->display_msg($msg);
@@ -90,7 +91,7 @@ class MController extends FController{
     	if(!$projectData){
     		return '';
     	}
-    	return $projectData['desc'];
+    	return $projectData;
     }
     private function get_map_position($project_id, $type="xml"){
     	$str = '';
