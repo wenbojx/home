@@ -173,6 +173,7 @@ class PanoPicController extends FController{
 			$this->show_default($face);
 		}
 		$path = $this->get_pano_file_path($scene_id, $face);
+
 		if(!$path || !file_exists($path)){
 			$this->show_default($face);
 		}
@@ -436,6 +437,7 @@ class PanoPicController extends FController{
 		}
 		//获取文件地址
 		$path = $this->get_file_floder ($file_id);
+		//echo $path;
 		if(!$path || !is_dir($path)){
 			return false;
 		}
