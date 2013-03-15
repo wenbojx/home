@@ -3,7 +3,7 @@ ob_end_flush();
 $time = time();
 $from = $_GET['f'];
 $to = $_GET['t'];
-//exit();
+////exit();
 $path_prex = 'http://www.lpu.in/virtual_tour/panoramas/';
 $position = array('f','r','b','l','u','d');
 for($s=$from; $s<=$to; $s++){
