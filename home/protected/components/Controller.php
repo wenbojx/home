@@ -53,6 +53,20 @@ class Controller extends CController
         }
         return true;
     }
+    public function check_scene_own_msg($scene_id = 0){
+    	$msg = '您无权访问！';
+    	if($scene_id == 0){
+    		echo $msg;
+    		exit();
+    	}
+    	$scene_db = new Scene();
+    	$datas = $scene_db->get_by_admin_scene($this->member_id, $scene_id);
+    	if(!$datas){
+    		echo $msg;
+    		exit();
+    	}
+    	return true;
+    }
     public function check_project_owner($project_id = 0){
     	$msg['flag'] = 0;
     	$msg['msg'] = '无权限';
