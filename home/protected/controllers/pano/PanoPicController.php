@@ -241,10 +241,12 @@ class PanoPicController extends FController{
 			//原图分解成4份
 			$panoPicTools = new PanoPicTools();
 			if(strstr($face, 's_l') || strstr($face, 's_b') || strstr($face, 's_u') || strstr($face, 's_d')){
-				if(strstr($fileName, '1_1')){
+				$rander = (rand(4,6)%3);
+				if(strstr($fileName, '1_1') && $rander==0){
 					$water =1;
 				}
 			}
+			
 			$panoPicTools->split_img_ten($path, $fileName, $toPath, $water);
 		}
 		
