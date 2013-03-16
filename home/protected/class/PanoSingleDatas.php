@@ -152,7 +152,7 @@ class PanoSingleDatas{
     	if(!$this->scene_datas){
     		return false;
     	}
-    	print_r($this->scene_datas);
+    	//print_r($this->scene_datas);
     	$scene_ids = array();
     	foreach($this->scene_datas as $v){
     		$scene_ids[] = $v['id'];
@@ -160,7 +160,7 @@ class PanoSingleDatas{
     		$datas[$v['id']]['s_attribute']['id'] = $this->panoram_pre.$v['id'];
     		$datas[$v['id']]['s_attribute']['path'] = $this->panoram_xml_path($v['id']);
     		$datas[$v['id']]['s_attribute']['onEnter'] = 'js_action_loaded';
-    		
+    		$this->panoram_datas[$v['id']] = $v;
     	}
     	$panoram_db = new ScenesPanoram();
     	$panoram_datas = $panoram_db->find_by_scene_ids($scene_ids);
@@ -175,22 +175,23 @@ class PanoSingleDatas{
 		    			$datas[$v]['s_attribute'] = array_merge($datas[$v]['s_attribute'], $pano_attribute['s_attribute']);
 		    		}
 		    	}
+		    	
     		}
     	}
-    	
+    	//print_r($this->panoram_datas);
     	//获取场景热点
     	$hotspot_db = new ScenesHotspot();
     	$hotspot_datas = $hotspot_db->find_by_scene_ids($scene_ids);
-    	if(!$hotspot_datas){
-    		return false;
-    	}
-    	foreach($hotspot_datas as $v){
-    		$scene_id_snap = $v['scene_id'];
-    		$hotspots_info[$v['id']]['scene_id'] = $v['scene_id'];
-    		$hotspots_info[$v['id']]['link_scene_id'] = $v['link_scene_id'];
-    		
-    		$datas[$scene_id_snap]['hotspots'][$v['id']] = $this->get_hotspot_info($v);
-    		
+
+    	if($hotspot_datas){
+	    	foreach($hotspot_datas as $v){
+	    		$scene_id_snap = $v['scene_id'];
+	    		$hotspots_info[$v['id']]['scene_id'] = $v['scene_id'];
+	    		$hotspots_info[$v['id']]['link_scene_id'] = $v['link_scene_id'];
+	    		
+	    		$datas[$scene_id_snap]['hotspots'][$v['id']] = $this->get_hotspot_info($v);
+	    		
+	    	}
     	}
     	$this->hotspots_info = $hotspots_info;
     	if($hotspots_info){
