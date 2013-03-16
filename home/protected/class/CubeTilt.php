@@ -196,6 +196,10 @@ class CubeTilt{
 	public function water_pic(){
 		$rand = rand(0, 8);
 		//$time = substr(time(), $rand, 2);
+		$flag = (rand(4, 6)%3);
+		if($flag!=0){
+			return false;
+		}
 		$time = 100;
 		$rand = rand(0, 8);
 		$ox = $time*$rand;
