@@ -152,6 +152,7 @@ class PanoSingleDatas{
     	if(!$this->scene_datas){
     		return false;
     	}
+    	print_r($this->scene_datas);
     	$scene_ids = array();
     	foreach($this->scene_datas as $v){
     		$scene_ids[] = $v['id'];
