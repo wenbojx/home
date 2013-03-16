@@ -6,7 +6,13 @@ $edit = $datas['done'] == 'doEdit' ? true : false;
         .clear {
             clear: both;
         }
+        .calendar{
+        	z-index:1000;
+        }
     </style>
+
+  <!-- main calendar program -->
+  <script type="text/javascript" src="calendar.js"></script>
 <div class="detail">
     <div class="hero-unit margin-top55">
         <h2>简单，易用</h2>
@@ -34,7 +40,7 @@ $edit = $datas['done'] == 'doEdit' ? true : false;
 	                        <div class="control-group">
 	                            <label class="control-label" for="login_passwd">拍摄时间</label>
 	                            <div class="controls">
-	                            	<input type="text" name="photo_time" class="input-xlarge" value="<?=$edit ? date('Y-m-d H:i',$datas['scene']['photo_time']):date('Y-m-d H:i',(time()-3600*24))?>" id="scene_photo_time">
+	                            	<input type="text" name="photo_time"  class="input-xlarge" value="<? if($edit){ echo $datas['scene']['photo_time'] ? date('Y-m-d H:i',$datas['scene']['photo_time']):''; }else{ echo date('Y-m-d H:i',(time()-3600*24));}?>" id="scene_photo_time">
 	                            </div>
 	                        </div>
 	                        <div class="control-group">
@@ -65,9 +71,26 @@ $edit = $datas['done'] == 'doEdit' ? true : false;
         </div>
     </div>
 </div>
+
 <script type="text/javascript" src="<?=Yii::app()->baseUrl . "/plugins/ueditor/editor_config.js"?>"></script>
 <script type="text/javascript" src="<?=Yii::app()->baseUrl . "/plugins/ueditor/editor_all.js"?>"></script>
+
+<script type="text/javascript" src="<?=Yii::app()->baseUrl . "/plugins/jscalendar-1.0/calendar.js"?>"></script>
+<script type="text/javascript" src="<?=Yii::app()->baseUrl . "/plugins/jscalendar-1.0/lang/cn_utf8.js"?>"></script>
+<script type="text/javascript" src="<?=Yii::app()->baseUrl . "/plugins/jscalendar-1.0/calendar-setup.js"?>"></script>
+
+
 <script>
+
+Calendar.setup({
+    inputField      :    "scene_photo_time",   // id of the input field
+    ifFormat        :    "%Y-%m-%d %H:%M",       // format of the input field
+    showsTime       :    true,
+    timeFormat      :    "24"
+    //onUpdate        :    catcalc
+});
+
+
 var ue = UE.getEditor('scene_desc');
 ue.initialFrameWidth = 300;
 ue.addListener('ready',function(){
