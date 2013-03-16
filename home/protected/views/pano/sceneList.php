@@ -28,7 +28,7 @@ $chl = urlencode("http://m.yiluhao.com/l/{$datas['project']['id']}/");
             					<?php echo CHtml::link($v['name'],array('pano/salado/edit','id'=>$v['id']));?>
             					&nbsp;&nbsp;&nbsp;&nbsp;
             					<a style="float:right" href="<?=$this->createUrl('/web/single/a/', array('id'=>$v['id']));?>" target="_blank">
-            					短域名访问
+            					短域名
             					</a>
             				</div>
             				<div class="scene_desc">
