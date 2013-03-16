@@ -674,7 +674,6 @@ class PanoSingleDatas{
         $this->modules_datas[$type]['window']['s_attribute']['alpha'] = '0.6';
         $this->modules_datas[$type]['buttons']['s_attribute']['path'] = $this->module_media_path('button_bar');
         if($this->map_flag){
-        	echo 1121;
         $this->modules_datas[$type]['buttons']['extraButton']['map']['s_attribute']['name'] = 'b';
         $this->modules_datas[$type]['buttons']['extraButton']['map']['s_attribute']['action'] = 'mapToggle';
         }
