@@ -384,6 +384,16 @@ class PanoSingleDatas{
         }
         //添加js模块
         $this->get_js_gateway_module();
+        
+        $datas = $this->get_map_info();
+        if($datas){
+        	//$this->image_map_datas = $datas;
+        	$this->get_imagemap_module($datas);
+        }
+        else{
+        	$this->map_flag = false;
+        }
+        
         if($no_button_bar && $this->display_config['nobtb']){
             //获取默认button_bar
             $this->get_default_button_bar();
@@ -392,14 +402,8 @@ class PanoSingleDatas{
         $this->get_mousecursor_module();
         //print_r($this->modules_datas);
         //添加imagemap
-        $datas = $this->get_map_info();
-        if($datas){
-        	//$this->image_map_datas = $datas;
-       		$this->get_imagemap_module($datas);
-        }
-        else{
-        	$this->map_flag = false;
-        }
+        
+        
         return $this->modules_datas;
     }
     public function get_imagemap_module($datas){
@@ -670,6 +674,7 @@ class PanoSingleDatas{
         $this->modules_datas[$type]['window']['s_attribute']['alpha'] = '0.6';
         $this->modules_datas[$type]['buttons']['s_attribute']['path'] = $this->module_media_path('button_bar');
         if($this->map_flag){
+        	echo 1121;
         $this->modules_datas[$type]['buttons']['extraButton']['map']['s_attribute']['name'] = 'b';
         $this->modules_datas[$type]['buttons']['extraButton']['map']['s_attribute']['action'] = 'mapToggle';
         }
