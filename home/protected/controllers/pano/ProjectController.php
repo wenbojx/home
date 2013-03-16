@@ -76,13 +76,14 @@ class ProjectController extends Controller{
 		$display = $request->getParam('display');
 		
 		if($display == '2'){
+			$display = 3;
 			if(!$this->check_thumb($project_id)){
 				$msg['flag'] = 0;
 				$msg['msg'] = '该项目没有发布场景，请先发布场景';
 				$this->display_msg($msg);
 			}
 		}
-		$display = 3;
+		//$display = 3;
 		$project_db = new Project();
 		$datas = $project_db->update_dispaly($project_id, $display);
 		if(!$datas){
