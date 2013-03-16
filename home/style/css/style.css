@@ -71,6 +71,9 @@ hr.soften {
 .content_center{
 	text-align:center;
 }
+.align-right{
+	text-align:right;
+}
 .project .thumbnail{
     margin:5px 0;text-align:center;
 }
@@ -102,6 +105,9 @@ hr.soften {
 .margin-top55{
     margin:55px 0 10px 0;
 }
+.margin-top35{
+    margin:35px 0 10px 0;
+}
 .margin-tb5{
     margin:5px 0;
 }
@@ -110,6 +116,9 @@ hr.soften {
 }
 .align-center{
     text-align:center;
+}
+.align_left{
+	text-align:left;
 }
 .pano-detail{
     width:100%; height:460px; margin:0 auto;position:relative;
@@ -121,6 +130,12 @@ hr.soften {
 }
 .color_red{
     color:red;
+}
+.color_withe{
+	color:#FFFFFF;
+}
+.color_gray{
+	color:#EEEEEE;
 }
 .detail .thumbnail{
     text-align:center;
@@ -139,6 +154,7 @@ hr.soften {
 	top:0px; 
 	height:458px;
 }
+
 .scroll_pano_opacity{
 	display:none;
 	width:210px;
@@ -349,5 +365,14 @@ ul.yiiPager{
 }
 .pagination{
 	text-align:right;
+}
+.single_boot{
+	margin:5px;
+}
+.single_boot .left{
+	width:150px;
+}
+.single_boot .right{
+	width:150px;
 }
 

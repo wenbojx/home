@@ -26,6 +26,10 @@ $chl = urlencode("http://m.yiluhao.com/l/{$datas['project']['id']}/");
             			<div class="scene_title">
             				<div class="title_line">
             					<?php echo CHtml::link($v['name'],array('pano/salado/edit','id'=>$v['id']));?>
+            					&nbsp;&nbsp;&nbsp;&nbsp;
+            					<a style="float:right" href="<?=$this->createUrl('/web/single/a/', array('id'=>$v['id']));?>" target="_blank">
+            					短域名访问
+            					</a>
             				</div>
             				<div class="scene_desc">
             					<?=tools::truncate_utf8_string(strip_tags($v['desc']),110)?>
@@ -76,7 +80,9 @@ $chl = urlencode("http://m.yiluhao.com/l/{$datas['project']['id']}/");
                 <div class="list_box">
                 <br><br>
                 	<?php echo '<img src="http://chart.apis.google.com/chart?chs='.$widhtHeight.'x'.$widhtHeight.'&cht=qr&chld=L|0&chl='.$chl.'" alt="QR code" widhtHeight="'.$widhtHeight.'" widhtHeight="'.$widhtHeight.'"/>';?>
+                	
                 <br><br>
+                手机访问请扫描二维码
                 </div>
             </div>
         </div>

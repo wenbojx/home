@@ -21,8 +21,20 @@
 			<img id="hotspot_loading_img" src="<?=Yii::app()->baseUrl . '/style/img/loading_5.gif'?>"/>
 		</div>
 		</div>
+		
+	<div class="clear"></div>
+		<div class="single_boot">
+			<div class="float_left left">
+				<a class="color_gray" href="/" target="_blank">技术支持：全景视界</a>
+			</div>
+			<div class="align-right float_right right">
+				<a class="color_gray" href="/" target="_blank">http://www.yiluhao.com</a>
+			</div>
+		</div>
 	</div>
+	
 </div>
+
 <script type="text/javascript" src="<?=Yii::app()->baseUrl . "/style/js/common.js"?>"></script>
 <script type="text/javascript" src="<?=Yii::app()->baseUrl . "/plugins/salado/scene.js"?>"></script>
 
