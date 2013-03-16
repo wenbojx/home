@@ -129,9 +129,8 @@ class Scene extends Ydao
     	if($offset){
     		$criteria->offset = $offset;
     	}
-    	if($status){
-    		$criteria->addCondition("status={$status}");
-    	}
+    	
+    	$criteria->addCondition("status={$status}");
     	if($display!==0){
     		$criteria->addCondition("display={$display}");
     	}

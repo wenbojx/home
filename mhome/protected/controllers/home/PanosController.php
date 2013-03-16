@@ -51,6 +51,6 @@ class PanosController extends FController{
     
     private function get_scene_datas($project_id, $offset){
     	$order = 'id ASC';
-    	return $this->scene_db->find_scene_by_project_id($project_id, $this->page_size, $order, $offset,$status=1);
+    	return $this->scene_db->find_scene_by_project_id($project_id, $this->page_size, $order, $offset);
     }
 }

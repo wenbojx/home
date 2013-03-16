@@ -90,7 +90,7 @@ class PanoSingleDatas{
         if(!isset($this->global_datas['s_attribute']['debug'])){
             $this->global_datas['s_attribute']['debug'] = 'false';
         }
-        $this->global_datas['s_attribute']['debug'] = 'true';
+        //$this->global_datas['s_attribute']['debug'] = 'true';
         // $this->global_datas['control']['s_attribute']['autorotation'] = 'enabled:false';
         $this->global_datas['control']['s_attribute']['autorotation'] = 'enabled:true,delay:3';
         if($this->display_config['auto']){
@@ -148,7 +148,7 @@ class PanoSingleDatas{
     	$this->panoram_datas = array();
     	//获取项目下所有场景
     	$scene_db = new Scene();
-    	$this->scene_datas = $scene_db->find_scene_by_project_id($this->project_id, 0, '', 0, 0, 2);
+    	$this->scene_datas = $scene_db->find_scene_by_project_id($this->project_id, 0, '', 0, 1, 0);
     	if(!$this->scene_datas){
     		return false;
     	}
