@@ -65,7 +65,7 @@ class SaladoPlayer{
     private function get_single_content($id){
     	$admin = 0;
     	$memcache_obj = new Ymemcache();
-    	$key = $memcache_obj->get_pano_xml_key($id, false);
+    	$key = $memcache_obj->get_pano_xml_key($id.'_s', false);
     	//$key = 0;
     	if( $content = $memcache_obj->get_mem_data($key)){
     		header('mcache: cached');
