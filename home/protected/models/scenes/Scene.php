@@ -131,10 +131,10 @@ class Scene extends Ydao
     	}
     	
     	$criteria->addCondition("status={$status}");
-    	echo $display;
     	if($display!==0){
     		$criteria->addCondition("display={$display}");
     	}
+    	print_r($criteria);
     	$criteria->addCondition("project_id={$project_id}");
     	$datas = $this->findAll($criteria);
     	if(!$datas){
