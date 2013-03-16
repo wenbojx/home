@@ -148,7 +148,7 @@ class PanoSingleDatas{
     	$this->panoram_datas = array();
     	//获取项目下所有场景
     	$scene_db = new Scene();
-    	$this->scene_datas = $scene_db->find_scene_by_project_id($this->project_id, 0, '', 0, 1, 2);
+    	$this->scene_datas = $scene_db->find_scene_by_project_id($this->project_id, 0, '', 0, 0, 2);
     	if(!$this->scene_datas){
     		return false;
     	}
