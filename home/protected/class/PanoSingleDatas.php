@@ -43,6 +43,7 @@ class PanoSingleDatas{
     //private $info_sub_add = 0;
     private $scene_datas = array();
     private $map_flag = true;
+    private $map_datas = array();
 
     public function get_panoram_datas($id = 0){
         $datas = array();
@@ -97,7 +98,18 @@ class PanoSingleDatas{
         }
         $this->global_datas['branding']['s_attribute']['visible'] = 'false';
         $this->global_datas['panoramas']['s_attribute']['firstPanorama'] = $this->panoram_pre.$this->scene_id;
-        $this->global_datas['panoramas']['s_attribute']['firstOnEnter'] = "mapOpen";
+        
+        $this->map_datas = $this->get_map_info();
+        if(!$this->map_datas){
+        	$this->map_flag = false;
+        }
+        if($this->map_flag){
+        	$this->global_datas['panoramas']['s_attribute']['firstOnEnter'] = "mapOpen";
+        }
+
+        
+        
+        
         return $this->global_datas;
     }
     /**
@@ -385,13 +397,9 @@ class PanoSingleDatas{
         //添加js模块
         $this->get_js_gateway_module();
         
-        $datas = $this->get_map_info();
-        if($datas){
+        if($this->map_flag){
         	//$this->image_map_datas = $datas;
-        	$this->get_imagemap_module($datas);
-        }
-        else{
-        	$this->map_flag = false;
+        	$this->get_imagemap_module($this->map_datas);
         }
         
         if($no_button_bar && $this->display_config['nobtb']){
