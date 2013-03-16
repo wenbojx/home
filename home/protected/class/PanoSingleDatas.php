@@ -42,6 +42,7 @@ class PanoSingleDatas{
     private $infoBubble_datas = array();
     //private $info_sub_add = 0;
     private $scene_datas = array();
+    private $map_flag = true;
 
     public function get_panoram_datas($id = 0){
         $datas = array();
@@ -396,7 +397,9 @@ class PanoSingleDatas{
         	//$this->image_map_datas = $datas;
        		$this->get_imagemap_module($datas);
         }
-        
+        else{
+        	$this->map_flag = false;
+        }
         return $this->modules_datas;
     }
     public function get_imagemap_module($datas){
@@ -666,8 +669,10 @@ class PanoSingleDatas{
         $this->modules_datas[$type]['window']['s_attribute']['align'] = 'horizontal:right,vertical:bottom';
         $this->modules_datas[$type]['window']['s_attribute']['alpha'] = '0.6';
         $this->modules_datas[$type]['buttons']['s_attribute']['path'] = $this->module_media_path('button_bar');
+        if($this->map_flag){
         $this->modules_datas[$type]['buttons']['extraButton']['map']['s_attribute']['name'] = 'b';
         $this->modules_datas[$type]['buttons']['extraButton']['map']['s_attribute']['action'] = 'mapToggle';
+        }
         $this->modules_datas[$type]['buttons']['button']['1']['s_attribute']['name'] = 'autorotation';
         //$this->modules_datas[$type]['buttons']['button']['2']['s_attribute']['name'] = 'left';
         //$this->modules_datas[$type]['buttons']['button']['3']['s_attribute']['name'] = 'right';
