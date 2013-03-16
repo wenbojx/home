@@ -25,7 +25,7 @@ $chl = urlencode("http://m.yiluhao.com/l/{$datas['project']['id']}/");
 		<?php }?>
 	 	</div>
 	 	<div class="span3" style="text-align:right">
-			<?php echo '<img src="http://chart.apis.google.com/chart?chs='.$widhtHeight.'x'.$widhtHeight.'&cht=qr&chld=L|0&chl='.$chl.'" alt="QR code" widhtHeight="'.$widhtHeight.'" widhtHeight="'.$widhtHeight.'"/>';?>
+			<?php echo '<img title="手机访问请扫描二维码" src="http://chart.apis.google.com/chart?chs='.$widhtHeight.'x'.$widhtHeight.'&cht=qr&chld=L|0&chl='.$chl.'" alt="QR code" widhtHeight="'.$widhtHeight.'" widhtHeight="'.$widhtHeight.'"/>';?>
 
 	 	</div>
 	</div>
@@ -35,7 +35,7 @@ $chl = urlencode("http://m.yiluhao.com/l/{$datas['project']['id']}/");
 		<div class="span3">
 			<div class="thumbnail">
 				<a href="<?=$this->createUrl('/web/detail/a/', array('id'=>$v['id']));?>">
-				<img src="<?=PicTools::get_pano_small($v['id'], '200x100')?>"/>
+				<img title="<?php echo $v['name'];?>" src="<?=PicTools::get_pano_small($v['id'], '200x100')?>"/>
 				</a>
 			</div>
 		</div>

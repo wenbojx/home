@@ -31,7 +31,7 @@
 				<div class="span3">
 					<div class="thumbnail">
 					<a href="<?=$this->createUrl('/web/detail/a/', array('id'=>$v1['id']));?>">
-						<img src="<?=PicTools::get_pano_small($v1['id'], '200x100')?>"/>
+						<img title="<?php echo $v1['name'];?>" src="<?=PicTools::get_pano_small($v1['id'], '200x100')?>"/>
 					</a>
 					</div>
 				</div>
