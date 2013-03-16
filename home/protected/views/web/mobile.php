@@ -32,7 +32,7 @@ $ch2 = urlencode('http://www.yiluhao.com/mos/panoplayer_free.apk');
 	                	<br>
 	                	<h3><span style="color: red">免费版</span></h3>
 	                	全景播放器完全免费，适用于普通用户体验，及给客户做案例演示使用。<br>
-	                	目前推出android免费版，iphone/ipad版正在开发中。<br>
+	                	目前推出android免费版，iphone/ipad版正在开发中，敬请期待！<br>
 	                	用户创建好项目，在播放器中设置您项目的ID即可使用，一次设置即可
 	     
 	                	<br><br>
@@ -50,7 +50,7 @@ $ch2 = urlencode('http://www.yiluhao.com/mos/panoplayer_free.apk');
 	                	首次定制用户需提供各种符合android,及iphone软件运行的图标及运行图片，详细尺寸请咨询QQ：1423795537<br>
 	                	以后每次打包项目可修改APP名称，项目如需上传至苹果app store另外收费每次200。<br><br>
 	    
-	                	<strong>实例下载</strong><br>
+	                	<h3><span style="color: red">下载</span></h3>
 	                	<div style="position: relative">
 	            		<table width="300" >
 	                		<tr>
@@ -78,6 +78,13 @@ $ch2 = urlencode('http://www.yiluhao.com/mos/panoplayer_free.apk');
 	                	<div style="position:absolute; top:-7px; left:223px; "><img src="/mos/aimg/free.png"/></div>
 	                	</div>
 	                	<div>
+	                	
+	                	<div>
+	                	<br>
+	                	<h3><span style="color: red">发布流程</span></h3>
+	                	用户在网站上传全景图制作漫游完全免费<br>
+	                	<div class="content_center"><img src="<?=Yii::app()->baseUrl . '/style/img/yingdao.jpg'?>"/></div>
+	                	</div>
 	                	<!-- <span>4. 支持用户自定义修改应用信息，制作出您自己个性的app，如何修改详见"<a target="_blank" href="/web/doc/b">应用修改教程</a>"</span><br> -->
 	                	
 	                	<!-- <span>QQ交流群:1423795537</span> -->
@@ -111,7 +118,7 @@ $ch2 = urlencode('http://www.yiluhao.com/mos/panoplayer_free.apk');
 	                	</span>
 	                	 -->
 	                	<br><br>
-	                	<strong>软件截图</strong>
+	                	<h3><span style="color: red">软件截图</span></h3>
 	                	<br><br>
 	                	<table width="100%">
 	                		<tr>
