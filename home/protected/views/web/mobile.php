@@ -33,7 +33,8 @@ $ch2 = urlencode('http://www.yiluhao.com/mos/panoplayer_free.apk');
 	                	<h3><span style="color: red">免费版</span></h3>
 	                	全景播放器完全免费，适用于普通用户体验，及给客户做案例演示使用。<br>
 	                	目前推出android免费版，iphone/ipad版正在开发中，敬请期待！<br>
-	                	用户创建好项目，在播放器中设置您项目的ID即可使用，一次设置即可
+	                	用户创建好项目，在播放器中设置您项目的ID即可使用，一次设置即可<br>
+	                	体验项目ID：1001,1002,1003
 	     
 	                	<br><br>
 	                	<h3><span style="color: red">标准版</span></h3>
