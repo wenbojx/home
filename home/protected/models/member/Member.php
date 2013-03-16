@@ -67,6 +67,12 @@ class Member extends Ydao
         unset($user_datas['passwd']);
         return $user_datas;
     }
+    public function get_by_member_id($member_id){
+    	if(!$member_id){
+    		return false;
+    	}
+    	return $this->findByPk($member_id);
+    }
     public function add_user($datas){
         if(!$datas['email'] || !$datas['passwd']){
             return false;

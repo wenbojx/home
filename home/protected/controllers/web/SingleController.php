@@ -29,6 +29,7 @@ class SingleController extends FController{
         
         if($datas['scene_id']){
             $datas['scene'] = $this->get_scene_datas($datas['scene_id']);
+            $datas['member'] = $this->get_author_info($datas['scene']['member_id']);
             if($datas['config']['title']){
             	$datas['project'] = $this->get_project_datas($datas['scene']['project_id']);
             	if($datas['project']['id'] == '1007'){
@@ -45,6 +46,22 @@ class SingleController extends FController{
         	$datas['map'] = $this->get_map_info($datas['project']['id']);
         	$this->render('/web/msingle', array('datas'=>$datas));
         }
+    }
+    /**
+     * 摄影师
+    */
+    private function get_author_info($member_id){
+    	if(!$member_id){
+    		return false;
+    	}
+    	$member_db = new Member();
+    	$member_data = $member_db->get_by_member_id($member_id);
+    	if(!$member_data){
+    		return false;
+    	}
+    	unset($member_data['passwd']);
+    	//print_r($member_data);
+    	return $member_data;
     }
     /**
      * 获取地图信息

@@ -7,7 +7,9 @@
 	<table width="100%">
 		<tr>
 			<td><h3>&nbsp;<?=$datas['project']['name']?></h3></td>
-			<td align="right"><?php if($datas['config']['contact_show']){?>联系人:张文 &nbsp;&nbsp;电话:13918443358<?php }?></td>
+			<td align="right"><?php if($datas['config']['contact_show']){?>联系人:张文 &nbsp;&nbsp;电话:13918443358<?php }?>
+			<?php echo $datas['member']['nickname'] ? '摄影师：'.$datas['member']['nickname'] : ''; ?>
+			</td>
 		</tr>
 	</table>
 	</div>
