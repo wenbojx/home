@@ -131,6 +131,7 @@ class Scene extends Ydao
     	}
     	
     	$criteria->addCondition("status={$status}");
+    	echo $display;
     	if($display!==0){
     		$criteria->addCondition("display={$display}");
     	}
