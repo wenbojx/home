@@ -17,7 +17,8 @@ $display = array('1'=>'待发布', '2'=>'待审核', '3'=>'已发布')
             	   <div class="scene_single">
             			<div class="previe_img">
 	            			<a href="<?=$this->createUrl('pano/scene/list', array('id'=>$v['id']));?>">
-	            			<img width="150" src="<?=PicTools::get_pano_thumb($datas['thumb'][$v['id']] , '150x110')?>"/>
+	            			<?php $thumb = PicTools::get_pano_thumb($datas['thumb'][$v['id']] , '150x110');?>
+	            			<img width="150" src="<?=$thumb?$thumb:'/style/img/default-2.gif'?>"/>
 	            			</a>
             			</div>
             			<div class="scene_title">
@@ -75,7 +76,9 @@ $display = array('1'=>'待发布', '2'=>'待审核', '3'=>'已发布')
         <div class="span3">
             <div class="thumbnail">
                 <div class="list_box">
+                <br>
                 	<button class="btn btn-success" onclick="jump_to('<?=$this->createUrl('/pano/project/add/');?>')">新建项目</button>
+                <br>
                 </div>
             </div>
         </div>
