@@ -2,7 +2,7 @@
 <?php 
 $widhtHeight = $widhtHeight = 100;
 $chl = urlencode("https://itunes.apple.com/cn/app/xi-hu-qiu-jing/id605688832?mt=8");
-$ch2 = urlencode('http://www.yiluhao.com/mos/panoPlayer-v1.0.apk');
+$ch2 = urlencode('http://www.yiluhao.com/mos/panoplayer_free.apk');
 
 ?>
 	<div class="hero-unit padding5" id="static_banner">
@@ -30,24 +30,39 @@ $ch2 = urlencode('http://www.yiluhao.com/mos/panoPlayer-v1.0.apk');
 	                	<span>4. 用户体验一流。</span><br>
 	                	<span>5. 为全景摄影师提升服务的附加值。</span><br>
 	                	<br>
-	                	<h3><span style="color: red">关于收费</span></h3>
-	                	<br>
+	                	<h3><span style="color: red">免费版</span></h3>
+	                	全景播放器完全免费，适用于普通用户体验，及给客户做案例演示使用。<br>
+	                	目前推出android免费版，iphone/ipad版正在开发中。<br>
+	                	用户创建好项目，在播放器中设置您项目的ID即可使用，一次设置即可
+	     
+	                	<br><br>
+	                	<h3><span style="color: red">标准版</span></h3>
+	                	标准版播放器免费，发布一个场景收费30元。<br>
+	                	适用于客户安装APP量较少的场合。<br>
+	                	用户创建好项目，在播放器中设置您项目的ID即可使用，一次设置即可<br>
+	                	标准版相对于免费版去除设置按钮，去除“全景视界”网址。
+
+	                	<br><br>
+	                	<h3><span style="color: red">定制版</span></h3>
 	                	首次购买播放器含(android, iphone/ipad)收费880元，增送10个场景,可定制播放器外观,及加客户的logo。<br>
 	                	购买单个版本播放器收费500元赠送5个场景,可定制播放器外观,及加客户的logo。
-	                	以后每次打包项目每场景30元。<br><br>
-	                	<h3><span style="color: red">关于定制</span></h3>
+	                	以后每次打包项目每场景30元。<br>
 	                	首次定制用户需提供各种符合android,及iphone软件运行的图标及运行图片，详细尺寸请咨询QQ：1423795537<br>
 	                	以后每次打包项目可修改APP名称，项目如需上传至苹果app store另外收费每次200。<br><br>
 	    
 	                	<strong>实例下载</strong><br>
-	            		<table width="300">
+	                	<div style="position: relative">
+	            		<table width="300" >
 	                		<tr>
 	                			<td height="60">
 	                			<a target="_blank" href="https://itunes.apple.com/cn/app/xi-hu-qiu-jing/id605688832?mt=8"><img src="/mos/aimg/iphone.jpg"/></a>&nbsp;&nbsp;&nbsp;&nbsp;
 	                	
 	                			</td>
 	                			<td>
-	                			<a target="_blank" href="http://static.apk.hiapk.com/html/2013/03/1239835.html"><img src="/mos/aimg/android.jpg"/></a>
+	                			<a target="_blank" href="/mos/panoplayer_free.apk">
+	                				<img src="/mos/aimg/android.jpg"/>
+	                				
+	                			</a>
 	                	
 	                			</td>
 	                		</tr>
@@ -60,8 +75,9 @@ $ch2 = urlencode('http://www.yiluhao.com/mos/panoPlayer-v1.0.apk');
 	                			</td>
 	                		</tr>
 	                	</table>
-	                	
-	                	
+	                	<div style="position:absolute; top:-7px; left:223px; "><img src="/mos/aimg/free.png"/></div>
+	                	</div>
+	                	<div>
 	                	<!-- <span>4. 支持用户自定义修改应用信息，制作出您自己个性的app，如何修改详见"<a target="_blank" href="/web/doc/b">应用修改教程</a>"</span><br> -->
 	                	
 	                	<!-- <span>QQ交流群:1423795537</span> -->
@@ -109,7 +125,7 @@ $ch2 = urlencode('http://www.yiluhao.com/mos/panoPlayer-v1.0.apk');
 	                			<td align="right"><img src="/mos/aimg/android6.jpg"/></td>
 	                		</tr>
 	                	</table>
-	                	
+	                	</div>
 	                <br>
 	                <br>
 	                </div>
