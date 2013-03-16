@@ -15,6 +15,7 @@ protected/config/*.php
 upload/
 html/phpmyadmin
 html/phpmyadmin.tar.gz
+html/lpu
 
 home/protected/runtime/*.log
 home/protected/runtime/application.*
