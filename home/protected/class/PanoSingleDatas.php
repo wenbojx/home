@@ -172,6 +172,11 @@ class PanoSingleDatas{
 		    			$pano_attribute = @json_decode($panoram_datas[$v]['content'],true);
 		    		}
 		    		if (is_array($pano_attribute) && isset($pano_attribute['s_attribute'])){
+		    			//print_r($pano_attribute);
+		    			if(isset($pano_attribute['s_attribute']['camera']) && $v != $this->scene_id ){
+		    				//echo $v;
+		    				unset($pano_attribute['s_attribute']['camera']);
+		    			}
 		    			$datas[$v]['s_attribute'] = array_merge($datas[$v]['s_attribute'], $pano_attribute['s_attribute']);
 		    		}
 		    	}
