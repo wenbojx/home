@@ -62,7 +62,7 @@ class SaladoPanoramas extends SaladoPlayer{
     private function pano_attribute_camera($camera){
     	$default_fov = 90;
     	if(!$camera){
-    		//$camera = 'fov:'.$default_fov;
+    		$camera = 'fov:'.$default_fov;
     	}
     	if(!strstr($camera, 'fov')){
     		$camera .= ','.'fov:'.$default_fov;
