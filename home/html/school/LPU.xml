@@ -1,17 +1,58 @@
-<?xml version="1.0" encoding="utf-8" ?><SaladoPlayer><global debug="false"><panoramas firstPanorama="Pano_001"/><branding visible="false"/><control transition="time:0.7"/></global><panoramas><panorama id="Pano_001" path="panoramas/dz_Panos_001/Panos_001_f.xml"
-		camera="maxVerticalFov:60,minVerticalFov:-45,minFov:60,maxFov:130,tierThreshold:1"><swf id="Pano_001_ArrowF" path="hotspots/AdvancedHotspot-1.0.swf" location="pan:0,tilt:-15,distance:700"
-			mouse="onClick:loadPano_002"><settings path="hotspots/images/Arrow_F.png"/></swf><swf id="Pano_001_ArrowFF" path="hotspots/AdvancedHotspot-1.0.swf" location="pan:0,tilt:-10,distance:700"
-			mouse="onClick:loadPano_005"><settings path="hotspots/images/Arrow_FF.png"/></swf></panorama><panorama id="Pano_002" path="panoramas/dz_Panos_002/Panos_002_f.xml"
-		camera="maxVerticalFov:60,minVerticalFov:-45,minFov:60,maxFov:130,tierThreshold:1"><swf id="Pano_002_ArrowF" path="hotspots/AdvancedHotspot-1.0.swf" location="pan:0,tilt:-15,distance:700"
-			mouse="onClick:loadPano_003"><settings path="hotspots/images/Arrow_F.png"/></swf><swf id="Pano_002_ArrowR" path="hotspots/AdvancedHotspot-1.0.swf" location="pan:180,tilt:-15,distance:700"
-			mouse="onClick:loadPano_001"><settings path="hotspots/images/Arrow_F.png"/></swf><swf id="Pano_002_ArrowFF" path="hotspots/AdvancedHotspot-1.0.swf" location="pan:0,tilt:-10,distance:700"
-			mouse="onClick:loadPano_006"><settings path="hotspots/images/Arrow_FF.png"/></swf><swf id="Pano_002_ArrowRR" path="hotspots/AdvancedHotspot-1.0.swf" location="pan:180,tilt:-10,distance:700"
-			mouse="onClick:loadPano_001"><settings path="hotspots/images/Arrow_FF.png"/></swf></panorama><panorama id="Pano_003" path="panoramas/dz_Panos_003/Panos_003_f.xml"
-		camera="maxVerticalFov:60,minVerticalFov:-45,minFov:60,maxFov:130,tierThreshold:1"><swf id="Pano_003_ArrowF" path="hotspots/AdvancedHotspot-1.0.swf" location="pan:0,tilt:-15,distance:700"
-			mouse="onClick:loadPano_004"><settings path="hotspots/images/Arrow_F.png"/></swf><swf id="Pano_003_ArrowR" path="hotspots/AdvancedHotspot-1.0.swf" location="pan:180,tilt:-15,distance:700"
-			mouse="onClick:loadPano_002"><settings path="hotspots/images/Arrow_F.png"/></swf><swf id="Pano_003_ArrowFF" path="hotspots/AdvancedHotspot-1.0.swf" location="pan:0,tilt:-10,distance:700"
-			mouse="onClick:loadPano_007"><settings path="hotspots/images/Arrow_FF.png"/></swf><swf id="Pano_003_ArrowRR" path="hotspots/AdvancedHotspot-1.0.swf" location="pan:180,tilt:-10,distance:700"
-			mouse="onClick:loadPano_001"><settings path="hotspots/images/Arrow_FF.png"/></swf></panorama><panorama id="Pano_004" path="panoramas/dz_Panos_004/Panos_004_f.xml"
+<?xml version="1.0" encoding="utf-8" ?><SaladoPlayer>
+<global debug="true">
+<panoramas firstPanorama="Pano_001"/>
+<branding visible="false"/>
+<control transition="time:0.7"/>
+</global>
+<panoramas>
+    <panorama id="Pano_001" path="panoramas/dz_Panos_001/Panos_001_f.xml"
+		camera="maxVerticalFov:60,minVerticalFov:-45,minFov:60,maxFov:130,tierThreshold:1">
+		<swf id="Pano_001_ArrowF" path="hotspots/AdvancedHotspot-1.0.swf" location="pan:0,tilt:-15,distance:700"
+			mouse="onClick:loadPano_002">
+			<settings path="hotspots/images/Arrow_F.png"/>
+		</swf>
+		<swf id="Pano_001_ArrowFF" path="hotspots/AdvancedHotspot-1.0.swf" location="pan:0,tilt:-10,distance:700"
+			mouse="onClick:loadPano_005">
+			<settings path="hotspots/images/Arrow_FF.png"/>
+		</swf>
+	</panorama>
+	<panorama id="Pano_002" path="panoramas/dz_Panos_002/Panos_002_f.xml"
+		camera="maxVerticalFov:60,minVerticalFov:-45,minFov:60,maxFov:130,tierThreshold:1">
+		<swf id="Pano_002_ArrowF" path="hotspots/AdvancedHotspot-1.0.swf" location="pan:0,tilt:-15,distance:700"
+			mouse="onClick:loadPano_003">
+			<settings path="hotspots/images/Arrow_F.png"/>
+		</swf>
+		<swf id="Pano_002_ArrowR" path="hotspots/AdvancedHotspot-1.0.swf" location="pan:180,tilt:-15,distance:700"
+			mouse="onClick:loadPano_001"><settings path="hotspots/images/Arrow_F.png"/>
+		</swf>
+		<swf id="Pano_002_ArrowFF" path="hotspots/AdvancedHotspot-1.0.swf" location="pan:0,tilt:-10,distance:700"
+			mouse="onClick:loadPano_006"><settings path="hotspots/images/Arrow_FF.png"/>
+		</swf>
+		<swf id="Pano_002_ArrowRR" path="hotspots/AdvancedHotspot-1.0.swf" location="pan:180,tilt:-10,distance:700"
+			mouse="onClick:loadPano_001"><settings path="hotspots/images/Arrow_FF.png"/>
+		</swf>
+		
+		</panorama>
+		<panorama id="Pano_003" path="panoramas/dz_Panos_003/Panos_003_f.xml"
+		camera="maxVerticalFov:60,minVerticalFov:-45,minFov:60,maxFov:130,tierThreshold:1">
+		<swf id="Pano_003_ArrowF" path="hotspots/AdvancedHotspot-1.0.swf" location="pan:0,tilt:-15,distance:700"
+			mouse="onClick:loadPano_004"><settings path="hotspots/images/Arrow_F.png"/>
+		</swf>
+		<swf id="Pano_003_ArrowR" path="hotspots/AdvancedHotspot-1.0.swf" location="pan:180,tilt:-15,distance:700"
+			mouse="onClick:loadPano_002">
+			<settings path="hotspots/images/Arrow_F.png"/>
+		</swf>
+		<swf id="Pano_003_ArrowFF" path="hotspots/AdvancedHotspot-1.0.swf" location="pan:0,tilt:-10,distance:700"
+			mouse="onClick:loadPano_007">
+			<settings path="hotspots/images/Arrow_FF.png"/>
+		</swf>
+		<swf id="Pano_003_ArrowRR" path="hotspots/AdvancedHotspot-1.0.swf" location="pan:180,tilt:-10,distance:700"
+			mouse="onClick:loadPano_001">
+			<settings path="hotspots/images/Arrow_FF.png"/>
+		</swf>
+		</panorama>
+		
+		<panorama id="Pano_004" path="panoramas/dz_Panos_004/Panos_004_f.xml"
 		camera="maxVerticalFov:60,minVerticalFov:-45,minFov:60,maxFov:130,tierThreshold:1"><swf id="Pano_004_ArrowF" path="hotspots/AdvancedHotspot-1.0.swf" location="pan:0,tilt:-15,distance:700"
 			mouse="onClick:loadPano_005"><settings path="hotspots/images/Arrow_F.png"/></swf><swf id="Pano_004_ArrowR" path="hotspots/AdvancedHotspot-1.0.swf" location="pan:180,tilt:-15,distance:700"
 			mouse="onClick:loadPano_003"><settings path="hotspots/images/Arrow_F.png"/></swf><swf id="Pano_004_ArrowFF" path="hotspots/AdvancedHotspot-1.0.swf" location="pan:0,tilt:-10,distance:700"

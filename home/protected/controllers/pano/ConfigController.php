@@ -4,7 +4,7 @@ class ConfigController extends Controller{
     public $defaultType = array(
             'face', 'position', 'basic', 'camera', 'view', 'hotspot','hotspotEdit',
             'button', 'map', 'navigat', 'radar',
-            'html', 'rightkey', 'link', 'flare','action','thumb','image','imageEdit'
+            'html', 'rightkey', 'link', 'flare','action','thumb','image','imageEdit','compass'
             );
     private $pano_thumb_size = '200x100';
 
@@ -56,6 +56,10 @@ class ConfigController extends Controller{
         elseif ($type == 'camera'){
         	$datas['camera'] = $this->get_camera_info($scene_id);
         	//print_r($datas['camera']);
+        }
+        elseif ($type == 'compass'){
+        	$datas['compass'] = $this->get_compass_info($scene_id);
+        	//print_r($datas['compass']);
         }
         elseif ($type == 'map'){
         	$datas['project_id'] = $request->getParam('project_id');
@@ -137,6 +141,10 @@ class ConfigController extends Controller{
     private function get_camera_info($scene_id){
     	$panoram_db = new ScenesPanoram();
     	return $panoram_db->get_camera_info($scene_id);
+    }
+    private function get_compass_info($scene_id){
+    	$panoram_db = new ScenesPanoram();
+    	return $panoram_db->get_compass_info($scene_id);
     }
     /**
      * 获取图片地址

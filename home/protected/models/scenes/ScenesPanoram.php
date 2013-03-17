@@ -81,5 +81,25 @@ class ScenesPanoram extends Ydao
 		}
 		return $camera_info;
 	}
+	/**
+	 * 
+	 */
+	public function get_compass_info($scene_id){
+		if(!$scene_id){
+			return false;
+		}
+		$panoram = $this->find_by_scene_id($scene_id);
+		if(!$panoram){
+			return false;
+		}
+		$panoram_array = json_decode($panoram['content'],true);
+		$compass = $panoram_array['s_attribute']['direction'];
+		//print_r($panoram_array);
+		if(!$compass){
+			return false;
+		}
+		
+		return $compass;
+	}
 	
 }

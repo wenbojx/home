@@ -18,6 +18,10 @@ function bind_pano_btn(){
     $('#btn_camera').bind('click',function(){
     	load_page(camera_url, 'camera');
     });
+    $('#btn_compass').bind('click',function(){
+    	load_page(compass_url, 'compass');
+    	compass_click();
+    });
     $('#btn_map').bind('click',function(){
         load_page(map_url, 'map');
     });
@@ -451,6 +455,9 @@ function hotspot_click(){
         if($("#imagehotspot_icon") && !$("#imagehotspot_icon").is(":hidden")){
         	$("#imagehotspot_icon").hide();
         }
+        if($("#compass_icon") && !$("#compass_icon").is(":hidden")){
+        	$("#compass_icon").hide();
+        }
 }
 function image_hotspot_click(){
 	var img_width = $("#imagehotspot_icon").css("width");
@@ -473,7 +480,36 @@ function image_hotspot_click(){
     if($("#hotspot_icon") && !$("#hotspot_icon").is(":hidden")){
     	$("#hotspot_icon").hide();
     }
+    if($("#compass_icon") && !$("#compass_icon").is(":hidden")){
+    	$("#compass_icon").hide();
+    }
 }
+function compass_click(){
+	var img_width = $("#compass_icon").css("width");
+    var img_height = $("#compass_icon").css("height");
+    var box_width = $("#pano-detail").css("width");
+    var box_height = $("#pano-detail").css("height");
+    img_width = img_width.replace('px','');
+    img_height = img_height.replace('px','');
+    img_width = 30;
+    img_height = 30;
+
+    box_width = box_width.replace('px','');
+    box_height = box_height.replace('px','');
+    
+    var top = (parseInt(box_height)-parseInt(img_height) )/2;
+    var left = (parseInt(box_width)-parseInt(img_width) )/2;
+    $("#compass_icon").css("top",top+"px");
+    $("#compass_icon").css("left",left+"px");
+    $("#compass_icon").show();
+    if($("#hotspot_icon") && !$("#hotspot_icon").is(":hidden")){
+    	$("#hotspot_icon").hide();
+    }
+    if($("#imagehotspot_icon") && !$("#imagehotspot_icon").is(":hidden")){
+    	$("#imagehotspot_icon").hide();
+    }
+}
+
 
 function hide_hotspot_icon(){
     $("#hotspot_icon").hide();
@@ -496,6 +532,20 @@ function onViewChange(pan, tilt, fov, direction){
         $("#camera-info-tilt").html(tilt);
         $("#camera-info-fov").html(fov);
     }
+    
+    if($("#compass-info-pan")){
+    	if(pan>0){
+    		pan = 360-pan;
+    	}
+    	else{
+    		pan = 0-pan;
+    	}
+        $("#compass-info-pan").html(pan);
+        //$("#compass-info-tilt").html(tilt);
+       // $("#compass-info-fov").html(fov);
+        
+    }
+    
 }
 
 function save_thumb_datas(){
@@ -567,6 +617,24 @@ function save_camera_detail(scene_id){
     data.scene_id = scene_id;
 
     var url = save_module_datas_url+'/global/camera/';
+    save_datas(url, data, '', '', call_back);
+    function call_back(datas){
+        alert(datas.msg);
+    }
+}
+function save_compass_detail(scene_id){
+    var msg = {};
+    msg.error = '操作失败';
+    msg.success = '操作成功';
+    var element_id = 'compass_save_msg';
+    if(!scene_id){
+        done_error(element_id, msg.error);
+    }
+    var data = {};
+    data.pan = parseInt ($("#compass-info-pan").html());
+    data.scene_id = scene_id;
+
+    var url = save_module_datas_url+'/global/compass/';
     save_datas(url, data, '', '', call_back);
     function call_back(datas){
         alert(datas.msg);

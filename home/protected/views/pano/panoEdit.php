@@ -22,6 +22,9 @@
                         <div id="imagehotspot_icon" class="hotspot_icon">
                         	<img id="hotspot_icon_img" src="<?=Yii::app()->baseUrl . '/style/img/imghotspot.png'?>"/>
                         </div>
+                        <div id="compass_icon" class="hotspot_icon">
+                        	<img id="compass_icon_img" src="<?=Yii::app()->baseUrl . '/style/img/compass.png'?>"/>
+                        </div>
                     </div>
             </div>
         </div>
@@ -34,6 +37,7 @@
                             <button class="btn" id="btn_upload">上传</button>
                             <!-- <button class="btn" id="btn_position">位置</button> -->
                             <button class="btn" id="btn_thumb">缩略</button>
+                            <button class="btn" id="btn_compass">方位</button>
                             <button class="btn" id="btn_camera">摄像</button>
                             <button class="btn" id="btn_map">地图</button>
                             <!-- <button class="btn">视角</button> -->
@@ -86,6 +90,7 @@ var upload_pano_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'face',
 var position_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'position', 'scene_id'=>$datas['pano']['id']))?>';
 //var preview_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'preview', 'scene_id'=>$datas['pano']['id']))?>';
 var thumb_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'thumb', 'scene_id'=>$datas['pano']['id']))?>';
+var compass_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'compass', 'scene_id'=>$datas['pano']['id']))?>';
 var camera_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'camera', 'scene_id'=>$datas['pano']['id']))?>';
 var map_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'map', 'scene_id'=>$datas['pano']['id'],  'project_id'=>$datas['pano']['project_id']))?>';
 var hotspot_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'hotspot', 'scene_id'=>$datas['pano']['id']))?>';

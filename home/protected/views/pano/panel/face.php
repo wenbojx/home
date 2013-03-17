@@ -17,10 +17,12 @@
     <a href="javascript:pano_upload_change(1)">上传全景图</a>
     </li>
     <!-- <li id="cube_upload_tab"><a href="javascript:pano_upload_change(2)">单图</a></li> -->
+    <span>文件大小请不要超过20M</span>
     </ul>
     <div id="pano_upload"  class="pano_upload">
     	<div class="pano_upload_box">
-    	<br><br>
+    	<br>
+    	
     		<button id="pano_upload_bt"  class="btn btn-warning">点击上传</button>
     		<br>
     		<div class="pano_show" id="pano_show">
