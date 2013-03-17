@@ -40,9 +40,20 @@ function bind_pano_btn(){
     	}
     });
     $('#btn_preview').bind('click',function(){
-        jump_to(preview_url, 'blank');
+    	//clean_cache();
+    	jump_to(preview_url, 'blank');
     });
 
+}
+function clean_cache(){
+    var data = {};
+    data.sid = scene_id;
+    data.type = 'single';
+    var url = clean_single_url;
+    save_datas(url, data, '', '', call_back);
+    function call_back(datas){
+    }
+    
 }
 function pano_upload_change(type){
 	if(type==1){

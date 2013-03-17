@@ -9,6 +9,10 @@ class SingleController extends FController{
 	public function actionA(){
         $request = Yii::app()->request;
         $datas['scene_id'] = $request->getParam('id');
+        
+        if($request->getParam('clean')){
+        	$this->clean_cache($datas['scene_id']);
+        }
         $width = $request->getParam('w');
         $height = $request->getParam('h');
         $m = $request->getParam('m');
@@ -46,6 +50,20 @@ class SingleController extends FController{
         	$datas['map'] = $this->get_map_info($datas['project']['id']);
         	$this->render('/web/msingle', array('datas'=>$datas));
         }
+    }
+    /**
+     * 清理缓存
+     */
+    private function clean_cache($scene_id){
+    	if (!$scene_id){
+    		return false;
+    	}
+    	$memcache_obj = new Ymemcache();
+    	$key = $memcache_obj->get_pano_xml_key($scene_id.'_s', false);
+    	//echo $key;
+    	$memcache_obj->set_mem_data($key, "", 0);
+    	$this->redirect(array('/s/'.$scene_id));
+    	
     }
     /**
      * 摄影师

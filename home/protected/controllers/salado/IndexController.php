@@ -100,6 +100,7 @@ class IndexController extends FController{
     	$single = $request->getParam('single'); //是否自动转
     	$player_width = $request->getParam('w'); //是否自动转
     	$player_height = $request->getParam('h'); //是否自动转
+    	//$cache = $request->getParam('cache'); //是否自动转
     	$config['nobtb'] = $nobtb ? false :true;
     	$config['auto'] = $auto ? true :false;
     	$config['single'] = $single ? true :false;

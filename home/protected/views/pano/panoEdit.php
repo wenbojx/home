@@ -63,12 +63,13 @@
 var scene_id = '<?=$datas['pano']['id']?>';
 var baseUrl = '<?=Yii::app()->baseUrl?>';
 var clean_url = '<?=$this->createUrl('/pano/salado/edit/', array('id'=>$datas['pano']['id'], 'clean'=>1))?>';
+var clean_single_url = '<?=$this->createUrl('/ajax/cacheclean/a/')?>';
 var flash_url = baseUrl+'/pages/uploadify/uploadify.swf';
 var session_id = '<?=session_id()?>';
 var pic_url = '<?=$this->createUrl('/panos/imgOut/index/')?>';
 var google_map_tip_url = baseUrl+'/style/img/dot-s-nomarl_16x24.png';
 var save_module_datas_url = '<?=$this->createUrl('/salado/modules/')?>';
-var preview_url = '<?=$this->createUrl('/web/single/a/', array('id'=>$datas['pano']['id']))?>';
+var preview_url = '<?=$this->createUrl('/web/single/a/', array('id'=>$datas['pano']['id'], 'clean'=>1))?>';
 
 var scene_publish_url = '<?=$this->createUrl('/pano/scene/publish')?>';
 </script>
