@@ -46,8 +46,12 @@ class Controller extends CController
         if($scene_id == 0){
             $this->display_msg($msg);
         }
+        if($this->member_id == '1'){
+        	return true;
+        }
         $scene_db = new Scene();
         $datas = $scene_db->get_by_admin_scene($this->member_id, $scene_id);
+        
         if(!$datas){
             $this->display_msg($msg);
         }
@@ -59,8 +63,12 @@ class Controller extends CController
     		echo $msg;
     		exit();
     	}
+    	if($this->member_id == '1'){
+    		return true;
+    	}
     	$scene_db = new Scene();
     	$datas = $scene_db->get_by_admin_scene($this->member_id, $scene_id);
+    	
     	if(!$datas){
     		echo $msg;
     		exit();
@@ -73,8 +81,12 @@ class Controller extends CController
     	if($project_id == 0){
     		$this->display_msg($msg);
     	}
+    	if($this->member_id == '1'){
+    		return true;
+    	}
     	$project_db = new Project();
     	$project_datas = $project_db->find_by_project_id($project_id);
+    	
     	if(!$project_datas || $project_datas->member_id != $this->member_id){
     		$this->display_msg($msg);
     	}
@@ -85,6 +97,9 @@ class Controller extends CController
     	if($project_id == 0){
     		echo $msg;
     		exit();
+    	}
+    	if($this->member_id == '1'){
+    		return true;
     	}
     	$project_db = new Project();
     	$project_datas = $project_db->find_by_project_id($project_id);
