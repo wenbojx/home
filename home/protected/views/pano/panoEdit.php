@@ -49,7 +49,7 @@
                             
                         	<button class="btn btn-primary" id="btn_preview">预览</button>
                         	<!-- <button class="btn btn-primary" id="btn_pad">隐藏</button> -->
-                        	<br><br><br><br><br><br><br><br><br>
+                        	<br><br><br><br><br><br>
                         	<button id="online_pano" class="btn btn-warning" style="<?=$datas['pano']['display'] == '1'?'':'display:none' ?>" onclick="publish_scene(<?=$datas['pano']['id']?>,2)">发布</button>
                             <button id="offline_pano" class="btn btn-warning" style="<?=$datas['pano']['display'] == '2'?'':'display:none' ?>" onclick="publish_scene(<?=$datas['pano']['id']?>,1)">下线</button>
                         </div>
