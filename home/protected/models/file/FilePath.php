@@ -66,6 +66,7 @@ class FilePath extends Ydao
         );
     }
     public function save_file_path($file_info){
+    	$this->file_id = $file_info['file_id'];
     	$this->md5value = $file_info['md5value'];
     	$this->folder = $file_info['folder'];
     	$this->name = $file_info['name'];
@@ -78,7 +79,11 @@ class FilePath extends Ydao
         if(!$id){
             return false;
         }
-        return $this->findByPk($id);
+        $criteria=new CDbCriteria;
+
+    	$criteria->addCondition("file_id={$id}");
+    	//print_r($criteria);
+    	return  $this->find($criteria);
     }
     public function get_file_path($id, $add_prx='original'){
     	$path = $this->get_file_folder($id, $add_prx);

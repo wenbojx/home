@@ -3,7 +3,7 @@ class SaladoModules extends SaladoPlayer{
     private $map_type = array(
             '10'=>'ButtonBar','20'=>'ImageButton','30'=>'InfoBubble',
             '40'=>'MenuScroller','50'=>'JSGateway','60'=>'JSGateway',
-            '70'=>'LinkOpener','80'=>'MouseCursor','90'=>'ImageMap'
+            '70'=>'LinkOpener','80'=>'MouseCursor','90'=>'ImageMap','91'=>'BackgroundMusic'
     );
     private $modules_datas = array(
             //'attribute'=>array('debug'=>false),
@@ -130,6 +130,23 @@ class SaladoModules extends SaladoPlayer{
                             )
                     ),
     		),
+    		'BackgroundMusic' => array(
+    				's_attribute'=>array('path'=>''),
+    				'settings'=>array(
+    						's_attribute'=>array(
+    								'play'=>'false'
+    						)
+    				),
+    				'tracks'=>array( 'tracks'=>array(
+    						's_attribute'=>array(
+    								'id'=>'id',
+    								'path'=>'path',
+    								'volume'=>'0.5',
+    								'loop'=>'false'
+    						)
+    					)
+    				),
+    		)
     );
     public function get_modules_info($modules){
     	//print_r($modules);
@@ -145,6 +162,30 @@ class SaladoModules extends SaladoPlayer{
         }
         $modules_str .= '</modules>';
         return $modules_str;
+    }
+    private function get_BackgroundMusic($music){
+    	//print_r($music);
+    	$string = '<BackgroundMusic';
+    	$string .= $this->build_attribute($music['s_attribute']);
+        if (isset($music['settings'])){
+            $string .= '<settings';
+            $string .= $this->build_attribute($music['settings']['s_attribute']);
+            $string .= '</settings>';
+        }
+        if (isset($music['tracks'])){
+        	//echo 111;
+        	$string .= '<tracks';
+        	$string .= $this->build_attribute($music['tracks']['s_attribute']);
+        		foreach($music['tracks'] as $v){
+        			//print_r($v);
+        			$string .= '<track';
+        			$string .= $this->build_attribute($v['s_attribute']);
+        			$string .= '</track>';
+        		}
+        	$string .= '</tracks>';
+        }
+        $string .= '</BackgroundMusic>';
+        return $string;
     }
     private function get_ImageMap($imageMap){
     	$string = '<ImageMap';

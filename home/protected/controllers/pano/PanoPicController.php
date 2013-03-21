@@ -32,6 +32,9 @@ class PanoPicController extends FController{
 		elseif(strstr($this->url, '/hotimage/')){
 			$this->get_pano_hotimage();
 		}
+		else if(strstr($this->url, '/music.')){
+			$this->get_music();
+		}
 		else if(strstr($this->url, '.jpg')){
 			$this->put_out_pano_face();
 		}
@@ -39,6 +42,32 @@ class PanoPicController extends FController{
 			$this->put_out_xmlb();
 
 		}
+	}
+	/**
+	 * 音乐
+	 */
+	private function get_music(){
+		$explode_url = explode ('/', $this->url);
+		//print_r($explode_url);
+		$num = count($explode_url)-2;
+		$scene_id = (int)$explode_url[$num];
+		//获取场景对应的背景音乐
+		$scene_music = new MpSceneMusic();
+		$music_datas = $scene_music->get_by_scene_id($scene_id);
+		if(!$music_datas){
+			return false;
+		}
+		//获取原始文件信息
+		$file_path_db = new FilePath();
+		$file_path = $file_path_db->get_file_path($music_datas['file_id']);
+		
+		if(!$file_path || !is_file($file_path)){
+			return false;
+		}
+		//echo $file_path;
+		$type = substr($file_path, (strlen($file_path)-3), 3);
+		$toPath = PicTools::get_pano_static_path($scene_id).'/music.'.$type;
+		copy($file_path, $toPath);
 	}
 	/**
 	 * 地图

@@ -8,9 +8,15 @@ class UploadController extends Controller{
         'type'=>array('jpg','png','gif','JPG','PNG','GIF'),
         'size'=>5242880,
     );
+    private $music_info = array(
+    		'type'=>array('mp3','mav','wma'),
+    		'size'=>5120,
+    );
+    
     private $image_width = '';
     private $image_height = '';
     private $scene_id = ''; 
+    private $from_music = false;
 
     public function actionUploadFile(){
         $request = Yii::app()->request;
@@ -19,6 +25,7 @@ class UploadController extends Controller{
         $from_map_pic = false;
         $from_pano_pic = false;
         $from_image_pic = false;
+       // $from_music = false;
 
         $scene_id = $request->getParam('scene_id');
         $this->scene_id = $scene_id;
@@ -41,6 +48,9 @@ class UploadController extends Controller{
 	    else if ($request->getParam('from')=='image_pic' && $scene_id>0 ){
 	    	$from_image_pic = true;
 	    }
+	    else if ($request->getParam('from')=='music' && $scene_id>0 ){
+	    	$this->from_music = true;
+	    }
 
         $this->check_scene_own($scene_id);
         if($from_thumb_pic){
@@ -59,14 +69,15 @@ class UploadController extends Controller{
         if(!$file_info){
         	$this->display_msg($msg);
         }
-        $path_id = $this->save_file_path($file_info);
-        if(!$path_id){
-        	$this->display_msg($msg);
-        }
         $file_id = $this->save_file($this->member_id, $file_info['md5value']);
         if(!$file_id){
         	$this->display_msg($msg);
         }
+        $path_id = $this->save_file_path($file_info, $file_id);
+        if(!$path_id){
+        	$this->display_msg($msg);
+        }
+        
         //场景图
         if($from_box_pic){
         	$flag_scene = $this->save_scene_file($file_id, $scene_id, $request->getParam('position'));
@@ -87,6 +98,9 @@ class UploadController extends Controller{
         elseif ($from_image_pic){
         	$flag_scene = true;
         }
+        elseif($this->from_music){
+        	$flag_scene = true;
+        }
         if(!$flag_scene){
         	$this->display_msg($msg);
         }
@@ -94,7 +108,16 @@ class UploadController extends Controller{
         $file_info['width'] = $this->image_width;
         $file_info['height'] = $this->image_height;
         //$file_info['file_id'] = $file_id;
-        $msg = array('flag'=>1,'msg'=>'', 'id'=>$flag_scene, 'file_id'=>$file_id, 'type'=>$file_info['type'], 'w'=>$file_info['width'], 'h'=>$file_info['height'], 'file'=>$file_info['md5value']);
+        $msg = array('flag'=>1,'msg'=>'', 
+        		'id'=>$flag_scene, 
+        		'file_id'=>$file_id, 
+        		'type'=>$file_info['type'], 
+        		'w'=>$file_info['width'], 
+        		'h'=>$file_info['height'], 
+        		'file'=>$file_info['md5value'],
+        		'file_name'=>$file_info['name']
+        		
+        		);
         $this->display_msg($msg);
     }
     /**
@@ -217,8 +240,9 @@ class UploadController extends Controller{
     	return $datas;
     }
 
-    private function save_file_path($file_info){
+    private function save_file_path($file_info, $file_id){
         $file_path_db = new FilePath();
+        $file_info['file_id'] = $file_id;
         return $file_path_db->save_file_path($file_info);
     }
     private function save_file($member_id, $md5file){
@@ -280,13 +304,26 @@ class UploadController extends Controller{
         $file_info['name'] = $file->getName();//获取文件名
         $file_info['size'] = $file->getSize();//获取文件大小
         $file_info['type'] = strtolower($file->getExtensionName());//获取文件类型
-        if(!in_array($file_info['type'], $this->images_info['type'])){
-        	return false;
+        if($this->from_music){
+        	if(!in_array($file_info['type'], $this->music_info['type'])){
+        		return false;
+        	}
+        }
+        else{
+	        if(!in_array($file_info['type'], $this->images_info['type'])){
+	        	return false;
+	        }
         }
         //$file_info['name']=iconv("utf-8", "gb2312", $file_info['name']);//这里是处理中文的问题，非中文不需要
         $uploadfile = $folder.$file_info['md5value'].'.'.$file_info['type'];
         $flag = $file->saveAs($uploadfile,true);//上传操作
-
+        
+        if($this->from_music){
+        	if(!$flag){
+        		return false;
+        	}
+        	return $file_info;
+        }
         $myimage = new Imagick($uploadfile);
         $this->image_width = $myimage->getImageWidth();
         $this->image_height = $myimage->getImageHeight();

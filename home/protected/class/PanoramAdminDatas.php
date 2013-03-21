@@ -19,6 +19,7 @@ class PanoramAdminDatas{
     public $module_type_img_button = 20; //MenuScroller默认type值
     public $module_type_jsgateway = 60; //jsgateway默认type值
     public $module_type_infoBubble = 30; //infoBubble默认type值
+    public $module_type_music = 91;//BackgroundMusic
     public $prifix_js_id = 'js_'; //js模块ID前缀
     public $js_hotspot_loading = 'js_action_loading';
     public $js_hotspot_loaded = 'js_action_loaded';
@@ -29,6 +30,8 @@ class PanoramAdminDatas{
     public $action_datas = array(); //动作数据
     public $global_datas = array(); //全局数据
     public $panoram_datas = array(); //图片数据
+    public $music_module_exit = false;
+    
     public function get_panoram_datas($id = 0){
         $datas = array();
         if(!(int)$id){
@@ -58,6 +61,7 @@ class PanoramAdminDatas{
         if(!isset($this->global_datas['s_attribute']['debug'])){
             $this->global_datas['s_attribute']['debug'] = 'false';
         }
+        //$this->global_datas['s_attribute']['debug'] = 'true';
         // $this->global_datas['control']['s_attribute']['autorotation'] = 'enabled:false';
         $this->global_datas['branding']['s_attribute']['visible'] = 'false';
         $this->global_datas['panoramas']['s_attribute']['firstPanorama'] = $this->panoram_pre.$this->scene_id;
@@ -243,13 +247,17 @@ class PanoramAdminDatas{
      * 模块地址
      */
     public function module_path($name){
-        $path['LinkOpener'] = Yii::app()->baseUrl.'/pages/salado/modules/LinkOpener.swf';
-        $path['Hotspot'] = Yii::app()->baseUrl.'/pages/salado/modules/AdvancedHotspot.swf';
-        $path['ButtonBar'] = Yii::app()->baseUrl.'/pages/salado/modules/ButtonBar.swf';
-        $path['MenuScroller'] = Yii::app()->baseUrl.'/pages/salado/modules/MenuScroller.swf';
-        $path['ImageButton'] = Yii::app()->baseUrl.'/pages/salado/modules/ImageButton.swf';
-        $path['JSGateway'] = Yii::app()->baseUrl.'/pages/salado/modules/JSGateway.swf';
-        $path['InfoBubble'] = Yii::app()->baseUrl.'/pages/salado/modules/InfoBubble.swf';
+        $path['LinkOpener'] = Yii::app()->baseUrl.'/plugins/salado/modules/LinkOpener.swf';
+        $path['Hotspot'] = Yii::app()->baseUrl.'/plugins/salado/modules/AdvancedHotspot.swf';
+        $path['ButtonBar'] = Yii::app()->baseUrl.'/plugins/salado/modules/ButtonBar.swf';
+        $path['MenuScroller'] = Yii::app()->baseUrl.'/plugins/salado/modules/MenuScroller.swf';
+        $path['ImageButton'] = Yii::app()->baseUrl.'/plugins/salado/modules/ImageButton.swf';
+        $path['JSGateway'] = Yii::app()->baseUrl.'/plugins/salado/modules/JSGateway.swf';
+        $path['MouseCursor'] = Yii::app()->baseUrl.'/plugins/salado/modules/MouseCursor.swf';
+        $path['ImageMap'] = Yii::app()->baseUrl.'/plugins/salado/modules/ImageMap-1.3.swf';
+        $path['InfoBubble'] = Yii::app()->baseUrl.'/plugins/salado/modules/InfoBubble-1.3.2.swf';
+        $path['BackgroundMusic'] = Yii::app()->baseUrl.'/plugins/salado/modules/BackgroundMusic-1.1.swf';
+        
         if(!isset($path[$name])){
             return '';
         }
@@ -259,9 +267,10 @@ class PanoramAdminDatas{
      * 模块默认素材地址
      */
     public function module_media_path($name){
-        $path['button_bar'] = Yii::app()->baseUrl.'/pages/salado/media/buttons_dark_30x30.png';
-        $path['menu_scroller_show_btn'] = Yii::app()->baseUrl.'/pages/salado/media/MenuScroller_show.png';
-        $path['menu_scroller_hide_btn'] = Yii::app()->baseUrl.'/pages/salado/media/MenuScroller_hide.png';
+        $path['button_bar'] = Yii::app()->baseUrl.'/plugins/salado/media/buttons_dark_30x30.png';
+        $path['menu_scroller_show_btn'] = Yii::app()->baseUrl.'/plugins/salado/media/MenuScroller_show.png';
+        $path['menu_scroller_hide_btn'] = Yii::app()->baseUrl.'/plugins/salado/media/MenuScroller_hide.png';
+        $path['mousecursor'] = Yii::app()->baseUrl.'/plugins/salado/media/cursors_21x21.png';
         if(!isset($path[$name])){
             return '';
         }
@@ -308,6 +317,7 @@ class PanoramAdminDatas{
         $datas = $module_db->find_by_scene_id($scene_id);
         $no_button_bar = true;
         $no_menuscroller = true;
+        $no_menuscroller = true;
         if (is_array($datas)){
             foreach($datas as $v){
                 if($v['content']){
@@ -329,11 +339,47 @@ class PanoramAdminDatas{
         }
         //添加js模块
         $this->get_js_gateway_module();
-        if($no_button_bar){
-            //获取默认button_bar
-            $this->get_default_button_bar();
+        
+        //获取背景音乐信息
+        $music_db = new MpSceneMusic();
+        $music_datas = $music_db->get_by_scene_id($this->scene_id, 1);
+        if($music_datas){
+        	$this->add_music_module($music_datas);
         }
+        $this->get_default_button_bar();
+        
         return $this->modules_datas;
+    }
+    /**
+     * 添加music模块
+     */
+    public function add_music_module($music_datas){
+    	$type = $this->module_type_music;
+    	$this->modules_datas[$type]['s_attribute']['path'] = $this->module_path('BackgroundMusic');
+    	$this->modules_datas[$type]['settings']['s_attribute']['play'] = 'true';
+    	$this->modules_datas[$type]['settings']['s_attribute']['onPlay'] = 'MusicSetActive';
+    	$this->modules_datas[$type]['settings']['s_attribute']['onStop'] = 'MusicInSetActive';
+
+    	$file_path_db = new FilePath();
+    	$file_datas = $file_path_db->get_by_file_id($music_datas['file_id']);
+    	
+    	$id = $music_datas['id'];
+    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['id'] = 'music_'+$music_datas['id'];
+    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['path'] = PicTools::get_pano_music($this->scene_id, $file_datas['type']);
+    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['volume'] = $music_datas['volume']/10;
+    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['loop'] = $music_datas['volume'] ? 'true':'false';
+    	$this->music_module_exit = true;
+    	$id = 'MusictogglePlay';
+    	$content = 'BackgroundMusic.togglePlay()';
+    	$this->add_single_action($id, $content);
+    	
+    	$id = 'MusicSetActive';
+    	$content = 'ButtonBar.setActive(d,false)';
+    	$this->add_single_action($id, $content);
+    	
+    	$id = 'MusicInSetActive';
+    	$content = 'ButtonBar.setActive(d, true)';
+    	$this->add_single_action($id, $content);
     }
     /**
      * js gateway模块
@@ -487,6 +533,10 @@ class PanoramAdminDatas{
         $this->modules_datas[$type]['buttons']['button']['6']['s_attribute']['name'] = 'out';
         $this->modules_datas[$type]['buttons']['button']['7']['s_attribute']['name'] = 'in';
         $this->modules_datas[$type]['buttons']['button']['8']['s_attribute']['name'] = 'fullscreen';
+        if($this->music_module_exit){
+        	$this->modules_datas[$type]['buttons']['extraButton']['map']['s_attribute']['name'] = 'd';
+        	$this->modules_datas[$type]['buttons']['extraButton']['map']['s_attribute']['action'] = 'MusictogglePlay';
+        }
         return $this->modules_datas[$type];
     }
     protected $extra_button_id_num = 1; //

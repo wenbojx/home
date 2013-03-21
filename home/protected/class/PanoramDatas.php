@@ -18,10 +18,12 @@ class PanoramDatas{
     public $module_type_img_button = 20; //MenuScroller默认type值
     public $module_type_jsgateway = 60; //jsgateway默认type值
     public $module_type_mouse_cursor = 80; //jsgateway默认type值
-    
+    public $module_type_music = 91;//BackgroundMusic
     public $prifix_js_id = 'js_'; //js模块ID前缀
     public $js_hotspot_loading = 'js_action_loading';
     public $js_hotspot_loaded = 'js_action_loaded';
+    
+    public $music_module_exit = false;
 
     //public $actions_pre = 'act_';
     private $scene_id = 0;
@@ -230,6 +232,7 @@ class PanoramDatas{
         $path['ImageButton'] = Yii::app()->baseUrl.'/plugins/salado/modules/ImageButton.swf';
         $path['JSGateway'] = Yii::app()->baseUrl.'/plugins/salado/modules/JSGateway.swf';
         $path['MouseCursor'] = Yii::app()->baseUrl.'/plugins/salado/modules/MouseCursor.swf';
+        $path['BackgroundMusic'] = Yii::app()->baseUrl.'/plugins/salado/modules/BackgroundMusic-1.1.swf';
         if(!isset($path[$name])){
             return '';
         }
@@ -317,13 +320,56 @@ class PanoramDatas{
         }
         //添加js模块
         $this->get_js_gateway_module();
-        if($no_button_bar && $this->display_config['nobtb']){
-            //获取默认button_bar
-            $this->get_default_button_bar();
-        }
+        
         //添加MouseCursor
         $this->get_mousecursor_module();
+        
+        /*
+        //获取背景音乐信息
+        $music_db = new MpSceneMusic();
+        //echo $this->scene_id;
+        $music_datas = $music_db->get_by_scene_id($this->scene_id, 1);
+        if($music_datas){
+        	$this->add_music_module($music_datas);
+        }
+        */
+        if($this->display_config['nobtb']){
+        	//获取默认button_bar
+        	$this->get_default_button_bar();
+        }
+        
         return $this->modules_datas;
+    }
+    /**
+     * 添加music模块
+     */
+	public function add_music_module($music_datas){
+    	$type = $this->module_type_music;
+    	$this->modules_datas[$type]['s_attribute']['path'] = $this->module_path('BackgroundMusic');
+    	$this->modules_datas[$type]['settings']['s_attribute']['play'] = 'true';
+    	$this->modules_datas[$type]['settings']['s_attribute']['onPlay'] = 'MusicSetActive';
+    	$this->modules_datas[$type]['settings']['s_attribute']['onStop'] = 'MusicInSetActive';
+    	
+    	$file_path_db = new FilePath();
+    	$file_datas = $file_path_db->get_by_file_id($music_datas['file_id']);
+    	
+    	$id = $music_datas['id'];
+    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['id'] = 'music_'+$music_datas['id'];
+    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['path'] = PicTools::get_pano_music($this->scene_id, $file_datas['type']);
+    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['volume'] = $music_datas['volume']/10;
+    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['loop'] = $music_datas['volume'] ? 'true':'false';
+    	$this->music_module_exit = true;
+    	$id = 'MusictogglePlay';
+    	$content = 'BackgroundMusic.togglePlay()';
+    	$this->add_single_action($id, $content);
+    	
+    	$id = 'MusicSetActive';
+    	$content = 'ButtonBar.setActive(d,false)';
+    	$this->add_single_action($id, $content);
+    	
+    	$id = 'MusicInSetActive';
+    	$content = 'ButtonBar.setActive(d, true)';
+    	$this->add_single_action($id, $content);
     }
     /**
      * 添加mouseCursor模块
@@ -516,6 +562,11 @@ class PanoramDatas{
         $this->modules_datas[$type]['buttons']['button']['6']['s_attribute']['name'] = 'out';
         $this->modules_datas[$type]['buttons']['button']['7']['s_attribute']['name'] = 'in';
         $this->modules_datas[$type]['buttons']['button']['8']['s_attribute']['name'] = 'fullscreen';
+        if($this->music_module_exit){
+        	$this->modules_datas[$type]['buttons']['extraButton']['map']['s_attribute']['name'] = 'd';
+        	$this->modules_datas[$type]['buttons']['extraButton']['map']['s_attribute']['action'] = 'MusictogglePlay';
+        }
+        
         return $this->modules_datas[$type];
     }
     protected $extra_button_id_num = 1; //

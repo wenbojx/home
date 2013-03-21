@@ -23,7 +23,7 @@ class PanoSingleDatas{
     public $module_type_mouse_cursor = 80; //jsgateway默认type值
     public $module_type_image_map = 90; //jsgateway默认type值
     public $module_type_info_bubble = 30; 
-    
+    public $module_type_music = 91;//BackgroundMusic
     
     public $prifix_js_id = 'js_'; //js模块ID前缀
     public $js_hotspot_loading = 'js_action_loading';
@@ -44,6 +44,8 @@ class PanoSingleDatas{
     private $scene_datas = array();
     private $map_flag = true;
     private $map_datas = array();
+    
+    public $music_module_exit = false;
 
     public function get_panoram_datas($id = 0){
         $datas = array();
@@ -315,6 +317,7 @@ class PanoSingleDatas{
         $path['MouseCursor'] = Yii::app()->baseUrl.'/plugins/salado/modules/MouseCursor.swf';
         $path['ImageMap'] = Yii::app()->baseUrl.'/plugins/salado/modules/ImageMap-1.3.swf';
         $path['InfoBubble'] = Yii::app()->baseUrl.'/plugins/salado/modules/InfoBubble-1.3.2.swf';
+        $path['BackgroundMusic'] = Yii::app()->baseUrl.'/plugins/salado/modules/BackgroundMusic-1.1.swf';
         if(!isset($path[$name])){
             return '';
         }
@@ -411,18 +414,59 @@ class PanoSingleDatas{
         	$this->get_imagemap_module($this->map_datas);
         }
         
-        if($no_button_bar && $this->display_config['nobtb']){
-            //获取默认button_bar
-            $this->get_default_button_bar();
-        }
+        
         //添加MouseCursor
         $this->get_mousecursor_module();
         //print_r($this->modules_datas);
         //添加imagemap
+        //获取背景音乐信息
+        $music_db = new MpSceneMusic();
+        $music_datas = $music_db->get_by_scene_id($this->scene_id, 1);
+        if($music_datas){
+        	$this->add_music_module($music_datas);
+        }
         
+        if($this->display_config['nobtb']){
+        	//获取默认button_bar
+        	$this->get_default_button_bar();
+        }
         
         return $this->modules_datas;
     }
+    
+    /**
+     * 添加music模块
+     */
+	public function add_music_module($music_datas){
+    	$type = $this->module_type_music;
+    	$this->modules_datas[$type]['s_attribute']['path'] = $this->module_path('BackgroundMusic');
+    	$this->modules_datas[$type]['settings']['s_attribute']['play'] = 'true';
+    	$this->modules_datas[$type]['settings']['s_attribute']['onPlay'] = 'MusicSetActive';
+    	$this->modules_datas[$type]['settings']['s_attribute']['onStop'] = 'MusicInSetActive';
+    	
+    	$file_path_db = new FilePath();
+    	$file_datas = $file_path_db->get_by_file_id($music_datas['file_id']);
+    	
+    	$id = $music_datas['id'];
+    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['id'] = 'music_'+$music_datas['id'];
+    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['path'] = PicTools::get_pano_music($this->scene_id, $file_datas['type']);
+    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['volume'] = $music_datas['volume']/10;
+    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['loop'] = $music_datas['volume'] ? 'true':'false';
+    	$this->music_module_exit = true;
+    	$id = 'MusictogglePlay';
+    	$content = 'BackgroundMusic.togglePlay()';
+    	$this->add_single_action($id, $content);
+    	
+    	$id = 'MusicSetActive';
+    	$content = 'ButtonBar.setActive(d,false)';
+    	$this->add_single_action($id, $content);
+    	
+    	$id = 'MusicInSetActive';
+    	$content = 'ButtonBar.setActive(d, true)';
+    	$this->add_single_action($id, $content);
+    	
+    }
+    
     public function get_imagemap_module($datas){
     	$type = $this->module_type_image_map;
     	$this->modules_datas[$type]['s_attribute']['path'] = $this->module_path('ImageMap');
@@ -691,8 +735,8 @@ class PanoSingleDatas{
         $this->modules_datas[$type]['window']['s_attribute']['alpha'] = '0.6';
         $this->modules_datas[$type]['buttons']['s_attribute']['path'] = $this->module_media_path('button_bar');
         if($this->map_flag){
-        $this->modules_datas[$type]['buttons']['extraButton']['map']['s_attribute']['name'] = 'b';
-        $this->modules_datas[$type]['buttons']['extraButton']['map']['s_attribute']['action'] = 'mapToggle';
+        	$this->modules_datas[$type]['buttons']['extraButton']['map']['s_attribute']['name'] = 'b';
+        	$this->modules_datas[$type]['buttons']['extraButton']['map']['s_attribute']['action'] = 'mapToggle';
         }
         $this->modules_datas[$type]['buttons']['button']['1']['s_attribute']['name'] = 'autorotation';
         //$this->modules_datas[$type]['buttons']['button']['2']['s_attribute']['name'] = 'left';
@@ -707,6 +751,10 @@ class PanoSingleDatas{
         
         //<extraButton name="b" action="mapToggle" mouse="onOver:showBubbleMap,onOut:hideBubble"/>
         $this->modules_datas[$type]['buttons']['button']['8']['s_attribute']['name'] = 'fullscreen';
+        if($this->music_module_exit){
+        	$this->modules_datas[$type]['buttons']['extraButton']['map']['s_attribute']['name'] = 'd';
+        	$this->modules_datas[$type]['buttons']['extraButton']['map']['s_attribute']['action'] = 'MusictogglePlay';
+        }
         return $this->modules_datas[$type];
     }
     protected $extra_button_id_num = 1; //

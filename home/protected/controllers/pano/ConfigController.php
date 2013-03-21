@@ -4,7 +4,7 @@ class ConfigController extends Controller{
     public $defaultType = array(
             'face', 'position', 'basic', 'camera', 'view', 'hotspot','hotspotEdit',
             'button', 'map', 'navigat', 'radar',
-            'html', 'rightkey', 'link', 'flare','action','thumb','image','imageEdit','compass'
+            'html', 'rightkey', 'link', 'flare','action','thumb','image','imageEdit','compass','music'
             );
     private $pano_thumb_size = '200x100';
 
@@ -78,10 +78,49 @@ class ConfigController extends Controller{
         	
         	$datas['hotspot_id'] = $request->getParam('hotspot_id');
         }
+        elseif ($type == 'music'){
+        	$datas['music'] = $this->get_music_info($datas['scene_id']);
+        	//print_r($datas['music']);
+        }
         if(!in_array($type, $this->defaultType)){
             exit();
         }
         $this->render('/pano/panel/'.$type, array('datas'=>$datas));
+    }
+    /**
+     * 获取背景音乐文件信息
+     * 
+     */
+    private function get_music_info($scene_id){
+    	if(!$scene_id){
+    		return false;
+    	}
+    	$scene_music_db = new MpSceneMusic();
+    	$music_datas = $scene_music_db->get_by_scene_id($scene_id);
+    	//print_r($music_datas);
+    	if(!$music_datas){
+    		return false;
+    	}
+    	$file_id = $music_datas['file_id'];
+    	if(!$file_id){
+    		return false;
+    	}
+    	//获取文件信息
+    	$file_path_db = new FilePath();
+    	$file_datas = $file_path_db->get_by_file_id($file_id);
+    	if(!$file_datas){
+    		return false;
+    	}
+    	//$music_datas['file'] = $file_datas;
+    	$datas['id'] = $music_datas['id'];
+    	$datas['scene_id'] = $music_datas['scene_id'];
+    	$datas['file_id'] = $file_id;
+    	$datas['file_name'] = $file_datas['name'];
+    	$datas['volume'] = $music_datas['volume'];
+    	$datas['loop'] = $music_datas['loop'];
+    	$datas['state'] = $music_datas['state'];
+
+    	return $datas;
     }
     /**
      * 获取场景文件信息

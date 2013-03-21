@@ -43,6 +43,7 @@
                             <!-- <button class="btn">视角</button> -->
                             <button class="btn" id="btn_hotspot">热点</button>
                             <button class="btn" id="btn_image">图片</button>
+                            <button class="btn" id="btn_music">音乐</button>
                             <!-- <button class="btn">按钮</button>
                             <button class="btn">导航</button> -->
                             
@@ -95,6 +96,7 @@ var camera_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'camera', 's
 var map_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'map', 'scene_id'=>$datas['pano']['id'],  'project_id'=>$datas['pano']['project_id']))?>';
 var hotspot_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'hotspot', 'scene_id'=>$datas['pano']['id']))?>';
 var image_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'image', 'scene_id'=>$datas['pano']['id']))?>';
+var music_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'music', 'scene_id'=>$datas['pano']['id']))?>';
 var hotspot_edit_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'hotspotEdit', 'scene_id'=>$datas['pano']['id']))?>';
 var imghotspot_edit_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'imageEdit', 'scene_id'=>$datas['pano']['id']))?>';
 </script>

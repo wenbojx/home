@@ -33,6 +33,9 @@ function bind_pano_btn(){
         load_page(image_url, 'image');
         image_hotspot_click();
     });
+    $('#btn_music').bind('click',function(){
+        load_page(music_url, 'music');
+    });
     $('#btn_pad').bind('click',function(){
     	if ($("#pano-detail").is(":hidden")){
     		$("#pano-detail").show();
@@ -351,6 +354,42 @@ function image_box_upload(){
     });
 }
 
+function music_box_upload(){
+    var post_datas = {'scene_id':scene_id, 'project_id':project_id, 'from':'music','SESSION_ID':session_id};
+    $("#music_box_upload").uploadify({
+        'swf': flash_url,
+        'uploader': music_upload_url,
+        'formData': post_datas,
+        //'uploadLimit':1,
+        'buttonText':'上传音乐',
+        'debug':false,
+        'width':74,
+        'height':28,
+        'fileSizeLimit':'5120KB',
+        'fileTypeDesc' : 'mp3,wav,wma格式',
+        'fileTypeExts':'*.mp3;*.wav;*.wma',
+        'buttonImage':music_button_img,
+        'multi': false,
+        'removeTimeout':1,
+        'auto': true,
+        'onSelectError':function(file){
+        },
+        'onUploadError':function(file,data){
+        },
+        'onUploadSuccess':function(file, data, response){
+            var dataObj = eval("("+data+")");
+            if(dataObj.flag == '0'){
+                alert(dataObj.msg);
+            }
+            else if(response>0){
+            	var file_id = dataObj.file_id;
+            	$("#music_file_id").val(file_id);
+            	$("#curent_music").html("当前音乐:"+dataObj.file_name);
+            	$("#curent_music").show();
+            }
+        }
+    });
+}
 
 function init_upload_box(){
 	if(box_left != ""){
@@ -667,6 +706,38 @@ function save_hotspot_detail(scene_id){
         alert(datas.msg);
     }
 }
+
+function save_music_detail(scene_id){
+    var msg = {};
+    msg.error = '操作失败';
+    msg.success = '操作成功';
+    var element_id = 'save_music_tip_flag';
+    if(!scene_id){
+        done_error(element_id, msg.error);
+    }
+    var data = {};
+    data.file_id = $("#music_file_id").val();
+    data.volume = $("#volume").val();
+    data.loop = $("#loop").val();
+    data.state = $("#music_state").val();
+    data.music_id = $("#music_id").val();
+    data.scene_id = scene_id;
+    if(data.link_scene_id == '0'){
+    	alert('参数错误');
+    	return false;
+    }
+    if(data.file_id == ''){
+    	alert('请先上传背景音乐');
+    	return false;
+    }
+    var url = $("#save_music").attr('action');
+    save_datas(url, data, '', '', call_back);
+    function call_back(datas){
+        alert(datas.msg);
+    }
+}
+
+
 function publish_scene(scene_id, display){
     var msg = {};
     msg.error = '操作失败';

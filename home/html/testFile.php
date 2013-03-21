@@ -58,5 +58,16 @@
 <input type="submit" name="submit" value="图片" />
 </form>
 
+<form action="http://www.dev.yiluhao.com/pano/upload" method="post" enctype="multipart/form-data">
+<label for="file">Filename:</label>
+<input type="file" name="Filedata" id="file" />
+<input type="hidden" name="project_id" value="1">
+<input type="hidden" name="scene_id" value="3">
+<input type="hidden" name="from" value="music">
+
+<br />
+<input type="submit" name="submit" value="音乐" />
+</form>
+
 </body>
 </html>

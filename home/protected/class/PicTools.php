@@ -54,6 +54,16 @@ class PicTools{
 		$path = self::get_img_domain($num%2). '/' .self::get_pano_static_path($project_id.'/map');
 		return $path . '/' . $map_id. '.jpg';
 	}
+	public static function get_pano_music($scene_id, $type){
+		if(!$scene_id){
+			return false;
+		}
+		$num = substr($scene_id, -1);
+		
+		$path = self::get_img_domain($num%2). '/' .self::get_pano_static_path($scene_id);
+		
+		return $path. '/' . 'music.'.$type;
+	}
 	public static function get_img_hotspot_path($scene_id, $hotspot_id){
 		if(!$scene_id || !$hotspot_id){
 			return false;
