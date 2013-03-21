@@ -15,6 +15,7 @@ class MusicController extends Controller{
         if(!$datas['file_id'] || !$datas['scene_id']){
         	$this->display_msg($msg);
         }
+        $this->check_file_chang($datas['file_id'], $datas['scene_id']);
         $id = $this->save_scene_music($datas);
         //echo $id;
         if(!$id){
@@ -30,5 +31,25 @@ class MusicController extends Controller{
     	$datas['volume'] = $datas['volume']*10;
     	return $scene_music_db->save_datas($datas);
     }
-    
+    private function check_file_chang($file_id, $scene_id){
+    	
+    	$scene_musc_db = new MpSceneMusic();
+    	$music_datas = $scene_musc_db->get_by_scene_id($scene_id);
+    	if($music_datas['file_id'] && $music_datas['file_id'] == $file_id){
+    		return true;
+    	}
+    	
+    	$file_path_db = new FilePath();
+    	$file_path = $file_path_db->get_file_path($file_id);
+    	
+    	if(!$file_path || !is_file($file_path)){
+    		return false;
+    	}
+    	//echo $file_path;
+    	$type = substr($file_path, (strlen($file_path)-3), 3);
+    	//获取文件
+    	$toPath = PicTools::get_pano_static_path($scene_id).'/music.'.$type;
+    	unlink($toPath);
+    	copy($file_path, $toPath);
+    }
 }
