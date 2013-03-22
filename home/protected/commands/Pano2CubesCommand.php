@@ -224,7 +224,7 @@ o f4 y0 r0 p90 v360";
 		}
 		$myimage = new Imagick($old);
 		$myimage->setImageFormat("jpeg");
-		$myimage->setCompressionQuality( 85 );
+		$myimage->setCompressionQuality( 90 );
 		$myimage->writeImage($new);
 		$this->cubeTile->logs .= "scene_id:{$this->scene_id}\r\n";
 		if($this->scene_id){
