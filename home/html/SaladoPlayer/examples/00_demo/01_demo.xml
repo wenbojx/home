@@ -44,8 +44,85 @@
 				<settings path="~hotspots/images/arrow_blue.png"/>
 			</swf>
 		</panorama>
+		
+		<panorama id="checkerRed1" path="~panoramas/dz_checker_red/checker_red_f.xml" camera="pan:NaN" onLeaveToAttempt="checkerGreen:redMoveToGreen,checkerBlue:redMoveToBlue">
+			<swf id="cr_arrowGreen" path="~hotspots/AdvancedHotspot-1.0.swf" location="pan:90" target="checkerGreen" mouse="onOver:showBubbleGreen,onOut:hideBubble">
+				<settings path="~hotspots/images/arrow_green.png"/>
+			</swf>
+			<swf id="cr_arrowBlue" path="~hotspots/AdvancedHotspot-1.0.swf" location="pan:0" target="checkerBlue" mouse="onOver:showBubbleBlue,onOut:hideBubble">
+				<settings path="~hotspots/images/arrow_blue.png"/>
+			</swf>
+		</panorama>
+		<panorama id="checkerYellow1" path="~panoramas/dz_checker_yellow/checker_yellow_f.xml" camera="pan:NaN" onLeaveToAttempt="checkerGreen:yellowMoveToGreen,checkerBlue:yellowMoveToBlue">
+			<swf id="cy_arrowGreen" path="~hotspots/AdvancedHotspot-1.0.swf" location="pan:180" target="checkerGreen" mouse="onOver:showBubbleGreen,onOut:hideBubble">
+				<settings path="~hotspots/images/arrow_green.png"/>
+			</swf>
+			<swf id="cy_arrowBlue" path="~hotspots/AdvancedHotspot-1.0.swf" location="pan:-90" target="checkerBlue" mouse="onOver:showBubbleBlue,onOut:hideBubble">
+				<settings path="~hotspots/images/arrow_blue.png"/>
+			</swf>
+		</panorama>
+		
+		<panorama id="checkerRed2" path="~panoramas/dz_checker_red/checker_red_f.xml" camera="pan:NaN" onLeaveToAttempt="checkerGreen:redMoveToGreen,checkerBlue:redMoveToBlue">
+			<swf id="cr_arrowGreen" path="~hotspots/AdvancedHotspot-1.0.swf" location="pan:90" target="checkerGreen" mouse="onOver:showBubbleGreen,onOut:hideBubble">
+				<settings path="~hotspots/images/arrow_green.png"/>
+			</swf>
+			<swf id="cr_arrowBlue" path="~hotspots/AdvancedHotspot-1.0.swf" location="pan:0" target="checkerBlue" mouse="onOver:showBubbleBlue,onOut:hideBubble">
+				<settings path="~hotspots/images/arrow_blue.png"/>
+			</swf>
+		</panorama>
+		<panorama id="checkerYellow2" path="~panoramas/dz_checker_yellow/checker_yellow_f.xml" camera="pan:NaN" onLeaveToAttempt="checkerGreen:yellowMoveToGreen,checkerBlue:yellowMoveToBlue">
+			<swf id="cy_arrowGreen" path="~hotspots/AdvancedHotspot-1.0.swf" location="pan:180" target="checkerGreen" mouse="onOver:showBubbleGreen,onOut:hideBubble">
+				<settings path="~hotspots/images/arrow_green.png"/>
+			</swf>
+			<swf id="cy_arrowBlue" path="~hotspots/AdvancedHotspot-1.0.swf" location="pan:-90" target="checkerBlue" mouse="onOver:showBubbleBlue,onOut:hideBubble">
+				<settings path="~hotspots/images/arrow_blue.png"/>
+			</swf>
+		</panorama>
+		
+		<panorama id="checkerRed3" path="~panoramas/dz_checker_red/checker_red_f.xml" camera="pan:NaN" onLeaveToAttempt="checkerGreen:redMoveToGreen,checkerBlue:redMoveToBlue">
+			<swf id="cr_arrowGreen" path="~hotspots/AdvancedHotspot-1.0.swf" location="pan:90" target="checkerGreen" mouse="onOver:showBubbleGreen,onOut:hideBubble">
+				<settings path="~hotspots/images/arrow_green.png"/>
+			</swf>
+			<swf id="cr_arrowBlue" path="~hotspots/AdvancedHotspot-1.0.swf" location="pan:0" target="checkerBlue" mouse="onOver:showBubbleBlue,onOut:hideBubble">
+				<settings path="~hotspots/images/arrow_blue.png"/>
+			</swf>
+		</panorama>
+		<panorama id="checkerYellow3" path="~panoramas/dz_checker_yellow/checker_yellow_f.xml" camera="pan:NaN" onLeaveToAttempt="checkerGreen:yellowMoveToGreen,checkerBlue:yellowMoveToBlue">
+			<swf id="cy_arrowGreen" path="~hotspots/AdvancedHotspot-1.0.swf" location="pan:180" target="checkerGreen" mouse="onOver:showBubbleGreen,onOut:hideBubble">
+				<settings path="~hotspots/images/arrow_green.png"/>
+			</swf>
+			<swf id="cy_arrowBlue" path="~hotspots/AdvancedHotspot-1.0.swf" location="pan:-90" target="checkerBlue" mouse="onOver:showBubbleBlue,onOut:hideBubble">
+				<settings path="~hotspots/images/arrow_blue.png"/>
+			</swf>
+		</panorama>
+		
 	</panoramas>
 	<modules>
+	    <JSGoogleMap path="~modules/jsgooglemap/JSGoogleMap-1.0.swf">
+         <settings open="true" onOpen="jsgooglemapOnOpen" onClose="jsgooglemapOnClose"/>
+         <waypoints markerOn="~modules/jsgooglemap/images/marker_on.png" markerOff="~modules/jsgooglemap/images/marker_off.png">
+            <waypoint target="checkerGreen" geolocation="latitude:46.44,longitude:11.08" label="Green checker"/>
+            <waypoint target="checkerRed" geolocation="latitude:47.04,longitude:11.14" label="Red checker"/>
+         </waypoints>
+         <tracks>
+            <track path="~media/google.kmz"/>
+            <track path="~media/map.kmz"/>
+         </tracks>
+      	</JSGoogleMap> 
+	    <ZoomSlider path="~modules/zoomslider/ZoomSlider-1.1.swf">
+         <window align="horizontal:center,vertical:bottom" move="horizontal:0,vertical:-10"/>
+         <slider path="~modules/zoomslider/images/elements_dark_40x40.png" slidesVertical="false" length="400"/>
+      </ZoomSlider> 
+	    <Compass path="~modules/compass/Compass-1.2.swf">
+         <window align="vertical:top,horizontal:right" move="horizontal:-10,vertical:90"/>
+         <settings path="~modules/compass/images/compass_eugen360_93x81.png"/>
+      	</Compass>
+      	<BackgroundMusic path="~modules/BackgroundMusic-1.1.swf">
+         <settings play="true" onPlay="printPlay" onStop="printStop"/>
+         <tracks>
+            <track id="always" path="~media/sound/looperman-djgadget-always.mp3" volume="1.25" loop="false"/>
+         </tracks>
+      </BackgroundMusic> 
 		<InfoBubble path="~modules/InfoBubble-1.3.2.swf">
 			<bubbles>
 				<text id="b_drag" text="change navigation style" style="buttonBar" angle="1"/>
@@ -66,17 +143,29 @@
 				<style id="buttonBar" content="bubblePadding:3,fontSize:12,borderSize:2"/>
 			</styles>
 		</InfoBubble>
-		<MenuScroller path="~modules/MenuScroller-1.2.swf">
-			<window open="false" onOpen="menuScrollerOpened" onClose="menuScrollerClosed" openTween="time:0.5" closeTween="time:0.5"/>
-			<close path="~media/images/buttons/dark_left_close.png" align="vertical:middle" move="horizontal:60"/>
-			<elements>
-				<element target="kiev" path="~media/images/thumbs/kiev.jpg" mouse="onOver:showBubbleKievResolution,onOut:hideBubble"/>
-				<element target="park" path="~media/images/thumbs/park.jpg" mouse="onOver:showBubbleParkResolution,onOut:hideBubble"/>
-				<element target="checkerBlue" path="~media/images/thumbs/checker_blue.jpg"/>
-				<element target="checkerGreen" path="~media/images/thumbs/checker_green.jpg"/>
-				<element target="checkerRed" path="~media/images/thumbs/checker_red.jpg"/>
-				<element target="checkerYellow" path="~media/images/thumbs/checker_yellow.jpg"/>
-			</elements>
+		<MenuScroller path="~modules/MenuScroller-1.3.1.swf">
+			<window open="true" transition="type:slideLeft" align="vertical:bottom,horizontal:left" onOpen="menuScrollerOpened"  minSize="height:50,width:100" maxSize="width:150" alpha="0.1" onClose="menuScrollerClosed" openTween="time:0.5" closeTween="time:0.5"/>
+			<close path="~media/images/buttons/light_left_close.png" align="vertical:top" move="horizontal:27"/>
+			<scroller spacing="5" padding="5"/>
+			<groups>
+				<group id="adfsadf">
+					<element target="kiev" path="~media/images/thumbs/kiev.jpg" mouse="onOver:showBubbleKievResolution,onOut:hideBubble"/>
+					<element target="park" path="~media/images/thumbs/park.jpg" mouse="onOver:showBubbleParkResolution,onOut:hideBubble"/>
+					<element target="checkerBlue" path="~media/images/thumbs/checker_blue.jpg"/>
+					<element target="checkerGreen" path="~media/images/thumbs/checker_green.jpg"/>
+					<element target="checkerRed" path="~media/images/thumbs/checker_red.jpg"/>
+					<element target="checkerYellow" path="~media/images/thumbs/checker_yellow.jpg"/>
+					<element target="checkerRed1" path="~media/images/thumbs/checker_red.jpg"/>
+					<element target="checkerYellow1" path="~media/images/thumbs/checker_yellow.jpg" mouse="onOver:showBubbleBlue,onOut:showBubbleBlue"/>
+
+					<element target="checkerRed2" path="~media/images/thumbs/checker_red.jpg"/>
+					<element target="checkerYellow2" path="~media/images/thumbs/checker_yellow.jpg"/>
+					<element target="checkerRed3" path="~media/images/thumbs/checker_red.jpg"/>
+					<element target="checkerYellow3" path="~media/images/thumbs/checker_yellow.jpg" />
+					
+				</group>
+
+			</groups>
 		</MenuScroller>
 		<DropDown path="~modules/DropDown-1.2.swf">
 			<window open="false"/>
@@ -114,14 +203,14 @@
 			<button id="help" path="~media/images/misc/help.png" action="helpToggle">
 				<window align="vertical:middle,horizontal:center" open="false" onOpen="helpOpened" onClose="helpClosed"/>
 			</button>
-			<button id="buttonMenuScroller" path="~media/images/buttons/dark_left_open.png" action="menuScrollerOpen">
-				<window align="vertical:middle,horizontal:left" move="horizontal:0,vertical:0" openTween="time:0" closeTween="time:0"/>
+			<button id="buttonMenuScroller" path="~media/images/buttons/light_left_open.png" action="menuScrollerOpen">
+				<window align="vertical:top,horizontal:left" move="horizontal:0,vertical:0" openTween="time:0" closeTween="time:0"/>
 			</button>
 			<button id="mapIcon" path="~media/images/misc/imagemap_icon.png" action="mapOpen">
-				<window align="vertical:top,horizontal:right" move="horizontal:-30,vertical:30"/>
+				<window align="vertical:top,horizontal:right" move="horizontal:-12,vertical:5"/>
 			</button>
 			<button id="buttonMenuMap">
-				<window open="false"transition="type:fade" align="vertical:top,horizontal:right" move="horizontal:-230,vertical:330"/>
+				<window open="false" transition="type:fade" align="vertical:top,horizontal:right" move="horizontal:-230,vertical:330"/>
 				<subButtons>
 					<subButton id="buttonMenuMap1" path="~media/images/misc/button_map1.png" action="setMap1"/>
 					<subButton id="buttonMenuMap2" path="~media/images/misc/button_map2.png" move="horizontal:85" action="setMap2"/>
@@ -129,10 +218,11 @@
 			</button>
 		</ImageButton>
 		<ButtonBar path="~modules/buttonBar/ButtonBar-1.3.swf">
-			<window open="false" transition="type:slideRight"/>
+			<window open="false" transition="type:slideRight" alpha="0.5"/>
 			<buttons path="~modules/buttonbar/images/buttons_dark_40x40.png">
 				<button name="out"/>
 				<button name="in"/>
+				<extraButton name="f" action="jsgooglemapToggle"/>
 				<extraButton name="b" action="mapToggle" mouse="onOver:showBubbleMap,onOut:hideBubble"/>
 				<button name="drag" mouse="onOver:showBubbleDrag,onOut:hideBubble"/>
 				<button name="autorotation" mouse="onOver:showBubbleAutorotation,onOut:hideBubble"/>
@@ -202,5 +292,9 @@
 		<action id="loadGreen" content="SaladoPlayer.loadPano(checkerGreen)"/>
 		<action id="loadRed" content="SaladoPlayer.loadPano(checkerRed)"/>
 		<action id="loadYellow" content="SaladoPlayer.loadPano(checkerYellow)"/>
+		
+		<action id="jsgooglemapToggle" content="JSGoogleMap.toggleOpen()"/>
+      <action id="jsgooglemapOnOpen" content="ButtonBar.setActive(f,true)"/>
+      <action id="jsgooglemapOnClose" content="ButtonBar.setActive(f,false)"/> 
 	</actions>
 </SaladoPlayer>

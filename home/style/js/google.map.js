@@ -1,8 +1,10 @@
 
-var latlng = {"lat":glat,"lng":glng, "zoom":gzoom};
+
 var googlemap = null;
 var spot_id = '420';
-function load_map(){
+var map_id = '';
+function load_map(id, latlng){
+		map_id = id;
         var base_info = {
             lat:parseFloat(latlng.lat),
             lng:parseFloat(latlng.lng),
@@ -13,7 +15,7 @@ function load_map(){
 
 jQuery.extend( {
     googlemap : function(base_info) {
-        var canvas = document.getElementById('map_canvas');
+        var canvas = document.getElementById(map_id);
         var map = null;
         var center_point = null;
         var zoom = base_info.zoom;
@@ -23,11 +25,14 @@ jQuery.extend( {
 
 
         function init () {
-            map = new GMap2(canvas)
+            var map = new google.maps.Map(document.getElementById("map-canvas"),
+                    mapOptions);
+
             geocoder = new GClientGeocoder();
             lat = base_info.lat;
             lng = base_info.lng;
             zoom = base_info.zoom;
+            
             search_options = {
                     onSearchCompleteCallback: search_complete
             };

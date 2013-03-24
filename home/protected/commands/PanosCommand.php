@@ -2,7 +2,7 @@
 class PanosCommand extends CConsoleCommand {
     //public $defaultAction = 'index'; //默认动作
     //public $find_path = '/mnt/hgfs/pics/suzhou/zzy'; //搜索全景图的目录
-    public $find_path = "C:/mydatas/pic/海富花园";
+    public $find_path = "C:/mydatas/pic/上海/外滩0722";
 	//public $find_path = "C:/Users/faashi/Desktop/pics/苏州/留园";
     public $panos_path = array();
     public $default_new_folder = 'panos';  //新的全景图目录
@@ -127,7 +127,7 @@ class PanosCommand extends CConsoleCommand {
     	//print_r($this->panos_path);
     	foreach ($this->panos_path as $v){
 			$str = substr($v, strlen($v)-15, 2);
-				if($str!='06'){
+				if($str<'18'){
 					//continue;
 				}
     		echo "----deal file {$v} ----\r\n";
@@ -289,6 +289,7 @@ o f0 y0 r0 p-90 v90";
 	*/
 	public function actionLight(){
 		$path = $this->find_path.'/'.$this->default_new_folder;
+//echo $path;
 		$this->scan_light($path);
 		if(!$this->panos_path){
 			echo "no panoramas\r\n";

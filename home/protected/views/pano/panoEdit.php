@@ -38,6 +38,7 @@
                             <!-- <button class="btn" id="btn_position">位置</button> -->
                             <button class="btn" id="btn_thumb">缩略</button>
                             <button class="btn" id="btn_map">地图</button>
+                            <button class="btn" id="btn_position">位置</button>
                             <button class="btn" id="btn_compass">方位</button>
                             <button class="btn" id="btn_camera">摄像</button>
                             <!-- <button class="btn">视角</button> -->
@@ -49,7 +50,7 @@
                             
                         	<button class="btn btn-primary" id="btn_preview">预览</button>
                         	<!-- <button class="btn btn-primary" id="btn_pad">隐藏</button> -->
-                        	<br><br><br><br><br><br>
+                        	<br><br><br>
                         	<button id="online_pano" class="btn btn-warning" style="<?=$datas['pano']['display'] == '1'?'':'display:none' ?>" onclick="publish_scene(<?=$datas['pano']['id']?>,2)">发布</button>
                             <button id="offline_pano" class="btn btn-warning" style="<?=$datas['pano']['display'] == '2'?'':'display:none' ?>" onclick="publish_scene(<?=$datas['pano']['id']?>,1)">下线</button>
                         </div>
@@ -100,15 +101,6 @@ var music_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'music', 'sce
 var hotspot_edit_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'hotspotEdit', 'scene_id'=>$datas['pano']['id']))?>';
 var imghotspot_edit_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'imageEdit', 'scene_id'=>$datas['pano']['id']))?>';
 </script>
-<!-- 
-<script>
-var glng = '<?=$datas['position']['glng']?>';
-var glat = '<?=$datas['position']['glat']?>';
-var gzoom = '<?=$datas['position']['gzoom']?>';
-</script>
-<script type="text/javascript" src="http://ditu.google.com/maps?file=api&v=2.95&sensor=false&key=<?=Yii::app()->params['google_map_key']?>"></script>
-<script type="text/javascript" src="http://www.google.com/uds/api?file=uds.js&v=1.0&key=<?=Yii::app()->params['google_map_key']?>"></script>
-<script type="text/javascript" src="http://www.google.com/uds/solutions/localsearch/gmlocalsearch.js"></script>
 
-<script type="text/javascript" src="<?=Yii::app()->baseUrl . "/style/js/google.map.js"?>"></script>
- -->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script type="text/javascript" src="<?=Yii::app()->baseUrl . "/plugins/gmaps/gmaps.js"?>"></script>

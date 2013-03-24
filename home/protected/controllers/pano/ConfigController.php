@@ -53,6 +53,9 @@ class ConfigController extends Controller{
         		$datas['pano_state'] = '2'; //全景图不存在
         	}
         }
+        elseif($type=='position'){
+        	$datas['position'] = $this->get_position($scene_id);
+        }
         elseif ($type == 'camera'){
         	$datas['camera'] = $this->get_camera_info($scene_id);
         	//print_r($datas['camera']);
@@ -86,6 +89,19 @@ class ConfigController extends Controller{
             exit();
         }
         $this->render('/pano/panel/'.$type, array('datas'=>$datas));
+    }
+    
+    /**
+     * 获取场景地理位置
+     */
+    private function get_position($scene_id){
+    	$position = array('glng'=>'121.4759159', 'glat'=>'31.2243531', 'gzoom'=>12);
+    	$position_db = new ScenesPosition();
+    	$datas = $position_db->findByPk($scene_id);
+    	if(!$datas){
+    		return $position;
+    	}
+    	return $datas;
     }
     /**
      * 获取背景音乐文件信息
