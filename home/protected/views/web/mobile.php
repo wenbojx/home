@@ -22,7 +22,7 @@ $ch2 = urlencode('http://www.yiluhao.com/mos/panoplayer_free.apk');
                 <div class="span11">
 	                <div style="color: #333333; line-height:28px">
 	                <br><br>
-	              		<h3><span style="color: red">PanoPlayer专注移动全景播放器</span></h3>
+	              		<h3><span style="color: red">PanoPlayer专注全景播放器</span></h3>
 	              		<br>
 	                	<span>1. 支持android SDK2.2及以上的安卓手机， 支持ios5.0及以上苹果手机及ipad</span><br>
 	                	<span>2. 使用原生语言开发,效率更快，兼容性更好。实例中连续播放130个场景轻松应对</span><br>
