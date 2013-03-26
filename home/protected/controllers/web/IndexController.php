@@ -12,7 +12,7 @@ class IndexController extends FController{
     	$projects = $this->get_last_project($this->project_num);
     	$datas['baner_scene_id'] = $this->baner_scene_id;
     	//$datas['scenes'] = $this->get_project_panos($this->scene_num, $projects);
-    	$datas['total_num'] = $this->get_total_panos()*21;
+    	$datas['total_num'] = $this->get_total_panos()+5270;
         $this->render('/web/index', array('datas'=>$datas));
     }
     /**
