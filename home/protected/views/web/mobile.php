@@ -28,7 +28,17 @@ $ch2 = urlencode('http://www.yiluhao.com/mos/panoplayer_free.apk');
 	                	<span>2. 使用原生语言开发,效率更快，兼容性更好。实例中连续播放130个场景轻松应对</span><br>
 	                	<span>3. 场景图片缓存，运行一次场景图片缓存在手机上，无网络也可运行。</span><br>
 	                	<span>4. 用户体验一流。</span><br>
-	                	<span>5. 为全景摄影师提升服务的附加值。</span><br>
+	                	<span>5. 为全景摄影师提升服务的附加值，从此您的报价单上就可附加上ipad,android的报价了。</span>
+	                	<br><br>
+	                	<h3><span style="color: red">为什么选择我们</span></h3>
+	                	<span>1. 我们的平台支持项目级管理，制作全景漫游简单轻松</span><br>
+	                	<span>2. 我们的播放器全部自主研发，未来升级空间无可限量</span><br>
+	                	<span>3. 我们的播放器全部免费，您大可不必购买昂贵的播放器及图形化制作软件</span><br>
+	                	<span>4. 一次创建项目，可同时发布成flash, html5, android, ipad基本涵盖所有客户端</span><br>
+	                	<span>5. 免费，为所有非商业用户提供免费服务，大大降低全景爱好者的成本</span><br>
+	                	<span>6. 商业用户需支付的费用同比大大降低</span>
+	                	
+	                	<br>
 	                	<br>
 	                	<h3><span style="color: red">免费版</span></h3>
 	                	全景播放器完全免费，适用于普通用户体验，及给客户做案例演示使用。<br>
@@ -42,6 +52,8 @@ $ch2 = urlencode('http://www.yiluhao.com/mos/panoplayer_free.apk');
 	                	用户创建好项目，在播放器中设置您项目的ID即可使用，一次设置即可<br>
 	                	标准版相对于免费版去除设置按钮，去除“全景视界”网址。
 
+	                	
+	                	
 	                	<br><br>
 	                	<h3><span style="color: red">定制版</span></h3>
 	                	首次购买播放器含(android, iphone/ipad)收费880元，增送10个场景,可定制播放器外观,及加客户的logo。<br>
@@ -76,6 +88,7 @@ $ch2 = urlencode('http://www.yiluhao.com/mos/panoplayer_free.apk');
 	                		</tr>
 	                	</table>
 	                	<div style="position:absolute; top:-7px; left:223px; "><img src="/mos/aimg/free.png"/></div>
+	                	<div style="position:absolute; top:-7px; left:70px; "><img src="/mos/aimg/free.png"/></div>
 	                	</div>
 	                	<div>
 	                	
