@@ -1,0 +1,52 @@
+@CHARSET "UTF-8";
+.clear{
+	clear:both;
+}
+.projects a{
+	display:block;
+	margin:0 25px 0 0;
+}
+.projects .ui-li-thumb{
+	max-height:100px;
+	max-width:150px;
+}
+.projects .ui-btn-text{
+	max-height:115px;
+}
+.projects .ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb{
+	padding:20px 10px 20px 150px;
+}
+
+
+.panos .ui-li-thumb{
+	max-height:100px;
+	max-width:150px;
+}
+.panos .ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb{
+	padding:20px 10px 20px 170px;
+}
+
+.next_page{
+	margin:20px 0 0 0;
+}
+.loading{
+	margin:10px auto;
+	width:40px;
+	height:40px;
+}
+.project_list_info{
+	margin:5px 0;
+	line-height:20px;
+	font-size:12px;
+	font-weight:normal;
+}
+.projects .price{
+	color:red;
+	font-size:14px;
+	font-weight:bold;
+}
+.project_list_info .line3{
+	margin:0 25px 0 0 ;
+}
+
+

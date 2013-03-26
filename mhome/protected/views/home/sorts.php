@@ -43,5 +43,7 @@
 	        <?php }}?>
 	    </ul>
 	    
-	</div><!-- /content -->
+		</div><!-- /content -->
+	
+		
 </div>

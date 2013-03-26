@@ -1,7 +1,7 @@
 <?php $this->pageTitle='手机,移动，全景，三维，上海';?>
 <?php 
 $widhtHeight = $widhtHeight = 100;
-$chl = urlencode("https://itunes.apple.com/cn/app/xi-hu-qiu-jing/id605688832?mt=8");
+$chl = urlencode("https://itunes.apple.com/us/app/quan-jing-shi-jie/id605688832?ls=1&mt=8");
 $ch2 = urlencode('http://www.yiluhao.com/mos/panoplayer_free.apk');
 
 ?>
@@ -32,13 +32,12 @@ $ch2 = urlencode('http://www.yiluhao.com/mos/panoplayer_free.apk');
 	                	<br>
 	                	<h3><span style="color: red">免费版</span></h3>
 	                	全景播放器完全免费，适用于普通用户体验，及给客户做案例演示使用。<br>
-	                	目前推出android免费版，iphone/ipad版正在开发中，敬请期待！<br>
 	                	用户创建好项目，在播放器中设置您项目的ID即可使用，一次设置即可<br>
 	                	体验项目ID：1001,1002,1003
 	     
 	                	<br><br>
 	                	<h3><span style="color: red">标准版</span></h3>
-	                	标准版播放器免费，发布一个场景收费30元。<br>
+	                	标准版播放器免费，发布一个场景收费25元。<br>
 	                	适用于客户安装APP量较少的场合。<br>
 	                	用户创建好项目，在播放器中设置您项目的ID即可使用，一次设置即可<br>
 	                	标准版相对于免费版去除设置按钮，去除“全景视界”网址。
@@ -47,16 +46,16 @@ $ch2 = urlencode('http://www.yiluhao.com/mos/panoplayer_free.apk');
 	                	<h3><span style="color: red">定制版</span></h3>
 	                	首次购买播放器含(android, iphone/ipad)收费880元，增送10个场景,可定制播放器外观,及加客户的logo。<br>
 	                	购买单个版本播放器收费500元赠送5个场景,可定制播放器外观,及加客户的logo。
-	                	以后每次打包项目每场景30元。<br>
+	                	以后每次打包项目每场景25元。<br>
 	                	首次定制用户需提供各种符合android,及iphone软件运行的图标及运行图片，详细尺寸请咨询QQ：1423795537<br>
-	                	以后每次打包项目可修改APP名称，项目如需上传至苹果app store另外收费每次200。<br><br>
+	                	以后每次打包项目可修改APP名称，项目如需上传至苹果app store另外收费每次300。<br><br>
 	    
 	                	<h3><span style="color: red">下载</span></h3>
 	                	<div style="position: relative">
 	            		<table width="300" >
 	                		<tr>
 	                			<td height="60">
-	                			<a target="_blank" href="https://itunes.apple.com/cn/app/xi-hu-qiu-jing/id605688832?mt=8"><img src="/mos/aimg/iphone.jpg"/></a>&nbsp;&nbsp;&nbsp;&nbsp;
+	                			<a target="_blank" href="https://itunes.apple.com/us/app/quan-jing-shi-jie/id605688832?ls=1&mt=8"><img src="/mos/aimg/iphone.jpg"/></a>&nbsp;&nbsp;&nbsp;&nbsp;
 	                	
 	                			</td>
 	                			<td>
