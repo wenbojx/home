@@ -15,14 +15,10 @@ return array(
     'preload'=>array('log'),
     // autoloading model and component classes
     'import'=>array(
-        'home.models.*',
-        'home.models.scenes.*',
-    	'home.models.file.*',
-    	'home.models.member.*',
-        'home.components.*',
-        'home.helpers.*',
-        'home.class.*',
-        'home.class.saladoPlayer.*',
+        'application.models.*',
+
+    	'application.models.member.*',
+
     	'application.components.*',
     ),
 
@@ -83,7 +79,7 @@ return array(
                 'username' => 'root',
                 'password' => '',
                 'charset' => 'utf8',
-                'tablePrefix' => 'al_',
+                'tablePrefix' => 'f_',
         ),
 
         'errorHandler'=>array(

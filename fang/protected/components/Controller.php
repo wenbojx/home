@@ -30,8 +30,8 @@ class Controller extends CController
 
         $login_info = Yii::app()->session['userinfo'];
         $this->member_id = $login_info['id'];
-        $this->user_name = $login_info['email'];
-
+        $this->user_name = $login_info['username'];
+		//print_r($login_info);
         return true;
     }
     public function check_admin(){
@@ -40,32 +40,20 @@ class Controller extends CController
         }
         return true;
     }
-    public function check_scene_own($scene_id = 0){
+    public function check_fang_own($id = 0){
         $msg['flag'] = 0;
         $msg['msg'] = '无权限';
-        if($scene_id == 0){
+        if($id == 0){
             $this->display_msg($msg);
         }
-        $scene_db = new Scene();
-        $datas = $scene_db->get_by_admin_scene($this->member_id, $scene_id);
-        if(!$datas){
+        $fang_db = new Fang();
+        $datas = $fang_db->getFangInfo($id);
+        if($datas['mid'] != $this->member_id){
             $this->display_msg($msg);
         }
         return true;
     }
-    public function check_project_owner($project_id = 0){
-    	$msg['flag'] = 0;
-    	$msg['msg'] = '无权限';
-    	if($project_id == 0){
-    		$this->display_msg($msg);
-    	}
-    	$project_db = new Project();
-    	$project_datas = $project_db->find_by_project_id($project_id);
-    	if(!$project_datas || $project_datas->member_id != $this->member_id){
-    		$this->display_msg($msg);
-    	}
-    	return true;
-    }
+    
     public function display_msg($msg){
         $str = json_encode($msg);
         exit($str);

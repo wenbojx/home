@@ -31,6 +31,16 @@ home/tmp
 home/html/phpmyadmin
 home/html/phpmyadmin.tar.gz
 
+fang/protected/runtime/*.log
+fang/protected/runtime/application.*
+fang/protected/config/*.php
+fang/protected/runtime/
+fang/protected/runtime/*.*
+fang/protected/config/*.php
+fang/upload/
+fang/html/phpmyadmin
+fang/html/phpmyadmin.tar.gz
+
 mhome/protected/runtime/*.log
 mhome/protected/runtime/application.*
 mhome/protected/config/*.php

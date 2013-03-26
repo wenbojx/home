@@ -11379,3 +11379,1368 @@ Stack trace:
 REQUEST_URI=/l/1001
 HTTP_REFERER=http://f.dev.yiluhao.com/home/list
 ---
+2013/03/26 04:11:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('favicon.ico')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2013/03/26 04:26:14 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'fang.al_member' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `al_member`.
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\home\protected\models\Ydao.php (9)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\member\LoginController.php (47)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\member\LoginController.php (36)
+2013/03/26 04:26:14 [error] [exception.CDbException] exception 'CDbException' with message 'The table "{{member}}" for active record class "Member" cannot be found in the database.' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\ar\CActiveRecord.php:2264
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\ar\CActiveRecord.php(379): CActiveRecordMetaData->__construct(Object(Member))
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\ar\CActiveRecord.php(394): CActiveRecord::model('Member')
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\ar\CActiveRecord.php(78): CActiveRecord->getMetaData()
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\home\protected\models\Ydao.php(9): CActiveRecord->__construct('insert')
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\member\LoginController.php(47): YDAO->__construct()
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\member\LoginController.php(36): LoginController->check_user(Array)
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): LoginController->actionCheckLogin()
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('checkLogin')
+#11 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('member/login/ch...')
+#12 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#14 {main}
+REQUEST_URI=/member/login/checkLogin
+HTTP_REFERER=http://f.dev.yiluhao.com/m
+---
+2013/03/26 04:28:14 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'fang.al_member' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `al_member`.
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\home\protected\models\Ydao.php (9)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\member\LoginController.php (47)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\member\LoginController.php (36)
+2013/03/26 04:28:14 [error] [exception.CDbException] exception 'CDbException' with message 'The table "{{member}}" for active record class "Member" cannot be found in the database.' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\ar\CActiveRecord.php:2264
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\ar\CActiveRecord.php(379): CActiveRecordMetaData->__construct(Object(Member))
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\ar\CActiveRecord.php(394): CActiveRecord::model('Member')
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\ar\CActiveRecord.php(78): CActiveRecord->getMetaData()
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\home\protected\models\Ydao.php(9): CActiveRecord->__construct('insert')
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\member\LoginController.php(47): YDAO->__construct()
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\member\LoginController.php(36): LoginController->check_user(Array)
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): LoginController->actionCheckLogin()
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('checkLogin')
+#11 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('member/login/ch...')
+#12 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#14 {main}
+REQUEST_URI=/member/login/checkLogin
+HTTP_REFERER=http://f.dev.yiluhao.com/m
+---
+2013/03/26 04:28:35 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'fang.al_member' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `al_member`.
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\home\protected\models\Ydao.php (9)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\member\LoginController.php (47)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\member\LoginController.php (36)
+2013/03/26 04:28:35 [error] [exception.CDbException] exception 'CDbException' with message 'The table "{{member}}" for active record class "Member" cannot be found in the database.' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\ar\CActiveRecord.php:2264
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\ar\CActiveRecord.php(379): CActiveRecordMetaData->__construct(Object(Member))
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\ar\CActiveRecord.php(394): CActiveRecord::model('Member')
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\ar\CActiveRecord.php(78): CActiveRecord->getMetaData()
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\home\protected\models\Ydao.php(9): CActiveRecord->__construct('insert')
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\member\LoginController.php(47): YDAO->__construct()
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\member\LoginController.php(36): LoginController->check_user(Array)
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): LoginController->actionCheckLogin()
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('checkLogin')
+#11 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('member/login/ch...')
+#12 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#14 {main}
+REQUEST_URI=/member/login/checkLogin
+HTTP_REFERER=http://f.dev.yiluhao.com/m
+---
+2013/03/26 04:36:26 [error] [php] YiiBase::include(Member.php) [<a href='yiibase.include'>yiibase.include</a>]: failed to open stream: No such file or directory (C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\YiiBase.php:418)
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\member\LoginController.php(44): spl_autoload_call()
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\member\LoginController.php(32): LoginController->check_user()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): LoginController->actionCheckLogin()
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams()
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): LoginController->runAction()
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): LoginController->runActionWithFilters()
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): LoginController->run()
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#8 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CWebApplication->run()
+REQUEST_URI=/member/login/checkLogin
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\member\LoginController.php (44)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\member\LoginController.php (32)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php (17)
+2013/03/26 04:37:49 [error] [php] YiiBase::include(Ydao.php) [<a href='yiibase.include'>yiibase.include</a>]: failed to open stream: No such file or directory (C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\YiiBase.php:418)
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\member\member.php(12): spl_autoload_call()
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\YiiBase.php(418): include()
+#2 unknown(0): autoload()
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\member\LoginController.php(44): spl_autoload_call()
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\member\LoginController.php(32): LoginController->check_user()
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): LoginController->actionCheckLogin()
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams()
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): LoginController->runAction()
+#8 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): LoginController->runActionWithFilters()
+#9 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): LoginController->run()
+#10 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#11 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CWebApplication->run()
+REQUEST_URI=/member/login/checkLogin
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\member\member.php (12)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\member\LoginController.php (44)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\member\LoginController.php (32)
+2013/03/26 04:58:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "add".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php:484
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(271): CController->missingAction('add')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('add')
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addBasic...')
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/manage/addBasic/add
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addBasic/
+---
+2013/03/26 04:58:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "add".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php:484
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(271): CController->missingAction('add')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('add')
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addBasic...')
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/manage/addBasic/add
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addBasic/
+---
+2013/03/26 04:58:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "add".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php:484
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(271): CController->missingAction('add')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('add')
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addBasic...')
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/manage/addBasic/add
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addBasic/
+---
+2013/03/26 04:59:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "add".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php:484
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(271): CController->missingAction('add')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('add')
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addBasic...')
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/manage/addBasic/add
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addBasic/
+---
+2013/03/26 05:00:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "add".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php:484
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(271): CController->missingAction('add')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('add')
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addBasic...')
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/manage/addBasic/add
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addBasic/
+---
+2013/03/26 05:01:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "add".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php:484
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(271): CController->missingAction('add')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('add')
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addBasic...')
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/manage/addBasic/add
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addBasic/
+---
+2013/03/26 05:01:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "add".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php:484
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(271): CController->missingAction('add')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('add')
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addBasic...')
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/manage/addBasic/add
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addBasic/
+---
+2013/03/26 06:26:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "manage/addBase/editid/3".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addBase/...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/manage/addBase/editid/3
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addBasic/
+---
+2013/03/26 06:27:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "manage/addBase/editid/4".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addBase/...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/manage/addBase/editid/4
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addBasic/
+---
+2013/03/26 06:27:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "manage/addBase/editid/4".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addBase/...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/manage/addBase/editid/4
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addBasic/
+---
+2013/03/26 06:27:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "manage/addBase".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addBase')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/manage/addBase/
+---
+2013/03/26 06:27:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "manage/addBase".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addBase')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/manage/addBase/
+---
+2013/03/26 06:27:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "manage/addBase".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addBase')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/manage/addBase
+---
+2013/03/26 06:28:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "manage/addBase/edit/id/5".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addBase/...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/manage/addBase/edit/id/5
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addBasic/
+---
+2013/03/26 06:28:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "manage/addBase/Edit/id/5".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addBase/...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/manage/addBase/Edit/id/5
+---
+2013/03/26 06:29:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "manage/addBase/Edit".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addBase/...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/manage/addBase/Edit/
+---
+2013/03/26 06:29:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "manage/addBase/edit".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addBase/...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/manage/addBase/edit/
+---
+2013/03/26 06:41:39 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php:337
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('add')
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addBasic...')
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#7 {main}
+REQUEST_URI=/manage/addBasic/add
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addBasic/edit/id/7
+---
+2013/03/26 06:42:49 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php:337
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('add')
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addBasic...')
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#7 {main}
+REQUEST_URI=/manage/addBasic/add
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addBasic/edit/id/7
+---
+2013/03/26 06:44:05 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php:337
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('add')
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addBasic...')
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#7 {main}
+REQUEST_URI=/manage/addBasic/add
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addBasic/edit/id/7
+---
+2013/03/26 06:44:41 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php:337
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('add')
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addBasic...')
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#7 {main}
+REQUEST_URI=/manage/addBasic/add
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addBasic/edit/id/7
+---
+2013/03/26 06:45:15 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php:337
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('add')
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addBasic...')
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#7 {main}
+REQUEST_URI=/manage/addBasic/add
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addBasic/edit/id/7
+---
+2013/03/26 06:58:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "add".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php:484
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(271): CController->missingAction('add')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('add')
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addPic/a...')
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/manage/addPic/add
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic
+---
+2013/03/26 07:31:32 [error] [php] date() expects parameter 2 to be long, string given (C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php:35)
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): AddPicController->actionA()
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): AddPicController->runAction()
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): AddPicController->runActionWithFilters()
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): AddPicController->run()
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CWebApplication->run()
+REQUEST_URI=/manage/addPic/a/id/7
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (35)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (22)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php (17)
+2013/03/26 07:32:01 [error] [php] date() expects parameter 2 to be long, string given (C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php:34)
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): AddPicController->actionA()
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): AddPicController->runAction()
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): AddPicController->runActionWithFilters()
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): AddPicController->run()
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CWebApplication->run()
+REQUEST_URI=/manage/addPic/a/id/7
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (34)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (21)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php (17)
+2013/03/26 07:35:13 [error] [php] move_uploaded_file(upload/201303/26/07) [<a href='function.move-uploaded-file'>function.move-uploaded-file</a>]: failed to open stream: Permission denied (C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CUploadedFile.php:197)
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php(21): AddPicController->uploadPic()
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): AddPicController->actionA()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams()
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): AddPicController->runAction()
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): AddPicController->runActionWithFilters()
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): AddPicController->run()
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#8 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CWebApplication->run()
+REQUEST_URI=/manage/addPic/a/id/7
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (47)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (21)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php (17)
+2013/03/26 07:37:04 [error] [php] move_uploaded_file(upload/201303/26/07) [<a href='function.move-uploaded-file'>function.move-uploaded-file</a>]: failed to open stream: Permission denied (C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CUploadedFile.php:197)
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php(21): AddPicController->uploadPic()
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): AddPicController->actionA()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams()
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): AddPicController->runAction()
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): AddPicController->runActionWithFilters()
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): AddPicController->run()
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#8 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CWebApplication->run()
+REQUEST_URI=/manage/addPic/a/id/7
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (52)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (21)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php (17)
+2013/03/26 08:04:26 [error] [php] move_uploaded_file(upload/201303/26/08/fb83fe502ae9efca9144a7a630999d8a/fb83fe502ae9efca9144a7a630999d8a.jpg) [<a href='function.move-uploaded-file'>function.move-uploaded-file</a>]: failed to open stream: No such file or directory (C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CUploadedFile.php:197)
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php(21): AddPicController->uploadPic()
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): AddPicController->actionA()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams()
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): AddPicController->runAction()
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): AddPicController->runActionWithFilters()
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): AddPicController->run()
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#8 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CWebApplication->run()
+REQUEST_URI=/manage/addPic/a/id/7
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (99)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (21)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php (17)
+2013/03/26 08:04:44 [error] [php] move_uploaded_file(upload/201303/26/08/fb83fe502ae9efca9144a7a630999d8a/fb83fe502ae9efca9144a7a630999d8a.jpg) [<a href='function.move-uploaded-file'>function.move-uploaded-file</a>]: failed to open stream: No such file or directory (C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CUploadedFile.php:197)
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php(21): AddPicController->uploadPic()
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): AddPicController->actionA()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams()
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): AddPicController->runAction()
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): AddPicController->runActionWithFilters()
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): AddPicController->run()
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#8 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CWebApplication->run()
+REQUEST_URI=/manage/addPic/a/id/7
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (99)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (21)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php (17)
+2013/03/26 08:05:16 [error] [php] md5_file(C:\mydatas\APMServ5.2.6\tmp\uploadtemp\php8397.tmp) [<a href='function.md5-file'>function.md5-file</a>]: failed to open stream: No such file or directory (C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php:75)
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): AddPicController->actionA()
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): AddPicController->runAction()
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): AddPicController->runActionWithFilters()
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): AddPicController->run()
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CWebApplication->run()
+REQUEST_URI=/manage/addPic/a/id/7
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (75)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (27)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php (17)
+2013/03/26 08:06:06 [error] [php] md5_file(C:\mydatas\APMServ5.2.6\tmp\uploadtemp\php49AA.tmp) [<a href='function.md5-file'>function.md5-file</a>]: failed to open stream: No such file or directory (C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php:70)
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): AddPicController->actionA()
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): AddPicController->runAction()
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): AddPicController->runActionWithFilters()
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): AddPicController->run()
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CWebApplication->run()
+REQUEST_URI=/manage/addPic/a/id/7
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (70)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (27)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php (17)
+2013/03/26 08:08:07 [error] [php] md5_file(C:\mydatas\APMServ5.2.6\tmp\uploadtemp\php20F1.tmp) [<a href='function.md5-file'>function.md5-file</a>]: failed to open stream: No such file or directory (C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php:70)
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): AddPicController->actionA()
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): AddPicController->runAction()
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): AddPicController->runActionWithFilters()
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): AddPicController->run()
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CWebApplication->run()
+REQUEST_URI=/manage/addPic/a/id/7
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (70)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (27)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php (17)
+2013/03/26 08:09:13 [error] [php] md5_file(C:\mydatas\APMServ5.2.6\tmp\uploadtemp\php23D4.tmp) [<a href='function.md5-file'>function.md5-file</a>]: failed to open stream: No such file or directory (C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php:70)
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): AddPicController->actionA()
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): AddPicController->runAction()
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): AddPicController->runActionWithFilters()
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): AddPicController->run()
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CWebApplication->run()
+REQUEST_URI=/manage/addPic/a/id/7
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (70)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (27)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php (17)
+2013/03/26 08:11:37 [error] [php] Imagick::resizeimage() expects parameter 2 to be long, string given (C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php:101)
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php(21): AddPicController->uploadPic()
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): AddPicController->actionA()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams()
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): AddPicController->runAction()
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): AddPicController->runActionWithFilters()
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): AddPicController->run()
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#8 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CWebApplication->run()
+REQUEST_URI=/manage/addPic/a/id/7
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (101)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (86)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (21)
+2013/03/26 08:11:56 [error] [exception.ImagickException] exception 'ImagickException' with message 'Invalid image geometry' in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php:101
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php(101): Imagick->resizeimage(250, 0, 13, 1, true)
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php(86): AddPicController->resize('upload/201303/2...', 'upload/201303/2...', 500, 'jpg')
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php(21): AddPicController->uploadPic('file0')
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): AddPicController->actionA()
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('a')
+#8 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addPic/a...')
+#9 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#11 {main}
+REQUEST_URI=/manage/addPic/a/id/7
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:29:59 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'upload' in 'where clause'. The SQL statement executed was: SELECT * FROM `f_fang_pic` `t` WHERE (is_del=0) AND (f_id=upload) ORDER BY id ASC.
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\Ydao.php (30)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\FangPic.php (56)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (44)
+2013/03/26 08:29:59 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'upload' in 'where clause'. The SQL statement executed was: SELECT * FROM `f_fang_pic` `t` WHERE (is_del=0) AND (f_id=upload) ORDER BY id ASC' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\Ydao.php(30): CActiveRecord->findAll(Object(CDbCriteria), Array)
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\FangPic.php(56): YDAO->findAll(Object(CDbCriteria))
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php(44): FangPic->getByFid('upload')
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php(35): AddPicController->get_pic_list('upload')
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): AddPicController->actionA()
+#8 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#10 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('a')
+#12 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addPic/a...')
+#13 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#15 {main}
+REQUEST_URI=/manage/addPic/a/id/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942w500.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:29:59 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'upload' in 'where clause'. The SQL statement executed was: SELECT * FROM `f_fang_pic` `t` WHERE (is_del=0) AND (f_id=upload) ORDER BY id ASC.
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\Ydao.php (30)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\FangPic.php (56)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (44)
+2013/03/26 08:29:59 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'upload' in 'where clause'. The SQL statement executed was: SELECT * FROM `f_fang_pic` `t` WHERE (is_del=0) AND (f_id=upload) ORDER BY id ASC' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\Ydao.php(30): CActiveRecord->findAll(Object(CDbCriteria), Array)
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\FangPic.php(56): YDAO->findAll(Object(CDbCriteria))
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php(44): FangPic->getByFid('upload')
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php(35): AddPicController->get_pic_list('upload')
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): AddPicController->actionA()
+#8 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#10 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('a')
+#12 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addPic/a...')
+#13 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#15 {main}
+REQUEST_URI=/manage/addPic/a/id/upload/201303/26/08/327f33580c3793915ba929367c856ebaw500.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:29:59 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'upload' in 'where clause'. The SQL statement executed was: SELECT * FROM `f_fang_pic` `t` WHERE (is_del=0) AND (f_id=upload) ORDER BY id ASC.
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\Ydao.php (30)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\FangPic.php (56)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (44)
+2013/03/26 08:29:59 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'upload' in 'where clause'. The SQL statement executed was: SELECT * FROM `f_fang_pic` `t` WHERE (is_del=0) AND (f_id=upload) ORDER BY id ASC' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\Ydao.php(30): CActiveRecord->findAll(Object(CDbCriteria), Array)
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\FangPic.php(56): YDAO->findAll(Object(CDbCriteria))
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php(44): FangPic->getByFid('upload')
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php(35): AddPicController->get_pic_list('upload')
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): AddPicController->actionA()
+#8 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#10 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('a')
+#12 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addPic/a...')
+#13 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#15 {main}
+REQUEST_URI=/manage/addPic/a/id/upload/201303/26/08/f99014f69b640b544e993087b671806fw500.png
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:29:59 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'upload' in 'where clause'. The SQL statement executed was: SELECT * FROM `f_fang_pic` `t` WHERE (is_del=0) AND (f_id=upload) ORDER BY id ASC.
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\Ydao.php (30)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\FangPic.php (56)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (44)
+2013/03/26 08:29:59 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'upload' in 'where clause'. The SQL statement executed was: SELECT * FROM `f_fang_pic` `t` WHERE (is_del=0) AND (f_id=upload) ORDER BY id ASC' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\Ydao.php(30): CActiveRecord->findAll(Object(CDbCriteria), Array)
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\FangPic.php(56): YDAO->findAll(Object(CDbCriteria))
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php(44): FangPic->getByFid('upload')
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php(35): AddPicController->get_pic_list('upload')
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): AddPicController->actionA()
+#8 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#10 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('a')
+#12 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addPic/a...')
+#13 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#15 {main}
+REQUEST_URI=/manage/addPic/a/id/upload/201303/26/08/8a136628b673eb800dec9e0a2b849095w500.png
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:30:00 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'upload' in 'where clause'. The SQL statement executed was: SELECT * FROM `f_fang_pic` `t` WHERE (is_del=0) AND (f_id=upload) ORDER BY id ASC.
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\Ydao.php (30)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\FangPic.php (56)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (44)
+2013/03/26 08:30:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'upload' in 'where clause'. The SQL statement executed was: SELECT * FROM `f_fang_pic` `t` WHERE (is_del=0) AND (f_id=upload) ORDER BY id ASC' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\Ydao.php(30): CActiveRecord->findAll(Object(CDbCriteria), Array)
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\FangPic.php(56): YDAO->findAll(Object(CDbCriteria))
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php(44): FangPic->getByFid('upload')
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php(35): AddPicController->get_pic_list('upload')
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): AddPicController->actionA()
+#8 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#10 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('a')
+#12 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addPic/a...')
+#13 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#15 {main}
+REQUEST_URI=/manage/addPic/a/id/upload/201303/26/08/48491709d4b2280184ec6c1649915f4dw500.png
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:30:00 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'upload' in 'where clause'. The SQL statement executed was: SELECT * FROM `f_fang_pic` `t` WHERE (is_del=0) AND (f_id=upload) ORDER BY id ASC.
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\Ydao.php (30)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\FangPic.php (56)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php (44)
+2013/03/26 08:30:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'upload' in 'where clause'. The SQL statement executed was: SELECT * FROM `f_fang_pic` `t` WHERE (is_del=0) AND (f_id=upload) ORDER BY id ASC' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\CDbCommand.php:528
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\Ydao.php(30): CActiveRecord->findAll(Object(CDbCriteria), Array)
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\FangPic.php(56): YDAO->findAll(Object(CDbCriteria))
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php(44): FangPic->getByFid('upload')
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php(35): AddPicController->get_pic_list('upload')
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): AddPicController->actionA()
+#8 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#10 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('a')
+#12 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addPic/a...')
+#13 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#14 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#15 {main}
+REQUEST_URI=/manage/addPic/a/id/upload/201303/26/08/fb83fe502ae9efca9144a7a630999d8aw500.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:30:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942w500.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942w500.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:30:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/327f33580c3793915ba929367c856ebaw500.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/327f33580c3793915ba929367c856ebaw500.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:30:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/f99014f69b640b544e993087b671806fw500.png".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/f99014f69b640b544e993087b671806fw500.png
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:30:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/fb83fe502ae9efca9144a7a630999d8aw500.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/fb83fe502ae9efca9144a7a630999d8aw500.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:30:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/8a136628b673eb800dec9e0a2b849095w500.png".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/8a136628b673eb800dec9e0a2b849095w500.png
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:30:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/48491709d4b2280184ec6c1649915f4dw500.png".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/48491709d4b2280184ec6c1649915f4dw500.png
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:30:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942w500.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942w500.jpg
+---
+2013/03/26 08:30:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w500.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w500.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:30:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w500.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w500.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:34:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w500.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w500.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:34:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w500.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w500.jpg
+---
+2013/03/26 08:35:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w500.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w500.jpg
+---
+2013/03/26 08:35:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w500.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w500.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:35:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w500.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w500.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:35:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w500.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w500.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:39:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w400.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w400.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:39:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/f99014f69b640b544e993087b671806f/w400.png".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/f99014f69b640b544e993087b671806f/w400.png
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:39:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/327f33580c3793915ba929367c856eba/w400.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/327f33580c3793915ba929367c856eba/w400.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:39:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/fb83fe502ae9efca9144a7a630999d8a/w400.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/fb83fe502ae9efca9144a7a630999d8a/w400.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:39:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/8a136628b673eb800dec9e0a2b849095/w400.png".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/8a136628b673eb800dec9e0a2b849095/w400.png
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:39:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/48491709d4b2280184ec6c1649915f4d/w400.png".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/48491709d4b2280184ec6c1649915f4d/w400.png
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:39:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w400.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w400.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:41:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w400.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w400.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:41:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w400.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w400.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:42:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w400.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w400.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:42:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w400.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w400.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:42:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w400.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w400.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:42:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w400.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w400.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:42:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w400.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w400.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:42:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w400.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w400.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:42:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w400.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w400.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:42:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w400.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w400.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:43:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w400.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w400.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:43:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w400.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w400.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/addPic/a/id/7
+---
+2013/03/26 08:51:55 [error] [exception.CException] exception 'CException' with message 'AddPicController and its behaviors do not have a method or closure named "check_fang_own".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CComponent.php:266
+Stack trace:
+#0 [internal function]: CComponent->__call('check_fang_own', Array)
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\AddPicController.php(24): AddPicController->check_fang_own(NULL)
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): AddPicController->actionA()
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('a')
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/addPic/a...')
+#8 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#10 {main}
+REQUEST_URI=/manage/addPic/a/id/7
+---
+2013/03/26 08:52:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "manage".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/manage/
+---
+2013/03/26 08:52:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "manage".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/manage/
+---
+2013/03/26 08:58:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "l/1001".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('l/1001')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/l/1001
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/list
+---
+2013/03/26 08:59:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "l/1013".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('l/1013')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/l/1013
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/list
+---
+2013/03/26 08:59:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "l/1014".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('l/1014')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/l/1014
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/list
+---
+2013/03/26 12:44:14 [error] [exception.CException] exception 'CException' with message 'Property "ListController.page_size" is not defined.' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\ListController.php(29): CComponent->__get('page_size')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\ListController.php(15): ListController->getFangList(1)
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): ListController->actionA()
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('')
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/list')
+#8 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#10 {main}
+REQUEST_URI=/manage/list
+---
+2013/03/26 12:44:15 [error] [exception.CException] exception 'CException' with message 'Property "ListController.page_size" is not defined.' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\ListController.php(29): CComponent->__get('page_size')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\ListController.php(15): ListController->getFangList(1)
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): ListController->actionA()
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('')
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/list')
+#8 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#10 {main}
+REQUEST_URI=/manage/list
+---
+2013/03/26 12:45:01 [error] [php] Missing argument 4 for Fang::getFangList(), called in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\ListController.php on line 38 and defined (C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\Fang.php:58)
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): ListController->actionA()
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): ListController->runAction()
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): ListController->runActionWithFilters()
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): ListController->run()
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CWebApplication->run()
+REQUEST_URI=/manage/list
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\Fang.php (58)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\ListController.php (38)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\ListController.php (17)
+2013/03/26 12:45:03 [error] [php] Missing argument 4 for Fang::getFangList(), called in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\ListController.php on line 38 and defined (C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\Fang.php:58)
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): ListController->actionA()
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): ListController->runAction()
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): ListController->runActionWithFilters()
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): ListController->run()
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CWebApplication->run()
+REQUEST_URI=/manage/list
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\models\Fang.php (58)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\ListController.php (38)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\ListController.php (17)
+2013/03/26 12:45:15 [error] [php] Cannot use a scalar value as an array (C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\ListController.php:23)
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): ListController->runAction()
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): ListController->runActionWithFilters()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): ListController->run()
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CWebApplication->run()
+REQUEST_URI=/manage/list
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\ListController.php (23)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php (17)
+2013/03/26 12:46:59 [error] [php] Cannot use a scalar value as an array (C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\ListController.php:23)
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): ListController->runAction()
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): ListController->runActionWithFilters()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): ListController->run()
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CWebApplication->run()
+REQUEST_URI=/manage/list
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\ListController.php (23)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php (17)
+2013/03/26 12:49:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "home/panos/list/id//page/2".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('home/panos/list...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/home/panos/list/id//page/2
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/list
+---
+2013/03/26 12:51:27 [error] [exception.CException] exception 'CException' with message 'Property "Fang.标题" is not defined.' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\ar\CActiveRecord.php(144): CComponent->__get('??????')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CModel.php(593): CActiveRecord->__get('??????')
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\views\manage\list.php(19): CModel->offsetGet('??????')
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CBaseController.php(127): require('C:\mydatas\APMS...')
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\mydatas\APMS...', Array, true)
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(870): CBaseController->renderFile('C:\mydatas\APMS...', Array, true)
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(783): CController->renderPartial('/manage/list', Array, true)
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\ListController.php(24): CController->render('/manage/list', Array)
+#8 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): ListController->actionA()
+#9 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('')
+#13 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/list')
+#14 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#16 {main}
+REQUEST_URI=/manage/list
+---
+2013/03/26 12:51:28 [error] [exception.CException] exception 'CException' with message 'Property "Fang.标题" is not defined.' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\ar\CActiveRecord.php(144): CComponent->__get('??????')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CModel.php(593): CActiveRecord->__get('??????')
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\views\manage\list.php(19): CModel->offsetGet('??????')
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CBaseController.php(127): require('C:\mydatas\APMS...')
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\mydatas\APMS...', Array, true)
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(870): CBaseController->renderFile('C:\mydatas\APMS...', Array, true)
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(783): CController->renderPartial('/manage/list', Array, true)
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\ListController.php(24): CController->render('/manage/list', Array)
+#8 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): ListController->actionA()
+#9 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('')
+#13 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/list')
+#14 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#16 {main}
+REQUEST_URI=/manage/list
+---
+2013/03/26 12:52:57 [error] [php] YiiBase::include(PicTools.php) [<a href='yiibase.include'>yiibase.include</a>]: failed to open stream: No such file or directory (C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\YiiBase.php:418)
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\views\manage\list.php(27): spl_autoload_call()
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CBaseController.php(127): require()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CBaseController.php(96): ListController->renderInternal()
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(870): ListController->renderFile()
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(783): ListController->renderPartial()
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\ListController.php(24): ListController->render()
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): ListController->actionA()
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams()
+#8 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): ListController->runAction()
+#9 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): ListController->runActionWithFilters()
+#10 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): ListController->run()
+#11 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#12 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CWebApplication->run()
+REQUEST_URI=/manage/list
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\views\manage\list.php (27)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\ListController.php (24)
+in C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php (17)
+2013/03/26 12:53:10 [error] [exception.CException] exception 'CException' with message 'Property "Fang.extend" is not defined.' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\ar\CActiveRecord.php(144): CComponent->__get('extend')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CModel.php(593): CActiveRecord->__get('extend')
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\views\manage\list.php(36): CModel->offsetGet('extend')
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CBaseController.php(127): require('C:\mydatas\APMS...')
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\mydatas\APMS...', Array, true)
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(870): CBaseController->renderFile('C:\mydatas\APMS...', Array, true)
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(783): CController->renderPartial('/manage/list', Array, true)
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\ListController.php(24): CController->render('/manage/list', Array)
+#8 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): ListController->actionA()
+#9 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('')
+#13 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/list')
+#14 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#16 {main}
+REQUEST_URI=/manage/list
+---
+2013/03/26 12:53:26 [error] [exception.CException] exception 'CException' with message 'Property "Fang.extend" is not defined.' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\db\ar\CActiveRecord.php(144): CComponent->__get('extend')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CModel.php(593): CActiveRecord->__get('extend')
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\views\manage\list.php(36): CModel->offsetGet('extend')
+#3 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CBaseController.php(127): require('C:\mydatas\APMS...')
+#4 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CBaseController.php(96): CBaseController->renderInternal('C:\mydatas\APMS...', Array, true)
+#5 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(870): CBaseController->renderFile('C:\mydatas\APMS...', Array, true)
+#6 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(783): CController->renderPartial('/manage/list', Array, true)
+#7 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\protected\controllers\manage\ListController.php(24): CController->render('/manage/list', Array)
+#8 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\actions\CInlineAction.php(50): ListController->actionA()
+#9 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(276): CController->run('')
+#13 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/list')
+#14 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#16 {main}
+REQUEST_URI=/manage/list
+---
+2013/03/26 13:08:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "manage/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942w200.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/upload/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/manage/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942w200.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/list
+---
+2013/03/26 13:08:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "manage/w200.".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/w200.')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/manage/w200.
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/list
+---
+2013/03/26 13:08:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "manage/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942w200.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/upload/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/manage/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942w200.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/list
+---
+2013/03/26 13:09:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "manage/w200.".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/w200.')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/manage/w200.
+---
+2013/03/26 13:09:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "manage/w200.".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/w200.')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/manage/w200.
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/list
+---
+2013/03/26 13:09:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "manage/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942w200.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/upload/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/manage/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942w200.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/list
+---
+2013/03/26 13:09:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "manage/w200.".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/w200.')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/manage/w200.
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/list
+---
+2013/03/26 13:09:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "manage/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942w200.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/upload/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/manage/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942w200.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/list
+---
+2013/03/26 13:09:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "w200.".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('w200.')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/w200.
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/list
+---
+2013/03/26 13:09:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "manage/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w200.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/upload/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/manage/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w200.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/list
+---
+2013/03/26 13:09:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "manage/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w200.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/upload/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/manage/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/w200.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/list
+---
+2013/03/26 13:09:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "w200.".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('w200.')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/w200.
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/list
+---
+2013/03/26 13:10:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "thumb.".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('thumb.')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/thumb.
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/list
+---
+2013/03/26 13:10:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "manage/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/thumb.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/upload/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/manage/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/thumb.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/list
+---
+2013/03/26 13:10:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "manage/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/thumb.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('manage/upload/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/manage/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/thumb.jpg
+---

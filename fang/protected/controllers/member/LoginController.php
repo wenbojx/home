@@ -21,25 +21,22 @@ class LoginController extends FController{
     }
     public function actionCheckLogin(){
         $request = Yii::app()->request;
-        $datas['email'] = $request->getParam('email');
+        $datas['username'] = $request->getParam('username');
         $datas['passwd'] = $request->getParam('passwd');
 
         $msg['flag'] = '1';
-        if($datas['email']== '' ){
+        if($datas['username']== '' || $datas['passwd']== ''){
             $msg['flag'] = '0';
-            $msg['field']['email'] = '0';
-        }
-        if($datas['passwd']== '' ){
-            $msg['flag'] = '0';
-            $msg['field']['passwd'] = '0';
-        }
-        if($this->check_user($datas)){
-            $msg['flag'] = '1';
-            //$msg['url'] = Yii::app()->baseUrl;
-            $msg['url'] = $this->createUrl('/pano/project');
         }
         else{
-        	$msg['flag'] = '0';
+	        if($this->check_user($datas)){
+	            $msg['flag'] = '1';
+	            //$msg['url'] = Yii::app()->baseUrl;
+	            //$msg['url'] = $this->createUrl('/pano/project');
+	        }
+	        else{
+	        	$msg['flag'] = '0';
+	        }
         }
         $this->display_msg($msg);
     }
@@ -50,8 +47,8 @@ class LoginController extends FController{
         	return false;
         }
         $session_datas['id'] = $user_datas['id'];
-        $session_datas['email'] = $user_datas['email'];
-        $session_datas['nickname'] = $user_datas['nickname'];
+        $session_datas['username'] = $user_datas['username'];
+        $session_datas['truename'] = $user_datas['truename'];
         Yii::app()->session['userinfo'] = $session_datas;
         return true;
     }
