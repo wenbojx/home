@@ -12744,3 +12744,27 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/manage/upload/201303/26/08/abdfcaf70dcba64dc9c2113567c18942/thumb.jpg
 ---
+2013/03/27 02:01:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('favicon.ico')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2013/03/27 02:01:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('favicon.ico')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2013/03/27 02:01:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('favicon.ico')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
