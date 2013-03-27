@@ -7,14 +7,14 @@ $zhuangxiu = array('0'=>'', '1'=>'毛坯', '2'=>'简装', '3'=>'精装', '4'=>'�
 
 	<div data-role="header">
 		<?php if(!$datas['back_hide']){?>
-		<a data-rel="back"  href="#" data-role="button" data-mini="true">返回</a>
+		<a data-rel="back"  href="#" data-role="button" data-icon="Back" data-mini="true">返回</a>
 		<?php }else{?>
 		<?php }?>
 		<h1><?=$datas['pages']['title'] ?></h1>
 		<?php if($datas['member_id'] && $datas['page']==2){?>
-		<a  href="/m" data-role="button" data-mini="true">管理</a>
+		<a  href="/m" data-role="button" data-mini="true" data-icon="gear">管理</a>
 		<?php }?>
-		<a  href="/home/contact/a/id/<?=$datas['id']?>" data-role="button" data-mini="true">经纪人</a>
+		<a  href="/home/contact/a/id/<?=$datas['id']?>" data-role="button" data-icon="arrow-u" data-mini="true">经纪人</a>
 	</div><!-- /header -->
 
 	<div data-role="content">	

@@ -7,12 +7,12 @@ $zhuangxiu = array('0'=>'', '1'=>'毛坯', '2'=>'简装', '3'=>'精装', '4'=>'�
 
 	<div data-role="header">
 		<?php if(!$datas['back_hide']){?>
-		<a data-rel="back"  href="#" data-role="button" data-mini="true">返回</a>
+		<a data-rel="back"  href="#" data-role="button" data-mini="true" data-icon="arrow-l">返回</a>
 		<?php }else{?>
-		<a href="<?=$this->createUrl('/home/list/a/', array('id'=>$datas['mid']));?>"  data-role="button" data-icon="home" data-mini="true">预览</a>
+		<a href="<?=$this->createUrl('/home/list/a/', array('id'=>$datas['mid']));?>"  data-role="button" data-icon="Star" data-mini="true">预览</a>
 		<?php }?>
 		<h1><?=$datas['pages']['title'] ?></h1>
-		<a href="<?=$this->createUrl('/member/loginout');?>" data-role="button" data-icon="home" data-mini="true">退出</a>
+		<a href="<?=$this->createUrl('/member/loginout');?>" data-role="button" data-icon="arrow-l" data-mini="true">退出</a>
 		
 	</div><!-- /header -->
 
