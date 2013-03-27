@@ -3,20 +3,20 @@
 	<div data-role="header">
 		<h1><?=$datas['page']['title'] ?></h1>
 		<a rel="external"
-			href="/home/list"
+			href="/home/basic/a/id/<?=$datas['id']?>"
 			data-role="button" data-icon="home" data-mini="true">返回</a>
 	</div><!-- /header -->
 
-	<div data-role="content">
-		该房屋无全景图
+	<div data-role="content" style="margin: 0; padding: 0">
+	<?php if($datas['fang']['pano_id']){?>
+		<iframe id="pano_box" name="pano_box" width="100%" height="500" scrolling="no" frameborder="0"
+			src="http://www.yiluhao.com/s/<?=$datas['fang']['pano_id']?>/?m=1"> </iframe>
+	<?php }else{?>
+	无全景图
+	<?php }?>
 	</div><!-- /content -->
-	<div data-role="footer" style="overflow:hidden;">
-	    <div data-role="navbar">
-	        <ul>
-	            <li><a href="/home/basic" >基本</a></li>
-	            <li><a href="/home/pic" >图片</a></li>
-	            <li><a href="/home/pano" class="ui-btn-active">全景</a></li>
-	        </ul>
-	    </div><!-- /navbar -->
-	</div><!-- /footer -->
+	
 </div>
+<script>
+resize();
+</script>

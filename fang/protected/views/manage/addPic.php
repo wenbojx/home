@@ -75,7 +75,11 @@
 	            <?php }else{?>
 	            <li><a onclick="show_msg()">全景</a></li>
 	            <?php }?>
-	            
+	            <?php if($datas['id']){?>
+	            <li><a href="/manage/erweia/a/id/<?=$datas['id']?>">二维码</a></li>
+	            <?php }else{?>
+	            <li><a onclick="show_msg()">二维码</a></li>
+	            <?php }?>
 	            
 	        </ul>
 	    </div><!-- /navbar -->

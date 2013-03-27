@@ -48,7 +48,8 @@ return array(
             'showScriptName'=>false,
             'rules'=>array(
                 '/m'=>'/member/login/a/',
-                '/<id:\d+>/*'=>'/home/fang/list/',
+                '/a/<id:\d+>/*'=>'/home/basic/a/',
+                '/<id:\d+>/*'=>'/home/list/a/',
                 //'gpic/<.*>'=>'home/pictrue/index',
             ),
         ),

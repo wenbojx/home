@@ -119,6 +119,12 @@
 	            <li><a onclick="show_msg()">全景</a></li>
 	            <?php }?>
 	            
+	            <?php if($datas['info']['id']){?>
+	            <li><a href="/manage/erweia/a/id/<?=$datas['info']['id']?>">二维码</a></li>
+	            <?php }else{?>
+	            <li><a onclick="show_msg()">二维码</a></li>
+	            <?php }?>
+	            
 	        </ul>
 	    </div><!-- /navbar -->
 	</div><!-- /footer -->

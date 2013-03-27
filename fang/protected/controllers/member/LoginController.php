@@ -7,6 +7,10 @@ class LoginController extends FController{
 
     public function actionA(){
     	$request = Yii::app()->request;
+    	
+    	if(Yii::app()->session['userinfo']){
+    		$this->redirect(array('manage/list'));
+    	}
         $datas['page']['title'] = '用户登陆';
         $this->render('/member/login', array('datas'=>$datas));
     }

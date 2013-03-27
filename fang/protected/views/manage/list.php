@@ -9,9 +9,11 @@ $zhuangxiu = array('0'=>'', '1'=>'毛坯', '2'=>'简装', '3'=>'精装', '4'=>'�
 		<?php if(!$datas['back_hide']){?>
 		<a data-rel="back"  href="#" data-role="button" data-mini="true">返回</a>
 		<?php }else{?>
-		<a href="<?=$this->createUrl('/home/sort/list/', array('id'=>1001));?>" data-role="button" data-icon="home" data-mini="true">首页</a>
+		<a href="<?=$this->createUrl('/home/list/a/', array('id'=>$datas['mid']));?>" target="_blank" data-role="button" data-icon="home" data-mini="true">预览</a>
 		<?php }?>
-		<h1><?=$datas['page']['title'] ?></h1>
+		<h1><?=$datas['pages']['title'] ?></h1>
+		<a href="<?=$this->createUrl('/member/loginout');?>" data-role="button" data-icon="home" data-mini="true">退出</a>
+		
 	</div><!-- /header -->
 
 	<div data-role="content">	
@@ -29,7 +31,7 @@ $zhuangxiu = array('0'=>'', '1'=>'毛坯', '2'=>'简装', '3'=>'精装', '4'=>'�
 	        <li>
 	        	<a href="<?=$this->createUrl('/manage/addBasic/edit/', array('id'=>$v['id']));?>" class="ui-link-inherit">
 	        		<?php if($datas['pic'][$v['id']]['url']){?>
-		            <img src="/<?=$datas['pic'][$v['id']]['url'].'/thumb.'.$datas['pic'][$v['id']]['ftype']?>"/>
+		            <img class="list_pic" src="/<?=$datas['pic'][$v['id']]['url'].'/thumb.'.$datas['pic'][$v['id']]['ftype']?>"/>
 		            <?php }else{?>
 		            
 		            <?php }?>
@@ -74,7 +76,8 @@ $zhuangxiu = array('0'=>'', '1'=>'毛坯', '2'=>'简装', '3'=>'精装', '4'=>'�
 	<div data-role="footer" style="overflow:hidden;">
 	    <div data-role="navbar">
 	        <ul>
-	            <li><a href="/manage/addBasic/">发布房源</a></li>
+	            <li><a href="/manage/addBasic/" class="ui-btn-active">发布房源</a></li>
+	            <li><a href="/manage/erweia/">二维码</a></li>
 	        </ul>
 	    </div><!-- /navbar -->
 	</div><!-- /footer -->

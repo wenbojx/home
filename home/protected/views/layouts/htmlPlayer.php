@@ -66,8 +66,8 @@ filter: alpha(opacity=10);
 .marker {
 display:block;
 text-indent:-9999px;
-width:15px;
-height:23px;
+width:40px;
+height:40px;
 outline:none;
 background:url(../../plugins/craftmap/images/marker_green.png) no-repeat;
 cursor:pointer;
@@ -76,8 +76,8 @@ cursor:pointer;
 .marker_red {
 display:block;
 text-indent:-9999px;
-width:15px;
-height:23px;
+width:40px;
+height:40px;
 outline:none;
 background:url(../../plugins/craftmap/images/marker_red.png) no-repeat;
 cursor:pointer;
@@ -85,8 +85,8 @@ cursor:pointer;
 .marker_yellow {
 display:block;
 text-indent:-9999px;
-width:15px;
-height:23px;
+width:40px;
+height:40px;
 outline:none;
 background:url(../../plugins/craftmap/images/marker_yellow.png) no-repeat;
 cursor:pointer;

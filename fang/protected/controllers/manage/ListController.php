@@ -23,6 +23,7 @@ class ListController extends Controller{
     	$datas['page_next'] = $this->page_next;
     	$datas['page'] = $page+1;
     	$datas['back'] = $page==1?false:true;
+    	$datas['mid'] = $this->member_id;
     	
         $datas['pages']['title'] = '房源列表';
         $this->render('/manage/list', array('datas'=>$datas));
