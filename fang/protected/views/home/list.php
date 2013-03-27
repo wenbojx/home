@@ -11,7 +11,7 @@ $zhuangxiu = array('0'=>'', '1'=>'毛坯', '2'=>'简装', '3'=>'精装', '4'=>'�
 		<?php }else{?>
 		<?php }?>
 		<h1><?=$datas['pages']['title'] ?></h1>
-		<?php if($datas['member_id']){?>
+		<?php if($datas['member_id'] && $datas['page']==2){?>
 		<a  href="/m" data-role="button" data-mini="true">管理</a>
 		<?php }?>
 		<a  href="/home/contact/a/id/<?=$datas['id']?>" data-role="button" data-mini="true">经纪人</a>
@@ -56,10 +56,13 @@ $zhuangxiu = array('0'=>'', '1'=>'毛坯', '2'=>'简装', '3'=>'精装', '4'=>'�
 			            </div>
 			            <div>
 			            	<?=$v['shi']?>室<?=$v['ting']?>厅<?=$v['wei']?>卫  
-			            	&nbsp;&nbsp;&nbsp;&nbsp;
+			            	&nbsp;&nbsp;
 			            	<?=$v['mianji']?>平米
-			            	&nbsp;&nbsp;&nbsp;&nbsp;
+			            	&nbsp;&nbsp;
 			            	<?=$zhuangxiu[$v['zhuangxiu']]?>
+			            	<?php if($v['pano_id']){?>
+			            	&nbsp;&nbsp;<span class="price">全景</span>
+			            	<?php }?>
 			            </div>
 		            </div>
 	            </a>

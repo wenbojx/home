@@ -735,3 +735,225 @@ Stack trace:
 REQUEST_URI=/upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg
 HTTP_REFERER=http://f.dev.yiluhao.com/1002
 ---
+2013/03/27 13:59:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('favicon.ico')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2013/03/27 13:59:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('favicon.ico')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2013/03/27 13:59:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('favicon.ico')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2013/03/27 13:59:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/list
+---
+2013/03/27 13:59:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/list
+---
+2013/03/27 14:00:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/manage/list
+---
+2013/03/27 14:00:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/1002
+---
+2013/03/27 14:01:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/1002/page/2
+---
+2013/03/27 14:01:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/1002/page/2
+---
+2013/03/27 14:01:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/1002/page/2
+---
+2013/03/27 14:01:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/1002/page/2
+---
+2013/03/27 14:03:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/1002/page/2
+---
+2013/03/27 14:03:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/1002/page/2
+---
+2013/03/27 14:03:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/1002/page/2
+---
+2013/03/27 14:03:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/1002/page/2
+---
+2013/03/27 14:03:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/1002
+---
+2013/03/27 14:03:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/1002
+---
+2013/03/27 14:05:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/1002
+---
+2013/03/27 14:05:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/1002
+---
+2013/03/27 14:05:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/1002
+---
+2013/03/27 14:05:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/1002
+---
+2013/03/27 14:06:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/1002
+---
+2013/03/27 14:06:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/1002
+---
+2013/03/27 14:06:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/1002
+---
+2013/03/27 14:06:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg".' in C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php:280
+Stack trace:
+#0 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\web\CWebApplication.php(135): CWebApplication->runController('upload/201303/2...')
+#1 C:\mydatas\APMServ5.2.6\www\htdocs\home\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\mydatas\APMServ5.2.6\www\htdocs\home\fang\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/upload/201303/26/14/327f33580c3793915ba929367c856eba/thumb.jpg
+HTTP_REFERER=http://f.dev.yiluhao.com/1002
+---

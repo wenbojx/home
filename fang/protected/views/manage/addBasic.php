@@ -78,7 +78,7 @@
 		</table>
 		<label for="text-basic">关键词:（如：小区央座, 身份象征）</label>
 		<input name="guanjianci" id="guanjianci" value="<?=$datas['info']['guanjianci']?>" type="text">
-		<label for="text-basic">描述:</label>
+		<label for="text-basic">描述:（换回请用标签<br>）</label>
 		<textarea name="desc" id="desc"><?=$datas['info']['desc']?></textarea>
 		<label style="color: red; display:none;" id="add_tip_flag"></label><br>
 		<input value="保存" type="button" id="submit_button" onclick= "fang.add()">
