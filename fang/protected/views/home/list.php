@@ -14,6 +14,7 @@ $zhuangxiu = array('0'=>'', '1'=>'毛坯', '2'=>'简装', '3'=>'精装', '4'=>'�
 		<?php if($datas['member_id']){?>
 		<a  href="/m" data-role="button" data-mini="true">管理</a>
 		<?php }?>
+		<a  href="/home/contact/a/id/<?=$datas['id']?>" data-role="button" data-mini="true">经纪人</a>
 	</div><!-- /header -->
 
 	<div data-role="content">	

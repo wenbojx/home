@@ -11,6 +11,7 @@ class ListController extends FController{
     	$request = Yii::app()->request;
     	$this->id = $request->getParam('id');
     	$datas['id'] = $this->id;
+    	//echo $this->id;
     	
     	$page = $request->getParam('page')?$request->getParam('page'):1;
     	$datas['back_hide'] = false;
@@ -51,7 +52,7 @@ class ListController extends FController{
     	if($total>0){
     		$offset = ($page-1)*$this->page_size;
     		//获取场景信息
-    		$Fangdatas = $fang_db->getFangList($this->member_id, 0, $this->page_size, $offset);
+    		$Fangdatas = $fang_db->getFangList($this->id, 0, $this->page_size, $offset);
     	}
     	//print_r($Fangdatas);
     	if($Fangdatas){
