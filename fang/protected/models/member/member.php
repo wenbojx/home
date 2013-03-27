@@ -56,7 +56,7 @@ class Member extends Ydao
     
     public function check_login($datas){
         if(!$datas['username'] || !$datas['passwd']){
-            return false;
+            return false; 
         }
         $user_datas = $this->find_by_email($datas['username']);
         if(!$user_datas){
