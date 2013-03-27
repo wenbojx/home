@@ -48,7 +48,7 @@ class ListController extends Controller{
     	if($total>0){
     		$offset = ($page-1)*$this->page_size;
     		//获取场景信息
-    		$Fangdatas = $fang_db->getFangList($this->member_id, $this->page_size, $offset);
+    		$Fangdatas = $fang_db->getFangList($this->member_id, '', $this->page_size, $offset);
     	}
     	//print_r($Fangdatas);
     	if($Fangdatas){

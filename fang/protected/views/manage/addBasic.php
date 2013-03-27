@@ -12,28 +12,12 @@
      	<input name="id" id="fid" value="<?=$datas['info']['id']?>" type="hidden">
 		<label for="text-basic">标题:</label>
 		<input name="biaoti" id="biaoti" value="<?=$datas['info']['biaoti']?>" type="text">
-		<label for="text-basic">面积:</label>
-		<table width="100%">
-		<tr>
-			<td>
-				<input name="mianji" id="mianji" value="<?=$datas['info']['mianji']?>" type="text">
-			</td>
-			<td>
-			平米
-			</td>
-		</tr>
-		</table>
-		<label for="text-basic">价格:</label>
-		<table width="100%">
-		<tr>
-			<td>
-				<input name="jiage" id="jiage" value="<?=$datas['info']['jiage']?>" type="text">
-			</td>
-			<td>
-			万
-			</td>
-		</tr>
-		</table>
+		<label for="text-basic">面积: 单位平米</label>
+		<input name="mianji" id="mianji" value="<?=$datas['info']['mianji']?>" type="text">
+		
+		<label for="text-basic">价格: 单位万或每月</label>
+		<input name="jiage" id="jiage" value="<?=$datas['info']['jiage']?>" type="text">
+		
 		<label for="text-basic">售卖类型:</label>
 		<select name="shoumai" id="shoumai" data-mini="true" data-inline="true">
 			    <option value="1" <?=$datas['info']['shoumai']=='1' ? 'selected="selected"':''?>>出售</option>
@@ -98,6 +82,13 @@
 		<textarea name="desc" id="desc"><?=$datas['info']['desc']?></textarea>
 		<label style="color: red; display:none;" id="add_tip_flag"></label><br>
 		<input value="保存" type="button" id="submit_button" onclick= "fang.add()">
+		<?php if($datas['info']['id']){?>
+			<?php if($datas['info']['is_del']=='0'){?>
+			<input value="删除" type="button" id="del_button" onclick= "fang.del(1)">
+			<?php }else{?>
+			<input value="恢复" type="button" id="del_button" onclick= "fang.del(0)">
+			<?php }?>
+		<?php }?>
 		</form>
 	</div><!-- /content -->
 	<div data-role="footer" style="overflow:hidden;">

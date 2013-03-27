@@ -12,6 +12,20 @@ class AddBasicController extends Controller{
     public function actionAdd(){
     	$request = Yii::app()->request;
     	$id = $request->getParam('id');
+    	$del = $request->getParam('del');
+    	if($del != ''){
+    		if($del == '0'){
+    			$this->edit($id, array('is_del'=>0));
+    		}
+    		elseif($del == '1'){
+    			$this->edit($id, array('is_del'=>1));
+    		}
+    		$msg['flag'] = '1';
+    		$msg['id'] = $id;
+    		$this->display_msg($msg);
+    	}
+    	
+    	
     	$datas['biaoti'] = $request->getParam('biaoti');
     	$datas['mianji'] = $request->getParam('mianji');
     	$datas['jiage'] = $request->getParam('jiage');

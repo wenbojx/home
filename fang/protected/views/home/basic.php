@@ -5,7 +5,7 @@ $zhuangxiu = array('0'=>'', '1'=>'毛坯', '2'=>'简装', '3'=>'精装', '4'=>'�
 	<div data-role="header">
 		<h1><?=$datas['page']['title'] ?></h1>
 		<a rel="external"
-			href="/<?=$datas['id']?>"
+			href="/<?=$datas['info']['mid']?>"
 			data-role="button" data-icon="home" data-mini="true">返回</a>
 	</div><!-- /header -->
 

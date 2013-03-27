@@ -4,8 +4,9 @@ class AddPicController extends Controller{
     public $defaultAction = 'a';
     public $layout = 'home';
     private $ftype = 'jpg';
-	private $pic_width = '400';
-	private $pic_height = '350';
+	private $pic_width = 350;
+	//private $pic_height = '350';
+	private $thumb_width = 100;
 	private $id = 0;
     
     public function actionA(){
@@ -107,11 +108,14 @@ class AddPicController extends Controller{
     	$fileName = $md5_path.'/'.$file_md5.'.'.$file_info['type'];
     	
     	$flag = $file->saveAs($fileName,true);//上传操作
+    	
+    	
+    	
     	if($file_name == 'file0'){
-    		$this->resize($fileName, $md5_path, 200, 100, $file_info['type']);
+    		$this->resize($fileName, $md5_path, $file_info['type'], true);
     	}
     	else{
-    		$this->resize($fileName, $md5_path, $this->pic_width, $this->pic_height, $file_info['type']);
+    		$this->resize($fileName, $md5_path, $file_info['type'], false);
     	}
     	if(!$flag){
     		return false;
@@ -119,20 +123,35 @@ class AddPicController extends Controller{
     	
     	return $md5_path;
     }
-    private function resize($path, $folder, $width, $height, $type){
+    private function resize($path, $folder, $type, $thumb){
     	if(!file_exists($path)){
     		return false;
     	}
     	$myimage = new Imagick($path);
     	$ext = strtolower( $myimage->getImageFormat() );
     	$myimage->setImageFormat($ext);
-    	$myimage->resizeimage($width, $height, Imagick::FILTER_LANCZOS, 1, true);
-    	if($width == 200){
+    	$img_w = $myimage->getimagewidth();
+    	$img_h = $myimage->getimageheight();
+    	
+    	if($thumb){
     		$to = $folder.'/thumb.'.$type;
+    		$limit_w = $this->thumb_width;
     	}
     	else{
-    		$to = $folder.'/w'.$width.'.'.$type;
+    		$to = $folder.'/w'.$this->pic_width.'.'.$type;
+    		$limit_w = $this->pic_width;
     	}
+    	if($img_w < $limit_w){
+    		$width = $img_w;
+    		$height = $img_h;
+    	}
+    	else{
+    		$width = $limit_w;
+    		$height = ($limit_w/$img_w)*$img_h;
+    	}
+
+    	$myimage->resizeimage($width, $height, Imagick::FILTER_LANCZOS, 1, true);
+
     	$myimage->writeImage($to);
     	$myimage->clear();
     	$myimage->destroy();

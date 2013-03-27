@@ -9,7 +9,7 @@ $zhuangxiu = array('0'=>'', '1'=>'毛坯', '2'=>'简装', '3'=>'精装', '4'=>'�
 		<?php if(!$datas['back_hide']){?>
 		<a data-rel="back"  href="#" data-role="button" data-mini="true">返回</a>
 		<?php }else{?>
-		<a href="<?=$this->createUrl('/home/list/a/', array('id'=>$datas['mid']));?>" target="_blank" data-role="button" data-icon="home" data-mini="true">预览</a>
+		<a href="<?=$this->createUrl('/home/list/a/', array('id'=>$datas['mid']));?>"  data-role="button" data-icon="home" data-mini="true">预览</a>
 		<?php }?>
 		<h1><?=$datas['pages']['title'] ?></h1>
 		<a href="<?=$this->createUrl('/member/loginout');?>" data-role="button" data-icon="home" data-mini="true">退出</a>
@@ -44,6 +44,9 @@ $zhuangxiu = array('0'=>'', '1'=>'毛坯', '2'=>'简装', '3'=>'精装', '4'=>'�
 			            			<td align="right">
 			            			<span class= "price">
 			            			<?=$v['jiage']?><?=$v['shoumai']=='1'?'万':' / 月'?>【<?=$v['shoumai']=='1'?'售':'租'?>】
+			            			
+			            			<?php if($v['is_del']=='1'){echo ' 删 ';}?>
+
 			            			</span>
 			            			</td>
 			            		</tr>

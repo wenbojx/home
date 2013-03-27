@@ -26,6 +26,7 @@ class ListController extends FController{
     	$datas['page_next'] = $this->page_next;
     	$datas['page'] = $page+1;
     	$datas['back'] = $page==1?false:true;
+    	$datas['member_id'] = $this->member_id;
     	
         $datas['pages']['title'] = '房源列表';
         $this->render('/home/list', array('datas'=>$datas));
@@ -42,7 +43,7 @@ class ListController extends FController{
     	$datas = array();
     	$fang_db = new Fang();
     
-    	$total = $fang_db->getFangnum($this->id);
+    	$total = $fang_db->getFangnum($this->id, '0');
     	$page_num = ceil($total/$this->page_size);
     	if($page_num<2 || $page_num == $page){
     		$this->page_next = false;
@@ -50,7 +51,7 @@ class ListController extends FController{
     	if($total>0){
     		$offset = ($page-1)*$this->page_size;
     		//获取场景信息
-    		$Fangdatas = $fang_db->getFangList($this->member_id, $this->page_size, $offset);
+    		$Fangdatas = $fang_db->getFangList($this->member_id, 0, $this->page_size, $offset);
     	}
     	//print_r($Fangdatas);
     	if($Fangdatas){

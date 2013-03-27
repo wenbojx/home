@@ -71,6 +71,28 @@ member.login = function(){
 }
 
 var fang = {};
+fang.del = function(del){
+	if(!confirm("确定要删除吗？")){
+		return false;
+	}
+	var id = $("#fid").val();
+	var url = $("#manage_add").attr('action');
+    var datas = {'del':del, 'id':id};
+
+    save_datas(url, datas, 'post', 'json' ,do_after);
+    function do_after(datas){
+    	if(datas.flag =='1' && datas.id){
+    		$("#add_tip_flag").show();
+            $("#add_tip_flag").html('操作成功');
+            var addbase_jump_url = "/manage/addBasic/edit/"+ "id/"+datas.id;
+            jump_to(addbase_jump_url);
+        }
+        else{
+        	$("#add_tip_flag").html("发生错误，请重新再试");
+        	$("#add_tip_flag").show();
+        }
+    }
+}
 fang.add = function(){
 	var biaoti = $("#biaoti").val();
 	if( biaoti == "" ){

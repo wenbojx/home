@@ -13,6 +13,7 @@
 	if($v['type'] != '1'){
 		continue;
 	}
+	$thumb_exit = true;
 	?>	
 	<div>
 		<label>缩略图</label><br>
@@ -44,9 +45,10 @@
      	<?php if( $datas['msg'] ){?>
      	<label style="color:red"><?=$datas['msg']?></label><br>
      	<?php }?>
-     	
-     	<label for="file">上传缩略图:</label><br>
+     	<?php if(!$thumb_exit){?>
+     	<label for="file">上传缩略图:100x80</label><br>
 		<input name="file0" id="file0"  type="file"><br><br>
+		<?php }?>
 		<label for="file">上传实景图:</label><br>
 		<?php for($i=1; $i<=(5-$num); $i++){?>
 		<input name="file<?=$i?>" id="file<?=$i?>"  type="file"><br><br>

@@ -7,14 +7,14 @@
 	margin:0 25px 0 0;
 }
 .projects .ui-li-thumb{
-	max-height:100px;
-	max-width:150px;
+	max-height:80px;
+	max-width:110px;
 }
 .projects .ui-btn-text{
 	max-height:115px;
 }
 .projects .ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb{
-	padding:20px 10px 20px 150px;
+	padding:5px 5px 5px 110px;
 }
 
 
@@ -49,8 +49,8 @@
 	margin:0 25px 0 0 ;
 }
 .list_pic{
-	width:140px;
-	height:100px;
+	width:100px;
+	height:80px;
 }
 
 

@@ -55,12 +55,15 @@ class Fang extends Ydao
 		//print_r($datas);
 		return $this->updateByPk($id, $datas);
 	}
-	public function getFangList($m_id, $limit, $offset, $order=''){
+	public function getFangList($m_id, $is_del='', $limit, $offset, $order=''){
 		if(!$m_id){
 			return false;
 		}
 		$criteria=new CDbCriteria;
-		$criteria->order = 'is_del ASC, id DESC';
+		$criteria->order = 'id DESC';
+		if($is_del !== ''){
+			$criteria->addCondition('is_del='.$is_del);
+		}
 		if($order){
 			$criteria->order = $order;
 		}
@@ -85,13 +88,16 @@ class Fang extends Ydao
 	/*
 	 * 
 	*/
-	public function getFangnum($m_id){
+	public function getFangnum($m_id, $is_del=''){
 		if(!$m_id){
 			return false;
 		}
 		$criteria=new CDbCriteria;
 		//$criteria->order = 'is_del ASC';
-		//$criteria->addCondition('is_del=1');
+		if($is_del!=''){
+			$criteria->addCondition('is_del='.$is_del);
+		}
+		
 		$criteria->addCondition('mid='.$m_id);
 		return $this->count($criteria);
 	}

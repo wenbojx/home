@@ -11,6 +11,9 @@ $zhuangxiu = array('0'=>'', '1'=>'毛坯', '2'=>'简装', '3'=>'精装', '4'=>'�
 		<?php }else{?>
 		<?php }?>
 		<h1><?=$datas['pages']['title'] ?></h1>
+		<?php if($datas['member_id']){?>
+		<a  href="/m" data-role="button" data-mini="true">管理</a>
+		<?php }?>
 	</div><!-- /header -->
 
 	<div data-role="content">	
@@ -64,7 +67,7 @@ $zhuangxiu = array('0'=>'', '1'=>'毛坯', '2'=>'简装', '3'=>'精装', '4'=>'�
 	    </ul>
 	    <?php if($datas['page_next']){?>
 	    <div class="next_page">
-	    <a href="<?=$this->createUrl('/manage/list/a/', array('page'=>$datas['page']));?>" data-role="button" >下一页</a>
+	    <a href="<?=$this->createUrl('/home/list/a', array('id'=>$datas['id'], 'page'=>$datas['page']));?>" data-role="button" >下一页</a>
 	    </div>
 	    <?php }?>
 	</div><!-- /content -->
