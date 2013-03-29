@@ -2,8 +2,8 @@
 class SingleController extends FController{
     public $defaultAction = 'a';
     public $layout = 'single';
-    private $default_width = "880";
-    private $default_height= "550";
+    private $default_width = "1200";
+    private $default_height= "630";
     private $map_show = false;
 
 	public function actionA(){

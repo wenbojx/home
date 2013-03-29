@@ -6,7 +6,9 @@
 	
 	<table width="100%">
 		<tr>
-			<td><h3>&nbsp;<?=$datas['project']['name']?></h3></td>
+			<td><h3>&nbsp;<?=$datas['project']['name']?>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<span style="font-size: 12px; font-weight:normal">(点击，拖动图片，想看哪里就看哪里)</span></h3></td>
 			<td align="right"><?php if($datas['config']['contact_show']){?>联系人:张文 &nbsp;&nbsp;电话:13918443358<?php }?>
 			<?php echo $datas['member']['nickname'] ? '摄影师：'.$datas['member']['nickname'] : ''; ?>
 			</td>

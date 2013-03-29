@@ -66,6 +66,7 @@ function showMap(){
 	}
 }
 var scene_id = '<?=$datas['scene_id']?>';
+alert(111);
 <?php if($flag){?>
 var page_url = '';
 map_width = '<?=$datas['map']['map']['width']?>';

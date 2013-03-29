@@ -2,7 +2,7 @@
 class PanosCommand extends CConsoleCommand {
     //public $defaultAction = 'index'; //默认动作
     //public $find_path = '/mnt/hgfs/pics/suzhou/zzy'; //搜索全景图的目录
-    //public $find_path = "C:/mydatas/pic/上海/世纪公园0729";
+    //public $find_path = "C:/mydatas/pic/demo";
 public $find_path = "C:/mydatas/pic/上海/陆家嘴公园0728";
     public $panos_path = array();
     public $default_new_folder = 'panos';  //新的全景图目录
@@ -244,7 +244,7 @@ public $find_path = "C:/mydatas/pic/上海/陆家嘴公园0728";
         $this->myScanCubeDir($path);
 		foreach($this->panos_path as $k=>$v){
 
-			if($k!="26"){
+			if($k!="0"){
 				//continue;
 			}
 //echo $k.'--'.$v."\r\n";
@@ -252,6 +252,9 @@ public $find_path = "C:/mydatas/pic/上海/陆家嘴公园0728";
 		}
     }
     public function sphere($path){
+//$path = "C:/mydatas/pic/demo/4/3";
+//$this->swidth = 6400;
+//$this->sheight = 3200;
 		if($this->windows){
 				$path = str_replace('\\', "/", $path);
 		}
