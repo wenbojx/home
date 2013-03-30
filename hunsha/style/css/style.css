@@ -1,0 +1,115 @@
+@CHARSET "UTF-8";
+body{
+	background-image: url(/style/img/bg.png);
+	margin:0;
+	padding:0;
+	color:#FFFFFF;
+}
+.clear{
+	clear:both;
+}
+a{
+	color:#FFFFFF;
+	text-decoration:none;
+}
+h3{
+	margin:8px 0;
+}
+dt, dd{
+	margin:0;
+	padding:0;
+}
+ul,li{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+li{
+	height:35px;
+}
+p{
+	margin:2px 0 ;
+}
+.hide{
+	display:none;
+}
+.fleft{
+	float:left;
+}
+.fright{
+	float:right;
+}
+
+.content{
+	width:980px; 
+	margin:0 auto;
+}
+
+.header{
+	height:30px;
+	line-height:30px;
+}
+.header .items{
+	width:400px;
+	
+}
+.header .login{
+	width:100px;
+}
+
+.left_demo{
+	width:382px;
+	height:610px;
+	
+	background-image: url(/style/img/iphone4s_384x613.png);
+}
+.right_make{
+	width:575px;
+	
+	margin:0 0 0 10px;
+	border:1px solid #666666;
+	padding:5px;
+}
+
+.editor{
+	color:black;
+	margin:0 auto;
+	text-align:center;
+	line-height:20px;
+}
+
+.edui-label{
+	color:black;
+}
+.start_make{
+	color:#FFFFFF;
+	font-size:24px;
+	margin:300px 0 0 300px;
+}
+.form_box{
+	padding:5px;
+	border:1px solid #666666;
+	margin:5px 0 0 5px;
+}
+dt{
+	cursor:pointer;
+	height:25px;
+	background-color:#454545;
+	line-height:25px;
+}
+.form_box dd{
+	padding:5px 5px 10px 5px ;
+}
+.map_canvas{
+	width:550px;
+	height:300px;
+}
+#map_desc{
+	width:350px;
+	height:100px;
+}
+.demo_window{
+	margin:60px 0 0 29px;;
+}
+
+

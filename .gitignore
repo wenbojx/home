@@ -41,6 +41,14 @@ fang/upload/
 fang/html/phpmyadmin
 fang/html/phpmyadmin.tar.gz
 
+hunsha/protected/runtime/*.log
+hunsha/protected/runtime/application.*
+hunsha/protected/config/*.php
+hunsha/protected/runtime/
+hunsha/protected/runtime/*.*
+hunsha/protected/config/*.php
+hunsha/upload/
+
 mhome/protected/runtime/*.log
 mhome/protected/runtime/application.*
 mhome/protected/config/*.php
