@@ -6,7 +6,9 @@ body{
 	background-color:#787878;
 }
 .ui-body-c, .ui-overlay-c{
+	/**
 	background:linear-gradient(#787878, #787878) repeat scroll 0 0 #787878;
+	*/
 	color:#FFFFFF;
 	text-shadow:0 0 0 #FFFFFF;
 }
@@ -48,7 +50,9 @@ p{
 	margin:0;
 	padding:0;
 }
-
+.ui-link{
+	text-shadow:0 0 0 #FFFFFF;
+}
 .main_title{
 	position:relative;
 	text-align:center;
@@ -130,8 +134,38 @@ p{
 }
 
 
+.view_title{
+	position:relative;
+	text-align:center;
+	height:35px;
+	line-height:35px;
+	width:100%;
+	background:url("./bg_content_title04.png") repeat scroll center bottom transparent;
+}
 
+.view_title span{
+	display:block;
+	z-index:998;
+	color:#ffffff;
+	position:absolute;
+	top:0;
+	left:0;
+	text-align:center;
+	width:100%;
+}
+.view_title a{
+	display:block;
+	position:absolute;
+	top:2px;
+	z-index:999;
+	height:35px;
+	width:50px;
+}
 
+.view_content{
+	color:#000000;
+	padding:5px;	
+}
 
 
 
