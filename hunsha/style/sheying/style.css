@@ -1,0 +1,148 @@
+@CHARSET "UTF-8";
+body{
+	margin:0;
+	padding:0;
+	color:#FFFFFF;
+	background-color:#787878;
+}
+.ui-body-c, .ui-overlay-c{
+	background:linear-gradient(#787878, #787878) repeat scroll 0 0 #787878;
+	color:#FFFFFF;
+	text-shadow:0 0 0 #FFFFFF;
+}
+.clear{
+	clear:both;
+}
+a{
+	color:#FFFFFF;
+	text-decoration:none;
+}
+h3{
+	margin:8px 0;
+}
+dt, dd{
+	margin:0;
+	padding:0;
+}
+ul,li{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+li{
+	height:35px;
+}
+p{
+	margin:2px 0 ;
+}
+.hide{
+	display:none;
+}
+.fleft{
+	float:left;
+}
+.fright{
+	float:right;
+}
+.ui-content{
+	margin:0;
+	padding:0;
+}
+
+.main_title{
+	position:relative;
+	text-align:center;
+	height:35px;
+	line-height:35px;
+	background:url("./bg_content_title01.png") repeat scroll 0 0 transparent;
+}
+/**
+.main_title div{
+	background-color:#ca3399;
+	filter:alpha(opacity=100);            /* 用于IE浏览器－透明度为20%*/
+	-moz-opacity:1;                    /*  用于Moz + Firefox－透明度为20%*/
+	opacity: 1; 
+	height:30px;
+	width:100%;
+	position:absolute;
+	top:0;
+	left:0;
+}
+*/
+.main_title span{
+	display:block;
+	z-index:999;
+	color:#ffffff;
+	position:absolute;
+	top:0;
+	left:0;
+	text-align:center;
+	width:100%;
+}
+.main_content{
+	padding:10px 20px 10px 20px;
+}
+.main_content .item{
+	margin:10px 0 0 0;
+}
+.main_content .radius{
+	-moz-border-radius:7px;
+	-webkit-border-radius:7px;
+	border-radius:7px;
+	height:130px;
+	width:47%;
+	color:#ffffff;
+	position:relative;
+	font-size:22px;
+}
+.main_content .radius span{
+	margin:5px;
+	display:block;
+	position:absolute;
+}
+.main_content .item1{
+	background-color:#20b9f9;
+}
+.main_content .item1 span{
+	bottom:0;
+	right:0;
+}
+.main_content .item2{
+	background-color:#6ab939;
+}
+.main_content .item2 span{
+	top:0;
+	right:0;
+}
+.main_content .item3{
+	background-color:#fbc532;
+}
+.main_content .item3 span{
+	bottom:0;
+	left:0;
+}
+.main_content .item4{
+	background-color:#ca3399;
+}
+.main_content .item4 span{
+	bottom:0;
+	right:0;
+}
+.main_content .item5{
+	background-color:#ed1e4a;
+}
+.main_content .item5 span{
+	top:0;
+	left:0;
+}
+.main_content .item6{
+	color:#000000;
+	background-color:#ffffff;
+}
+
+
+
+
+
+
+

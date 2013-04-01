@@ -9,7 +9,11 @@ $this->pageTitle=$datas['page']['title'];
 				href="<?=$this->createUrl('/member/login/a/');?>">登陆</a>
 		</div>
 	</div>
-	<div class="left_demo fleft"></div>
+	<div class="left_demo fleft">
+	<div class="demo_window">
+		<iframe width="327" height="486" src="/home/welcome"></iframe>
+		</div>
+	</div>
 	<div class="right_make fleft">
 		<div >
 			<dl class="step" >
