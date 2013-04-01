@@ -56,8 +56,8 @@ p{
 .main_title{
 	position:relative;
 	text-align:center;
-	height:35px;
-	line-height:35px;
+	height:45px;
+	line-height:45px;
 	width:100%;
 	background:url("./bg_content_title01.png") repeat scroll 0 0 transparent;
 }
@@ -71,6 +71,7 @@ p{
 	left:0;
 	text-align:center;
 	width:100%;
+	font-size:22px;
 }
 .main_content{
 	padding:10px 20px 10px 20px;
