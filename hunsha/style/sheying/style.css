@@ -54,21 +54,10 @@ p{
 	text-align:center;
 	height:35px;
 	line-height:35px;
+	width:100%;
 	background:url("./bg_content_title01.png") repeat scroll 0 0 transparent;
 }
-/**
-.main_title div{
-	background-color:#ca3399;
-	filter:alpha(opacity=100);            /* 用于IE浏览器－透明度为20%*/
-	-moz-opacity:1;                    /*  用于Moz + Firefox－透明度为20%*/
-	opacity: 1; 
-	height:30px;
-	width:100%;
-	position:absolute;
-	top:0;
-	left:0;
-}
-*/
+
 .main_title span{
 	display:block;
 	z-index:999;
@@ -89,7 +78,7 @@ p{
 	-moz-border-radius:7px;
 	-webkit-border-radius:7px;
 	border-radius:7px;
-	height:130px;
+	height:140px;
 	width:47%;
 	color:#ffffff;
 	position:relative;
