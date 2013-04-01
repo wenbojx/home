@@ -138,10 +138,10 @@ p{
 .view_title{
 	position:relative;
 	text-align:center;
-	height:35px;
-	line-height:35px;
+	height:42px;
+	line-height:42px;
 	width:100%;
-	background:url("./bg_content_title04.png") repeat scroll center bottom transparent;
+	background:url("./bg_content_title03.png") repeat scroll center bottom transparent;
 }
 
 .view_title span{
@@ -153,11 +153,12 @@ p{
 	left:0;
 	text-align:center;
 	width:100%;
+	font-size:20px;
 }
 .view_title a{
 	display:block;
 	position:absolute;
-	top:2px;
+	top:6px;
 	z-index:999;
 	height:35px;
 	width:50px;
