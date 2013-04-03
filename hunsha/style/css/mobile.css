@@ -1,9 +1,0 @@
-@CHARSET "UTF-8";
-body{
-	margin:0;
-	padding:0;
-	background:url("../img/bg_top2.png") repeat scroll 0 0 transparent
-}
-.clear{
-	clear:both;
-}

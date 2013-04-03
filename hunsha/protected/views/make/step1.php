@@ -1,17 +1,26 @@
 <?php 
 $this->pageTitle=$datas['page']['title'];
+$basic = $datas['basic'];
 ?>
 <div class="content">
 	<div class="header">
 		<div class="items fleft"></div>
 		<div class="login fright">
-			<a href="<?=$this->createUrl('/member/step1/a/');?>">注册</a> <a
+				<?php if($datas['username']){?>
+				欢迎您:<?=$datas['username']?>
+				
+				<input type="hidden" name="id" id="project_id" value="<?=$datas['id']?>">
+				&nbsp;&nbsp;
+				<a href="/member/loginout">退出</a>
+				<?php }else{?>
+				<a href="<?=$this->createUrl('/member/step1/a/');?>">注册</a> <a
 				href="<?=$this->createUrl('/member/login/a/');?>">登陆</a>
+				<?php }?>
 		</div>
 	</div>
 	<div class="left_demo fleft">
 	<div class="demo_window">
-		<iframe width="327" height="486" src="/home/welcome"></iframe>
+		<iframe width="327" height="486" src="/home/mobile"></iframe>
 		</div>
 	</div>
 	<div class="right_make fleft">
@@ -19,268 +28,174 @@ $this->pageTitle=$datas['page']['title'];
 			<dl class="step" >
 				<dt onclick="showStep1()"><h3>封面页</h3></dt>
 				<dd id="step1">
+					<form method="post" class="form-horizontal" id="manage_basic" action="<?=$this->createUrl('/manage/basic/save');?>">
 					<ul class="form_box">
-						<li><label>新郎姓名：</label> <input type="text" value="" name="xinglang"
-							id="xinglang" />
+						<li><label>标 题：</label> <input type="text" value="<?=$basic['name']?>" name="name" style="width: 300px;"
+							id="name" />
 						</li>
-						<li><label>新娘姓名：</label> <input type="text" value=""
-							name="xingniang" id="xingniang" />
+						<li><label>栏位一：</label> 
+						<input type="text" value="<?=$basic['tab1']?$basic['tab1']:'公司环境'?>" name="tab1" id="tab1" />
 						</li>
-						<li><label>宴客时间：</label> <input type="text" value="" name="riqi"
-							id="riqi" />
+						<li><label>栏位二：</label> <input type="text" value="<?=$basic['tab1']?$basic['tab2']:'关于我们'?>" name="tab2"
+							id="tab2" />
 						</li>
-						<li><label>关 键 词：</label> <input type="text" style="width: 200px;"
-							value="" name="guanjianci" id="guanjianci" />
+						<li><label>栏位三：</label> <input type="text" value="<?=$basic['tab1']?$basic['tab3']:'图片展示'?>" name="tab3"
+							id="tab3" />
 						</li>
-						<div>
-						<label>封面图片：</label> 
-						
-							<span id="image_box_upload"></span>
-						</div>
+						<li><label>栏位四：</label> <input type="text" value="<?=$basic['tab1']?$basic['tab4']:'服务内容'?>" name="tab4"
+							id="tab4" />
+						</li>
+						<li><label>栏位五：</label> <input type="text" value="<?=$basic['tab1']?$basic['tab5']:'留言反馈'?>" name="tab5"
+							id="tab5" />
+						</li>
+						<li><label>栏位六：</label> <input type="text" value="<?=$basic['tab1']?$basic['tab6']:'联系我们'?>" name="tab6"
+							id="tab6" />
+						</li>
+						<li>
+							<lable id="basic_tip_flag" class="hide"></lable>
+							<input type="button" onclick="saveBsic()" name="save" value="保 存" class="save" style="margin:10px 0 0 70px;">
+						</li>
+						<br>
 					</ul>
+					</form>
 				</dd>
 			</dl>
 		</div>
+		<?php if($datas['id']){?>
 		<div>
 		<dl class="step" >
-			<dt onclick="showStep2()"><h3>列表页</h3></dt>
+			<dt onclick="showStep2()"><h3>详细页</h3></dt>
 				<dd id="step2" >
 					<dl class="form_box" >
-						<dt>爱的邀约</dt>
+						<dt><?=$basic['tab1']?$basic['tab1']:'公司环境'?></dt>
 						<dd id="item1" class="hide">
-							<table width="100%">
-								<tr>
-									<td><label>标题：</label> <input type="text" value="爱的邀约"
-										name="yaoyue" id="yaoyue" />
-									</td>
-									<td align="right"><input type="checkbox" name="yaoyue_show"
-										id="yaoyue_show">隐藏</td>
-								</tr>
-							</table>
-							<div class="editor">
-								<script id="yaoyue_text" type="text/plain">	
-<p style="text-align:center">
-<span style="font-family:微软雅黑,宋体,microsoft jhenghei,microsoft yahei,arial">
-<span style="font-size:18px">
-<span style="color: rgb(51, 51, 51); font-family: 微软雅黑,Microsoft YaHei;">​那一年，我们偶然相遇</span>
-</span></span><br>
-</p>
+							<form method="post" class="form-horizontal" id="manage_pano" action="<?=$this->createUrl('/manage/pano/save');?>">
+							<br>
+							<lable>全景ID：</lable>
+							<input type="text" id="tab1_input" name="tab1_input" value="<?=$datas['pano']['pano_id']?$datas['pano']['pano_id']:''?>"><br><br>
+							<lable id="pano_tip_flag" class="hide"></lable>
+							<input type="button" onclick="savePano()" name="save" value="保 存" class="save" style="margin:10px 0 0 70px;">
 
-<p style="text-align:center">
-<span style="font-family:微软雅黑,宋体,microsoft jhenghei,microsoft yahei,arial">
-<span style="font-size:18px">
-<span style="color: rgb(51, 51, 51); font-family: 微软雅黑,Microsoft YaHei;">没想到世界这么大</span>
-</span></span><br>
-</p>
-
-<p style="text-align:center">
-<span style="font-family:微软雅黑,宋体,microsoft jhenghei,microsoft yahei,arial">
-<span style="font-size:18px"><span style="color: rgb(51, 51, 51); font-family: 微软雅黑,Microsoft YaHei;">
-两颗小小的心却从此被系在一起</span></span></span></p>
-
-<p style="text-align:center"><span style="font-family:微软雅黑,宋体,microsoft jhenghei,microsoft yahei,arial">
-<span style="font-size:18px"><span style="color: rgb(51, 51, 51); font-family: 微软雅黑,Microsoft YaHei;">
-我们看到彼此的好</span></span></span><br></p>
-
-<p style="text-align:center"><span style="font-family:微软雅黑,宋体,microsoft jhenghei,microsoft yahei,arial">
-<span style="font-size:18px"><span style="color: rgb(51, 51, 51); font-family: 微软雅黑,Microsoft YaHei;">
-也看到彼此对自己的重要</span></span></span></p>
-
-<p style="text-align:center"><span style="font-family:微软雅黑,宋体,microsoft jhenghei,microsoft yahei,arial">
-<span style="font-size:18px"><span style="color: rgb(51, 51, 51); font-family: 微软雅黑,Microsoft YaHei;">
-在这个美丽的日子</span></span></span></p>
-
-<p style="text-align:center"><span style="font-family:微软雅黑,宋体,microsoft jhenghei,microsoft yahei,arial">
-<span style="font-size:18px"><span style="color: rgb(51, 51, 51); font-family: 微软雅黑,Microsoft YaHei;">
-我们决定让幸福延续</span></span></span></p>
-
-<p style="text-align:center"><span style="font-family:微软雅黑,宋体,microsoft jhenghei,microsoft yahei,arial">
-<span style="font-size:18px"><span style="color: rgb(51, 51, 51); font-family: 微软雅黑,Microsoft YaHei;">
-期望快乐的回忆里，有您的参与</span></span></span></p><p style="text-align:right"><br></p>
-
-<p style="text-align:right"><span style="font-family:微软雅黑,宋体,microsoft jhenghei,microsoft yahei,arial">
-<span style="font-size:18px"><span style="color: rgb(51, 51, 51); font-family: 微软雅黑,Microsoft YaHei;">
-{新郎}与{新娘}敬邀</span></span></span></p><p><br></p>
-
-<p><span style="font-family:微软雅黑,宋体,microsoft jhenghei,microsoft yahei,arial"><span style="font-size:18px">
-<span style="color: rgb(255, 0, 102); font-family: 微软雅黑,Microsoft YaHei;">日期：{宴客日期}</span></span></span></p>
-
-<p><span style="font-family:微软雅黑,宋体,microsoft jhenghei,microsoft yahei,arial"><span style="font-size:18px">
-<span style="color: rgb(255, 0, 102); font-family: 微软雅黑,Microsoft YaHei;">时间：{宴客时间}</span></span></span></p>
-<p><span style="font-family:微软雅黑,宋体,microsoft jhenghei,microsoft yahei,arial"><span style="font-size:18px">
-<span style="color: rgb(255, 0, 102); font-family: 微软雅黑,Microsoft YaHei;">地点：{场所名称}</span></span></span></p>
-
-<p><span style="font-family:微软雅黑,宋体,microsoft jhenghei,microsoft yahei,arial"><span style="font-size:18px">
-<span style="color: rgb(255, 0, 102); font-family: 微软雅黑,Microsoft YaHei;">地址：{场所地址}</span></span></span></p>
-
-<p><span style="font-family:微软雅黑,宋体,microsoft jhenghei,microsoft yahei,arial"><span style="font-size:18px">
-<span style="color: rgb(255, 0, 102); font-family: 微软雅黑,Microsoft YaHei;">电话：{联络电话}</span></span></span></p>
-						</script>
-							</div>
+							(如需拍摄三维全景照片请联系13651672931, 李先生)
+							<br>
+							</form>
 						</dd>
 					</dl>
 					<dl class="form_box">
-						<dt>爱的故事</dt>
+						<form method="post" class="form-horizontal" id="manage_info_1" action="<?=$this->createUrl('/manage/info/save');?>">
+						<dt><?=$basic['tab1']?$basic['tab2']:'关于我们'?></dt>
 						<dd class="hide" id="item2">
-							<table width="100%">
-								<tr>
-									<td><label>标题：</label> 
-									<input type="text" value="爱的故事" name="gushi" id="gushi" />
-									</td>
-									<td align="right"><input type="checkbox" name="gushi_show"
-										id="gushi_show">隐藏</td>
-								</tr>
-							</table>
+							<br>
 							<div class="editor">
-								<script id="gushi_text" type="text/plain">	
-
-						</script>
-							</div>
-						
+								<script id="tab2_input" type="text/plain"><?=$datas['info'][2]['info']?></script>
+							</div><br>
+							<lable id="info2_tip_flag" class="hide"></lable>
+							<input type="button" onclick="saveInfo(2)" name="save" value="保 存" class="save" >
+							<br>
 						</dd>
+						</form>
 					</dl>
 					
 					<dl class="form_box">
-						<dt>婚纱相册</dt>
+						<dt><?=$basic['tab1']?$basic['tab3']:'图片展示'?></dt>
 						<dd  class="hide" id="item3">
 							<div class="album_box" id="album_box">
-							
+								<form method="post" class="form-horizontal" id="form_album_pic" action="<?=$this->createUrl('/manage/album/update');?>">
+									<?php foreach($datas['pics'] as $v){?>
+										<div class="album_pic" id="album_<?=$v['id']?>">
+										<img src="<?php echo '/'.$v['url'].'/w'.Yii::app()->params['img_thumb_width'].'.'.$v['ftype']?>"/>
+										<span id="album_pic_<?=$v['id']?>"><?=$v['desc']?$v['desc']:'图片简介'?></span>
+										<span>
+											<a id="pic_edit_<?=$v['id']?>" onclick="editPic(<?=$v['id']?>)">编辑</a>
+											<a id="pic_save_<?=$v['id']?>" style="display:none" onclick="savePic(<?=$v['id']?>,'desc')">保存</a>
+											&nbsp;&nbsp;&nbsp;&nbsp;
+											<a onclick="savePic(<?=$v['id']?>,'del')">删除</a>
+										</span>
+										</div>
+									<?php }?>
+								</form>
 							</div>
+							<div class="clear"></div>
+							<br>
 							<div id="upload" class="upload">
 								<div>
-								<label>相册图片：(每次最多选择10张图片上传)</label>
+								
 									<span id="album_box_upload"></span>
-									说明: 按着Control或Shift键可一次选取多个文件
+									说明: 按着Control或Shift键可一次选取多个文件,每次最多选十张
 								</div>
 							</div>
 						</dd>
 					</dl>
 					<dl class="form_box">
-						<dt>婚宴回函</dt>
+						<dt><?=$basic['tab1']?$basic['tab4']:'服务内容'?></dt>
 						<dd  class="hide" id="item4">
-							<table width="100%" height:100%>
-								<tr>
-									<td><label>标题：</label> 
-									<input type="text" value="婚宴回函" name="huihan" id="huihan" />
-									</td>
-									<td align="right"><input type="checkbox" name="huihan_show"
-										id="huihan_show">隐藏</td>
-								</tr>
-							</table>
-							<div>
-								<lable>提示</lable>
-								<textarea name="map_desc" id="map_desc">为了方便统整婚宴资料，请您花几分钟填写以下内容，并在O月O日前回覆，我们的婚宴会因您的协助更加美好。</textarea>
+							<br>
+							<div class="editor">
+								<script id="tab4_input" type="text/plain"><?=$datas['info'][4]['info']?></script>
 							</div>
 							<br>
-							<div id="diaocha" class="diaocha hide">
-								<table width="100%">
-									<tr>
-										<th width="10%">选项</th>
-										<th align="left">问题</th>
-									</tr>
-									<tr>
-										<td align="center"><input type="checkbox" name="ti1" id="ti1" value='1'/></td>
-										<td><input type="text" name="ti1_in" id="ti1_in" value="您的姓名"/></td>
-									</tr>
-									<tr>
-										<td align="center"><input type="checkbox" name="ti2" id="ti2" value='1'/></td>
-										<td><input type="text" name="ti2_in" id="ti2_in" value="您的手机号"/></td>
-									</tr>
-									<tr>
-										<td align="center"><input type="checkbox" name="ti3" id="ti3" value='1'/></td>
-										<td>
-											<input type="text" name="ti3_in" id="ti3_in" value="您会来参与我们的婚宴吗?"/>
-											<ul>
-												<li>
-												<input type="text" name="ti3_select_1" id="ti3_select_1" value="非常乐意，有{1-10}人参加"/><br>
-												<input type="text" name="ti3_select_2" id="ti3_select_2" value="无法参加"/><br>
-												</li>
-											</ul>
-										</td>
-									</tr>
-									
-									
-									<tr>
-										<td align="center"><input type="checkbox" name="ti4" id="ti4" value='1'/></td>
-										<td>
-											<input type="text" name="ti4_in" id="ti4_in" value="您是新郎还是新娘的宾客？"/>
-											<ul>
-												<li>
-												<input type="text" name="ti4_select_1" id="ti4_select_1" value="我是帅新郎的{亲戚|朋友|同学|同事}"/><br>
-												<input type="text" name="ti4_select_2" id="ti4_select_2" value="我是俏新娘的{亲戚|朋友|同学|同事}"/><br>
-												<input type="text" name="ti4_select_3" id="ti4_select_3" value="其他:{}"/><br>
-												</li>
-											</ul>
-										</td>
-									</tr>
-									
-									
-								</table>
-							</div>
+							<lable id="info4_tip_flag" class="hide"></lable>
+							<input type="button" onclick="saveInfo(4)" name="save" value="保 存" class="save" >
+							<br>
 						</dd>
 					</dl>
 					<dl class="form_box">
-						<dt>婚宴地图</dt>
+						<dt><?=$basic['tab1']?$basic['tab5']:'留言反馈'?></dt>
 						<dd  class="hide" id="item5">
-						<div>
-							<div>
-<lable>交通指引说明:</lable><br>
-<textarea id="map_desc">{地铁一号线，3号线4号出口}
-地址:{东方路 1880弄20号2503}
-联系电话:186000909</textarea>
-							</div>
-							<div>
-							<input type="text" id="map_search" name="map_search" onclick="searchMap()"/>
-							<input type="button" name="search" value="搜索"  onclick="searchMap()">
-							点击鼠标右键在地图上做出标记
-							</div>
-						</div>
-						<div id="map_canvas" class="map_canvas"></div>
+						<form method="post" class="form-horizontal" id="manage_msg" action="<?=$this->createUrl('/manage/msgTab/save');?>">
+						
+							<br>
+							<lable>标题栏一</lable>
+							<input type="text" id="tab5_input_name" name="tab5_input_name" value="<?=$datas['msgTab']['tab1']?$datas['msgTab']['tab1']:'您的姓名'?>"><br><br>
+							<lable>标题栏二</lable>
+							<input type="text" id="tab5_input_phone" name="tab5_input_phone" value="<?=$datas['msgTab']['tab2']?$datas['msgTab']['tab2']:'您的电话'?>"><br><br>
+							<lable>标题栏三</lable>
+							<input type="text" id="tab5_input_content" name="tab5_input_content" value="<?=$datas['msgTab']['tab3']?$datas['msgTab']['tab3']:'留言内容'?>">
+							<br>
+							<lable id="msg_tip_flag" class="hide"></lable>
+							<input type="button" onclick="saveMsgTab()" name="save" value="保 存" class="save" style="margin:10px 0 0 70px;">
+							<br>
+						</form>
 						</dd>
 					</dl>
 					<dl class="form_box">
-						<dt>爱的祝福</dt>
+						<dt><?=$basic['tab1']?$basic['tab6']:'联系我们'?></dt>
 						<dd  class="hide" id="item6">
-						<table width="100%">
-								<tr>
-									<td><label>标题：</label> 
-									<input type="text" value="爱的祝福" name="zhufu" id="zhufu" />
-									</td>
-									<td align="right"><input type="checkbox" name="zhufu_show"
-										id="zhufu_show">隐藏</td>
-								</tr>
-							</table>
-						<br>
-						</dd>
-					</dl>
-					<dl class="form_box">
-						<dt>婚礼直播</dt>
-						<dd  class="hide" id="item7">
-						<table width="100%">
-								<tr>
-									<td><label>标题：</label> 
-									<input type="text" value="婚礼直播" name="zhufu" id="zhufu" />
-									</td>
-									<td align="right"><input type="checkbox" name="zhufu_show"
-										id="zhufu_show">隐藏</td>
-								</tr>
-							</table>
-							<br>
+						<form method="post" class="form-horizontal" id="manage_contact" action="<?=$this->createUrl('/manage/contact/save');?>">
 							<div>
-							<lable>开始时间</lable>
-							<input type="text" value="" name="kaishishijian" id="kaishishijian" />
-							<lable>结束时间</lable>
-							<input type="text" value="" name="jieshushijian" id="jieshushijian" />
+								<input type="text" id="map_search" name="map_search" onclick="searchMap()"/>
+								<input type="button" name="search" value="搜索"  onclick="searchMap()">
+								点击鼠标右键在地图上做出标记
+							</div>
+							<div class="map">
+								<div id="map_canvas" class="map_canvas"></div>
 							</div>
 							<br>
+							<lable>交通指引说明:</lable>
+							<div class="editor">
+								<script id="tab6_input" type="text/plain"><?php if($datas['contact']){ echo $datas['contact']['info'];}else{?>
+地铁一号线，3号线4号出口<br>
+地址:东方路 1880弄20号2503<br>
+联系电话:186000909<br>
+<?php }?>
+</script>
+							</div>
+								<br>
+								<lable id="contact_tip_flag" class="hide"></lable>
+								<input type="button" onclick="saveLianxi()" name="save" value="保 存" class="save">
+								<br>
+						</form>
 						</dd>
 					</dl>
 				</dd>
 				</dl>
 
 		</div>
+		<?php }?>
 	</div>
 </div>
+<br><br>
+
 <script type="text/javascript" src="<?=Yii::app()->baseUrl . "/plugins/ueditor/editor_config.js"?>"></script>
 <script type="text/javascript" src="<?=Yii::app()->baseUrl . "/plugins/ueditor/editor_all.js"?>"></script>
 
@@ -288,76 +203,51 @@ $this->pageTitle=$datas['page']['title'];
 <script type="text/javascript" src="<?=Yii::app()->baseUrl . "/plugins/jscalendar-1.0/lang/cn_utf8.js"?>"></script>
 <script type="text/javascript" src="<?=Yii::app()->baseUrl . "/plugins/jscalendar-1.0/calendar-setup.js"?>"></script>
 <script src="http://api.map.baidu.com/api?v=1.3" type="text/javascript"></script>
-<script type="text/javascript" src="<?=Yii::app()->baseUrl . "/style/js/baidu.js"?>"></script>
 
 <script type="text/javascript" src="<?=Yii::app()->baseUrl . "/plugins/uploadify/jquery.uploadify-3.1.js"?>"></script>
 
 
 <script>
+var edit_jump_url = "<?=$this->createUrl('/make/step1/edit/')?>";
 var session_id = '<?=session_id()?>';
-
+var thumb_img_width = '<?=Yii::app()->params['img_thumb_width']?>';
 itemBindClick();
-var ua = UE.getEditor('yaoyue_text');
+
+<?php if($datas['id']){?>
+var ua = UE.getEditor('tab2_input');
 ua.initialFrameWidth = 300;
 ua.addListener('ready',function(){
     this.focus()
 });
-var ub = UE.getEditor('gushi_text');
+
+var ub = UE.getEditor('tab4_input');
 ub.initialFrameWidth = 300;
 ub.addListener('ready',function(){
     this.focus()
 });
 
-Calendar.setup({
-    inputField      :    "kaishishijian",   // id of the input field
-    ifFormat        :    "%Y-%m-%d %H:%M",       // format of the input field
-    showsTime       :    true,
-    timeFormat      :    "24"
-    //onUpdate        :    catcalc
-});
-
-Calendar.setup({
-    inputField      :    "jieshushijian",   // id of the input field
-    ifFormat        :    "%Y-%m-%d %H:%M",       // format of the input field
-    showsTime       :    true,
-    timeFormat      :    "24"
-    //onUpdate        :    catcalc
-});
-
-Calendar.setup({
-    inputField      :    "riqi",   // id of the input field
-    ifFormat        :    "%Y-%m-%d %H:%M",       // format of the input field
-    showsTime       :    true,
-    timeFormat      :    "24"
-    //onUpdate        :    catcalc
+var uc = UE.getEditor('tab6_input');
+uc.initialFrameWidth = 300;
+uc.initialFrameHeight = 50;
+uc.addListener('ready',function(){
+    this.focus()
 });
 
 var flash_url = '<?=Yii::app()->baseUrl?>/plugins/uploadify/uploadify.swf';
-var image_button_img = "<?=Yii::app()->baseUrl?>/style/img/pic_upload.png";
-var image_upload_url='<?=$this->createUrl('/album/upload/')?>';
-image_box_upload();
+var image_button_img = '<?=Yii::app()->baseUrl?>/style/img/pic_upload.png';
+var image_upload_url='<?=$this->createUrl('/manage/album/upload/')?>';
+//image_box_upload();
 
 album_box_upload();
 
 var map;
 var point = {};
-point.lat = '';
-point.lng = '';
-point.zoom = 12;
-
-initMap('map_canvas');
 var marker;
-addContextMenu();
+point.lat = <?=$datas['contact']['lat'] ? $datas['contact']['lat'] : "''"?>;
+point.lng = <?=$datas['contact']['lng'] ? $datas['contact']['lng'] : "''"?>;
+point.zoom = <?=$datas['contact']['zoom'] ? $datas['contact']['zoom'] : "''"?>;
 
-if(!point.lat){
-	var myCity = new BMap.LocalCity();
-	myCity.get(myFun);
-}
-if(marker){
-var p = marker.getPosition();       //获取marker的位置
-alert("marker的位置是" + p.lng + "," + p.lat); 
-}
-
+<?php }?>
 
 
 </script>

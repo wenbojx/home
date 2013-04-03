@@ -6,9 +6,21 @@ class AboutController extends FController{
 
     public function actionA(){
     	$request = Yii::app()->request;
-
-        $datas['page']['title'] = '创新婚贴';
+    	$datas['id'] = $request->getParam('id');
+    	$datas['info'] = $this->getProjectInfo($datas['id']);
+        $datas['basic'] = $this->getProjectBasic($datas['id']);
+        $datas['page']['title'] = $datas['basic']['tab2'];
         $this->render('/home/about', array('datas'=>$datas));
     }
-
+    public function getProjectInfo($project_id){
+    	$info_db = new Info();
+    	return $info_db->getProjectInfoByTab($project_id, 2);
+    }
+    public function getProjectBasic($id){
+    	if(!$id){
+    		return false;
+    	}
+    	$basic_db = new Basic();
+    	return $basic_db->getBasicInfo($id);
+    }
 }

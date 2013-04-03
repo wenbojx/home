@@ -10,7 +10,7 @@ class LoginoutController extends Controller{
     }
 
     public function login_state(){
-    	$this->redirect(array('member/login/a'));
+    	$this->redirect(array('make/make/a'));
     	return false;
     }
 }

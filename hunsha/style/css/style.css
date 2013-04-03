@@ -54,7 +54,8 @@ p{
 	
 }
 .header .login{
-	width:100px;
+	width:200px;
+	text-align:right;
 }
 
 .left_demo{
@@ -100,9 +101,11 @@ dt{
 .form_box dd{
 	padding:5px 5px 10px 5px ;
 }
+
 .map_canvas{
 	width:550px;
 	height:300px;
+	position:relative;
 }
 #map_desc{
 	width:350px;
@@ -111,5 +114,42 @@ dt{
 .demo_window{
 	margin:60px 0 0 29px;;
 }
+.save{
+	width:74px;
+	height:28px;
+	background:url("./save.png") repeat scroll 0 0 transparent;
+	border:none;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:14px;
+}
+.album_pic{
+	width:100px;
+	height:130px;
+	float:left;
+	text-align:center;
+	margin:0 0 0 5px;
+}
+.album_pic img{
+	width:100px;
+}
+.album_pic span{
+	display:block;
+	font-size:12px;
+	border-bottom:1px solid #CCCCCC;
+	border-left:1px solid #CCCCCC;
+	border-right:1px solid #CCCCCC;
+	padding:3px 0 3px;
+}
+.album_pic a{
+	cursor:pointer;
+	font-size:12px;
+}
+.album_pic input{
+	width:90px;
+}
+
+
+
 
 

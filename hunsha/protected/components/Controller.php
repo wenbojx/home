@@ -25,7 +25,7 @@ class Controller extends CController
     public $breadcrumbs=array();
     public function __construct(){
         if(!$this->check_admin()){
-            $this->redirect(array('member/login'));
+            $this->redirect(array('make/make'));
         }
 
         $login_info = Yii::app()->session['userinfo'];
@@ -40,15 +40,15 @@ class Controller extends CController
         }
         return true;
     }
-    public function check_fang_own($id = 0){
+    public function check_project_own($id = 0){
         $msg['flag'] = 0;
         $msg['msg'] = '无权限';
         if($id == 0){
             $this->display_msg($msg);
         }
-        $fang_db = new Fang();
-        $datas = $fang_db->getFangInfo($id);
-        if($datas['mid'] != $this->member_id){
+        $basic_db = new Basic();
+        $datas = $basic_db->getBasicInfo($id);
+        if($datas['member_id'] != $this->member_id){
             $this->display_msg($msg);
         }
         return true;

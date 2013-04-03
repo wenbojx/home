@@ -2,14 +2,23 @@
 <div data-role="page">
 	<div data-role="content">
 		<div class="view_title">
-			<a href="/home/mobile">
+			<a href="<?=$this->createUrl('/home/mobile/a', array('id'=>$datas['id']))?>">
 				<img src="/style/sheying/back_img.png">
 			</a>
-			<span>案例展示</span>
+			<span><?=$datas['basic']['tab3']?></span>
 		</div>
 		<div class="clear"></div>
 		<div class="view_content">
-			关于我们
+			<div class="album_box">
+				<?php foreach($datas['pics'] as $v){?>
+				<div class="pic">
+					<div>
+						<img src="/<?=$v['url'].'/w'.Yii::app()->params['img_thumb_width'].'.'.$v['ftype']?>">
+					</div>
+					<div><?=$v['desc']?></div>
+				</div>
+				<?php }?>
+			</div>
 		</div>
 		
 	</div><!-- /content -->

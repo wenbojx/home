@@ -9,7 +9,7 @@
  * @property string $passwd
  * @property integer $status
  */
-class FangPic extends Ydao
+class File extends Ydao
 {
     /**
      * Returns the static model of the specified AR class.
@@ -26,19 +26,17 @@ class FangPic extends Ydao
      */
     public function tableName()
     {
-        return '{{fang_pic}}';
+        return '{{file}}';
     }
-	public function addPic($id, $url, $type=2, $ftype='jpg'){
-		if($id=='' || $url =='' ){
+	public function saveFile($project_id, $file_path, $ftype){
+		if(!$file_path || !$ftype || !$project_id){
 			return false;
 		}
-		//print_r($datas);
-		$this->f_id = $id;
-		$this->url = $url;
-		$this->type = $type;
+		$this->project_id = $project_id;
+		$this->url = $file_path;
 		$this->ftype = $ftype;
-		
-		//print_r($datas);
+		$this->create = time();
+
 		if(!$this->save()){
 			return false;
 		}
@@ -47,40 +45,20 @@ class FangPic extends Ydao
 	public function getById($id){
 		return $this->findByPk($id);
 	}
-	public function getByFid($id){
+	public function getByProjectId($id){
 		if(!$id){
 			return false;
 		}
 		$criteria=new CDbCriteria;
-		$criteria->order = 'id ASC';
+		$criteria->order = 'id DESC';
 
 		$criteria->addCondition('is_del=0');
-		$criteria->addCondition('f_id='.$id);
+		$criteria->addCondition('project_id='.$id);
 		$pic_datas = $this->findAll($criteria);
 		return $pic_datas;
 	}
-	public function getByFids($ids){
-
-		if(!is_array($ids) || !$ids){
-			return false;
-		}
-		$ids_str = implode(',', $ids);
-		if(!$ids_str){
-			return false;
-		}
-		$criteria=new CDbCriteria;
-		$criteria->addCondition("f_id in ({$ids_str})");
-		$criteria->addCondition("type = 1");
-		$criteria->addCondition("is_del = 0");
-		$datas = $this->findAll($criteria);
-		if(!$datas){
-			return false;
-		}
-		$fangDatas = array();
-		foreach($datas as $v){
-			$fangDatas[$v['f_id']] = $v;
-		}
-		return $fangDatas;
+	public function updateDesc($id, $desc){
+		return $this->updateByPk($id, array('desc'=>$desc));
 	}
 	public function delPic($id){
 		$datas = array('is_del'=>1);

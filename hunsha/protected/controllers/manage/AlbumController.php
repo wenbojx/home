@@ -1,12 +1,12 @@
 <?php
-class AddPicController extends Controller{
+class AlbumController extends Controller{
 
     public $defaultAction = 'a';
     public $layout = 'home';
     private $ftype = 'jpg';
-	private $pic_width = 350;
+	//private $pic_width = 350;
 	//private $pic_height = '350';
-	private $thumb_width = 100;
+	//private $thumb_width = 100;
 	private $id = 0;
     
     public function actionA(){
@@ -44,40 +44,75 @@ class AddPicController extends Controller{
         		}
         	}
         }
-        $datas['width'] = $this->pic_width;
+        $datas['width'] = Yii::app()->params['img_width'];
+        
         $datas['list'] = $this->get_pic_list($datas['id']);
         //print_r($pic_datas);
         $this->render('/manage/addPic', array('datas'=>$datas));
     }
-    private function del_pic($id){
-    	//获取图片信息
-    	$fangpic_db = new FangPic();
-    	$datas = $fangpic_db->getById($id);
-    	if(!$datas){
+    public function actionUpdate(){
+    	$request = Yii::app()->request;
+    	$id =  $request->getParam('id');
+    	$type =  $request->getParam('type');
+    	$desc = $request->getParam('desc');
+    	$msg['flag'] = '0';
+    	$msg['id'] = '';
+    	$msg['desc'] = '';
+    	if(!$id){
+    		$msg['msg'] = '参数错误';
+    	}
+    	if($type == 'desc'){
+    		
+    		$this->updatePicDesc($id, $desc);
+    	}
+    	elseif($type=='del'){
+    		$this->delPic($id);
+    	}
+    	$msg['flag'] = '1';
+    	$msg['id'] = $id;
+    	$msg['desc'] = $desc;
+    	$this->display_msg($msg);
+    }
+    public function updatePicDesc($id, $desc){
+    	if(!$id){
     		return false;
     	}
-    	$this->id = $datas['f_id'];
-    	$this->check_fang_own($this->id);
-    	return $fangpic_db->delPic($id);
+    	$file_db = new File();
+    	return $file_db->updateDesc($id, $desc);
     }
-    /**
-     * 获取图片信息
-     */
-    private function get_pic_list($id){
-    	$fangpic_db = new FangPic();
-    	return $fangpic_db->getByFid($id);
+    public function delPic($id){
+    	$file_db = new File();
+    	return $file_db->delPic($id);
     }
-    private function save_pic($id, $url, $type=2){
+    public function actionUpload(){
+    	$request = Yii::app()->request;
+    	$project_id =  $request->getParam('project_id');
+    	$msg['flag'] = '0';
+    	$msg['path'] = '';
+		if(!$_FILES['Filedata']['name']){
+    		$this->display_msg($msg);
+    	}
+    	$file_path = $this->uploadPic('Filedata');
+    	if(!$file_path){
+    		$this->display_msg($msg);
+    	}
+    	$id = $this->saveFile($project_id, $file_path);
+    	$msg['id'] = $id;
+    	$msg['flag'] = '1';
+    	$msg['path'] = $file_path;
+    	$msg['ftype'] = $this->ftype;
+    	$this->display_msg($msg);
+    }
+
+    private function saveFile($project_id, $file_path){
     	$ftype= $this->ftype;
-    	$fangpic_db = new FangPic();
-    	return $fangpic_db->addPic($id, $url, $type, $ftype);
+    	$file_db = new File();
+    	return $file_db->saveFile($project_id, $file_path, $ftype);
     }
     public function uploadPic($file_name){
-    	
     	$file = CUploadedFile::getInstanceByName($file_name); //获取表单名为filename的上传信息
     	$file_md5 = md5_file($file->getTempName());
-    	//echo $file_md5;
-    	//$file_md5 = 'aaaa';
+
     	$file_info['name'] = $file->getName();//获取文件名
     	if(!$file_info['name']){
     		return false;
@@ -106,17 +141,12 @@ class AddPicController extends Controller{
     		mkdir($md5_path);
     	}
     	$fileName = $md5_path.'/'.$file_md5.'.'.$file_info['type'];
-    	
     	$flag = $file->saveAs($fileName,true);//上传操作
-    	
-    	
-    	
-    	if($file_name == 'file0'){
-    		$this->resize($fileName, $md5_path, $file_info['type'], true);
-    	}
-    	else{
-    		$this->resize($fileName, $md5_path, $file_info['type'], false);
-    	}
+
+    	$this->resize($fileName, $md5_path, $file_info['type'], false);
+    	$this->resize($fileName, $md5_path, $file_info['type'], true);
+    	//echo 1111;
+    	//exit();
     	if(!$flag){
     		return false;
     	}
@@ -127,20 +157,22 @@ class AddPicController extends Controller{
     	if(!file_exists($path)){
     		return false;
     	}
+    	
     	$myimage = new Imagick($path);
+    	
     	$ext = strtolower( $myimage->getImageFormat() );
     	$myimage->setImageFormat($ext);
     	$img_w = $myimage->getimagewidth();
     	$img_h = $myimage->getimageheight();
     	
     	if($thumb){
-    		$to = $folder.'/thumb.'.$type;
-    		$limit_w = $this->thumb_width;
+    		$limit_w = Yii::app()->params['img_thumb_width'];
     	}
     	else{
-    		$to = $folder.'/w'.$this->pic_width.'.'.$type;
-    		$limit_w = $this->pic_width;
+    		$limit_w = Yii::app()->params['img_width'];
     	}
+    	$to = $folder.'/w'.$limit_w.'.'.$type;
+    	
     	if($img_w < $limit_w){
     		$width = $img_w;
     		$height = $img_h;
@@ -149,7 +181,7 @@ class AddPicController extends Controller{
     		$width = $limit_w;
     		$height = ($limit_w/$img_w)*$img_h;
     	}
-
+    	
     	$myimage->resizeimage($width, $height, Imagick::FILTER_LANCZOS, 1, true);
 
     	$myimage->writeImage($to);

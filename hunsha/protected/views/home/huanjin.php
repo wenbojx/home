@@ -2,15 +2,14 @@
 <div data-role="page">
 	<div data-role="content">
 		<div class="view_title">
-			<a href="/home/mobile">
+			<a href="<?=$this->createUrl('/home/mobile/a', array('id'=>$datas['id']))?>">
 				<img src="/style/sheying/back_img.png">
 			</a>
-			<span>公司环境</span>
+			<span><?=$datas['basic']['tab1']?></span>
 		</div>
 		<div class="clear"></div>
 		<div class="view_content">
-			关于我们
+			
 		</div>
-		
 	</div><!-- /content -->
 </div>

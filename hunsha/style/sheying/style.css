@@ -3,14 +3,7 @@ body{
 	margin:0;
 	padding:0;
 	color:#FFFFFF;
-	background-color:#787878;
-}
-.ui-body-c, .ui-overlay-c{
-	/**
-	background:linear-gradient(#787878, #787878) repeat scroll 0 0 #787878;
-	*/
-	color:#FFFFFF;
-	text-shadow:0 0 0 #FFFFFF;
+
 }
 .clear{
 	clear:both;
@@ -46,13 +39,7 @@ p{
 .fright{
 	float:right;
 }
-.ui-content{
-	margin:0;
-	padding:0;
-}
-.ui-link{
-	text-shadow:0 0 0 #FFFFFF;
-}
+
 .main_title{
 	position:relative;
 	text-align:center;
@@ -74,17 +61,20 @@ p{
 	font-size:22px;
 }
 .main_content{
-	padding:10px 20px 10px 20px;
+	padding:10px 20px 10px 10px;
 }
-.main_content .item{
+.main_content .a{
+	display:block;
+	float:left;
 	margin:10px 0 0 0;
 }
 .main_content .radius{
 	-moz-border-radius:7px;
 	-webkit-border-radius:7px;
 	border-radius:7px;
-	height:140px;
+	height:100px;
 	width:47%;
+	margin:10px 0 0 10px;
 	color:#ffffff;
 	position:relative;
 	font-size:22px;
@@ -93,6 +83,19 @@ p{
 	margin:5px;
 	display:block;
 	position:absolute;
+}
+.shupai{
+	margin:5px;
+	width:27px;
+	overflow:hidden;
+	position:absolute;
+}
+.shupai div{
+	display:inline;
+	width:22px;
+	height:130px;
+	word-wrap:break-word;
+	word-break:nomal;
 }
 .main_content .item1{
 	background-color:#20b9f9;
@@ -118,7 +121,7 @@ p{
 .main_content .item4{
 	background-color:#6ab939;
 }
-.main_content .item4 span{
+.main_content .item4 .shupai{
 	bottom:0;
 	right:0;
 }

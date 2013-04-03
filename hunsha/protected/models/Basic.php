@@ -9,7 +9,7 @@
  * @property string $passwd
  * @property integer $status
  */
-class Fang extends Ydao
+class Basic extends Ydao
 {
     /**
      * Returns the static model of the specified AR class.
@@ -26,32 +26,31 @@ class Fang extends Ydao
      */
     public function tableName()
     {
-        return '{{fang}}';
+        return '{{basic}}';
     }
-	public function addFang($datas){
-		if($datas['biaoti']=='' || $datas['mianji']=='' || $datas['jiage']==''){
+	public function saveBasic($datas){
+		if(!$datas['name'] || !$datas['tab1'] || !$datas['tab2'] || !$datas['tab3'] || !$datas['tab4']
+		|| !$datas['tab5'] || !$datas['tab6'] || !$datas['member_id']	
+		){
 			return false;
 		}
 		//print_r($datas);
-		$this->mid = $datas['mid'];
-		$this->biaoti = $datas['biaoti'];
-		$this->mianji = $datas['mianji'];
-		$this->jiage = $datas['jiage'];
-		$this->shi = $datas['shi'];
-		$this->ting = $datas['ting'];
-		$this->wei = $datas['wei'];
-		$this->zhuangxiu = $datas['zhuangxiu'];
-		$this->guanjianci = $datas['guanjianci'];
-		$this->desc = $datas['desc'];
-		$this->shoumai = $datas['shoumai'];
-		$this->created = time();
+		$this->member_id = $datas['member_id'];
+		$this->name = $datas['name'];
+		$this->tab1 = $datas['tab1'];
+		$this->tab2 = $datas['tab2'];
+		$this->tab3 = $datas['tab3'];
+		$this->tab4 = $datas['tab4'];
+		$this->tab5 = $datas['tab5'];
+		$this->tab6 = $datas['tab6'];
+		$this->create = time();
 		//print_r($datas);
 		if(!$this->save()){
 			return false;
 		}
 		return $this->attributes['id'];
 	}
-	public function editFang($id, $datas){
+	public function editBasic($id, $datas){
 		//print_r($datas);
 		return $this->updateByPk($id, $datas);
 	}
@@ -102,7 +101,7 @@ class Fang extends Ydao
 		return $this->count($criteria);
 	}
 	
-	public function getFangInfo($id){
+	public function getBasicInfo($id){
 		if(!(int)$id){
 			return false;
 		}

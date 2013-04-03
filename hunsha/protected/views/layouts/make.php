@@ -6,6 +6,7 @@
 <?php Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl . "/plugins/uploadify/uploadify.css"); ?>
 <?php Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/style/js/jquery.min.js");?>
 <?php Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/style/js/core.js");?>
+<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . "/style/js/make.js");?>
 <link rel="stylesheet" type="text/css" media="all" href="<?=Yii::app()->baseUrl?>/plugins/jscalendar-1.0/calendar-blue.css" title="win2k-cold-1" />
 <!--[if IE 6]><link rel="stylesheet" type="text/css" href="/style/css/ie6.min.css" /><![endif]-->
 <title><?=$this->pageTitle?></title>
