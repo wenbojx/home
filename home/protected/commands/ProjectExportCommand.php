@@ -15,11 +15,11 @@ class ProjectExportCommand extends CConsoleCommand {
         }
         $this->projectPath = $projectDatas['project_id'];
         $this->mkdir($this->projectPath);
-        $panoramPath = $this->exportFolder.$this->projectPath.'/'.$this->panoPath;
-        $this->mkdir($panoramPath);
+        $panoramPath = $this->projectPath;
+        $this->mkdir($panoramPath.'/'.$this->panoPath);
         $playerPath = $this->exportFolder.'plugins/salado/export/*';
-        $sys_cmd = "cp -rf {$playerPath} {$panoramPath}";
-        echo $sys_cmd."\r\n";
+        $sys_cmd = "cp -rf {$playerPath} {$this->exportFolder}{$panoramPath}";
+        //echo $sys_cmd."\r\n";
         system($sys_cmd);
         
         //获取需处理的全景
@@ -51,6 +51,7 @@ class ProjectExportCommand extends CConsoleCommand {
     	//$path = $this->exportFolder.$path;
     	$path_array = explode('/', $path);
     	$newPath = $this->exportFolder.$this->folder;
+    	//print_r($path_array);
     	foreach($path_array as $v){
     		if(!$v){
     			continue;
@@ -60,7 +61,7 @@ class ProjectExportCommand extends CConsoleCommand {
     		if(file_exists($newPath)){
     			continue;
     		}
-    		//echo $newPath."\r\n";
+    		echo $newPath."\r\n";
     		mkdir($newPath);
     	}
     }
