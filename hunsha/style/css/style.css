@@ -43,6 +43,7 @@ p{
 .content{
 	width:980px; 
 	margin:0 auto;
+	
 }
 
 .header{
@@ -57,12 +58,13 @@ p{
 	width:200px;
 	text-align:right;
 }
-
+.footer{
+	height:50px;
+}
 .left_demo{
 	width:382px;
-	height:610px;
 	
-	background-image: url(/style/img/iphone4s_384x613.png);
+	background: url(/style/img/iphone4s_384x613.png) no-repeat; 
 }
 .right_make{
 	width:575px;
@@ -125,7 +127,7 @@ dt{
 }
 .album_pic{
 	width:100px;
-	height:130px;
+	height:155px;
 	float:left;
 	text-align:center;
 	margin:0 0 0 5px;
@@ -148,8 +150,26 @@ dt{
 .album_pic input{
 	width:90px;
 }
-
-
+.album_pic .img_box{
+	height:100px;
+}
+.album_pic img{
+	width:100px;
+	height:100px;
+}
+.album_box{
+	display:block;
+}
+.desc .login{
+	width:200px;
+	margin:0 auto;
+	line-height:35px;
+	padding: 0 0 50px 0;
+}
+.erweima{
+	margin:70px 0 0 0;
+	text-align:center;
+}
 
 
 

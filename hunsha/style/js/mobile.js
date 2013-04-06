@@ -1,31 +1,63 @@
 function onResize(){
 	var win_width = window.innerWidth;
 	var win_height = window.innerHeight;
-	
+
 	var tab_width = (parseInt(win_width)-70)/2;
 	var tab_height = (parseInt(win_height)-(90+parseInt(num)*10))/(parseInt(num)+1);
+	var flag_danshu = (total%2) == 0 ? false :true;
 	if($("#tab1")){
-		$("#tab1").css("width", tab_width+"px");
+		if(last_tap == 'tab1' && flag_danshu){
+			$("#tab1").css("width", (tab_width*2)+"px");
+		}
+		else{
+			$("#tab1").css("width", tab_width+"px");
+		}
 		$("#tab1").css("height", tab_height+"px");
+		
 	}
 	if($("#tab2")){
-		$("#tab2").css("width", tab_width+"px");
+		if(last_tap == 'tab2' && flag_danshu){
+			$("#tab2").css("width", (tab_width*2)+"px");
+		}
+		else{
+			$("#tab2").css("width", tab_width+"px");
+		}
 		$("#tab2").css("height", tab_height+"px");
 	}
 	if($("#tab3")){
-		$("#tab3").css("width", tab_width+"px");
+		if(last_tap == 'tab3' && flag_danshu){
+			$("#tab3").css("width", (tab_width*2)+"px");
+		}
+		else{
+			$("#tab3").css("width", tab_width+"px");
+		}
 		$("#tab3").css("height", tab_height+"px");
 	}
 	if($("#tab4")){
-		$("#tab4").css("width", tab_width+"px");
+		if(last_tap == 'tab4' && flag_danshu){
+			$("#tab4").css("width", (tab_width*2)+"px");
+		}
+		else{
+			$("#tab4").css("width", tab_width+"px");
+		}
 		$("#tab4").css("height", tab_height+"px");
 	}
 	if($("#tab5")){
-		$("#tab5").css("width", tab_width+"px");
+		if(last_tap == 'tab5' && flag_danshu){
+			$("#tab5").css("width", (tab_width*2)+"px");
+		}
+		else{
+			$("#tab5").css("width", tab_width+"px");
+		}
 		$("#tab5").css("height", tab_height+"px");
 	}
 	if($("#tab6")){
-		$("#tab6").css("width", tab_width+"px");
+		if(last_tap == 'tab6' && flag_danshu){
+			$("#tab6").css("width", (tab_width*2)+"px");
+		}
+		else{
+			$("#tab6").css("width", tab_width+"px");
+		}
 		$("#tab6").css("height", tab_height+"px");
 	}
 }

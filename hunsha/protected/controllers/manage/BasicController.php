@@ -15,9 +15,7 @@ class BasicController extends Controller{
     	$datas['tab5'] = $request->getParam('tab5');
     	$datas['tab6'] = $request->getParam('tab6');
     	
-    	if(!$datas['name'] || !$datas['tab1'] || !$datas['tab2'] || !$datas['tab3']
-    			|| !$datas['tab4'] || !$datas['tab5'] || !$datas['tab6']
-    	){
+    	if($datas['name']==''){
     		$msg['flag'] = '0';
     		$this->display_msg($msg);
     	}

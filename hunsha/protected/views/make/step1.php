@@ -1,6 +1,8 @@
 <?php 
 $this->pageTitle=$datas['page']['title'];
 $basic = $datas['basic'];
+$widhtHeight = $widhtHeight = 100;
+$chl = urlencode("http://hunsha.yiluhao.com/{$datas['id']}/");
 ?>
 <div class="content">
 	<div class="header">
@@ -19,8 +21,12 @@ $basic = $datas['basic'];
 		</div>
 	</div>
 	<div class="left_demo fleft">
-	<div class="demo_window">
-		<iframe width="327" height="486" src="/home/mobile"></iframe>
+		<div class="demo_window">
+		<iframe width="327" height="486" src="<?=$this->createUrl('/home/mobile/a/', array('id'=>$datas['id']));?>"></iframe>
+		</div>
+		<div class="erweima">
+		<img alt="" src="http://chart.apis.google.com/chart?chs=<?=$widhtHeight?>x<?=$widhtHeight?>&cht=qr&chld=L|0&chl=<?=$chl?>" alt="QR code" widhtHeight="<?=$widhtHeight?>" widhtHeight="<?=$widhtHeight?>"/>
+	
 		</div>
 	</div>
 	<div class="right_make fleft">
@@ -103,7 +109,9 @@ $basic = $datas['basic'];
 								<form method="post" class="form-horizontal" id="form_album_pic" action="<?=$this->createUrl('/manage/album/update');?>">
 									<?php foreach($datas['pics'] as $v){?>
 										<div class="album_pic" id="album_<?=$v['id']?>">
+										<div class="img_box">
 										<img src="<?php echo '/'.$v['url'].'/w'.Yii::app()->params['img_thumb_width'].'.'.$v['ftype']?>"/>
+										</div>
 										<span id="album_pic_<?=$v['id']?>"><?=$v['desc']?$v['desc']:'图片简介'?></span>
 										<span>
 											<a id="pic_edit_<?=$v['id']?>" onclick="editPic(<?=$v['id']?>)">编辑</a>
@@ -112,11 +120,13 @@ $basic = $datas['basic'];
 											<a onclick="savePic(<?=$v['id']?>,'del')">删除</a>
 										</span>
 										</div>
+										
 									<?php }?>
 								</form>
 							</div>
 							<div class="clear"></div>
 							<br>
+
 							<div id="upload" class="upload">
 								<div>
 								
@@ -193,9 +203,10 @@ $basic = $datas['basic'];
 		</div>
 		<?php }?>
 	</div>
+	<div class="clear"></div>
+	
 </div>
-<br><br>
-
+<div class="footer"></div>
 <script type="text/javascript" src="<?=Yii::app()->baseUrl . "/plugins/ueditor/editor_config.js"?>"></script>
 <script type="text/javascript" src="<?=Yii::app()->baseUrl . "/plugins/ueditor/editor_all.js"?>"></script>
 

@@ -107,4 +107,25 @@ class Basic extends Ydao
 		}
 		return $this->findByPk($id);
 	}
+	public function getBasicByMember($member_id){
+		if(!(int)$member_id){
+			return false;
+		}
+		$criteria=new CDbCriteria;
+		//$criteria->order = 'is_del ASC';
+		$criteria->addCondition('is_del=0');
+		$criteria->addCondition('member_id='.$member_id);
+		return $this->find($criteria);
+	}
 }
+
+
+
+
+
+
+
+
+
+
+

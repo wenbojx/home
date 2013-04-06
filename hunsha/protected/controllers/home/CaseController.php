@@ -10,7 +10,7 @@ class CaseController extends FController{
     	$datas['pics'] = $this->getPics($datas['id']);
     	
         $datas['basic'] = $this->getProjectBasic($datas['id']);
-        $datas['page']['title'] = $datas['basic']['tab6'];
+        $datas['page']['title'] = $datas['basic']['tab3'];
         $this->render('/home/case', array('datas'=>$datas));
     }
 	public function getPics($project_id){

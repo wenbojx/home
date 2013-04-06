@@ -13,8 +13,31 @@ class Step1Controller extends Controller{
     		$datas['member_id'] = $this->member_id;
     	}
     	$datas['id'] = '';
-        $datas['page']['title'] = '新建项目';
+    	//根据会员ID获取项目信息
+    	if($basic = $this->getBasicMember($datas['member_id'])){
+    		$datas['basic'] = $basic;
+    		$datas['id'] = $basic['id'];
+    		$datas['info'] = $this->getProjectInfo($datas['id']);
+    		$datas['msgTab'] = $this->getMsgTab($datas['id']);
+    		$datas['contact'] = $this->getContact($datas['id']);
+    		$datas['pics'] = $this->getPics($datas['id']);
+    		$datas['pano'] = $this->getPano($datas['id']);
+    		
+    		//print_r($datas['info']);
+    		$datas['page']['title'] = '编辑项目';
+    	}
+    	else{
+    		$datas['page']['title'] = '新建项目';
+    	}
+        
         $this->render('/make/step1', array('datas'=>$datas));
+    }
+    public function getBasicMember($member_id){
+    	if(!$member_id){
+    		return false;
+    	}
+    	$basic_db = new Basic();
+    	return $basic_db->getBasicByMember($member_id);
     }
     public function actionEdit(){
     	$request = Yii::app()->request;

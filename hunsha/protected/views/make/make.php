@@ -16,18 +16,22 @@ $this->pageTitle=$datas['page']['title'];
 	</div>
 	<div class="right_make fleft">
 		<div class="desc">
-		<form method="post" class="form-horizontal" id="member_login" action="<?=$this->createUrl('/member/login/checkLogin');?>">
-			<label style="display:none;" id="login_tip_flag">账号密码错误，请重新输入</label><br>
-			<label for="text-basic">用户名:</label><br>
-			<input name="username" id="username" value="" type="text"><br>
-			<label for="password">密码:</label><br>
-			<input name="passwd" id="passwd" value="" autocomplete="off" type="password"><br>
-			<input value="登陆" type="button" onclick="member.login()"><br>
-		</form>
+			<div class="login">
+			<form method="post" class="form-horizontal" id="member_login" action="<?=$this->createUrl('/member/login/checkLogin');?>">
+				<label style="display:none;" id="login_tip_flag">账号密码错误，请重新输入</label><br>
+				<label for="text-basic">用户名:</label> 
+				<input name="username" id="username" value="" type="text"><br>
+				<label for="password">密码:</label> 
+				<input name="passwd" id="passwd" value="" autocomplete="off" type="password"><br><br>
+				<input type="button" onclick="member.login()" name="save" value="登 陆" class="save" ><br>
+			</form>
+			</div>
 		</div>
+		<!-- 
 		<div class="start_make">
 			<a href="<?=$this->createUrl('/make/step1/a/');?>">开始制作</a>
 		</div>
+		 -->
 	</div>
 </div>
 <script>

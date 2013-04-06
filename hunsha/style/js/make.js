@@ -47,15 +47,16 @@ function itemBindClick(){
 		var item_id = $(this).next().attr("id");
 		$("#step2 dt").each(function(k,v){
 			var item = $(this).next().attr("id");
-			if(item == "item6"){
-				show_map();
-			}
+			
 			if(item != item_id){
 				$(this).next().hide();
 			}
 			else{
 				if($(this).next().is(":hidden")){
 					$(this).next().show();
+					if(item == "item6"){
+						show_map();
+					}
 				}
 				else{
 					$(this).next().hide();
@@ -260,6 +261,10 @@ function saveBsic(){
     		$("#basic_tip_flag").show();
             $("#basic_tip_flag").html('操作成功');
             var addbase_jump_url = edit_jump_url+ "/id/"+$("#project_id").val();
+            if(datas.id){
+            	addbase_jump_url = edit_jump_url+ "/id/"+datas.id;
+            }
+            
             jump_to(addbase_jump_url);
         }
         else{
