@@ -29,7 +29,7 @@ class ProjectExportCommand extends CConsoleCommand {
         	return false;
         }
         foreach($sceneDatas as $v){
-	        $scene_path = $this->exportFolder.$this->folder.$this->projectPath.'/'.$this->panoPath.'/';
+	        $scene_path = $this->exportFolder.$this->folder.$this->projectPath.'/'.$this->panoPath;
 	        //$this->mkdir($scene_path);
 	        $pic_path = $this->exportFolder.PicTools::get_pano_path($v['id']).'/';
 	        //echo $pic_path."\r\n";
