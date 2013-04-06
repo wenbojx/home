@@ -10,6 +10,7 @@ class MsgTabController extends Controller{
     	$datas['tab1'] = $request->getParam('tab1');
     	$datas['tab2'] = $request->getParam('tab2');
     	$datas['tab3'] = $request->getParam('tab3');
+    	$datas['info'] = $request->getParam('info');
     	
     	if(!$datas['project_id'] || !$datas['tab1'] || !$datas['tab2'] || !$datas['tab3']){
     		$msg['flag'] = '0';

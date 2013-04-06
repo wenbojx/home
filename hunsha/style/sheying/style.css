@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
 
-body { padding: 0; margin: 0; font-family: "Lucida Grande", Helvetica, Arial,Verdana, sans-serif; }
+body { padding: 0; margin: 0; font-size:12px; }
 h1 { font-size: 1.3em; padding: 15px 10px; margin: 0; }
 img { border: none; }
 
@@ -170,11 +170,49 @@ p{
 	color:#000000;
 	padding:5px;	
 }
-
-
-
-
-
+.live_msg{
+	line-height:22px;
+}
+.live_msg .msg_info{
+	border:1px solid #CCCCCC;
+	padding:5px;
+}
+.live_msg .widthall{
+	width:200px;
+	font-size:12px;
+}
+.save{
+	width:74px;
+	height:28px;
+	background:url("./save.png") repeat scroll 0 0 transparent;
+	border:none;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:14px;
+	line-height:25px;
+}
+.msg_list dl{
+	-moz-border-radius:7px;
+	-webkit-border-radius:7px;
+	border-radius:7px;
+	margin:10px;
+	position:relative;
+	background-color:#f3f3f3;
+	padding:5px 10px;
+	line-height:22px;
+}
+.msg_list dt{
+	border-top:1px solid #CCCCCC;
+	margin:5px 0 0 0;
+}
+.msg_more{
+	text-align:center;
+	margin:10px 0 0 0;
+	height:30px;
+	line-height:30px;
+	background-color:#f3f3f3;
+	cursor:pointer;
+}
 
 
 
@@ -369,6 +407,7 @@ div.gallery-item img {
 	border: medium none;
     vertical-align: middle;
 }
+
 
 
 

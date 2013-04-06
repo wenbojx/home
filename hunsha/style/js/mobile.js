@@ -1,3 +1,42 @@
+
+var jump_url = '';
+function jump_to(jump_url, target){
+    if(!jump_url){
+        return false;
+    }
+    if(!target){
+    	target = 'self';
+    }
+    if(target == 'blank'){
+    	window.open(jump_url);
+    }
+    else{
+    	window.location.href = jump_url;
+    }
+}
+
+function save_datas(url, data, type, dataType, done){
+    if (!url){
+        done_error(element_id, msg.error);
+    }
+    type = type ? type : 'post';
+    dataType = dataType ? dataType : 'json';
+    $.ajax({
+        url: url,
+        type: type,
+        data: data,
+        dataType: dataType,
+        //timeout: 1000,
+        error: function(){
+        	done(datas);
+        },
+        success: function(datas){
+            done(datas);
+        }
+    });
+}
+
+
 function onResize(){
 	var win_width = window.innerWidth;
 	var win_height = window.innerHeight;
@@ -91,6 +130,103 @@ function map_width(){
 	$("#map").css("height", ((parseInt(win_height)/2)));
 }
 
+
+function saveMsg(){
+	datas = {};
+	datas.project_id = $("#project_id").val();
+	if(!datas.project_id){
+		alert("参数错误");
+		return false;
+	}
+	datas.tab1 = $("#tab1").val();
+	if(!datas.tab1){
+		alert("请输入"+tab1);
+		return false;
+	}
+	datas.tab2 = $("#tab2").val();
+	if(!datas.tab2){
+		alert("请输入"+tab2);
+		return false;
+	}
+	datas.tab3 = $("#tab3").val();
+	if(!datas.tab3){
+		alert("请输入"+tab3);
+		return false;
+	}
+
+	var url = $("#submit_msg").attr('action');
+
+    save_datas(url, datas, 'post', 'json' ,do_after);
+    function do_after(data){
+    	if(data.flag =='1'){
+    		var html = msgHtml(datas);
+    		$("#msg_list").prepend(html);
+    		$("#tab3").val("");
+    		last_id = data.project_id;
+        }
+        else{
+        	alert("发生错误,请重新再试");
+        }
+    }
+}
+function loadMore(){
+	//last_id
+	datas = {};
+	datas.project_id = $("#project_id").val();
+	datas.last_id = last_id;
+	
+	var url = load_more_url;
+    save_datas(url, datas, 'post', 'json' ,do_after);
+    function do_after(data){
+    	if(data.flag =='1'){
+    		if(data.none){
+    			$("#more_bt").html("无数据...");
+    			return false;
+    		}
+    		var content = "";
+    		if(data.list){
+    			$.each(data.list, function(k,v){
+    				content += msgHtml(v);
+    				last_id = k;
+    			});
+    		}
+    		$("#msg_list").append(content);
+        }
+        else{
+        	alert("发生错误,请重新再试");
+        }
+    }
+}
+function msgHtml(datas){
+	var html = "<dl>";
+	html += "<dd>";
+	html += nl2br(datas.tab3);
+	html += "</dd>";
+	html += "<dt>";
+	var time = "";
+	if(!datas.time){
+		var myDate = new Date();
+		var year = myDate.getFullYear();
+		var month = myDate.getMonth();
+		var day = myDate.getDate();
+		var hour = myDate.getHours();
+		var m = myDate.getMinutes();
+		time = year+'-'+month+"-"+day+" "+hour+":"+m;
+	}
+	else{
+		time = datas.time;
+	}
+	html += datas.tab1 + " | "+datas.tab2 + " | "+time;
+	html += "</dt>";
+	html += '</dl>';
+	return html;
+}
+function nl2br(texts){
+	if(!texts){
+		return '';
+	}
+	return texts.replace(/\n/g,"<br />");
+}
 
 
 

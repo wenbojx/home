@@ -371,7 +371,8 @@ function saveMsgTab(){
 		alert("请输入栏位三内容");
 		return false;
 	}
-
+	datas.info = ud.getContent();
+	
 	var url = $("#manage_msg").attr('action');
 
     save_datas(url, datas, 'post', 'json' ,do_after);

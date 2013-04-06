@@ -169,7 +169,11 @@ $chl = urlencode("http://a.yiluhao.com/{$datas['id']}/");
 						<dt><?=$basic['tab5']?$basic['tab5']:'留言反馈'?></dt>
 						<dd  class="hide" id="item5">
 						<form method="post" class="form-horizontal" id="manage_msg" action="<?=$this->createUrl('/manage/msgTab/save');?>">
-						
+							<br>
+							<lable>留言说明</lable><br>
+							<div class="editor">
+								<script id="tab5_input" type="text/plain"><?=$datas['msgTab']['info']?></script>
+							</div>
 							<br>
 							<lable>标题栏一</lable>
 							<input type="text" id="tab5_input_name" name="tab5_input_name" value="<?=$datas['msgTab']['tab1']?$datas['msgTab']['tab1']:'您的姓名'?>"><br><br>
@@ -247,22 +251,23 @@ itemBindClick();
 
 <?php if($basic['tab2']){?>
 var ua = UE.getEditor('tab2_input');
-ua.initialFrameWidth = 300;
 ua.addListener('ready',function(){
-    this.focus()
+    this.focus();
 });
 <?php } if($basic['tab4']){?>
 var ub = UE.getEditor('tab4_input');
-ub.initialFrameWidth = 300;
 ub.addListener('ready',function(){
-    this.focus()
+    this.focus();
+});
+<?php }if($basic['tab5']){?>
+var ud = UE.getEditor('tab5_input');
+ud.addListener('ready',function(){
+    this.focus();
 });
 <?php } if($basic['tab6']){?>
 var uc = UE.getEditor('tab6_input');
-uc.initialFrameWidth = 300;
-uc.initialFrameHeight = 50;
 uc.addListener('ready',function(){
-    this.focus()
+    this.focus();
 });
 <?php }?>
 var flash_url = '<?=Yii::app()->baseUrl?>/plugins/uploadify/uploadify.swf';
