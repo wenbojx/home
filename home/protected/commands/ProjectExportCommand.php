@@ -14,6 +14,7 @@ class ProjectExportCommand extends CConsoleCommand {
         	return false;
         }
         $this->projectPath = $projectDatas['project_id'];
+
         $this->mkdir($this->projectPath);
         $panoramPath = $this->projectPath;
         $this->mkdir($panoramPath.'/'.$this->panoPath);
@@ -21,14 +22,21 @@ class ProjectExportCommand extends CConsoleCommand {
         $sys_cmd = "cp -rf {$playerPath} {$this->exportFolder}{$this->folder}/{$panoramPath}";
         //echo $sys_cmd."\r\n";
         system($sys_cmd);
-        
+     
         //获取需处理的全景
         $scene_db = new Scene();
         $sceneDatas = $scene_db->find_scene_by_project_id($projectDatas['project_id'], 1000);
         if(!$sceneDatas){
         	return false;
         }
+        $i = 0;
         foreach($sceneDatas as $v){
+        	$xml_content = '<?xml version="1.0" encoding="utf-8" ?>';
+        	$xml_content .= $this->configXml($v['id']);
+        	if($i == 0){
+        		$configPath = $this->exportFolder.$this->folder.$this->projectPath.'/config.xml';
+        		file_put_contents($configPath, $xml_content);
+        	}
 	        $scene_path = $this->exportFolder.$this->folder.$this->projectPath.'/'.$this->panoPath;
 	        //$this->mkdir($scene_path);
 	        $pic_path = $this->exportFolder.PicTools::get_pano_path($v['id']).'/';
@@ -48,11 +56,37 @@ class ProjectExportCommand extends CConsoleCommand {
 	        system($sys_cmd);
 	        $xmlFile = $scene_path.$v['id'].'/s_f.xml';
 	        file_put_contents($xmlFile, $text);
-	        exit();
+	        $i++;
+	        if($i>=5){
+	        	exit();
+	        }
         }
         //echo count($sceneDatas);
     }
 
+    private function configXml($id){
+    	$from = '';
+    	$config['nobtb'] = $nobtb ? false :true;
+    	$config['auto'] = $auto ? true :false;
+    	$config['single'] = $single ? true :false;
+    	$config['player_width'] = $player_width;
+    	$config['player_height'] = $player_height;
+    	
+    	if(!$id){
+    		exit('');
+    	}
+    	return $this->actionXmls($id, $from, $config);
+    	
+    }
+    private function actionXmls($id, $from, $config){
+    	//获取全景信息
+    	$player_obj = new SaladoPlayer();
+    	$datas['scene_id'] = $id;
+    	$admin = false;
+    	$player_obj->display_config = $config;
+    	return  $player_obj->get_single_config($id);
+
+    }
     private function mkdir($path){
     	//$path = $this->exportFolder.$path;
     	$path_array = explode('/', $path);
