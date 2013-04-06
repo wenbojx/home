@@ -2,7 +2,7 @@
 $this->pageTitle=$datas['page']['title'];
 $basic = $datas['basic'];
 $widhtHeight = $widhtHeight = 100;
-$chl = urlencode("http://hunsha.yiluhao.com/{$datas['id']}/");
+$chl = urlencode("http://a.yiluhao.com/{$datas['id']}/");
 ?>
 <div class="content">
 	<div class="header">
