@@ -4,6 +4,7 @@ class ProjectExportCommand extends CConsoleCommand {
 	//private $exportFolder = 'C:/mydatas/APMServ5.2.6/www/htdocs/home/home/download/';
 	private $exportFolder = '/var/www/home/home/';
 	private $projectPath = '';
+	private $folder = 'download/';
     public function actionRun(){
         //获取需处理的全景
         $project_queue_db = new ProjectQueue();
@@ -20,9 +21,9 @@ class ProjectExportCommand extends CConsoleCommand {
         	return false;
         }
         foreach($sceneDatas as $v){
-	        $scene_path = $this->exportFolder.$this->projectPath.'/'.$v['id'];
+	        $scene_path = $this->exportFolder.$this->folder.$this->projectPath.'/';
 	        //$this->mkdir($scene_path);
-	        $pic_path = PicTools::get_pano_path($v['id']);
+	        $pic_path = $this->exportFolder.PicTools::get_pano_path($v['id']);
 	        //echo $pic_path."\r\n";
 	        $sys_cmd = "cp -rf {$pic_path} {$scene_path}";
 	        //$sys_cmd = "xcopy {$pic_path}*.* {$scene_path} /s";
@@ -34,7 +35,7 @@ class ProjectExportCommand extends CConsoleCommand {
     private function mkdir($path){
     	//$path = $this->exportFolder.$path;
     	$path_array = explode('/', $path);
-    	$newPath = $this->exportFolder.'download/';
+    	$newPath = $this->exportFolder.$this->folder;
     	foreach($path_array as $v){
     		if(!$v){
     			continue;
