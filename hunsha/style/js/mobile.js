@@ -53,7 +53,7 @@ function onResize(){
 	}
 	if($("#tab6")){
 		if(last_tap == 'tab6' && flag_danshu){
-			$("#tab6").css("width", (tab_width*2)+"px");
+			$("#tab6").css("width", (tab_width*2+30)+"px");
 		}
 		else{
 			$("#tab6").css("width", tab_width+"px");
