@@ -1,7 +1,6 @@
 <?php 
 $this->pageTitle=$datas['page']['title'];
 $basic = $datas['basic'];
-$widhtHeight = $widhtHeight = 100;
 $chl = urlencode("http://a.yiluhao.com/{$datas['id']}/");
 ?>
 <div class="content">
@@ -28,10 +27,7 @@ $chl = urlencode("http://a.yiluhao.com/{$datas['id']}/");
 		<iframe width="327" height="486" src="/1"></iframe>
 		<?php }?>
 		</div>
-		<div class="erweima">
-		<img alt="" src="http://chart.apis.google.com/chart?chs=<?=$widhtHeight?>x<?=$widhtHeight?>&cht=qr&chld=L|0&chl=<?=$chl?>" alt="QR code" widhtHeight="<?=$widhtHeight?>" widhtHeight="<?=$widhtHeight?>"/>
-	
-		</div>
+		
 	</div>
 	<div class="right_make fleft">
 		<div >
@@ -66,8 +62,16 @@ $chl = urlencode("http://a.yiluhao.com/{$datas['id']}/");
 							<input type="button" onclick="saveBsic()" name="save" value="保 存" class="save" style="margin:10px 0 0 70px;">
 						</li>
 						<br>
+						<div class="erweima">
+						<img alt="" src="http://chart.apis.google.com/chart?chs=30x30&cht=qr&chld=L|0&chl=<?=$chl?>" alt="QR code"/><br><br>
+						<img alt="" src="http://chart.apis.google.com/chart?chs=55x55&cht=qr&chld=L|0&chl=<?=$chl?>" alt="QR code"/><br><br>
+						<img alt="" src="http://chart.apis.google.com/chart?chs=80x80&cht=qr&chld=L|0&chl=<?=$chl?>" alt="QR code" />
+						<br>
+						<span>扫描二维码</span>
+						</div>
 					</ul>
 					</form>
+					
 				</dd>
 			</dl>
 		</div>
