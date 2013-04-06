@@ -22,7 +22,11 @@ $chl = urlencode("http://a.yiluhao.com/{$datas['id']}/");
 	</div>
 	<div class="left_demo fleft">
 		<div class="demo_window">
+		<?php if($datas['id']){?>
 		<iframe width="327" height="486" src="<?=$this->createUrl('/home/mobile/a/', array('id'=>$datas['id']));?>"></iframe>
+		<?php }else{?>
+		<iframe width="327" height="486" src="/1"></iframe>
+		<?php }?>
 		</div>
 		<div class="erweima">
 		<img alt="" src="http://chart.apis.google.com/chart?chs=<?=$widhtHeight?>x<?=$widhtHeight?>&cht=qr&chld=L|0&chl=<?=$chl?>" alt="QR code" widhtHeight="<?=$widhtHeight?>" widhtHeight="<?=$widhtHeight?>"/>
