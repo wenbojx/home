@@ -76,6 +76,7 @@ $chl = urlencode("http://a.yiluhao.com/{$datas['id']}/");
 		<dl class="step" >
 			<dt onclick="showStep2()"><h3>详细页</h3></dt>
 				<dd id="step2" >
+					<?php if($basic['tab1']!=''){?>
 					<dl class="form_box" >
 						<dt><?=$basic['tab1']?$basic['tab1']:'公司环境'?></dt>
 						<dd id="item1" class="hide">
@@ -91,6 +92,8 @@ $chl = urlencode("http://a.yiluhao.com/{$datas['id']}/");
 							</form>
 						</dd>
 					</dl>
+					<?php }?>
+					<?php if($basic['tab2']!=''){?>
 					<dl class="form_box">
 						<form method="post" class="form-horizontal" id="manage_info_1" action="<?=$this->createUrl('/manage/info/save');?>">
 						<dt><?=$basic['tab2']?$basic['tab2']:'关于我们'?></dt>
@@ -105,7 +108,8 @@ $chl = urlencode("http://a.yiluhao.com/{$datas['id']}/");
 						</dd>
 						</form>
 					</dl>
-					
+					<?php }?>
+					<?php if($basic['tab3']!=''){?>
 					<dl class="form_box">
 						<dt><?=$basic['tab3']?$basic['tab3']:'图片展示'?></dt>
 						<dd  class="hide" id="item3">
@@ -140,6 +144,8 @@ $chl = urlencode("http://a.yiluhao.com/{$datas['id']}/");
 							</div>
 						</dd>
 					</dl>
+					<?php }?>
+					<?php if($basic['tab4']!=''){?>
 					<dl class="form_box">
 						<dt><?=$basic['tab4']?$basic['tab4']:'服务内容'?></dt>
 						<dd  class="hide" id="item4">
@@ -153,6 +159,8 @@ $chl = urlencode("http://a.yiluhao.com/{$datas['id']}/");
 							<br>
 						</dd>
 					</dl>
+					<?php }?>
+					<?php if($basic['tab5']!=''){?>
 					<dl class="form_box">
 						<dt><?=$basic['tab5']?$basic['tab5']:'留言反馈'?></dt>
 						<dd  class="hide" id="item5">
@@ -172,6 +180,8 @@ $chl = urlencode("http://a.yiluhao.com/{$datas['id']}/");
 						</form>
 						</dd>
 					</dl>
+					<?php }?>
+					<?php if($basic['tab6']!=''){?>
 					<dl class="form_box">
 						<dt><?=$basic['tab6']?$basic['tab6']:'联系我们'?></dt>
 						<dd  class="hide" id="item6">
@@ -201,6 +211,7 @@ $chl = urlencode("http://a.yiluhao.com/{$datas['id']}/");
 						</form>
 						</dd>
 					</dl>
+					<?php }?>
 				</dd>
 				</dl>
 
