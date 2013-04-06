@@ -345,27 +345,27 @@ div.gallery-item {
 	background: none repeat scroll 0 0 transparent;
     border: medium none;
     float: left;
-    height: 105px;
-    line-height: 105px;
+    height: 95px;
+    line-height: 95px;
     margin: 0;
     overflow: visible;
     padding: 0;
     position: relative;
-    width: 105px;
+    width: 95px;
 	
 }
 div.gallery-item a {  display: table-cell;
-    height: 105px;
+    height: 95px;
     margin: 0;
     overflow: visible;
     padding: 0;
     text-align: center;
     vertical-align: middle;
-    width: 105px;
+    width: 95px;
 }
 div.gallery-item img { 
-	width:100px;
-	height:100px;
+	width:90px;
+	height:90px;
 	border: medium none;
     vertical-align: middle;
 }
