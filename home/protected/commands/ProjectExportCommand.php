@@ -37,7 +37,7 @@ class ProjectExportCommand extends CConsoleCommand {
 	        $text = '<Image TileSize="450" Overlap="1" Format="jpg" ServerFormat="Default" xmnls="http://schemas.microsoft.com/deepzoom/2009">
 <Size Width="1800" Height="1800"></Size>
 </Image>';
-	        $xmlFile = $scene_path.$v['id'].'s_f.xml';
+	        $xmlFile = $scene_path.$v['id'].'/s_f.xml';
 	        file_put_contents($xmlFile, $text);
 	        //-------------------------
 	        //$pic_path = str_replace('/', '\\', $pic_path);
