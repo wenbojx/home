@@ -29,11 +29,16 @@ class ProjectExportCommand extends CConsoleCommand {
         	return false;
         }
         foreach($sceneDatas as $v){
-	        $scene_path = $this->exportFolder.$this->folder.$this->projectPath.'/'.$this->panoPath;
+	        $scene_path = $this->exportFolder.$this->folder.$this->projectPath.'/'.$this->panoPath.'/';
 	        //$this->mkdir($scene_path);
 	        $pic_path = $this->exportFolder.PicTools::get_pano_path($v['id']).'/';
 	        //echo $pic_path."\r\n";
 	        $sys_cmd = "cp -rf {$pic_path} {$scene_path}";
+	        $text = '<Image TileSize="450" Overlap="1" Format="jpg" ServerFormat="Default" xmnls="http://schemas.microsoft.com/deepzoom/2009">
+<Size Width="1800" Height="1800"></Size>
+</Image>';
+	        $xmlFile = $scene_path.$v['id'].'s_f.xml';
+	        file_put_contents($xmlFile, $text);
 	        //-------------------------
 	        //$pic_path = str_replace('/', '\\', $pic_path);
 	        //$scene_path = str_replace('/', '\\', $scene_path);
