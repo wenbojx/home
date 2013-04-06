@@ -44,21 +44,21 @@ $chl = urlencode("http://a.yiluhao.com/{$datas['id']}/");
 							id="name" />
 						</li>
 						<li><label>栏位一：</label> 
-						<input type="text" value="<?=$basic['tab1']==''?$basic['tab1']:'公司环境'?>" name="tab1" id="tab1" />
+						<input type="text" value="<?=$basic['tab1']!=''?$basic['tab1']:'公司环境'?>" name="tab1" id="tab1" />
 						</li>
-						<li><label>栏位二：</label> <input type="text" value="<?=$basic['tab2']==''?$basic['tab2']:'关于我们'?>" name="tab2"
+						<li><label>栏位二：</label> <input type="text" value="<?=$basic['tab2']!=''?$basic['tab2']:'关于我们'?>" name="tab2"
 							id="tab2" />
 						</li>
-						<li><label>栏位三：</label> <input type="text" value="<?=$basic['tab3']==''?$basic['tab3']:'图片展示'?>" name="tab3"
+						<li><label>栏位三：</label> <input type="text" value="<?=$basic['tab3']!=''?$basic['tab3']:'图片展示'?>" name="tab3"
 							id="tab3" />
 						</li>
-						<li><label>栏位四：</label> <input type="text" value="<?=$basic['tab4']==''?$basic['tab4']:'服务内容'?>" name="tab4"
+						<li><label>栏位四：</label> <input type="text" value="<?=$basic['tab4']!=''?$basic['tab4']:'服务内容'?>" name="tab4"
 							id="tab4" />
 						</li>
-						<li><label>栏位五：</label> <input type="text" value="<?=$basic['tab5']==''?$basic['tab5']:'留言反馈'?>" name="tab5"
+						<li><label>栏位五：</label> <input type="text" value="<?=$basic['tab5']!=''?$basic['tab5']:'留言反馈'?>" name="tab5"
 							id="tab5" />
 						</li>
-						<li><label>栏位六：</label> <input type="text" value="<?=$basic['tab6']==''?$basic['tab6']:'联系我们'?>" name="tab6"
+						<li><label>栏位六：</label> <input type="text" value="<?=$basic['tab6']!=''?$basic['tab6']:'联系我们'?>" name="tab6"
 							id="tab6" />
 						</li>
 						<li>
