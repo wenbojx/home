@@ -93,7 +93,7 @@ $chl = urlencode("http://a.yiluhao.com/{$datas['id']}/");
 					</dl>
 					<dl class="form_box">
 						<form method="post" class="form-horizontal" id="manage_info_1" action="<?=$this->createUrl('/manage/info/save');?>">
-						<dt><?=$basic['tab1']?$basic['tab2']:'关于我们'?></dt>
+						<dt><?=$basic['tab2']?$basic['tab2']:'关于我们'?></dt>
 						<dd class="hide" id="item2">
 							<br>
 							<div class="editor">
@@ -107,7 +107,7 @@ $chl = urlencode("http://a.yiluhao.com/{$datas['id']}/");
 					</dl>
 					
 					<dl class="form_box">
-						<dt><?=$basic['tab1']?$basic['tab3']:'图片展示'?></dt>
+						<dt><?=$basic['tab3']?$basic['tab3']:'图片展示'?></dt>
 						<dd  class="hide" id="item3">
 							<div class="album_box" id="album_box">
 								<form method="post" class="form-horizontal" id="form_album_pic" action="<?=$this->createUrl('/manage/album/update');?>">
@@ -141,7 +141,7 @@ $chl = urlencode("http://a.yiluhao.com/{$datas['id']}/");
 						</dd>
 					</dl>
 					<dl class="form_box">
-						<dt><?=$basic['tab1']?$basic['tab4']:'服务内容'?></dt>
+						<dt><?=$basic['tab4']?$basic['tab4']:'服务内容'?></dt>
 						<dd  class="hide" id="item4">
 							<br>
 							<div class="editor">
@@ -154,7 +154,7 @@ $chl = urlencode("http://a.yiluhao.com/{$datas['id']}/");
 						</dd>
 					</dl>
 					<dl class="form_box">
-						<dt><?=$basic['tab1']?$basic['tab5']:'留言反馈'?></dt>
+						<dt><?=$basic['tab5']?$basic['tab5']:'留言反馈'?></dt>
 						<dd  class="hide" id="item5">
 						<form method="post" class="form-horizontal" id="manage_msg" action="<?=$this->createUrl('/manage/msgTab/save');?>">
 						
@@ -173,7 +173,7 @@ $chl = urlencode("http://a.yiluhao.com/{$datas['id']}/");
 						</dd>
 					</dl>
 					<dl class="form_box">
-						<dt><?=$basic['tab1']?$basic['tab6']:'联系我们'?></dt>
+						<dt><?=$basic['tab6']?$basic['tab6']:'联系我们'?></dt>
 						<dd  class="hide" id="item6">
 						<form method="post" class="form-horizontal" id="manage_contact" action="<?=$this->createUrl('/manage/contact/save');?>">
 							<div>
