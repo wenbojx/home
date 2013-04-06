@@ -1,8 +1,8 @@
 <?php
 class ProjectExportCommand extends CConsoleCommand {
 
-	private $exportFolder = 'C:/mydatas/APMServ5.2.6/www/htdocs/home/home/download/';
-	//private $exportFolder = '/var/www/home/home/download/';
+	//private $exportFolder = 'C:/mydatas/APMServ5.2.6/www/htdocs/home/home/download/';
+	private $exportFolder = '/var/www/home/home/download/';
 	private $projectPath = '';
     public function actionRun(){
         //获取需处理的全景
