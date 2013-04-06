@@ -2,7 +2,7 @@
 class ProjectExportCommand extends CConsoleCommand {
 
 	//private $exportFolder = 'C:/mydatas/APMServ5.2.6/www/htdocs/home/home/download/';
-	private $exportFolder = '/var/www/home/home/download/';
+	private $exportFolder = '/var/www/home/home/';
 	private $projectPath = '';
     public function actionRun(){
         //获取需处理的全景
@@ -20,7 +20,7 @@ class ProjectExportCommand extends CConsoleCommand {
         	return false;
         }
         foreach($sceneDatas as $v){
-	        $scene_path = $this->projectPath.'/'.$v['id'];
+	        $scene_path = $this->exportFolder.$this->projectPath.'/'.$v['id'];
 	        //$this->mkdir($scene_path);
 	        $pic_path = PicTools::get_pano_path($v['id']);
 	        //echo $pic_path."\r\n";
@@ -34,7 +34,7 @@ class ProjectExportCommand extends CConsoleCommand {
     private function mkdir($path){
     	//$path = $this->exportFolder.$path;
     	$path_array = explode('/', $path);
-    	$newPath = $this->exportFolder;
+    	$newPath = $this->exportFolder.'download/';
     	foreach($path_array as $v){
     		if(!$v){
     			continue;
