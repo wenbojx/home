@@ -18,7 +18,7 @@ class ProjectExportCommand extends CConsoleCommand {
         $panoramPath = $this->exportFolder.$this->projectPath.'/'.$this->panoPath;
         $this->mkdir($panoramPath);
         $playerPath = $this->exportFolder.'plugins/salado/export/*';
-        $sys_cmd = "cp -rf {$pic_path} {$panoramPath}";
+        $sys_cmd = "cp -rf {$playerPath} {$panoramPath}";
         echo $sys_cmd."\r\n";
         system($sys_cmd);
         
