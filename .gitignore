@@ -24,6 +24,7 @@ home/protected/runtime/
 home/protected/runtime/*.*
 home/protected/config/*.php
 home/upload/
+home/download/
 home/pp/
 home/pp
 home/tmp/
