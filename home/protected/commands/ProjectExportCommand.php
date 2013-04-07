@@ -51,14 +51,12 @@ class ProjectExportCommand extends CConsoleCommand {
         	}
         	if($i==0){
         		$xml_content = '<?xml version="1.0" encoding="utf-8" ?>';
-        		$xml_content = $this->configXml($v['id']);
+        		$xml_content .= $this->configXml($v['id']);
         		$xml_content = $this->newXmlContent($xml_content);
         	}
-        	if($i>5)
-        		continue;
-        	echo $xml_content."1111\r\n";
+        	
         	$xml_content = $this->newXmlFile($xml_content, $v['id']);
-        	echo $xml_content."22222\r\n";
+        	//echo $xml_content."22222\r\n";
         	
 	        $scene_path = $this->exportFolder.$this->folder.$this->projectPath.'/'.$this->panoPath;
 	        //$this->mkdir($scene_path);
@@ -145,7 +143,7 @@ class ProjectExportCommand extends CConsoleCommand {
     	$memcache_obj = new Ymemcache();
     	$key = $memcache_obj->get_pano_xml_key($id.'_s', false);
     	$memcache_obj->set_mem_data($key, '', 0);
-    	return content;
+    	return $content;
     }
     private function mkdir($path){
     	//$path = $this->exportFolder.$path;
