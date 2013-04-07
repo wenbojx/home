@@ -15,6 +15,7 @@ class ProjectExportCommand extends CConsoleCommand {
         }
         $this->projectPath = $projectDatas['project_id'];
 
+        /*
         $this->mkdir($this->projectPath);
         $panoramPath = $this->projectPath;
         $this->mkdir($panoramPath.'/'.$this->panoPath);
@@ -22,7 +23,7 @@ class ProjectExportCommand extends CConsoleCommand {
         $sys_cmd = "cp -rf {$playerPath} {$this->exportFolder}{$this->folder}/{$panoramPath}";
         //echo $sys_cmd."\r\n";
         system($sys_cmd);
-     
+     	*/
         //获取需处理的全景
         $scene_db = new Scene();
         $sceneDatas = $scene_db->find_scene_by_project_id($projectDatas['project_id'], 1000);
@@ -30,13 +31,15 @@ class ProjectExportCommand extends CConsoleCommand {
         	return false;
         }
         $i = 0;
+        $configPath = $this->exportFolder.$this->folder.$this->projectPath.'/config.xml';
         foreach($sceneDatas as $v){
-        	$xml_content = '<?xml version="1.0" encoding="utf-8" ?>';
-        	$xml_content .= $this->configXml($v['id']);
-        	if($i == 0){
-        		$configPath = $this->exportFolder.$this->folder.$this->projectPath.'/config.xml';
-        		file_put_contents($configPath, $xml_content);
+        	if($i==0){
+        		$xml_content = '<?xml version="1.0" encoding="utf-8" ?>';
+        		$xml_content = $this->configXml($v['id']);
+        		$xml_content = $this->newXmlContent($xml_content);
         	}
+        	$xml_content = $this->newXmlFile($xml_content, $v['id']);
+
 	        $scene_path = $this->exportFolder.$this->folder.$this->projectPath.'/'.$this->panoPath;
 	        //$this->mkdir($scene_path);
 	        $pic_path = $this->exportFolder.PicTools::get_pano_path($v['id']).'/';
@@ -57,13 +60,23 @@ class ProjectExportCommand extends CConsoleCommand {
 	        $xmlFile = $scene_path.$v['id'].'/s_f.xml';
 	        file_put_contents($xmlFile, $text);
 	        $i++;
-	        if($i>=5){
+	       // if($i>=5){
 	        	exit();
-	        }
+	        //}
         }
+        file_put_contents($configPath, $xml_content);
         //echo count($sceneDatas);
     }
-
+    private function newXmlFile($content, $id){
+    	$replace_text = '/'.PicTools::get_pano_path($v['id']).'/';
+    	$content = str_replace($replace_text, './', $content);
+    	return $content;
+    }
+    private function newXmlContent($content){
+    	$replace_text = '/var/www/home/home/protected/plugins/salado/';
+    	$content = str_replace($replace_text, './', $content);
+    	return $content;
+    }
     private function configXml($id){
     	$from = '';
     	$config['nobtb'] = $nobtb ? false :true;
