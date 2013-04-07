@@ -453,8 +453,8 @@ class PanoSingleDatas{
     	foreach($music_datas as $v){
 	    	$file_datas = $file_path_db->get_by_file_id($v['file_id']);
 	    	
-	    	$id = $v['id'];
-	    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['id'] = 'music_'.$v['scene_id'];
+	    	$id = 'music_'.$v['scene_id'];
+	    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['id'] = $id;
 	    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['path'] = PicTools::get_pano_music($v['scene_id'], $file_datas['type']);
 	    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['volume'] = $v['volume']/10;
 	    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['loop'] = $v['loop']?'true':'false';
