@@ -74,7 +74,7 @@ class ProjectExportCommand extends CConsoleCommand {
     }
     private function newXmlFile($content, $id){
     	$replace_text = PicTools::get_pano_path($id).'/';
-    	echo $replace_text."\r\n";
+    	//echo $replace_text."\r\n";
     	$newPath = './'.$this->panoPath.$id.'/';
     	$content = str_replace($replace_text, $newPath, $content);
     	return $content;
@@ -84,7 +84,7 @@ class ProjectExportCommand extends CConsoleCommand {
     	//$replace_text = 'c:\mydatas\APMServ5.2.6\www\htdocs\home\home\protected/plugins/salado/';
     	$content = str_replace($replace_text, './', $content);
     	
-    	$replace_text = '/var/www/home/home/style/img/';
+    	$replace_text = '/var/www/home/home/protected/style/img/';
     	//$replace_text = 'c:\mydatas\APMServ5.2.6\www\htdocs\home\home\protected/style/img/';
     	$content = str_replace($replace_text, './media/', $content);
     	
