@@ -54,7 +54,6 @@ class ProjectExportCommand extends CConsoleCommand {
         		$xml_content = $this->configXml($v['id']);
         		$xml_content = $this->newXmlContent($xml_content);
         	}
-        	$i++;
         	if($i>5)
         		continue;
         	$xml_content = $this->newXmlFile($xml_content, $v['id']);
