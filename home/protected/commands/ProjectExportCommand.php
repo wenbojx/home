@@ -56,7 +56,9 @@ class ProjectExportCommand extends CConsoleCommand {
         	}
         	if($i>5)
         		continue;
+        	echo $xml_content."1111\r\n";
         	$xml_content = $this->newXmlFile($xml_content, $v['id']);
+        	echo $xml_content."22222\r\n";
         	
 	        $scene_path = $this->exportFolder.$this->folder.$this->projectPath.'/'.$this->panoPath;
 	        //$this->mkdir($scene_path);
