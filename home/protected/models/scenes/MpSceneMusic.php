@@ -59,6 +59,29 @@ class MpSceneMusic extends Ydao
     	}
     	return $music_datas;
     }
+    public function get_by_scene_ids($scene_ids, $state='', $order=''){
+    	if(!$scene_ids){
+    		return false;
+    	}
+    	$criteria=new CDbCriteria;
+    	$criteria->order = 'id Desc';
+    	if($order!=''){
+    		$criteria->order = $order;
+    	}
+    	if($state!=''){
+    		$criteria->addCondition("state={$state}");
+    	}
+    	$scene_str = implode(',', $scene_ids);
+    	
+    	$criteria->addCondition("scene_id in ({$scene_str})");
+    	//print_r($criteria);
+    	$music_datas = $this->findAll($criteria);
+    	//print_r($music_datas);
+    	if(!$music_datas){
+    		return false;
+    	}
+    	return $music_datas;
+    }
 }
 
 

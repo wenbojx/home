@@ -46,6 +46,8 @@ class PanoSingleDatas{
     private $map_datas = array();
     
     public $music_module_exit = false;
+    private $scene_ids = array();
+    private $music_datas = array();
 
     public function get_panoram_datas($id = 0){
         $datas = array();
@@ -164,6 +166,7 @@ class PanoSingleDatas{
     		$datas[$v['id']]['s_attribute']['onEnter'] = 'js_action_loaded';
     		$this->panoram_datas[$v['id']] = $v;
     	}
+    	$this->scene_ids = $scene_ids;
     	$panoram_db = new ScenesPanoram();
     	$panoram_datas = $panoram_db->find_by_scene_ids($scene_ids);
     	if($panoram_datas){
@@ -421,7 +424,8 @@ class PanoSingleDatas{
         //添加imagemap
         //获取背景音乐信息
         $music_db = new MpSceneMusic();
-        $music_datas = $music_db->get_by_scene_id($this->scene_id, 1);
+        $music_datas = $music_db->get_by_scene_ids($this->scene_ids, 1);
+        //print_r($music_datas);
         if($music_datas){
         	$this->add_music_module($music_datas);
         }
@@ -445,13 +449,23 @@ class PanoSingleDatas{
     	$this->modules_datas[$type]['settings']['s_attribute']['onStop'] = 'MusicInSetActive';
     	
     	$file_path_db = new FilePath();
-    	$file_datas = $file_path_db->get_by_file_id($music_datas['file_id']);
     	
-    	$id = $music_datas['id'];
-    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['id'] = 'music_'+$music_datas['id'];
-    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['path'] = PicTools::get_pano_music($this->scene_id, $file_datas['type']);
-    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['volume'] = $music_datas['volume']/10;
-    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['loop'] = $music_datas['volume'] ? 'true':'false';
+    	foreach($music_datas as $v){
+	    	$file_datas = $file_path_db->get_by_file_id($v['file_id']);
+	    	
+	    	$id = $v['id'];
+	    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['id'] = 'music_'.$v['scene_id'];
+	    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['path'] = PicTools::get_pano_music($v['scene_id'], $file_datas['type']);
+	    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['volume'] = $v['volume']/10;
+	    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['loop'] = 'false';
+
+	    	//$this->music_datas[$v['scene_id']] = $v['scene_id'];
+	    	$key = $this->load_pano_pre.$v['scene_id'];
+	    	if(isset( $this->action_datas[$key] )){
+	    		$this->action_datas[$key]['s_attribute']['content'] .= ";BackgroundMusic.setTrack(music_{$v['scene_id']})";
+	    	}
+    	}
+    	
     	$this->music_module_exit = true;
     	$id = 'MusictogglePlay';
     	$content = 'BackgroundMusic.togglePlay()';
@@ -517,9 +531,11 @@ class PanoSingleDatas{
     	$id = 'mapToggle';
     	$content = 'ImageMap.toggleOpen()';
     	$this->add_single_action($id, $content);
+    	
     	$id = 'mapOpen';
     	$content = 'ImageMap.setOpen(true)';
     	$this->add_single_action($id, $content);
+    	
     	$id = 'mapOpened';
     	$content = 'ButtonBar.setActive(b,true)';
     	$this->add_single_action($id, $content);
@@ -736,6 +752,7 @@ class PanoSingleDatas{
         $this->modules_datas[$type]['window']['s_attribute']['alpha'] = '0.6';
         $this->modules_datas[$type]['buttons']['s_attribute']['path'] = $this->module_media_path('button_bar');
         if($this->map_flag){
+        	//echo 111;
         	$this->modules_datas[$type]['buttons']['extraButton']['map']['s_attribute']['name'] = 'b';
         	$this->modules_datas[$type]['buttons']['extraButton']['map']['s_attribute']['action'] = 'mapToggle';
         }
@@ -753,9 +770,10 @@ class PanoSingleDatas{
         //<extraButton name="b" action="mapToggle" mouse="onOver:showBubbleMap,onOut:hideBubble"/>
         $this->modules_datas[$type]['buttons']['button']['8']['s_attribute']['name'] = 'fullscreen';
         if($this->music_module_exit){
-        	$this->modules_datas[$type]['buttons']['extraButton']['map']['s_attribute']['name'] = 'd';
-        	$this->modules_datas[$type]['buttons']['extraButton']['map']['s_attribute']['action'] = 'MusictogglePlay';
+        	$this->modules_datas[$type]['buttons']['extraButton']['music']['s_attribute']['name'] = 'd';
+        	$this->modules_datas[$type]['buttons']['extraButton']['music']['s_attribute']['action'] = 'MusictogglePlay';
         }
+        //print_r($this->modules_datas[$type]);
         return $this->modules_datas[$type];
     }
     protected $extra_button_id_num = 1; //
