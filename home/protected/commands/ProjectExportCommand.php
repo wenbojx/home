@@ -31,6 +31,9 @@ class ProjectExportCommand extends CConsoleCommand {
         $i = 0;
         $configPath = $this->exportFolder.$this->folder.$this->projectPath.'/config.xml';
         foreach($sceneDatas as $v){
+        	if($i>=5){
+        		continue;
+        	}
         	if($i==0){
         		$xml_content = '<?xml version="1.0" encoding="utf-8" ?>';
         		$xml_content = $this->configXml($v['id']);
@@ -61,9 +64,7 @@ class ProjectExportCommand extends CConsoleCommand {
 	        $xmlFile = $scene_path.$v['id'].'/s_f.xml';
 	        file_put_contents($xmlFile, $text);
 	        $i++;
-	        if($i>=5){
-	        	exit();
-	        }
+	        
 
         }
         //echo $xml_content;
