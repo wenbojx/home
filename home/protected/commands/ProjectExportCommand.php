@@ -37,11 +37,9 @@ class ProjectExportCommand extends CConsoleCommand {
         	$mapFile = $this->exportFolder.substr($mapFile, 1);
         	$fileType_array = explode('.', $mapFile);
         	$num = count($fileType_array)-1;
-        	echo $mapFile."\r\n";
         	
-        	if(!file_exists($mapFile)){
+        	if(file_exists($mapFile)){
 	        	$toPath = $this->exportFolder.$this->folder.$projectDatas['project_id'].'/map.'.$fileType_array[$num];
-	        	echo $toPath."\r\n";
 	        	copy($mapFile, $toPath);
         	}
         }
