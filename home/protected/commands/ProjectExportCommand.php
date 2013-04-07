@@ -6,6 +6,7 @@ class ProjectExportCommand extends CConsoleCommand {
 	private $projectPath = '';
 	private $folder = 'download/';
 	private $panoPath = 'panoramas/';
+	private $mapPath = 'map-------';
     public function actionRun(){
         //获取需处理的全景
         $project_queue_db = new ProjectQueue();
@@ -15,6 +16,13 @@ class ProjectExportCommand extends CConsoleCommand {
         }
         $this->projectPath = $projectDatas['project_id'];
 
+        //获取需处理的全景
+        $scene_db = new Scene();
+        $sceneDatas = $scene_db->find_scene_by_project_id($projectDatas['project_id'], 1000);
+        if(!$sceneDatas){
+        	return false;
+        }
+
         $this->mkdir($this->projectPath);
         $panoramPath = $this->projectPath;
         $this->mkdir($panoramPath.'/'.$this->panoPath);
@@ -22,12 +30,19 @@ class ProjectExportCommand extends CConsoleCommand {
         $sys_cmd = "cp -rf {$playerPath} {$this->exportFolder}{$this->folder}/{$panoramPath}";
         //echo $sys_cmd."\r\n";
         system($sys_cmd);
-        //获取需处理的全景
-        $scene_db = new Scene();
-        $sceneDatas = $scene_db->find_scene_by_project_id($projectDatas['project_id'], 1000);
-        if(!$sceneDatas){
-        	return false;
+        $map_id = $this->getMap($projectDatas['project_id']);
+        if($map_id){
+        	$mapFile = PicTools::get_pano_map($projectDatas['project_id'], $map_id);
+        	$this->mapPath = $mapFile;
+        	$mapFile = $this->exportFolder.substr($mapFile, 1);
+        	$fileType_array = explode('.', $mapFile);
+        	$num = count($fileType_array)-1;
+        	if(!file_exists($mapFile)){
+	        	$toPath = $this->exportFolder.$this->folder.$projectDatas['project_id'].'/map.'.$fileType_array[$num];
+	        	copy($mapFile, $toPath);
+        	}
         }
+
         $i = 0;
         $configPath = $this->exportFolder.$this->folder.$this->projectPath.'/config.xml';
         foreach($sceneDatas as $v){
@@ -72,6 +87,15 @@ class ProjectExportCommand extends CConsoleCommand {
         file_put_contents($configPath, $xml_content);
         //echo count($sceneDatas);
     }
+    private function getMap($project_id){
+    	$project_mp_db = new ProjectMap();
+    	$mapDatas = $project_mp_db->find_by_project_id($project_id);
+    	//print_r($mapDatas);
+    	if(!$mapDatas){
+    		return false;
+    	}
+    	return $mapDatas['id'];
+    }
     private function newXmlFile($content, $id){
     	$replace_text = PicTools::get_pano_path($id).'/';
     	//echo $replace_text."\r\n";
@@ -91,6 +115,8 @@ class ProjectExportCommand extends CConsoleCommand {
     	$replace_text = '/var/www/home/home/plugins/salado/media/';
     	//$replace_text = 'c:\mydatas\APMServ5.2.6\www\htdocs\home\home\protected/plugins/salado/media/';
     	$content = str_replace($replace_text, './media/', $content);
+    	
+    	$content = str_replace($this->mapPath, './map.jpg', $content);
     	
     	return $content;
     }
@@ -114,8 +140,11 @@ class ProjectExportCommand extends CConsoleCommand {
     	$datas['scene_id'] = $id;
     	$admin = false;
     	$player_obj->display_config = $config;
-    	return  $player_obj->get_single_config($id);
-
+    	$content = $player_obj->get_single_config($id);
+    	$memcache_obj = new Ymemcache();
+    	$key = $memcache_obj->get_pano_xml_key($id.'_s', false);
+    	$memcache_obj->set_mem_data($key, '', 0);
+    	return content;
     }
     private function mkdir($path){
     	//$path = $this->exportFolder.$path;
