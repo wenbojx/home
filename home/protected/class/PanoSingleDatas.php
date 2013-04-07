@@ -653,6 +653,7 @@ class PanoSingleDatas{
      * 添加单个link_open
      */
     public function add_signle_link_open($link_scene_id, $target='_SELF'){
+    	return false;
         $type = $this->module_type_link_open;
         $this->modules_datas[$type]['s_attribute']['path'] = $this->module_path('LinkOpener');
         $id = $this->link_open_pre.$link_scene_id;

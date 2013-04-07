@@ -15,7 +15,6 @@ class ProjectExportCommand extends CConsoleCommand {
         }
         $this->projectPath = $projectDatas['project_id'];
 
-        /*
         $this->mkdir($this->projectPath);
         $panoramPath = $this->projectPath;
         $this->mkdir($panoramPath.'/'.$this->panoPath);
@@ -23,7 +22,6 @@ class ProjectExportCommand extends CConsoleCommand {
         $sys_cmd = "cp -rf {$playerPath} {$this->exportFolder}{$this->folder}/{$panoramPath}";
         //echo $sys_cmd."\r\n";
         system($sys_cmd);
-     	*/
         //获取需处理的全景
         $scene_db = new Scene();
         $sceneDatas = $scene_db->find_scene_by_project_id($projectDatas['project_id'], 1000);
@@ -38,8 +36,11 @@ class ProjectExportCommand extends CConsoleCommand {
         		$xml_content = $this->configXml($v['id']);
         		$xml_content = $this->newXmlContent($xml_content);
         	}
+        	$i++;
+        	if($i>5)
+        		continue;
         	$xml_content = $this->newXmlFile($xml_content, $v['id']);
-
+        	
 	        $scene_path = $this->exportFolder.$this->folder.$this->projectPath.'/'.$this->panoPath;
 	        //$this->mkdir($scene_path);
 	        $pic_path = $this->exportFolder.PicTools::get_pano_path($v['id']).'/';
@@ -60,21 +61,36 @@ class ProjectExportCommand extends CConsoleCommand {
 	        $xmlFile = $scene_path.$v['id'].'/s_f.xml';
 	        file_put_contents($xmlFile, $text);
 	        $i++;
-	       // if($i>=5){
+	        if($i>=5){
 	        	exit();
-	        //}
+	        }
+
         }
+        //echo $xml_content;
+        //file_put_contents('C:/mydatas/APMServ5.2.6/www/htdocs/home/home/download/1001/config.xml', $xml_content);
         file_put_contents($configPath, $xml_content);
         //echo count($sceneDatas);
     }
     private function newXmlFile($content, $id){
-    	$replace_text = '/'.PicTools::get_pano_path($v['id']).'/';
-    	$content = str_replace($replace_text, './', $content);
+    	$replace_text = PicTools::get_pano_path($id).'/';
+    	echo $replace_text."\r\n";
+    	$newPath = './'.$this->panoPath.$id.'/';
+    	$content = str_replace($replace_text, $newPath, $content);
     	return $content;
     }
     private function newXmlContent($content){
     	$replace_text = '/var/www/home/home/protected/plugins/salado/';
+    	//$replace_text = 'c:\mydatas\APMServ5.2.6\www\htdocs\home\home\protected/plugins/salado/';
     	$content = str_replace($replace_text, './', $content);
+    	
+    	$replace_text = '/var/www/home/home/style/img/';
+    	//$replace_text = 'c:\mydatas\APMServ5.2.6\www\htdocs\home\home\protected/style/img/';
+    	$content = str_replace($replace_text, './media/', $content);
+    	
+    	$replace_text = '/var/www/home/home/plugins/salado/media/';
+    	//$replace_text = 'c:\mydatas\APMServ5.2.6\www\htdocs\home\home\protected/plugins/salado/media/';
+    	$content = str_replace($replace_text, './media/', $content);
+    	
     	return $content;
     }
     private function configXml($id){
