@@ -49,7 +49,9 @@ class MusicController extends Controller{
     	$type = substr($file_path, (strlen($file_path)-3), 3);
     	//获取文件
     	$toPath = PicTools::get_pano_static_path($scene_id).'/music.'.$type;
-    	unlink($toPath);
+    	if(file_exists($toPath)){
+    		unlink($toPath);
+    	}
     	copy($file_path, $toPath);
     }
 }
