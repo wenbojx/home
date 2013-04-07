@@ -64,7 +64,7 @@ class MpSceneMusic extends Ydao
     		return false;
     	}
     	$criteria=new CDbCriteria;
-    	$criteria->order = 'id Desc';
+    	$criteria->order = 'id ASC';
     	if($order!=''){
     		$criteria->order = $order;
     	}
