@@ -460,7 +460,7 @@ class PanoSingleDatas{
 	    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['loop'] = $v['loop']?'true':'false';
 	
 	    	$id = 'setTrack_'.$v['scene_id'];
-	    	$content = "BackgroundMusic.setTrack(music_{$v['scene_id']})";
+	    	$content = "BackgroundMusic.setTrack(music_{$v['scene_id']});JSGateway.run(jsf_hotspot_loaded)";
 	    	$this->add_single_action($id, $content);
 	    	
 	    	//$this->music_datas[$v['scene_id']] = $v['scene_id'];
