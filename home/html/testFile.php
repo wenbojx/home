@@ -5,6 +5,8 @@
 <title>content</title>
 </head>
 <body>
+<iframe width="930" scrolling="no" height="400" frameborder="0" src="http://www.yiluhao.com/s/10001/w/932/h/400/title/1"></iframe>
+
 <form action="/project/uploadPano/" method="post" enctype="multipart/form-data">
 <label for="file">Filename:</label>
 <input type="file" name="Filedata" id="file" />

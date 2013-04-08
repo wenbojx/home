@@ -3,7 +3,7 @@ class PanosCommand extends CConsoleCommand {
     //public $defaultAction = 'index'; //默认动作
     //public $find_path = '/mnt/hgfs/pics/suzhou/zzy'; //搜索全景图的目录
     //public $find_path = "C:/mydatas/pic/demo";
-public $find_path = "C:/mydatas/pic/上海/陆家嘴公园0728";
+public $find_path = "C:/mydatas/pic/上海/世纪公园0729";
     public $panos_path = array();
     public $default_new_folder = 'panos';  //新的全景图目录
 	public $default_lightroom = 'ligthroom';

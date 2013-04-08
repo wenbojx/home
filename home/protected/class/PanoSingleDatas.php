@@ -460,10 +460,13 @@ class PanoSingleDatas{
 	    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['loop'] = $v['loop']?'true':'false';
 
 	    	//$this->music_datas[$v['scene_id']] = $v['scene_id'];
+	    	$this->panoram_datas[$v['scene_id']]['s_attribute']['onEnter'] = "BackgroundMusic.setTrack(music_{$v['scene_id']})";
+	    	/*
 	    	$key = $this->load_pano_pre.$v['scene_id'];
 	    	if(isset( $this->action_datas[$key] )){
 	    		$this->action_datas[$key]['s_attribute']['content'] .= ";BackgroundMusic.setTrack(music_{$v['scene_id']})";
 	    	}
+	    	*/
     	}
     	
     	$this->music_module_exit = true;
