@@ -67,6 +67,7 @@ class SaladoPanoramas extends SaladoPlayer{
     	if(!strstr($camera, 'fov')){
     		$camera .= ','.'fov:'.$default_fov;
     	}
+    	//$camera .= ','. 'maxPan:100,minPan:-100,maxTilt:30,minTilt:-30';
     	return $camera;
     }
     private function get_hotspot($hotspots){

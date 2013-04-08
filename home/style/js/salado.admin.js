@@ -18,6 +18,9 @@ function bind_pano_btn(){
     $('#btn_camera').bind('click',function(){
     	load_page(camera_url, 'camera');
     });
+    $('#btn_perspect').bind('click',function(){
+    	load_page(perspect_url, 'perspect');
+    });
     $('#btn_compass').bind('click',function(){
     	load_page(compass_url, 'compass');
     	compass_click();
@@ -572,6 +575,11 @@ function onViewChange(pan, tilt, fov, direction){
         $("#camera-info-fov").html(fov);
     }
     
+    if($("#perspect-info-pan")){
+        $("#perspect-info-pan").html(pan);
+        $("#perspect-info-tilt").html(tilt);
+    }
+    
     if($("#compass-info-pan")){
     	if(pan>0){
     		pan = 360-pan;
@@ -656,6 +664,43 @@ function save_camera_detail(scene_id){
     data.scene_id = scene_id;
 
     var url = save_module_datas_url+'/global/camera/';
+    save_datas(url, data, '', '', call_back);
+    function call_back(datas){
+        alert(datas.msg);
+    }
+}
+function save_perspect_detail(scene_id){
+    var msg = {};
+    msg.error = '操作失败';
+    msg.success = '操作成功';
+    var element_id = 'save_perspect_tip_flag';
+    if(!scene_id){
+        done_error(element_id, msg.error);
+    }
+    var data = {};
+    data.maxPan = parseInt ($("#maxPan").val());
+    data.minPan = parseInt ($("#minPan").val());
+    data.maxTilt = parseInt ($("#maxTilt").val());
+    data.minTilt = parseInt ($("#minTilt").val());
+    if(data.maxPan<0 || data.maxPan>180){
+    	alert("水平最大角度设置有误");
+    	return false;
+    }
+    if(data.minPan>0 || data.minPan<-180){
+    	alert("水平最小角度设置有误");
+    	return false;
+    }
+    if(data.maxTilt<0 || data.maxTilt>90){
+    	alert("垂直最大角度设置有误");
+    	return false;
+    }
+    if(data.minTilt>0 || data.minTilt<-90){
+    	alert("垂直最小角度设置有误");
+    	return false;
+    }
+    data.scene_id = scene_id;
+
+    var url = save_module_datas_url+'/global/perspect/';
     save_datas(url, data, '', '', call_back);
     function call_back(datas){
         alert(datas.msg);

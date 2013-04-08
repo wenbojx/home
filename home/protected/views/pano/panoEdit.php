@@ -41,6 +41,7 @@
                             <button class="btn" id="btn_position">位置</button>
                             <button class="btn" id="btn_compass">方位</button>
                             <button class="btn" id="btn_camera">摄像</button>
+                            <button class="btn" id="btn_perspect">视角</button>
                             <!-- <button class="btn">视角</button> -->
                             <button class="btn" id="btn_hotspot">热点</button>
                             <button class="btn" id="btn_image">图片</button>
@@ -50,7 +51,7 @@
                             
                         	<button class="btn btn-primary" id="btn_preview">预览</button>
                         	<!-- <button class="btn btn-primary" id="btn_pad">隐藏</button> -->
-                        	<br><br><br>
+                        	<br>
                         	<button id="online_pano" class="btn btn-warning" style="<?=$datas['pano']['display'] == '1'?'':'display:none' ?>" onclick="publish_scene(<?=$datas['pano']['id']?>,2)">发布</button>
                             <button id="offline_pano" class="btn btn-warning" style="<?=$datas['pano']['display'] == '2'?'':'display:none' ?>" onclick="publish_scene(<?=$datas['pano']['id']?>,1)">下线</button>
                         </div>
@@ -94,6 +95,7 @@ var position_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'position'
 var thumb_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'thumb', 'scene_id'=>$datas['pano']['id']))?>';
 var compass_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'compass', 'scene_id'=>$datas['pano']['id']))?>';
 var camera_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'camera', 'scene_id'=>$datas['pano']['id']))?>';
+var perspect_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'perspect', 'scene_id'=>$datas['pano']['id']))?>';
 var map_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'map', 'scene_id'=>$datas['pano']['id'],  'project_id'=>$datas['pano']['project_id']))?>';
 var hotspot_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'hotspot', 'scene_id'=>$datas['pano']['id']))?>';
 var image_url = '<?=$this->createUrl('/pano/config/v/', array('t'=>'image', 'scene_id'=>$datas['pano']['id']))?>';

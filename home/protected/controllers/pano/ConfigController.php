@@ -4,7 +4,7 @@ class ConfigController extends Controller{
     public $defaultType = array(
             'face', 'position', 'basic', 'camera', 'view', 'hotspot','hotspotEdit',
             'button', 'map', 'navigat', 'radar',
-            'html', 'rightkey', 'link', 'flare','action','thumb','image','imageEdit','compass','music'
+            'html', 'rightkey', 'link', 'flare','action','thumb','image','imageEdit','compass','music','perspect'
             );
     private $pano_thumb_size = '200x100';
 
@@ -58,6 +58,10 @@ class ConfigController extends Controller{
         }
         elseif ($type == 'camera'){
         	$datas['camera'] = $this->get_camera_info($scene_id);
+        	//print_r($datas['camera']);
+        }
+        elseif ($type == 'perspect'){
+        	$datas['perspect'] = $this->get_camera_info($scene_id);
         	//print_r($datas['camera']);
         }
         elseif ($type == 'compass'){
