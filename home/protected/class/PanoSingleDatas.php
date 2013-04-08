@@ -458,9 +458,13 @@ class PanoSingleDatas{
 	    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['path'] = PicTools::get_pano_music($v['scene_id'], $file_datas['type']);
 	    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['volume'] = $v['volume']/10;
 	    	$this->modules_datas[$type]['tracks'][$id]['s_attribute']['loop'] = $v['loop']?'true':'false';
-
+	
+	    	$id = 'setTrack_'.$v['scene_id'];
+	    	$content = "BackgroundMusic.setTrack(music_{$v['scene_id']})";
+	    	$this->add_single_action($id, $content);
+	    	
 	    	//$this->music_datas[$v['scene_id']] = $v['scene_id'];
-	    	$this->panoram_datas[$v['scene_id']]['s_attribute']['onEnter'] = "BackgroundMusic.setTrack(music_{$v['scene_id']})";
+	    	$this->panoram_datas[$v['scene_id']]['s_attribute']['onEnter'] = $id;
 	    	/*
 	    	$key = $this->load_pano_pre.$v['scene_id'];
 	    	if(isset( $this->action_datas[$key] )){
