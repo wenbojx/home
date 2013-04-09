@@ -10,7 +10,7 @@
 		</div>
     </div>
     <div class="row-fluid">
-        <div class="span12">
+        <div class="span12" style="width:900px;">
             <div class="thumbnail">
                 <div class="pano-detail" id="pano-detail">
                 	<div id="scene_box"></div>

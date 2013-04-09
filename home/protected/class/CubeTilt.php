@@ -194,6 +194,7 @@ class CubeTilt{
 	 * @return boolean
 	 */
 	public function water_pic(){
+		return true;//关水印
 		$rand = rand(0, 8);
 		//$time = substr(time(), $rand, 2);
 		$flag = (rand(4, 6)%3);
