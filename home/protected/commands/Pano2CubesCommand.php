@@ -2,7 +2,7 @@
 ini_set('memory_limit', '100M');
 class Pano2CubesCommand extends CConsoleCommand {
 
-	public $width = '3724';  //cube
+	public $width = '2048';  //cube
 	public $swidth = '11700'; //sphere
 	public $sheight = '5850'; //sphere
 

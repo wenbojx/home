@@ -244,8 +244,8 @@ public $find_path = "C:/mydatas/pic/上海/世纪公园0729";
         $this->myScanCubeDir($path);
 		foreach($this->panos_path as $k=>$v){
 
-			if($k!="0"){
-				//continue;
+			if($k!="14"){
+				continue;
 			}
 //echo $k.'--'.$v."\r\n";
         	$this->sphere($v);

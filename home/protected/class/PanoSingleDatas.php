@@ -336,7 +336,7 @@ class PanoSingleDatas{
         $path['mousecursor'] = Yii::app()->baseUrl.'/plugins/salado/media/cursors_21x21.png';
         $path['image_map_close'] = Yii::app()->baseUrl.'/plugins/salado/media/imgemap_close.png';
         $path['image_map_viewer'] = Yii::app()->baseUrl.'/plugins/salado/media/navigation_black_20x20.png';
-        $path['image_map_waypoints'] = Yii::app()->baseUrl.'/plugins/salado/media/waypoints_bubble_45x45.png';
+        $path['image_map_waypoints'] = Yii::app()->baseUrl.'/plugins/salado/media/waypoints_bubble_17x17.png';
         if(!isset($path[$name])){
             return '';
         }
@@ -346,7 +346,7 @@ class PanoSingleDatas{
      * 热点素材地址
      */
     public function module_hotspot_path($num=10){
-    	$path = Yii::app()->baseUrl.'/style/img/hotspot/hotspot-'.$num.'.png';
+    	$path = Yii::app()->baseUrl.'/plugins/salado/media/hotspot/hotspot-'.$num.'.png';
     	return $path;
     }
     /**
@@ -512,7 +512,7 @@ class PanoSingleDatas{
     	$this->modules_datas[$type]['map']['s_attribute']['path'] = PicTools::get_pano_map($this->project_id, $datas['map']['id']);
     	$this->modules_datas[$type]['map']['s_attribute']['onSet'] = 'onSetMap1';
     	$this->modules_datas[$type]['map']['waypoints']['s_attribute']['path'] = $this->module_media_path('image_map_waypoints');
-    	$this->modules_datas[$type]['map']['waypoints']['s_attribute']['move'] = 'horizontal:6,vertical:-22';
+    	$this->modules_datas[$type]['map']['waypoints']['s_attribute']['move'] = 'horizontal:0,vertical:-10';
     	$this->modules_datas[$type]['map']['waypoints']['s_attribute']['radar'] = 'showTilt:false,radius:40,color:#FFFFFF,borderSize:1,borderColor,#666666';
     	//$this->modules_datas[$type]['map']['waypoints']['s_attribute']['radar'] = 'radius:50';
     	
@@ -520,7 +520,7 @@ class PanoSingleDatas{
     	foreach($datas['position'] as $k=>$v){
     		//$target_id = $datas['link_scenes'][$v['']]
     		$this->modules_datas[$type]['map']['waypoints']['waypoint'][$k]['s_attribute']['target'] = $this->panoram_pre.$v['scene_id'];
-    		$this->modules_datas[$type]['map']['waypoints']['waypoint'][$k]['s_attribute']['position'] = "x:{$v['left']},y:".($v['top']+20);
+    		$this->modules_datas[$type]['map']['waypoints']['waypoint'][$k]['s_attribute']['position'] = "x:".($v['left']+10).",y:".($v['top']+45);
     		$this->modules_datas[$type]['map']['waypoints']['waypoint'][$k]['s_attribute']['mouse'] = 'onOver:'.$this->show_bubble_pre.$this->info_bubble_pre.$v['scene_id'].',onOut:'.$this->hide_bubble_pre;
     		//$this->modules_datas[$type]['map']['waypoints']['subPoint'][$k]['s_attribute']['mouse'] = 'onOver:showBubbleKiev,onOut:hideBubble';
     	}

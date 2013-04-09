@@ -10,7 +10,7 @@
 		</div>
     </div>
     <div class="row-fluid">
-        <div class="span11">
+        <div class="span12">
             <div class="thumbnail">
                 <div class="pano-detail" id="pano-detail">
                 	<div id="scene_box"></div>
@@ -20,26 +20,7 @@
                     <div id="hotspot_loading" class="hotspot_loading">
                     	<img id="hotspot_loading_img" src="<?=Yii::app()->baseUrl . '/style/img/loading_5.gif'?>"/>
                     </div>
-                	<div id="scroll_pano_opacity" class="scroll_pano_container scroll_pano_opacity"></div>
-                	<div class="scroll_close" id="scroll_close">
-                		<i class="icon-backward"></i>
-                	</div>
-                	<div class="scroll_open" id="scroll_open">
-                		<i class="icon-chevron-right"></i>
-                	</div>
-                	<div class="marker_map_close" id="marker_map_close" style="display:<?=$datas['map_flag']?'block':'none'?>"><a onclick="bind_marker_map()" class="close">&times;</a></div>
-                	<div id="scroll_map" class="scroll_map" style="display:<?=$datas['map_flag']?'block':'none'?>">
-                		<div class="marker_map" id="marker_map">
-                			<?php if($flag){?>
-			        		<img src="<?=PicTools::get_pano_map($datas['project']['id'], $datas['map']['map']['id'])?>" class="imgMap"/>
-			        		<?php }?>
-			        		<?php if($datas['map']['position']){foreach($datas['map']['position'] as $v){?>
-			        		<div title="<?=$datas['map']['link_scenes'][$v['scene_id']]['name']?>" class="marker" id="markers_<?=$v['scene_id']?>_<?=$v['id']?>" data-coords="<?=$v['left']?>,<?=$v['top']?>">
-								<h3><?=$datas['map']['link_scenes'][$v['scene_id']]['name']?></h3>
-							</div>
-			        		<?php }}?>
-                		</div>
-                	</div>
+
                 	<div id="scroll_pano_detail" class="scroll_pano_detail">
 	                	<div class="scroll_pano_container scroll_pano">
 	                		<div class="pano_prev">
@@ -76,22 +57,7 @@
                 </div>
             </div>
         </div>
-        <div class="span1">
-            <div class="thumbnail">
-                <button class="btn btn-success" onclick="jump_to('<?=$this->createUrl('/web/view/a/', array('id'=>$datas['scene']['project_id']))?>')">返回</button>
-                <?php if($flag){?>
-                <button class="btn" id="menu_map">地图</button>
-                <?php }?>
-                <button class="btn" id="menu_scroller">相关</button>
-                
-                <!-- <button class="btn">足迹</button>
-                <button class="btn">游记</button> -->
-                <!-- <button class="btn">攻略</button> -->
-                <!-- <button class="btn">评论</button> -->
-                
-            </div>
-            
-        </div>
+
     </div>
     <div class="row-fluid margin-top10">
         <div class="span10">

@@ -5,7 +5,7 @@
 class CubeTilt{
 	public $myimage = null;
 	public $scene_id = 0;
-	private $maxSiz = 1800;
+	private $maxSiz = 2048;
 	private $level = 2;
 	private $startFolder = 9;
 	public $folderPath = '';
@@ -23,17 +23,17 @@ class CubeTilt{
 	 */
 	private function BestSize (){
 		$width = $this->myimage->getImageWidth();
-		if($width >4096){
+		if($width >=4096){
 			$this->maxSiz = 4096;
 		}
-		else if($width >3600){
+		else if($width >=3600){
 			$this->maxSiz = 3600;
 		}
-		else if($width>2048){
+		else if($width>=2048){
 			$this->maxSiz = 2048;
 			$this->level = 2;
 		}
-		else if($width >1800){
+		else if($width >=1800){
 			$this->maxSiz = 1800;
 			$this->level = 2;
 		}
