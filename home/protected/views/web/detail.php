@@ -10,9 +10,9 @@
 		</div>
     </div>
     <div class="row-fluid">
-        <div class="span12" style="width:900px;">
+        <div class="span12" style="width:900px; margin:0 20px">
             <div class="thumbnail">
-                <div class="pano-detail" id="pano-detail">
+                <div class="pano-detail" id="pano-detail" style="height:520px;">
                 	<div id="scene_box"></div>
                 	<div id="pano_loading" class="pano_loading">
                     	<img id="pano_loading_img" src="<?=Yii::app()->baseUrl . '/style/img/loading_4.gif'?>"/>
@@ -20,40 +20,6 @@
                     <div id="hotspot_loading" class="hotspot_loading">
                     	<img id="hotspot_loading_img" src="<?=Yii::app()->baseUrl . '/style/img/loading_5.gif'?>"/>
                     </div>
-
-                	<div id="scroll_pano_detail" class="scroll_pano_detail">
-	                	<div class="scroll_pano_container scroll_pano">
-	                		<div class="pano_prev">
-	                			<i class="icon-chevron-up vertical"></i>
-	                		</div>
-	                		<div class="jCarouselLite">
-						        <ul>
-						        <?php 
-						        	if(is_array($datas['extend']['hotspot'])){
-										foreach($datas['extend']['hotspot'] as $v1){
-								?>
-									<li>
-									<a href="javascript:;" onclick="salado_handle_click('load_pano_<?=$v1['link_scene_id']?>')">
-									<img src="<?=PicTools::get_pano_small($v1['id'], '200x100')?>">
-									</a>
-									</li>
-								<?php }}
-									if(is_array($datas['extend']['extend'])){
-										foreach($datas['extend']['extend'] as $v2){
-								?>
-						            <li>
-										<a href="/web/detail/a/id/<?=$v2['id']?>">
-											<img src="<?=PicTools::get_pano_small($v2['id'], '200x100')?>">
-										</a>
-						        	</li>
-						        <?php }}?>
-						        </ul>
-						    </div>
-						    <div class="pano_next">
-						    <i class="icon-chevron-down vertical"></i>
-						    </div>
-	                	</div>
-                	</div>
                 </div>
             </div>
         </div>

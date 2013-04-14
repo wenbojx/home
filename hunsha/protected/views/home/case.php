@@ -23,8 +23,8 @@ body{
 						
 					?>
 						<div class="gallery-item">
-							<a href="/<?=$v['url'].'/w'.Yii::app()->params['img_width'].'.'.$v['ftype']?>">
-								<img src="/<?=$v['url'].'/w'.Yii::app()->params['img_thumb_width'].'.'.$v['ftype']?>" alt="<?=$v['desc']?>" />
+							<a style="background:url('/<?=$v['url'].'/w'.Yii::app()->params['img_thumb_width'].'.'.$v['ftype']?>') no-repeat scroll center top transparent;" href="/<?=$v['url'].'/w'.Yii::app()->params['img_width'].'.'.$v['ftype']?>">
+								
 							</a>
 						</div>
 						<?php

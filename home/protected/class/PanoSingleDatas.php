@@ -94,7 +94,7 @@ class PanoSingleDatas{
         if(!isset($this->global_datas['s_attribute']['debug'])){
             $this->global_datas['s_attribute']['debug'] = 'false';
         }
-        //$this->global_datas['s_attribute']['debug'] = 'true';
+        $this->global_datas['s_attribute']['debug'] = 'true';
         // $this->global_datas['control']['s_attribute']['autorotation'] = 'enabled:false';
         $this->global_datas['control']['s_attribute']['autorotation'] = 'enabled:true,delay:5';
         if($this->display_config['auto']){
@@ -312,13 +312,14 @@ class PanoSingleDatas{
      */
     public function module_path($name){
         $path['LinkOpener'] = Yii::app()->baseUrl.'/plugins/salado/modules/LinkOpener.swf';
-        $path['Hotspot'] = Yii::app()->baseUrl.'/plugins/salado/modules/AdvancedHotspot.swf';
+        $path['Hotspot'] = Yii::app()->baseUrl.'/plugins/salado/modules/AdvancedHotspot-1.0.swf';
+        //$path['Hotspot'] = Yii::app()->baseUrl.'/plugins/salado/modules/RED_ARROW.swf';
         $path['ButtonBar'] = Yii::app()->baseUrl.'/plugins/salado/modules/ButtonBar.swf';
         $path['MenuScroller'] = Yii::app()->baseUrl.'/plugins/salado/modules/MenuScroller.swf';
         $path['ImageButton'] = Yii::app()->baseUrl.'/plugins/salado/modules/ImageButton.swf';
         $path['JSGateway'] = Yii::app()->baseUrl.'/plugins/salado/modules/JSGateway.swf';
         $path['MouseCursor'] = Yii::app()->baseUrl.'/plugins/salado/modules/MouseCursor.swf';
-        $path['ImageMap'] = Yii::app()->baseUrl.'/plugins/salado/modules/ImageMap-1.3.swf';
+        $path['ImageMap'] = Yii::app()->baseUrl.'/plugins/salado/modules/ImageMap.1.4.2.swf';
         $path['InfoBubble'] = Yii::app()->baseUrl.'/plugins/salado/modules/InfoBubble-1.3.2.swf';
         $path['BackgroundMusic'] = Yii::app()->baseUrl.'/plugins/salado/modules/BackgroundMusic-1.1.swf';
         if(!isset($path[$name])){
@@ -347,6 +348,7 @@ class PanoSingleDatas{
      */
     public function module_hotspot_path($num=10){
     	$path = Yii::app()->baseUrl.'/plugins/salado/media/hotspot/hotspot-'.$num.'.png';
+    	//$path = Yii::app()->baseUrl.'/plugins/salado/media/H6_1.swf';
     	return $path;
     }
     /**
@@ -496,7 +498,7 @@ class PanoSingleDatas{
     	$this->modules_datas[$type]['window']['s_attribute']['openTween'] = 'transition:Back.easeOut';
     	$this->modules_datas[$type]['window']['s_attribute']['onOpen'] = 'mapOpened';
     	$this->modules_datas[$type]['window']['s_attribute']['onClose'] = 'mapClosed';
-    	$this->modules_datas[$type]['window']['s_attribute']['alpha'] = '0.8';
+    	$this->modules_datas[$type]['window']['s_attribute']['alpha'] = '0.9';
 		//$this->modules_datas[$type]['window']['s_attribute']['minSize'] = 'width:300,height:200';
 		//$this->modules_datas[$type]['window']['s_attribute']['maxSize'] = 'width:500,height:300';
 		

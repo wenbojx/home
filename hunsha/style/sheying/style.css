@@ -378,35 +378,35 @@ div.ps-toolbar-play div.ps-toolbar-content
 #SocialLinks:after { clear: both; content: "."; display: block; height: 0; visibility: hidden; }
 #SocialLinks a { display: block; float: left; padding-right: 15px; }
 
+
 div.gallery-row:after { clear: both; content: "."; display: block; height: 0; visibility: hidden; }
+div.gallery-row{
+	margin: 5px 0 0 0;
+}
 div.gallery-item {
 	background: none repeat scroll 0 0 transparent;
     border: medium none;
     float: left;
     height: 95px;
     line-height: 95px;
-    margin: 0;
+    margin: 0 0 5px 5px;
     overflow: visible;
     padding: 0;
     position: relative;
     width: 95px;
 	
 }
-div.gallery-item a {  display: table-cell;
-    height: 95px;
-    margin: 0;
+div.gallery-item a {  
+	display: table-cell;
+    height: 90px;
     overflow: visible;
     padding: 0;
     text-align: center;
     vertical-align: middle;
-    width: 95px;
+    width: 90px;
+    margin:0;
 }
-div.gallery-item img { 
-	width:90px;
-	height:90px;
-	border: medium none;
-    vertical-align: middle;
-}
+
 
 
 
