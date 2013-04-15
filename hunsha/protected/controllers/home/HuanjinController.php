@@ -2,7 +2,7 @@
 class HuanjinController extends FController{
 
     public $defaultAction = 'a';
-    public $layout = 'mobile';
+    public $layout = 'hunli';
 
     public function actionA(){
     	$request = Yii::app()->request;
@@ -10,7 +10,7 @@ class HuanjinController extends FController{
     	
     	$datas['basic'] = $this->getProjectBasic($datas['id']);
         $datas['page']['title'] = $datas['basic']['tab1'];
-        $this->render('/home/huanjin', array('datas'=>$datas));
+        $this->render('/hunli/huanjin', array('datas'=>$datas));
     }
     public function getProjectBasic($id){
     	if(!$id){

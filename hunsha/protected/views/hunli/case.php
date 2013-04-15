@@ -6,6 +6,9 @@
 			<span>照片故事</span>
 		</div>
 		<div class="page_content">
+				<div class="gallery-item">
+					<a style="background:url('/style/img/1.jpg') no-repeat scroll center top transparent;" href="/tab1/1"></a>
+				</div>
 				<div id="Gallery">
 					<div class="gallery-row">
 					<?php 
