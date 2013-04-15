@@ -2,7 +2,7 @@
 class CaseController extends FController{
 
     public $defaultAction = 'a';
-    public $layout = 'mobile';
+    public $layout = 'hunli';
 
 	public function actionA(){
     	$request = Yii::app()->request;
@@ -11,7 +11,7 @@ class CaseController extends FController{
     	
         $datas['basic'] = $this->getProjectBasic($datas['id']);
         $datas['page']['title'] = $datas['basic']['tab3'];
-        $this->render('/home/case', array('datas'=>$datas));
+        $this->render('/hunli/case', array('datas'=>$datas));
     }
 	public function getPics($project_id){
     	$file_db = new File();

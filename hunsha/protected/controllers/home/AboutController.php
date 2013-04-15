@@ -1,8 +1,7 @@
 <?php
 class AboutController extends FController{
-
     public $defaultAction = 'a';
-    public $layout = 'mobile';
+    public $layout = 'hunli';
 
     public function actionA(){
     	$request = Yii::app()->request;
@@ -10,7 +9,7 @@ class AboutController extends FController{
     	$datas['info'] = $this->getProjectInfo($datas['id']);
         $datas['basic'] = $this->getProjectBasic($datas['id']);
         $datas['page']['title'] = $datas['basic']['tab2'];
-        $this->render('/home/about', array('datas'=>$datas));
+        $this->render('/hunli/about', array('datas'=>$datas));
     }
     public function getProjectInfo($project_id){
     	$info_db = new Info();

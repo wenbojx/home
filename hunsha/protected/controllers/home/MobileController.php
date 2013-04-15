@@ -2,7 +2,7 @@
 class MobileController extends FController{
 
     public $defaultAction = 'a';
-    public $layout = 'mobile';
+    public $layout = 'hunli';
     public $resize = true;
 
     public function actionA(){
@@ -10,7 +10,7 @@ class MobileController extends FController{
     	$datas['id'] = $request->getParam('id');
     	$datas['basic'] = $this->getProjectBasic($datas['id']);
         $datas['page']['title'] = $datas['basic']['name'];
-        $this->render('/home/mobile', array('datas'=>$datas));
+        $this->render('/hunli/mobile', array('datas'=>$datas));
     }
 	public function getProjectBasic($id){
     	if(!$id){

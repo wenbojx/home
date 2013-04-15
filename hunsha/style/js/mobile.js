@@ -143,16 +143,19 @@ function saveMsg(){
 		alert("请输入"+tab1);
 		return false;
 	}
-	datas.tab2 = $("#tab2").val();
+	datas.tab2 = "1";
+	/*
 	if(!datas.tab2){
 		alert("请输入"+tab2);
 		return false;
 	}
+	*/
 	datas.tab3 = $("#tab3").val();
 	if(!datas.tab3){
 		alert("请输入"+tab3);
 		return false;
 	}
+	
 
 	var url = $("#submit_msg").attr('action');
 

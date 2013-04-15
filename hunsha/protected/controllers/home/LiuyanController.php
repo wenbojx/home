@@ -2,7 +2,7 @@
 class LiuyanController extends FController{
 
     public $defaultAction = 'a';
-    public $layout = 'mobile';
+    public $layout = 'hunli';
     public $limit = 10;
 
 	public function actionA(){
@@ -18,7 +18,7 @@ class LiuyanController extends FController{
     	//print_r($datas['msgTab']);
         $datas['basic'] = $this->getProjectBasic($datas['id']);
         $datas['page']['title'] = $datas['basic']['tab6'];
-        $this->render('/home/liuyan', array('datas'=>$datas));
+        $this->render('/hunli/liuyan', array('datas'=>$datas));
     }
     public function actionSave(){
     	$request = Yii::app()->request;
