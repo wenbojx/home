@@ -127,6 +127,36 @@ class Project extends Ydao
     		$criteria->addCondition("display={$display}");
     	}
     	$criteria->addCondition('status=1');
+    	print_r($criteria);
+    	$project_datas = $this->findAll($criteria);
+    	return $project_datas;
+    }
+    /**
+     * 获取项目列表
+     */
+    public function get_project_list_mid($limit=5, $order='', $offset=0, $display='',$m_id=0, $category=0){
+    	 
+    	$criteria=new CDbCriteria;
+    	$criteria->order = 'id ASC';
+    	if($order){
+    		$criteria->order = $order;
+    	}
+    	if($limit){
+    		$criteria->limit = $limit;
+    	}
+    	if($offset){
+    		$criteria->offset = $offset;
+    	}
+    	if($m_id){
+    		$criteria->addCondition("member_id={$m_id}");
+    	}
+    	if($category){
+    		$criteria->addCondition("category_id={$category}");
+    	}
+    	if($display){
+    		$criteria->addCondition("display={$display}");
+    	}
+    	$criteria->addCondition('status=1');
     	$project_datas = $this->findAll($criteria);
     	return $project_datas;
     }

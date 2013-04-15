@@ -2,6 +2,31 @@
 
 class MController extends FController{
 
+	public function actionPU(){
+		$request = Yii::app()->request;
+		$datas = array();
+		$user_name = $request->getParam('u');
+		$msg['state'] = '0';
+		if(!$user_name){
+			$this->display_msg($msg);
+		}
+		//获取用户id
+		$userDatas = $this->getUserId($user_name);
+		$m_id = $userDatas['id'];
+		if(!$m_id){
+			$this->display_msg($msg);
+		}
+		$msg['project'] = $this->get_project_list($project_id, $m_id);
+		$this->display_msg($msg);
+	}
+	private function getUserId($userName){
+		if(!$userName){
+			return false;
+		}
+		$memberDB = new Member();
+		return $memberDB->find_by_email($userName);
+
+	}
 	/**
 	 * 项目列表
 	 */
@@ -16,6 +41,7 @@ class MController extends FController{
     	$msg['project'] = $this->get_project_list($project_id);
     	$this->display_msg($msg);
     }
+    
     /**
      * 场景列表
      */
@@ -50,8 +76,23 @@ class MController extends FController{
     	}
     	$msg['pano'] = $this->get_scene_data($scene_id);
     	$msg['hotspots'] = $this->get_scene_hotspots($scene_id);
+    	$msg['music'] = $this->sceneMusic($scene_id);
     	//print_r($msg);
     	$this->display_msg($msg);
+    }
+    private function sceneMusic($scene_id){
+    	
+    	$music_db = new MpSceneMusic();
+    	$music_datas = $music_db->get_by_scene_id($scene_id, 1);
+    	//print_r($music_datas);
+    	$file_id = $music_datas['file_id'];
+    	if(!$file_id){
+    		return '';
+    	}
+    	$file_path_db = new FilePath();
+    	$file_datas = $file_path_db->get_by_file_id($file_id);
+    	//print_r($file_datas);
+    	return PicTools::get_pano_music($scene_id, $file_datas['type']);
     }
     /**
      * 地图json
@@ -217,10 +258,16 @@ class MController extends FController{
     /**
      * 获取全景图状态
      */
-    private function get_project_list($project_id){
+    private function get_project_list($project_id, $m_id=0){
     	$projectDB = new Project();
     	$order = 'id desc';
-    	$project_list = $projectDB->get_project_list(10, $order, 0, 3);
+    	if(!$m_id){
+    		$project_list = $projectDB->get_project_list(10, $order, 0, 3);
+    	}
+    	else{
+    		$project_list = $projectDB->get_project_list_mid(0, $order, 0, 3, $m_id, 0);
+    	}
+    	//print_r($project_list);
     	if(!$project_list){
     		return false;
     	}
@@ -237,6 +284,7 @@ class MController extends FController{
     		$datas[$i]['thumb'] = PicTools::get_pano_thumb($thumb_scene_id , '150x110');
     		$i++;
     	}
+    	//print_r($datas);
     	return $datas;
     }
     private function get_scene_num($project_id){
