@@ -16,22 +16,22 @@ h3{
 
 .main_title{
 	position:relative;
-	font-size:28px;
-	height:88px;
+	font-size:20px;
+	height:44px;
 	text-align:center;
-	line-height:88px;
+	line-height:44px;
 	font-weight:bold;
 	background:url("./title_bg.png") repeat scroll 0 0 transparent;
 }
 .main_title a{
 	display:block;
 	position:absolute;
-	top:13px;
-	left:10px;
+	top:6px;
+	left:6px;
 }
 .main_content{
 	background-color:#f1e8be;
-	height:723px;
+	height:365px;
 	background:url("./index_bg.jpg") no-repeat scroll center left transparent;
 }
 .footer{
@@ -43,18 +43,18 @@ h3{
 	-moz-border-radius:8px;
 	-webkit-border-radius:8px;
 	border-radius:8px;
-	height:80px;
+	height:41px;
 	background-color:#c5b156;
-	line-height:100px;
+	line-height:50px;
 }
 .page_content{
 	background-color:#f1e8be;
-	height:620px;
-	background:url("./bg1.jpg") no-repeat scroll center left transparent;
+	height:415px;
+	background:url("./bg1.jpg") no-repeat scroll center center transparent;
 }
 .info_box{
 	position:relative;
-	margin: 28px 28px;
+	margin: 15px 15px;
 }
 .info_box .yuanjiao{
 	background-color:#7b6d26;
@@ -62,48 +62,48 @@ h3{
       -moz-opacity:0.5;  
       -khtml-opacity: 0.5;  
       opacity: 0.5;  
-    height:257px;
-    -moz-border-radius:15px;
-	-webkit-border-radius:15px;
-	border-radius:15px;
+    height:130px;
+    -moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
 }
 
 .yuanjiao2{
-	margin:30px 0 0 0;
+	margin:20px 0 0 0;
 }
 .info_box h3{
-	font-size:30px;
+	font-size:20px;
 	font-weight:bold;
 }
 .info_box .text{
-	font-size:20px;
-	font-weight:bold;
-	line-height:35px;
+	font-size:14px;
+	
+	line-height:22px;
 }
 .nan_info{
 	position:absolute;
-	height:257px;
-	top:30px;
+	height:130px;
+	top:20px;
 	left:0;
 	text-align:center;
 	width:100%;
 }
 .nv_info{
 	position:absolute;
-	height:257px;
-	top:320px;
+	height:130px;
+	top:180px;
 	left:0;
 	text-align:center;
 	width:100%;
 }
 .live_msg{
-	margin: 20px 20px;
+	margin: 15px 15px;
 }
 .live_msg{
-	line-height:35px;
+	line-height:25px;
 }
 .live_msg lable{
-	font-size:25px;
+	font-size:18px;
 	font-weight:bold;
 	color:#393939;
 }
@@ -112,21 +112,21 @@ h3{
 	-moz-border-radius:8px;
 	-webkit-border-radius:8px;
 	border-radius:8px;
-	width:90%;
-	padding:10px;
+	width:95%;
+	padding:7px;
 }
 .live_msg .name{
 	border:none;
-	font-size:20px;
+	font-size:18px;
 	width:95%;
 }
 .live_msg textarea{
 	border:none;
-	font-size:20px;
-	width:95%;
+	font-size:18px;
+	width:93%;
 }
 .live_msg .submit{
-	margin:30px 0 0 0;
+	margin:20px 0 0 0;
 	
 }
 .msg_list dl{
@@ -335,22 +335,22 @@ div.gallery-item {
 	background: none repeat scroll 0 0 transparent;
     border: medium none;
     float: left;
-    height: 120px;
-    line-height: 120px;
+    height: 90px;
+    line-height: 90px;
     margin: 0 0 10px 10px;
     overflow: visible;
     padding: 0;
     position: relative;
-    width: 120px;
+    width: 90px;
 	
 }
 div.gallery-item a {  
 	display: table-cell;
-    height: 120px;
+    height: 90px;
     overflow: visible;
     padding: 0;
     text-align: center;
     vertical-align: middle;
-    width: 120px;
+    width: 90px;
     margin:0;
 }
