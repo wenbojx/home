@@ -219,7 +219,7 @@ function msgHtml(datas){
 	else{
 		time = datas.time;
 	}
-	html += datas.tab1 + " | "+datas.tab2 + " | "+time;
+	html += datas.tab1 + " | "+time;
 	html += "</dt>";
 	html += '</dl>';
 	return html;
