@@ -269,6 +269,8 @@ class MController extends FController{
     		$sceneDatas[$i]['info'] = $v['desc'];
     		$sceneDatas[$i]['created'] = date(' Y-m-d H : i ', $v['created']);
     		$sceneDatas[$i]['thumb'] = PicTools::get_pano_small($v['id'] , '200x100');
+    		$sceneDatas[$i]['thumb-w'] = 150;
+    		$sceneDatas[$i]['thumb-h'] = 110;
     		$sceneDatas[$i]['state'] = 1;
     		$i++;
     	}
