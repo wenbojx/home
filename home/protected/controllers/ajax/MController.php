@@ -12,7 +12,7 @@ class MController extends FController{
 		}
 		
 		$project = $this->get_project_list($project_id, $mid);
-		if(!$msg['project']){
+		if(!$project){
 			$this->display_msg($msg);
 		}
 		$msg['project'] = $project;
