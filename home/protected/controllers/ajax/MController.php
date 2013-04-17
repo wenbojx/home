@@ -5,18 +5,13 @@ class MController extends FController{
 	public function actionPU(){
 		$request = Yii::app()->request;
 		$datas = array();
-		$user_name = $request->getParam('u');
+		$mid = $request->getParam('id');
 		$msg['state'] = '0';
-		if(!$user_name){
+		if(!$mid){
 			$this->display_msg($msg);
 		}
-		//获取用户id
-		$userDatas = $this->getUserId($user_name);
-		$m_id = $userDatas['id'];
-		if(!$m_id){
-			$this->display_msg($msg);
-		}
-		$msg['project'] = $this->get_project_list($project_id, $m_id);
+		$msg['state'] = '1';
+		$msg['project'] = $this->get_project_list($project_id, $mid);
 		$this->display_msg($msg);
 	}
 	private function getUserId($userName){
@@ -26,6 +21,22 @@ class MController extends FController{
 		$memberDB = new Member();
 		return $memberDB->find_by_email($userName);
 
+	}
+	public function actionUser(){
+		$request = Yii::app()->request;
+		$datas = array();
+		$user_name = $request->getParam('u');
+		$msg['state'] = '0';
+		if(!$user_name){
+			$this->display_msg($msg);
+		}
+		//获取用户id
+		$userDatas = $this->getUserId($user_name);
+		$msg['state'] = '1';
+		$msg['m_id'] = $userDatas['id'];
+		$msg['userName'] = $userDatas['email'];
+		$msg['nickname'] = $userDatas['nickname'];
+		$this->display_msg($msg);
 	}
 	/**
 	 * 项目列表
