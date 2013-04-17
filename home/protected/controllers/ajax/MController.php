@@ -10,8 +10,13 @@ class MController extends FController{
 		if(!$mid){
 			$this->display_msg($msg);
 		}
+		
+		$project = $this->get_project_list($project_id, $mid);
+		if(!$msg['project']){
+			$this->display_msg($msg);
+		}
+		$msg['project'] = $project;
 		$msg['state'] = '1';
-		$msg['project'] = $this->get_project_list($project_id, $mid);
 		$this->display_msg($msg);
 	}
 	private function getUserId($userName){
@@ -32,6 +37,9 @@ class MController extends FController{
 		}
 		//获取用户id
 		$userDatas = $this->getUserId($user_name);
+		if(!$userDatas){
+			$this->display_msg($msg);
+		}
 		$msg['state'] = '1';
 		$msg['m_id'] = $userDatas['id'];
 		$msg['userName'] = $userDatas['email'];
