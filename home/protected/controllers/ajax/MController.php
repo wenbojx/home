@@ -304,6 +304,8 @@ class MController extends FController{
     		$sceneDatas[$i]['thumb-w'] = 150;
     		$sceneDatas[$i]['thumb-h'] = 110;
     		$sceneDatas[$i]['state'] = 1;
+    		$size = $v['id']%2?1:2;
+    		$sceneDatas[$i]['size'] = $size;
     		$i++;
     	}
     	return $sceneDatas;
