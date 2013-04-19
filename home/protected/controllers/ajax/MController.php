@@ -95,9 +95,41 @@ class MController extends FController{
     	}
     	$msg['pano'] = $this->get_scene_data($scene_id);
     	$msg['hotspots'] = $this->get_scene_hotspots($scene_id);
+    	$msg['camera'] = $this->getCameraInfo($scene_id);
     	$msg['music'] = $this->sceneMusic($scene_id);
     	//print_r($msg);
     	$this->display_msg($msg);
+    }
+    private function getCameraInfo($scene_id){
+    	$panoramDB = new ScenesPanoram();
+    	$panoramDatas = $panoramDB->find_by_scene_id($scene_id);
+    	$camera = array('vlookat'=>0);
+    	$camera = array('hlookat'=>0);
+    	$camera = array('atvmin'=>-90);
+    	$camera = array('atvmax'=>90);
+    	$camera = array('athmin'=>-180);
+    	$camera = array('athmax'=>180);
+    	$datas = array();
+    	if($panoramDatas && $panoramDatas['content']){
+    		$data = json_decode($panoramDatas['content'], true);
+    		//print_r($data);
+    		if($data['s_attribute']['camera']){
+    			$explode_1 = explode(',', $data['s_attribute']['camera']);
+    			if($explode_1){
+	    			foreach ($explode_1 as $v){
+	    				$explode_2 = explode(':', $v);
+	    				$datas[$explode_2[0]] = $explode_2[1];
+	    			}
+    			}
+    			$camera['vlookat'] = $datas['tilt'] && $datas['tilt']!='NaN'?$datas['tilt']:0;
+    			$camera['hlookat'] = $datas['pan'] && $datas['pan']!='NaN' ?$datas['pan']:0;
+    			$camera['atvmin'] = $datas['minTilt']&& $datas['minTilt']!='NaN' ?$datas['minTilt']:-90;
+    			$camera['atvmax'] = $datas['maxTilt']&& $datas['maxTilt']!='NaN' ?$datas['maxTilt']:90;
+    			$camera['athmin'] = $datas['minPan']&& $datas['minPan']!='NaN' ?$datas['minPan']:-180;
+    			$camera['athmax'] = $datas['maxPan']&& $datas['maxPan']!='NaN' ?$datas['maxPan']:180;
+    		}
+    	}
+    	return $camera;
     }
     private function sceneMusic($scene_id){
     	
