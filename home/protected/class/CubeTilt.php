@@ -95,7 +95,7 @@ class CubeTilt{
 		$imgObj->setImageCompression(imagick::COMPRESSION_JPEG);
 		$imgObj->setImageCompressionQuality($quality);
 		$imgObj->sharpenImage($sharpen, $sharpen);
-		echo "mobile===".$this->myimage->getimagewidth()."\r\n";
+		echo "mobile===".$imgObj->getimagewidth()."\r\n";
 		$imgObj->resizeimage($this->mobileWidth, $this->mobileWidth, Imagick::FILTER_LANCZOS, 1, true);
 		$filePath = $path."{$this->mobileWidth}x{$this->mobileWidth}.jpg";
 		echo $filePath."\r\n";
