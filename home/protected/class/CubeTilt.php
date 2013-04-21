@@ -70,25 +70,25 @@ class CubeTilt{
 
 		$this->scene_id= $scene_id;
 		$this->myimage = $obj;
-		echo 1111;
+		//echo 1111;
 		$this->Deal();
-		echo 22222;
+		//echo 22222;
 		//生成移动图片
-		$this->make_fthumb($obj, $scene_id, $face);
+		//$this->make_fthumb($obj, $scene_id, $face);
 		
 		$this->newObj->clear();
 		$this->newObj->destroy();
 
 	}
 	//生成移动图片
-	private function make_fthumb($imgObj, $scene_id, $face){
+	public function make_fthumb($imgObj, $scene_id, $face){
 		$path = $this->GetStaticFolder($scene_id);
 		$path = $this->folderPath;
 		echo "makeFthumb=".$path."\r\n";
 		if (!file_exists($path) || !$scene_id){
 			return false;
 		}
-		$path = $path.$face.'/fthumb/';
+		$path = $path.'/'.$face.'/fthumb/';
 		$this->make_unexit_dir($path);
 		$sharpen = 0.3;
 		$quality = 90;
@@ -101,6 +101,7 @@ class CubeTilt{
 		echo $filePath."\r\n";
 		$this->myimage->writeimage($filePath);
 	}
+	
 	public function DealPicPath ($path='', $scene_id, $face){
 		$this->face = $face;
 		if (!file_exists($path) || !$scene_id){
