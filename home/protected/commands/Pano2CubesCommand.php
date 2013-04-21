@@ -231,8 +231,12 @@ o f4 y0 r0 p90 v360";
 			$face = $this->cubeTile->face_box[$face];
 			$this->str .= $this->cubeTile->logStr;
 			$this->cubeTile->DealPicObj($myimage, $this->scene_id, $face);
-			
 		}
+		$myimage->clear();
+		$myimage->destroy();
+		
+		$myimage = new Imagick($old);
+		$this->cubeTile->make_fthumb($myimage, $this->scene_id, $face);
 		$this->cubeTile->GetStaticFolder($this->scene_id);
 		$path = $this->cubeTile->folderPath;
 		$str = "chmod -R 777 {$path}";
@@ -240,8 +244,7 @@ o f4 y0 r0 p90 v360";
 			exec($str);
 		}
 
-		$myimage->clear();
-		$myimage->destroy();
+		
 
 		/* $image = Yii::app()->image->load($old);
 		$image->quality(70);
