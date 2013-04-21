@@ -91,7 +91,8 @@ class CubeTilt{
 		$path = $path.'/'.$face.'/fthumb/';
 		$this->make_unexit_dir($path);
 		$sharpen = 0.2;
-		$quality = 70;
+		$quality = 80;
+		$imgObj->setImageFormat("jpeg");
 		$imgObj->setImageCompression(imagick::COMPRESSION_JPEG);
 		$imgObj->setImageCompressionQuality($quality);
 		$imgObj->sharpenImage($sharpen, $sharpen);
