@@ -92,14 +92,14 @@ class CubeTilt{
 		$this->make_unexit_dir($path);
 		$sharpen = 0.3;
 		$quality = 90;
-		$this->myimage->setImageCompression(imagick::COMPRESSION_JPEG);
-		$this->myimage->setImageCompressionQuality($quality);
-		$this->myimage->sharpenImage($sharpen, $sharpen);
+		$imgObj->setImageCompression(imagick::COMPRESSION_JPEG);
+		$imgObj->setImageCompressionQuality($quality);
+		$imgObj->sharpenImage($sharpen, $sharpen);
 		echo "mobile===".$this->myimage->getimagewidth()."\r\n";
-		$this->myimage->resizeimage($this->mobileWidth, $this->mobileWidth, Imagick::FILTER_LANCZOS, 1, true);
+		$imgObj->resizeimage($this->mobileWidth, $this->mobileWidth, Imagick::FILTER_LANCZOS, 1, true);
 		$filePath = $path."{$this->mobileWidth}x{$this->mobileWidth}.jpg";
 		echo $filePath."\r\n";
-		$this->myimage->writeimage($filePath);
+		$imgObj->writeimage($filePath);
 	}
 	
 	public function DealPicPath ($path='', $scene_id, $face){
