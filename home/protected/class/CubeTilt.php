@@ -6,6 +6,7 @@ class CubeTilt{
 	public $myimage = null;
 	public $scene_id = 0;
 	private $maxSiz = 2048;
+	private $mobileWidth = 1024;
 	private $level = 2;
 	private $startFolder = 9;
 	public $folderPath = '';
@@ -66,15 +67,35 @@ class CubeTilt{
 		if(!$this->GetStaticFolder($scene_id)){
 			return false;
 		}
-		
-		
+
 		$this->scene_id= $scene_id;
 		$this->myimage = $obj;
 		$this->Deal();
+		//生成移动图片
+		$this->make_fthumb($obj, $scene_id, $face);
 		
 		$this->newObj->clear();
 		$this->newObj->destroy();
 
+	}
+	//生成移动图片
+	private function make_fthumb($imgObj, $scene_id, $face){
+		$path = $this->GetStaticFolder($scene_id);
+		if (!file_exists($path) || !$scene_id){
+			return false;
+		}
+		$path = $path.$face.'/fthumb/';
+		$this->make_unexit_dir($path);
+		$sharpen = 0.3;
+		$quality = 90;
+		$this->myimage->setImageCompression(imagick::COMPRESSION_JPEG);
+		$this->myimage->setImageCompressionQuality($quality);
+		$this->myimage->sharpenImage($sharpen, $sharpen);
+		echo "mobile===".$this->myimage->getimagewidth()."\r\n";
+		$this->myimage->resizeimage($this->mobileWidth, $this->mobileWidth, Imagick::FILTER_LANCZOS, 1, true);
+		$filePath = $path."{$this->mobileWidth}x{$this->mobileWidth}.jpg";
+		echo $filePath."\r\n";
+		$this->myimage->writeimage($filePath);
 	}
 	public function DealPicPath ($path='', $scene_id, $face){
 		$this->face = $face;
@@ -115,7 +136,7 @@ class CubeTilt{
 		$round = pow(2, $num);
 		
 		$w_h = $this->maxSiz / pow(2, $this->level);
-		$sharpen = 0.4;
+		$sharpen = 0.3;
 		$quality = 90;
 		if($round == 1){
 			$quality = 10;
