@@ -209,7 +209,7 @@ class PanoPicController extends FController{
 
 		$water = 0;
 		$sharpen = 0;
-		$quality = 70;
+		$quality = 80;
 		$size = substr($fileName, 0, -4);
 		if(!in_array($size, $this->size)){
 			exit();
