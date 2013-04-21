@@ -70,7 +70,9 @@ class CubeTilt{
 
 		$this->scene_id= $scene_id;
 		$this->myimage = $obj;
+		echo 1111;
 		$this->Deal();
+		echo 22222;
 		//生成移动图片
 		$this->make_fthumb($obj, $scene_id, $face);
 		
