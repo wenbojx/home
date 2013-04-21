@@ -83,6 +83,7 @@ class CubeTilt{
 	//生成移动图片
 	private function make_fthumb($imgObj, $scene_id, $face){
 		$path = $this->GetStaticFolder($scene_id);
+		$path = $this->folderPath;
 		echo "makeFthumb=".$path."\r\n";
 		if (!file_exists($path) || !$scene_id){
 			return false;
