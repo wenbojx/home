@@ -84,7 +84,7 @@ class CubeTilt{
 	public function make_fthumb($imgObj, $scene_id, $face){
 		$path = $this->GetStaticFolder($scene_id);
 		$path = $this->folderPath;
-		echo "makeFthumb=".$path."\r\n";
+		//echo "makeFthumb=".$path."\r\n";
 		if (!file_exists($path) || !$scene_id){
 			return false;
 		}
@@ -95,10 +95,10 @@ class CubeTilt{
 		$imgObj->setImageCompression(imagick::COMPRESSION_JPEG);
 		$imgObj->setImageCompressionQuality($quality);
 		$imgObj->sharpenImage($sharpen, $sharpen);
-		echo "mobile===".$imgObj->getimagewidth()."\r\n";
+		//echo "mobile===".$imgObj->getimagewidth()."\r\n";
 		$imgObj->resizeimage($this->mobileWidth, $this->mobileWidth, Imagick::FILTER_LANCZOS, 1, true);
 		$filePath = $path."{$this->mobileWidth}x{$this->mobileWidth}.jpg";
-		echo $filePath."\r\n";
+		//echo $filePath."\r\n";
 		$imgObj->writeimage($filePath);
 	}
 	
