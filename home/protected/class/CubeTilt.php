@@ -81,6 +81,7 @@ class CubeTilt{
 	//生成移动图片
 	private function make_fthumb($imgObj, $scene_id, $face){
 		$path = $this->GetStaticFolder($scene_id);
+		echo "makeFthumb=".$path."\r\n";
 		if (!file_exists($path) || !$scene_id){
 			return false;
 		}
@@ -125,7 +126,7 @@ class CubeTilt{
 		for($i=($this->level); $i>=0; $i--){
 			$this->averagePic($i);
 		}
-		echo $this->logStr;
+		//echo $this->logStr;
 	}
 	/**
 	 * 分成$num等分
@@ -259,7 +260,7 @@ class CubeTilt{
 		}
 		$newFile = $folder . '/' . $name;
 		$str = "----save file {$newFile}\r\n";
-		$this->logStr .= $str;
+		//$this->logStr .= $str;
 		//$obj->resizeimage($width, $height, Imagick::FILTER_LANCZOS, 1, true);
 		$this->newObj->writeImage($newFile);
 		$this->newObj->clear();

@@ -247,6 +247,7 @@ o f4 y0 r0 p90 v360";
 		$image->quality(70);
 		$image->save($new); */
 	}
+	
 
 	/**
 	 * 获取需处理的队列
