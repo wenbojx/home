@@ -1,7 +1,7 @@
 <?php
 
 class MController extends FController{
-	private $domin = 'http://www.dev.yiluhao.com';
+	private $domin = 'http://www.yiluhao.com';
 	private $panoFaceSize = '1024x1024';
 	/**
 	 * 获取用户项目列表
