@@ -1,7 +1,11 @@
 <?php
 
 class MController extends FController{
-
+	private $domin = 'http://www.dev.yiluhao.com';
+	private $panoFaceSize = '1024x1024';
+	/**
+	 * 获取用户项目列表
+	 */
 	public function actionPU(){
 		$request = Yii::app()->request;
 		$datas = array();
@@ -27,6 +31,9 @@ class MController extends FController{
 		return $memberDB->find_by_email($userName);
 
 	}
+	/**
+	 * 获取用户信息
+	 */
 	public function actionUser(){
 		$request = Yii::app()->request;
 		$datas = array();
@@ -60,7 +67,65 @@ class MController extends FController{
     	$msg['project'] = $this->get_project_list($project_id);
     	$this->display_msg($msg);
     }
-    
+    /**
+     * 项目大小，用于下载
+     */
+    public function actionPD(){
+    	$request = Yii::app()->request;
+    	$datas = array();
+    	$project_id = $request->getParam('id');
+    	if(!$project_id){
+    		$this->display_msg($msg);
+    	}
+    	$mapSize = 0;
+    	$thumbSize = 0;
+    	$musicSize = 0;
+    	$panoFaceSize = 0;
+    	//地图文件大小
+    	$map = $this->get_scene_map($project_id);
+    	$mapSize = $this->getFileSize($map);
+    	$panos = $this->get_scene_list($project_id);
+    	
+    	if($panos){
+    		foreach ($panos as $v){
+    			$thumbSize += $this->getFileSize($v['thumb']);
+    			//echo $thumbSize."<br>";
+    			$musicPath = $this->sceneMusic($v['id']);
+    			$musicSize += $this->getFileSize($musicPath);
+    			$size = $this->panoFaceSize;
+    			$s_f = PicTools::get_face_small($v['id'], 's_f' , $size);
+    			$s_r = PicTools::get_face_small($v['id'], 's_r' , $size);
+    			$s_b = PicTools::get_face_small($v['id'], 's_b' , $size);
+    			$s_l = PicTools::get_face_small($v['id'], 's_l' , $size);
+    			$s_u = PicTools::get_face_small($v['id'], 's_u' , $size);
+    			$s_d = PicTools::get_face_small($v['id'], 's_d' , $size);
+    			$panoFaceSize += $this->getFileSize($s_f);
+    			$panoFaceSize += $this->getFileSize($s_r);
+    			$panoFaceSize += $this->getFileSize($s_b);
+    			$panoFaceSize += $this->getFileSize($s_l);
+    			$panoFaceSize += $this->getFileSize($s_u);
+    			$panoFaceSize += $this->getFileSize($s_d);
+    			
+    		}
+    	}
+    	$msg['size'] = $mapSize+$thumbSize+$musicSize+$panoFaceSize;
+    	//$msg['display'] =
+    	//print_r($msg);
+    	$this->display_msg($msg);
+    	
+    }
+    public function getFileSize($url){
+    	$size = 0;
+    	if(!$url){
+    		return $size;
+    	}
+    	$filePath = str_replace($this->domin, '.', $url);
+    	if(!file_exists($filePath)){
+    		return $size;
+    	}
+    	$size = filesize($filePath);
+    	return $size;
+    }
     /**
      * 场景列表
      */
@@ -69,12 +134,12 @@ class MController extends FController{
     	$datas = array();
     	$project_id = $request->getParam('id');
     	$msg['panos'] = array();
-    	$msg['map'] = '';
+    	//$msg['map'] = '';
     	if(!$project_id){
     		$this->display_msg($msg);
     	}
     	$msg['panos'] = $this->get_scene_list($project_id);
-    	$msg['map'] = $this->get_scene_map($project_id);
+    	//$msg['map'] = $this->get_scene_map($project_id);
     	$project_datas = $this->getProjectInfo($project_id);
     	$msg['info'] = $project_datas['desc'];
     	$msg['level'] = $project_datas['level'];
@@ -233,7 +298,7 @@ class MController extends FController{
     	$sceneData['title'] = $datas['name'];
     	$sceneData['info'] = $datas['desc'];
     	$sceneData['state'] = 1;
-    	$size = '1024x1024';
+    	$size = $this->panoFaceSize;
     	$sceneData['s_f'] = PicTools::get_face_small($scene_id, 's_f' , $size);
     	$sceneData['s_r'] = PicTools::get_face_small($scene_id, 's_r' , $size);
     	$sceneData['s_b'] = PicTools::get_face_small($scene_id, 's_b' , $size);
@@ -300,11 +365,13 @@ class MController extends FController{
     		$sceneDatas[$i]['title'] = $v['name'];
     		$sceneDatas[$i]['info'] = $v['desc'];
     		$sceneDatas[$i]['created'] = date(' Y-m-d H : i ', $v['created']);
-    		$sceneDatas[$i]['thumb'] = PicTools::get_pano_small($v['id'] , '200x100');
+    		//$sceneDatas[$i]['thumb'] = PicTools::get_pano_small($v['id'] , '200x100');
+    		$sceneDatas[$i]['thumb']  = PicTools::get_pano_thumb($v['id'] , '150x110');
+    		
     		$sceneDatas[$i]['thumb-w'] = 150;
     		$sceneDatas[$i]['thumb-h'] = 110;
     		$sceneDatas[$i]['state'] = 1;
-    		$size = $v['id']%2?1:2;
+    		$size = 2;
     		$sceneDatas[$i]['size'] = $size;
     		$i++;
     	}

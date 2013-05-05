@@ -5,6 +5,38 @@
 <title>content</title>
 </head>
 <body>
+
+<?php 
+$img = '1.jpg';
+
+//Read exif meta information
+$info = exif_read_data($img, NULL, true, false);
+
+//Read thumbnail data
+$thumb = exif_thumbnail($img, $width, $height, $type);
+
+//Get mime type: require GD2 extension
+$mimeType = image_type_to_mime_type($type);
+$data = base64_encode($thumb);
+
+echo 'Thumbnail: ', $width , 'x', $height, ', Type:',
+$type, ';', $mimeType , "<br />\n";
+echo '<img alt="" src="data:', $type, ';base64,', $data, '" />';
+
+foreach ($info as $key=>$sinfo) {
+	echo '<h3>', $key, '</h3>';
+	if (is_array($sinfo)) {
+		echo '<table border="1" cellspacing="0" borderColor="#CCC">';
+		foreach ($sinfo as $skey=>$svalue) {
+			echo '<tr><td>', $skey, '</td><td>', $svalue, '</td></tr>';
+		}
+		echo '</table>';
+	}
+}
+
+
+?>
+
 <iframe width="930" scrolling="no" height="400" frameborder="0" src="http://www.yiluhao.com/s/10001/w/932/h/400/title/1"></iframe>
 
 <form action="/project/uploadPano/" method="post" enctype="multipart/form-data">

@@ -3,7 +3,7 @@ ini_set('memory_limit', '500M');
 class PanoPicController extends FController{
 	public $defaultAction = 'index';
 	private $url = '';
-	private $size = array('200x100', '150x110' , '400x200', '1024x512', '1024x1024', '600x600', '512x512', '800x800');
+	private $size = array('200x100', '150x110','200x150', '400x200', '1024x512', '1024x1024', '600x600', '512x512', '800x800');
 	private $request = null;
 	public $img_size = 1800;
 	public $tile_size = 450;
@@ -384,7 +384,7 @@ class PanoPicController extends FController{
 		if(!$scene_id){
 			$this->show_default(1);
 		}
-
+		
 		$file_name = $explode_url[$count-1];
 		$size = substr($file_name, 0, strlen($file_name)-4);
 		if(!in_array($size, $this->size)){
@@ -402,8 +402,7 @@ class PanoPicController extends FController{
 		$toPath .= '/' . $size . '.jpg';
 		$panoPicTools = new PanoPicTools();
 		$sharpen = 0;
-		$quality=80;
-
+		$quality=90;
 		if(!$panoPicTools->turnToStatic($path, $toPath, $size, $quality, 0, $sharpen)){
 			$this->show_default(1);
 		}
