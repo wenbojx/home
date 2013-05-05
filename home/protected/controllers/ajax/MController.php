@@ -85,16 +85,11 @@ class MController extends FController{
     	$map = $this->get_scene_map($project_id);
     	$mapSize = $this->getFileSize($map);
     	$panos = $this->get_scene_list($project_id);
-    	echo $mapSize."<br>";
     	if($panos){
     		foreach ($panos as $v){
     			$thumbSize += $this->getFileSize($v['thumb']);
-    			echo $thumbSize."<br>";
-    			//echo $thumbSize."<br>";
     			$musicPath = $this->sceneMusic($v['id']);
-    			echo $musicPath."<br>";
     			$musicSize += $this->getFileSize($musicPath);
-    			echo ($musicSize/1024/1024)."<br>";
     			$size = $this->panoFaceSize;
     			$s_f = PicTools::get_face_small($v['id'], 's_f' , $size);
     			$s_r = PicTools::get_face_small($v['id'], 's_r' , $size);
@@ -103,18 +98,11 @@ class MController extends FController{
     			$s_u = PicTools::get_face_small($v['id'], 's_u' , $size);
     			$s_d = PicTools::get_face_small($v['id'], 's_d' , $size);
     			$panoFaceSize += $this->getFileSize($s_f);
-    			echo $panoFaceSize."<br>";
     			$panoFaceSize += $this->getFileSize($s_r);
-    			echo $panoFaceSize."<br>";
     			$panoFaceSize += $this->getFileSize($s_b);
-    			echo $panoFaceSize."<br>";
     			$panoFaceSize += $this->getFileSize($s_l);
-    			echo $panoFaceSize."<br>";
     			$panoFaceSize += $this->getFileSize($s_u);
-    			echo $panoFaceSize."<br>";
     			$panoFaceSize += $this->getFileSize($s_d);
-    			echo $panoFaceSize."<br>";
-    			echo "total=".($thumbSize+$musicSize+$panoFaceSize)/(1024*1024)."<br><br>";
     		}
     	}
     	
