@@ -92,8 +92,9 @@ class MController extends FController{
     			echo $thumbSize."<br>";
     			//echo $thumbSize."<br>";
     			$musicPath = $this->sceneMusic($v['id']);
+    			echo $musicPath."<br>";
     			$musicSize += $this->getFileSize($musicPath);
-    			echo $musicSize."<br>";
+    			echo ($musicSize/1024/1024)."<br>";
     			$size = $this->panoFaceSize;
     			$s_f = PicTools::get_face_small($v['id'], 's_f' , $size);
     			$s_r = PicTools::get_face_small($v['id'], 's_r' , $size);
@@ -112,8 +113,8 @@ class MController extends FController{
     			$panoFaceSize += $this->getFileSize($s_u);
     			echo $panoFaceSize."<br>";
     			$panoFaceSize += $this->getFileSize($s_d);
-    			echo $panoFaceSize."<br><br><br>";
-    			
+    			echo $panoFaceSize."<br>";
+    			echo "total=".($thumbSize+$musicSize+$panoFaceSize)/(1024*1024)."<br><br>";
     		}
     	}
     	
