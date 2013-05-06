@@ -146,7 +146,7 @@ class MController extends FController{
     	
     	//$msg['size'] = $mapSize+$thumbSize+$musicSize+$panoFaceSize;
     	//$msg['display'] =
-    	print_r($this->fileList);
+    	//print_r($this->fileList);
     	$this->display_msg($this->fileList);
     	
     }
