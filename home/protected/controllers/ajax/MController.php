@@ -3,6 +3,8 @@
 class MController extends FController{
 	private $domin = 'http://www.yiluhao.com';
 	private $panoFaceSize = '1024x1024';
+	private $i =1;
+	private $fileList = array();
 	/**
 	 * 获取用户项目列表
 	 */
@@ -67,8 +69,19 @@ class MController extends FController{
     	$msg['project'] = $this->get_project_list($project_id);
     	$this->display_msg($msg);
     }
+    private function addDownFile($url, $size){
+    	if(!$url){
+    		return false;
+    	}
+    	//echo $size."<br>";
+    	$i = $this->i;
+    	$this->fileList[$i]['url'] = $url;
+    	$this->fileList[$i]['size'] = $size;
+    	$this->fileList[$i]['state'] = '1'; //1未开始，2下载中，3下载完
+    	$this->i++;
+    }
     /**
-     * 项目大小，用于下载
+     * 项目大小及下载文件，用于下载
      */
     public function actionPD(){
     	$request = Yii::app()->request;
@@ -81,15 +94,28 @@ class MController extends FController{
     	$thumbSize = 0;
     	$musicSize = 0;
     	$panoFaceSize = 0;
-    	//地图文件大小
+    	$fileList = array();
+    	//地图文件
+    	$mapConfig = 'http://mb.yiluhao.com/ajax/m/pm/id/'.$project_id;
+    	$this->addDownFile($mapConfig, 0); //地图配置文件
+    	
     	$map = $this->get_scene_map($project_id);
     	$mapSize = $this->getFileSize($map);
+    	$this->addDownFile($map, $mapSize); //地图图片
+    	
     	$panos = $this->get_scene_list($project_id);
     	if($panos){
     		foreach ($panos as $v){
-    			$thumbSize += $this->getFileSize($v['thumb']);
+    			$panoConfig = 'http://mb.yiluhao.com/ajax/m/pv/id/'.$v['id'];
+    			$this->addDownFile($panoConfig, 0);
+    			
+    			$thumbSize = $this->getFileSize($v['thumb']);
+    			$this->addDownFile($v['thumb'], $thumbSize);
+    			
     			$musicPath = $this->sceneMusic($v['id']);
-    			$musicSize += $this->getFileSize($musicPath);
+    			$musicSize = $this->getFileSize($musicPath);
+    			$this->addDownFile($musicPath, $musicSize);
+    			
     			$size = $this->panoFaceSize;
     			$s_f = PicTools::get_face_small($v['id'], 's_f' , $size);
     			$s_r = PicTools::get_face_small($v['id'], 's_r' , $size);
@@ -97,19 +123,31 @@ class MController extends FController{
     			$s_l = PicTools::get_face_small($v['id'], 's_l' , $size);
     			$s_u = PicTools::get_face_small($v['id'], 's_u' , $size);
     			$s_d = PicTools::get_face_small($v['id'], 's_d' , $size);
-    			$panoFaceSize += $this->getFileSize($s_f);
-    			$panoFaceSize += $this->getFileSize($s_r);
-    			$panoFaceSize += $this->getFileSize($s_b);
-    			$panoFaceSize += $this->getFileSize($s_l);
-    			$panoFaceSize += $this->getFileSize($s_u);
-    			$panoFaceSize += $this->getFileSize($s_d);
+    			$sfSize = $this->getFileSize($s_f);
+    			$this->addDownFile($s_f, $sfSize);
+    			
+    			$srSize = $this->getFileSize($s_r);
+    			$this->addDownFile($s_r, $srSize);
+    			
+    			$sbSize = $this->getFileSize($s_b);
+    			$this->addDownFile($s_b, $sbSize);
+    			
+    			$slSize = $this->getFileSize($s_l);
+    			$this->addDownFile($s_l, $slSize);
+    			
+    			$suSize = $this->getFileSize($s_u);
+    			$this->addDownFile($s_u, $suSize);
+    			
+    			$sdSize = $this->getFileSize($s_d);
+    			$this->addDownFile($s_d, $sdSize);
+    			
     		}
     	}
     	
-    	$msg['size'] = $mapSize+$thumbSize+$musicSize+$panoFaceSize;
+    	//$msg['size'] = $mapSize+$thumbSize+$musicSize+$panoFaceSize;
     	//$msg['display'] =
-    	//print_r($msg);
-    	$this->display_msg($msg);
+    	print_r($this->fileList);
+    	$this->display_msg($this->fileList);
     	
     }
     public function getFileSize($url){
