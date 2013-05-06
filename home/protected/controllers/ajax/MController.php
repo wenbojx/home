@@ -5,6 +5,7 @@ class MController extends FController{
 	private $panoFaceSize = '1024x1024';
 	private $i =1;
 	private $fileList = array();
+	private $totalSize = 0;
 	/**
 	 * 获取用户项目列表
 	 */
@@ -79,6 +80,7 @@ class MController extends FController{
     	$this->fileList[$i]['size'] = $size;
     	$this->fileList[$i]['state'] = '1'; //1未开始，2下载中，3下载完
     	$this->i++;
+    	$this->totalSize += $size;
     }
     /**
      * 项目大小及下载文件，用于下载
@@ -143,12 +145,10 @@ class MController extends FController{
     			
     		}
     	}
-    	
-    	//$msg['size'] = $mapSize+$thumbSize+$musicSize+$panoFaceSize;
-    	//$msg['display'] =
-    	//print_r($this->fileList);
-    	$this->display_msg($this->fileList);
-    	
+    	$msg['size'] = $this->totalSize;
+    	$msg['files'] = $this->fileList;
+    	$msg['state'] = 1;
+    	$this->display_msg($msg);
     }
     public function getFileSize($url){
     	$size = 0;
